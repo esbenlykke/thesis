@@ -1,11 +1,214 @@
 ---
-title: "thesis"
+format:
+  pdf:
+    toc: true
+    cite-method: biblatex
+    biblio-style: nature
+    mainfont: EB Garamond
+    sansfont: Libertinus Sans
+    fontsize: 8pt
+    geometry:
+      - margin=20mm
+      - paperwidth=17cm
+      - paperheight=24cm
+    colorlinks: true
+    linkcolor: DarkSlateBlue
+    urlcolor: DarkRed
+    citecolor: DarkSlateBlue
+    link-citations: true
+    number-sections: false
+    pdf-engine: lualatex
+    csl: nature.csl
+    keep-tex: true
+biblio-title: "References"
+bibliography: refs.bib
 ---
 
-## Quarto
+\newpage
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+# Preface
 
-```{r}
-1 + 1
-```
+The journey of my PhD has been a fulfilling expedition, layered with explorations, discoveries, struggles, and growth. This endeavor was fueled by my interest in understanding the objective measurements of physical behavior and sleep. During my Masters, I found myself increasingly engrossed in these domains.
+
+My subsequent role as a research assistant at Aarhus University opened another dimension of learning for me. The works of my peers, employing machine learning and advanced statistics on accelerometer data, intrigued me. It was as if I found the nexus of my research interests, a perfect alignment that seamlessly fused my curiosities and passions.
+
+One of the most significant hurdles was my limited experience with programming and machine learning, which proved to be a steep learning curve. However, through persistence, I slowly developed the necessary skills to analyze and interpret my data effectively. Another major setback was the failed data collection for my third paper. I spent months visiting families, mounting an ambulatory PSG device on children before bedtime, and facing the harsh reality of dealing with poor data quality.
+
+This thesis brings together my explorations and findings across three papers that carry a consistent emphasis on improving and validating methods to leverage accelerometer data for studying human behaviors. The common thread across these papers is the application of innovative methods, particularly machine learning techniques, to enhance the utility, reliability, and accuracy of free-living accelerometer data for monitoring human sleep and physical activity. The work presented here constitutes a substantial contribution to the field of sleep and physical activity research, particularly in the context of large-scale studies.
+
+Two of these papers have already found their place in peer-reviewed scientific journals, and the third is under review. All of these works are included as appendices to this thesis, and their content has been weaved into the fabric of this thesis.
+
+As I look back at my journey through the PhD program, I am grateful for this opportunity to delve deep into a subject that I am passionate about and to contribute to a field that is evolving rapidly. This experience has instilled in me a sense of tenacity and patience, qualities that I have come to value deeply. I learned that even the most frustrating problems have solutions, and the path to those solutions often leads to personal growth and novel insights.
+
+As I stand on the precipice of my future, I am filled with a sense of anticipation and excitement for the possibilities that lie ahead. I am eager to explore new horizons, to encounter new challenges, and to continue growing as a researcher and as an individual. However, wherever I go and whatever I do, I will carry with me the memories, experiences, and lessons from this incredible journey.
+
+These years have shaped me in ways I could never have imagined at the outset, and for that, I am profoundly grateful. As I close this chapter of my life, I do so with a sense of accomplishment and a promise of continued exploration and discovery in my field. After all, every ending is but a new beginning, and I look forward to the adventures that await.
+
+\newpage
+
+# Acknowledgements
+
+Throughout this journey, there have been several people who have influenced, inspired, and supported me. My Main Supervisor, \[insert name 1\], deserves special mention for his guidance and patience. His commitment to nurturing my development as a researcher and lecturer has been instrumental. Our collaborative dialogues, be it at the office or during examinations, have been pivotal in my growth. I also extend my sincere gratitude to my co-supervisors \[insert name 2\] and \[insert name 3\], and my colleague \[insert name 4\], who have always provided invaluable insights and perspectives.
+
+Amidst all the academic pursuits, my family remained the cornerstone of my journey. My wife, the bedrock of our family, kept our home running smoothly and offered endless support and curiosity about my work. The joy and love from my four children were my constant sources of motivation and inspiration.
+
+The PhD journey has taught me the importance of rigour and attention to detail. My approach to work has been permanently shaped by my experience as a researcher. The discipline and precision that is required in research has translated into my everyday life, impacting my approach to problem-solving, decision-making, and even communication. It's impressive how research is not merely a vocation but a lens through which we view the world.
+
+There were also moments of immense joy and satisfaction, like finally solving a complex analytical problem, having my work accepted for publication, or simply receiving positive feedback from a student or a colleague. Those moments fueled my motivation and reminded me of the importance and impact of my work.
+
+One of the most rewarding aspects of this journey was the opportunity to be part of an international recognized and experienced research group. This gave me the chance to work with and learn from some of the most talented people in my field, to discuss ideas and collaborate on projects, and to be part of a collective effort to advance knowledge and understanding in our field.
+
+In retrospect, this PhD journey has been much more than a professional pursuit. It has been a personal voyage of self-discovery and growth. Through the highs and lows, the victories and setbacks, the late nights and early mornings, I've discovered a resilience in myself that I hadn't known before. I found that I could rise to challenges, learn from failures, and continue to strive for excellence, no matter the odds.
+
+In closing, I wish to express my deep gratitude for all those who have supported me throughout this journey - my supervisors, colleagues, friends, and family. Their faith in my abilities and their constant encouragement have been my pillars of strength. I hope that the work presented in this thesis reflects the depth of my dedication and the extent of my learning journey.
+
+\newpage
+
+# Supervisor
+
+Associate Professor Jan Christian Brønd, PhD
+
+Research Unit for Exercise Epedimiology, Centre of Research in Childhood Health, Department of Sports Science and Clinical Biomechanics, University of Southern Denmark, 5230 Odense, Denmark
+
+# Assessment Committee
+
+## Chair
+
+Associate Professor Anders And, PhD
+
+## Opponents
+
+Professor Andersine And, PhD
+
+Research Unit for Exercise Epedimiology, Centre of Research in Childhood Health, Department of Sports Science and Clinical Biomechanics, University of Southern Denmark, 5230 Odense, Denmark
+
+Associate Professor Fætter Højben, PhD
+
+Research Unit for Exercise Epedimiology, Centre of Research in Childhood Health, Department of Sports Science and Clinical Biomechanics, University of Southern Denmark, 5230 Odense, Denmark
+
+# Funding
+
+The research presented in this thesis was generously funded by TrygFonden, under grant numbers ID 130081 and 115606, and by the European Research Council, under grant number 716657. Additional support was provided by a one-year scholarship from the Faculty of Health Sciences.
+
+\newpage
+
+# Included Papers
+
+## Paper I
+
+> Manual Annotation of Time in Bed Using Free-Living Recordings of Accelerometry Data[@skovgaard_manual_2021]
+
+published in [Sensors](https://doi.org/10.3390/s21248442).
+
+## Paper II
+
+> Generalizability and Performance of Methods to Detect Non‑Wear with Free‑Living Accelerometer Recordings[@skovgaard_generalizability_2023]
+
+published in [Scientific Reports](www.nature.com/scientificreports).
+
+## Paper III
+
+> Improving Sleep Quality Estimation: A Comparative Study of Machine Learning and Deep Learning Techniques Utilizing Free-Living Accelerometer Data from Thigh-Worn Devices and EEG-Based Sleep Tracking
+
+Submitted to [npj Digital Medicin](https://www.nature.com/npjdigitalmed/).
+
+# English Summary
+
+bla
+
+# Danish Summary
+
+bla
+
+## Overview of Included Papers
+
+The first paper is focused on improving the manual annotation of in-bed periods by comparing the manual annotation method with established EEG-based sleep monitoring devices and self-reported sleep diaries.
+
+In the second paper, you delve into a more specific challenge in physical activity sensor usage - the detection of non-wear. You propose decision tree models that combine raw acceleration and skin temperature data and emphasize the importance of external validation in machine-learned models. [check out google](www.google.com)
+
+The third paper focuses on sleep quality estimation using machine learning and deep learning models. You evaluate these models using data from thigh-worn accelerometers, presenting a potential alternative for large-scale sleep studies. You underscore the challenges of classifying awake periods during in-bed time and the need for precision in assessing individual sleep quality metrics.
+
+There is a clear common thread that ties together all three of your research papers. The overarching theme is the application of innovative methods, particularly machine learning techniques, to improve the utility, reliability, and accuracy of free-living accelerometer data in monitoring human sleep and physical activity.
+
+This common thread manifests in various aspects across your research:
+
+1.  **Annotation of Time in Bed:** You worked on developing and validating a method for manually annotating in-bed periods in accelerometer data, which is essential for the accurate classification of sleep and other behaviors.
+
+2.  **Non-Wear Detection:** In this paper, you focused on a specific challenge with wearable activity sensors - the detection of non-wear time. You investigated machine learning-based decision tree models that leverage raw acceleration and skin temperature data for this purpose.
+
+3.  **Sleep Quality Estimation:** Lastly, you explored the use of both machine learning and deep learning models to estimate sleep and sleep quality metrics, specifically leveraging data from thigh-worn accelerometers, an underexplored area in the field.
+
+Throughout your work, there is a consistent emphasis on improving and validating methods to better leverage accelerometer data for studying human behaviors. This recurring theme suggests a significant contribution to the field of sleep and physical activity research, particularly in the context of large-scale studies where traditional methods may be impractical or cost-prohibitive.
+
+# Introduction
+
+## Outline of Introduction Section
+
+### Overview and Background
+
+-   The importance of sleep and physical activity tracking in health research.
+-   The limitations of traditional methods, such as polysomnography and self-reported diaries.
+-   The emergence and potential of wearable accelerometers and machine learning models in this field.
+
+#### Scope and Relevance
+
+-The need for cost-effective, reliable, and practical alternatives for large-scale studies. - The potential of free-living accelerometers, and why they are a compelling subject of study.
+
+#### Existing Challenges
+
+-   Discuss the challenges with existing methods, such as identifying non-wear time, annotating in-bed periods, and classifying awake periods during in-bed time.
+-   Address the lack of exploration of certain sensor locations, like the thigh.
+
+#### Thesis Goals and Objectives
+
+-   Clearly state the aim and objectives of your thesis.
+-   Explain how your thesis will address the identified challenges, including improving the manual annotation of in-bed periods, enhancing non-wear detection, and estimating sleep quality metrics.
+
+#### Overview of the Papers
+
+-   Briefly introduce each paper, highlighting the key research question, methods, and findings.
+
+-   Explain how each paper contributes to your thesis goals and objectives.
+
+### Motivation for the Research
+
+#### The Need for Improved Annotation Techniques
+
+-   Importance of accurate annotation in accelerometer data analysis.
+-   A brief discussion of the first paper's findings and implications.
+
+#### Improving Non-Wear Detection
+
+-   Explain the implications of undetected non-wear time on data quality.
+-   Highlight the findings of your second paper and its relevance.
+
+#### Advancing Sleep Quality Estimation
+
+-   Discuss the impact of sleep quality estimation on understanding human sleep behavior.
+-   Briefly describe the conclusions of your third paper.
+
+### Methodological Approaches
+
+-   Give a brief overview of the methods used across all three studies, such as the use of machine learning models, deep learning techniques, manual annotation, and decision tree models.
+
+-   Explain how these methods address the research objectives and the challenges identified earlier.
+
+### Thesis Structure
+
+Provide an outline of the subsequent chapters of your thesis.
+
+# Test Header
+
+Over the past decade, an expanding body of literature has underscored the vital role of physical activity and sleep in sustaining overall human health. These key components of our daily routine are not merely elements of lifestyle; they are closely interwoven with our mental and physical well-being, and disturbances in these areas can precipitate a cascade of health issues. Our understanding of the dynamics of physical activity and sleep and their implications on health, however, are contingent upon the accuracy and precision of the methods we employ to measure them. This raises a need for efficient, cost-effective, and minimally invasive tools for longitudinal physical activity and sleep monitoring.
+
+In this context, body-worn motion sensors, specifically accelerometers, have emerged as a significant advancement, providing valuable insights into human physical activity and sleep patterns. Utilizing accelerometers to measure and classify the intensity of human movement and non-wear time has been an integral part of my research during my Ph.D. These devices offer high cost efficiency and minimal participant burden, making them an ideal choice for large-scale studies. However, the challenge lies in effectively interpreting the data generated by these devices, particularly when it comes to accurately distinguishing between wear and non-wear time.
+
+Addressing this challenge has involved utilizing sophisticated machine learning techniques to classify non-wear time in raw accelerometer data, and my studies have extended to investigate the generalizability and performance of these models on unseen data. As part of this effort, we examined the potential benefits and limitations of machine learning in detecting patterns from training data and approximating complex models, taking care to balance model variance and bias. These findings underscore the vital role of these technologies in enhancing the accuracy and precision of non-wear time classification, and underscore the importance of maintaining a balance between overfitting and underfitting.
+
+Further extending the utility of accelerometers, my research delved into the domain of sleep science. Here, we utilized accelerometers as a convenient and affordable means of tracking sleep patterns over extended periods. Recognizing that sleep analysis has been dominated by wrist and hip-worn accelerometers, our focus shifted to the less-explored, but promising, realm of thigh-worn accelerometers for sleep assessment. While there has been progress in estimating sleep duration using these devices, the application of machine learning techniques in this area remains underdeveloped, a gap that our research aimed to address.
+
+We explored a range of machine learning and deep learning models, utilizing raw data collected from a tri-axial thigh-worn accelerometer to estimate in-bed and sleep time. We validated our models against an electroencephalography-based (EEG) sleep tracking device, which served as the gold standard for measuring sleep. Moreover, we evaluated the models' performance in assessing crucial sleep quality metrics, reinforcing the potential of accelerometers as a tool for comprehensive sleep and physical activity tracking.
+
+Taken together, this body of work sheds light on the immense potential of wearable technology, particularly accelerometers, in revolutionizing the field of human physical activity and sleep research. While significant strides have been made in the development and validation of advanced machine learning models to interpret accelerometer data, the journey towards more accurate, user-friendly, and holistic methods of tracking human physical activity and sleep continues. As I continue to navigate this fascinating field, my research aims to bridge the gaps in our understanding and contribute to a future where personalized health monitoring is both accessible and precise.
+
+\newpage

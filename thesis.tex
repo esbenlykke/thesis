@@ -1,0 +1,628 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  8pt,
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+  \setmainfont[]{EB Garamond}
+  \setsansfont[]{Libertinus Sans}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=20mm,paperwidth=17cm,paperheight=24cm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[style=nature,]{biblatex}
+\addbibresource{refs.bib}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  colorlinks=true,
+  linkcolor={DarkSlateBlue},
+  filecolor={Maroon},
+  citecolor={DarkSlateBlue},
+  urlcolor={DarkRed},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\newpage
+
+\hypertarget{preface}{%
+\section{Preface}\label{preface}}
+
+The journey of my PhD has been a fulfilling expedition, layered with
+explorations, discoveries, struggles, and growth. This endeavor was
+fueled by my interest in understanding the objective measurements of
+physical behavior and sleep. During my Masters, I found myself
+increasingly engrossed in these domains.
+
+My subsequent role as a research assistant at Aarhus University opened
+another dimension of learning for me. The works of my peers, employing
+machine learning and advanced statistics on accelerometer data,
+intrigued me. It was as if I found the nexus of my research interests, a
+perfect alignment that seamlessly fused my curiosities and passions.
+
+One of the most significant hurdles was my limited experience with
+programming and machine learning, which proved to be a steep learning
+curve. However, through persistence, I slowly developed the necessary
+skills to analyze and interpret my data effectively. Another major
+setback was the failed data collection for my third paper. I spent
+months visiting families, mounting an ambulatory PSG device on children
+before bedtime, and facing the harsh reality of dealing with poor data
+quality.
+
+This thesis brings together my explorations and findings across three
+papers that carry a consistent emphasis on improving and validating
+methods to leverage accelerometer data for studying human behaviors. The
+common thread across these papers is the application of innovative
+methods, particularly machine learning techniques, to enhance the
+utility, reliability, and accuracy of free-living accelerometer data for
+monitoring human sleep and physical activity. The work presented here
+constitutes a substantial contribution to the field of sleep and
+physical activity research, particularly in the context of large-scale
+studies.
+
+Two of these papers have already found their place in peer-reviewed
+scientific journals, and the third is under review. All of these works
+are included as appendices to this thesis, and their content has been
+weaved into the fabric of this thesis.
+
+As I look back at my journey through the PhD program, I am grateful for
+this opportunity to delve deep into a subject that I am passionate about
+and to contribute to a field that is evolving rapidly. This experience
+has instilled in me a sense of tenacity and patience, qualities that I
+have come to value deeply. I learned that even the most frustrating
+problems have solutions, and the path to those solutions often leads to
+personal growth and novel insights.
+
+As I stand on the precipice of my future, I am filled with a sense of
+anticipation and excitement for the possibilities that lie ahead. I am
+eager to explore new horizons, to encounter new challenges, and to
+continue growing as a researcher and as an individual. However, wherever
+I go and whatever I do, I will carry with me the memories, experiences,
+and lessons from this incredible journey.
+
+These years have shaped me in ways I could never have imagined at the
+outset, and for that, I am profoundly grateful. As I close this chapter
+of my life, I do so with a sense of accomplishment and a promise of
+continued exploration and discovery in my field. After all, every ending
+is but a new beginning, and I look forward to the adventures that await.
+
+\newpage
+
+\hypertarget{acknowledgements}{%
+\section{Acknowledgements}\label{acknowledgements}}
+
+Throughout this journey, there have been several people who have
+influenced, inspired, and supported me. My Main Supervisor, {[}insert
+name 1{]}, deserves special mention for his guidance and patience. His
+commitment to nurturing my development as a researcher and lecturer has
+been instrumental. Our collaborative dialogues, be it at the office or
+during examinations, have been pivotal in my growth. I also extend my
+sincere gratitude to my co-supervisors {[}insert name 2{]} and {[}insert
+name 3{]}, and my colleague {[}insert name 4{]}, who have always
+provided invaluable insights and perspectives.
+
+Amidst all the academic pursuits, my family remained the cornerstone of
+my journey. My wife, the bedrock of our family, kept our home running
+smoothly and offered endless support and curiosity about my work. The
+joy and love from my four children were my constant sources of
+motivation and inspiration.
+
+The PhD journey has taught me the importance of rigour and attention to
+detail. My approach to work has been permanently shaped by my experience
+as a researcher. The discipline and precision that is required in
+research has translated into my everyday life, impacting my approach to
+problem-solving, decision-making, and even communication. It's
+impressive how research is not merely a vocation but a lens through
+which we view the world.
+
+There were also moments of immense joy and satisfaction, like finally
+solving a complex analytical problem, having my work accepted for
+publication, or simply receiving positive feedback from a student or a
+colleague. Those moments fueled my motivation and reminded me of the
+importance and impact of my work.
+
+One of the most rewarding aspects of this journey was the opportunity to
+be part of an international recognized and experienced research group.
+This gave me the chance to work with and learn from some of the most
+talented people in my field, to discuss ideas and collaborate on
+projects, and to be part of a collective effort to advance knowledge and
+understanding in our field.
+
+In retrospect, this PhD journey has been much more than a professional
+pursuit. It has been a personal voyage of self-discovery and growth.
+Through the highs and lows, the victories and setbacks, the late nights
+and early mornings, I've discovered a resilience in myself that I hadn't
+known before. I found that I could rise to challenges, learn from
+failures, and continue to strive for excellence, no matter the odds.
+
+In closing, I wish to express my deep gratitude for all those who have
+supported me throughout this journey - my supervisors, colleagues,
+friends, and family. Their faith in my abilities and their constant
+encouragement have been my pillars of strength. I hope that the work
+presented in this thesis reflects the depth of my dedication and the
+extent of my learning journey.
+
+\newpage
+
+\hypertarget{supervisor}{%
+\section{Supervisor}\label{supervisor}}
+
+Associate Professor Jan Christian Brønd, PhD
+
+Research Unit for Exercise Epedimiology, Centre of Research in Childhood
+Health, Department of Sports Science and Clinical Biomechanics,
+University of Southern Denmark, 5230 Odense, Denmark
+
+\hypertarget{assessment-committee}{%
+\section{Assessment Committee}\label{assessment-committee}}
+
+\hypertarget{chair}{%
+\subsection{Chair}\label{chair}}
+
+Associate Professor Anders And, PhD
+
+\hypertarget{opponents}{%
+\subsection{Opponents}\label{opponents}}
+
+Professor Andersine And, PhD
+
+Research Unit for Exercise Epedimiology, Centre of Research in Childhood
+Health, Department of Sports Science and Clinical Biomechanics,
+University of Southern Denmark, 5230 Odense, Denmark
+
+Associate Professor Fætter Højben, PhD
+
+Research Unit for Exercise Epedimiology, Centre of Research in Childhood
+Health, Department of Sports Science and Clinical Biomechanics,
+University of Southern Denmark, 5230 Odense, Denmark
+
+\hypertarget{funding}{%
+\section{Funding}\label{funding}}
+
+The research presented in this thesis was generously funded by
+TrygFonden, under grant numbers ID 130081 and 115606, and by the
+European Research Council, under grant number 716657. Additional support
+was provided by a one-year scholarship from the Faculty of Health
+Sciences.
+
+\newpage
+
+\hypertarget{included-papers}{%
+\section{Included Papers}\label{included-papers}}
+
+\hypertarget{paper-i}{%
+\subsection{Paper I}\label{paper-i}}
+
+\begin{quote}
+Manual Annotation of Time in Bed Using Free-Living Recordings of
+Accelerometry Data\autocite{skovgaard_manual_2021}
+\end{quote}
+
+published in \href{https://doi.org/10.3390/s21248442}{Sensors}.
+
+\hypertarget{paper-ii}{%
+\subsection{Paper II}\label{paper-ii}}
+
+\begin{quote}
+Generalizability and Performance of Methods to Detect Non‑Wear with
+Free‑Living Accelerometer
+Recordings\autocite{skovgaard_generalizability_2023}
+\end{quote}
+
+published in \href{www.nature.com/scientificreports}{Scientific
+Reports}.
+
+\hypertarget{paper-iii}{%
+\subsection{Paper III}\label{paper-iii}}
+
+\begin{quote}
+Improving Sleep Quality Estimation: A Comparative Study of Machine
+Learning and Deep Learning Techniques Utilizing Free-Living
+Accelerometer Data from Thigh-Worn Devices and EEG-Based Sleep Tracking
+\end{quote}
+
+Submitted to \href{https://www.nature.com/npjdigitalmed/}{npj Digital
+Medicin}.
+
+\hypertarget{english-summary}{%
+\section{English Summary}\label{english-summary}}
+
+bla
+
+\hypertarget{danish-summary}{%
+\section{Danish Summary}\label{danish-summary}}
+
+bla
+
+\hypertarget{overview-of-included-papers}{%
+\subsection{Overview of Included
+Papers}\label{overview-of-included-papers}}
+
+The first paper is focused on improving the manual annotation of in-bed
+periods by comparing the manual annotation method with established
+EEG-based sleep monitoring devices and self-reported sleep diaries.
+
+In the second paper, you delve into a more specific challenge in
+physical activity sensor usage - the detection of non-wear. You propose
+decision tree models that combine raw acceleration and skin temperature
+data and emphasize the importance of external validation in
+machine-learned models. \href{www.google.com}{check out google}
+
+The third paper focuses on sleep quality estimation using machine
+learning and deep learning models. You evaluate these models using data
+from thigh-worn accelerometers, presenting a potential alternative for
+large-scale sleep studies. You underscore the challenges of classifying
+awake periods during in-bed time and the need for precision in assessing
+individual sleep quality metrics.
+
+There is a clear common thread that ties together all three of your
+research papers. The overarching theme is the application of innovative
+methods, particularly machine learning techniques, to improve the
+utility, reliability, and accuracy of free-living accelerometer data in
+monitoring human sleep and physical activity.
+
+This common thread manifests in various aspects across your research:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Annotation of Time in Bed:} You worked on developing and
+  validating a method for manually annotating in-bed periods in
+  accelerometer data, which is essential for the accurate classification
+  of sleep and other behaviors.
+\item
+  \textbf{Non-Wear Detection:} In this paper, you focused on a specific
+  challenge with wearable activity sensors - the detection of non-wear
+  time. You investigated machine learning-based decision tree models
+  that leverage raw acceleration and skin temperature data for this
+  purpose.
+\item
+  \textbf{Sleep Quality Estimation:} Lastly, you explored the use of
+  both machine learning and deep learning models to estimate sleep and
+  sleep quality metrics, specifically leveraging data from thigh-worn
+  accelerometers, an underexplored area in the field.
+\end{enumerate}
+
+Throughout your work, there is a consistent emphasis on improving and
+validating methods to better leverage accelerometer data for studying
+human behaviors. This recurring theme suggests a significant
+contribution to the field of sleep and physical activity research,
+particularly in the context of large-scale studies where traditional
+methods may be impractical or cost-prohibitive.
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+\hypertarget{outline-of-introduction-section}{%
+\subsection{Outline of Introduction
+Section}\label{outline-of-introduction-section}}
+
+\hypertarget{overview-and-background}{%
+\subsubsection{Overview and Background}\label{overview-and-background}}
+
+\begin{itemize}
+\tightlist
+\item
+  The importance of sleep and physical activity tracking in health
+  research.
+\item
+  The limitations of traditional methods, such as polysomnography and
+  self-reported diaries.
+\item
+  The emergence and potential of wearable accelerometers and machine
+  learning models in this field.
+\end{itemize}
+
+\hypertarget{scope-and-relevance}{%
+\paragraph{Scope and Relevance}\label{scope-and-relevance}}
+
+-The need for cost-effective, reliable, and practical alternatives for
+large-scale studies. - The potential of free-living accelerometers, and
+why they are a compelling subject of study.
+
+\hypertarget{existing-challenges}{%
+\paragraph{Existing Challenges}\label{existing-challenges}}
+
+\begin{itemize}
+\tightlist
+\item
+  Discuss the challenges with existing methods, such as identifying
+  non-wear time, annotating in-bed periods, and classifying awake
+  periods during in-bed time.
+\item
+  Address the lack of exploration of certain sensor locations, like the
+  thigh.
+\end{itemize}
+
+\hypertarget{thesis-goals-and-objectives}{%
+\paragraph{Thesis Goals and
+Objectives}\label{thesis-goals-and-objectives}}
+
+\begin{itemize}
+\tightlist
+\item
+  Clearly state the aim and objectives of your thesis.
+\item
+  Explain how your thesis will address the identified challenges,
+  including improving the manual annotation of in-bed periods, enhancing
+  non-wear detection, and estimating sleep quality metrics.
+\end{itemize}
+
+\hypertarget{overview-of-the-papers}{%
+\paragraph{Overview of the Papers}\label{overview-of-the-papers}}
+
+\begin{itemize}
+\item
+  Briefly introduce each paper, highlighting the key research question,
+  methods, and findings.
+\item
+  Explain how each paper contributes to your thesis goals and
+  objectives.
+\end{itemize}
+
+\hypertarget{motivation-for-the-research}{%
+\subsubsection{Motivation for the
+Research}\label{motivation-for-the-research}}
+
+\hypertarget{the-need-for-improved-annotation-techniques}{%
+\paragraph{The Need for Improved Annotation
+Techniques}\label{the-need-for-improved-annotation-techniques}}
+
+\begin{itemize}
+\tightlist
+\item
+  Importance of accurate annotation in accelerometer data analysis.
+\item
+  A brief discussion of the first paper's findings and implications.
+\end{itemize}
+
+\hypertarget{improving-non-wear-detection}{%
+\paragraph{Improving Non-Wear
+Detection}\label{improving-non-wear-detection}}
+
+\begin{itemize}
+\tightlist
+\item
+  Explain the implications of undetected non-wear time on data quality.
+\item
+  Highlight the findings of your second paper and its relevance.
+\end{itemize}
+
+\hypertarget{advancing-sleep-quality-estimation}{%
+\paragraph{Advancing Sleep Quality
+Estimation}\label{advancing-sleep-quality-estimation}}
+
+\begin{itemize}
+\tightlist
+\item
+  Discuss the impact of sleep quality estimation on understanding human
+  sleep behavior.
+\item
+  Briefly describe the conclusions of your third paper.
+\end{itemize}
+
+\hypertarget{methodological-approaches}{%
+\subsubsection{Methodological
+Approaches}\label{methodological-approaches}}
+
+\begin{itemize}
+\item
+  Give a brief overview of the methods used across all three studies,
+  such as the use of machine learning models, deep learning techniques,
+  manual annotation, and decision tree models.
+\item
+  Explain how these methods address the research objectives and the
+  challenges identified earlier.
+\end{itemize}
+
+\hypertarget{thesis-structure}{%
+\subsubsection{Thesis Structure}\label{thesis-structure}}
+
+Provide an outline of the subsequent chapters of your thesis.
+
+\hypertarget{test-header}{%
+\section{Test Header}\label{test-header}}
+
+Over the past decade, an expanding body of literature has underscored
+the vital role of physical activity and sleep in sustaining overall
+human health. These key components of our daily routine are not merely
+elements of lifestyle; they are closely interwoven with our mental and
+physical well-being, and disturbances in these areas can precipitate a
+cascade of health issues. Our understanding of the dynamics of physical
+activity and sleep and their implications on health, however, are
+contingent upon the accuracy and precision of the methods we employ to
+measure them. This raises a need for efficient, cost-effective, and
+minimally invasive tools for longitudinal physical activity and sleep
+monitoring.
+
+In this context, body-worn motion sensors, specifically accelerometers,
+have emerged as a significant advancement, providing valuable insights
+into human physical activity and sleep patterns. Utilizing
+accelerometers to measure and classify the intensity of human movement
+and non-wear time has been an integral part of my research during my
+Ph.D.~These devices offer high cost efficiency and minimal participant
+burden, making them an ideal choice for large-scale studies. However,
+the challenge lies in effectively interpreting the data generated by
+these devices, particularly when it comes to accurately distinguishing
+between wear and non-wear time.
+
+Addressing this challenge has involved utilizing sophisticated machine
+learning techniques to classify non-wear time in raw accelerometer data,
+and my studies have extended to investigate the generalizability and
+performance of these models on unseen data. As part of this effort, we
+examined the potential benefits and limitations of machine learning in
+detecting patterns from training data and approximating complex models,
+taking care to balance model variance and bias. These findings
+underscore the vital role of these technologies in enhancing the
+accuracy and precision of non-wear time classification, and underscore
+the importance of maintaining a balance between overfitting and
+underfitting.
+
+Further extending the utility of accelerometers, my research delved into
+the domain of sleep science. Here, we utilized accelerometers as a
+convenient and affordable means of tracking sleep patterns over extended
+periods. Recognizing that sleep analysis has been dominated by wrist and
+hip-worn accelerometers, our focus shifted to the less-explored, but
+promising, realm of thigh-worn accelerometers for sleep assessment.
+While there has been progress in estimating sleep duration using these
+devices, the application of machine learning techniques in this area
+remains underdeveloped, a gap that our research aimed to address.
+
+We explored a range of machine learning and deep learning models,
+utilizing raw data collected from a tri-axial thigh-worn accelerometer
+to estimate in-bed and sleep time. We validated our models against an
+electroencephalography-based (EEG) sleep tracking device, which served
+as the gold standard for measuring sleep. Moreover, we evaluated the
+models' performance in assessing crucial sleep quality metrics,
+reinforcing the potential of accelerometers as a tool for comprehensive
+sleep and physical activity tracking.
+
+Taken together, this body of work sheds light on the immense potential
+of wearable technology, particularly accelerometers, in revolutionizing
+the field of human physical activity and sleep research. While
+significant strides have been made in the development and validation of
+advanced machine learning models to interpret accelerometer data, the
+journey towards more accurate, user-friendly, and holistic methods of
+tracking human physical activity and sleep continues. As I continue to
+navigate this fascinating field, my research aims to bridge the gaps in
+our understanding and contribute to a future where personalized health
+monitoring is both accessible and precise.
+
+\newpage
+
+
+\printbibliography[title=References]
+
+
+\end{document}

@@ -1,0 +1,23 @@
+---
+title: "Enhancing the Accuracy and Efficiency of Sleep and Physical Activity Monitoring through Innovative Techniques Utilizing Free-Living Accelerometer Data"
+subtitle: "PhD Thesis\nOctober 2023"
+author:
+  name: "Esben Høegholm Lykke"
+  affiliation: 
+    name: "Research Unit for Exercise Epedimiology, Centre of Research in Childhood Health, Department of Sports Science and Clinical Biomechanics, University of Southern Denmark, 5230 Odense, Denmark"
+format: 
+  titlepage-pdf:
+    titlepage: academic
+    titlepage-header: "University of Southern Denmark"
+    titlepage-logo: "img/SDU_BLACK_RGB.png"
+    mainfont: EB Garamond
+    sansfont: Libertinus Sans
+    fontsize: 8pt
+    geometry:
+      - margin=20mm
+      - paperwidth=17cm
+      - paperheight=24cm
+    pdf-engine: lualatex
+    keep-tex: false
+editor: visual
+---
