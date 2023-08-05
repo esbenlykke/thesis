@@ -6,7 +6,7 @@ format:
     biblio-style: nature
     mainfont: EB Garamond
     sansfont: Libertinus Sans
-    fontsize: 8pt
+    fontsize: 10pt
     geometry:
       - margin=20mm
       - paperwidth=17cm
@@ -20,7 +20,7 @@ format:
     pdf-engine: lualatex
     csl: nature.csl
     keep-tex: true
-biblio-title: "References"
+# biblio-title: "References"
 bibliography: refs.bib
 ---
 
@@ -48,7 +48,7 @@ These years have shaped me in ways I could never have imagined at the outset, an
 
 # Acknowledgements
 
-Throughout this journey, there have been several people who have influenced, inspired, and supported me. My Main Supervisor, \[insert name 1\], deserves special mention for his guidance and patience. His commitment to nurturing my development as a researcher and lecturer has been instrumental. Our collaborative dialogues, be it at the office or during examinations, have been pivotal in my growth. I also extend my sincere gratitude to my co-supervisors \[insert name 2\] and \[insert name 3\], and my colleague \[insert name 4\], who have always provided invaluable insights and perspectives.
+Throughout this journey, there have been several people who have influenced, inspired, and supported me. My Main Supervisor, Jan Christian Brønd, deserves special mention for his guidance and patience. His commitment to nurturing my development as a researcher and lecturer has been instrumental. Our collaborative dialogues, be it at the office or during examinations, have been pivotal in my growth. I also extend my sincere gratitude to my co-supervisors \[insert name 2\] and \[insert name 3\], and my colleague \[insert name 4\], who have always provided invaluable insights and perspectives.
 
 Amidst all the academic pursuits, my family remained the cornerstone of my journey. My wife, the bedrock of our family, kept our home running smoothly and offered endless support and curiosity about my work. The joy and love from my four children were my constant sources of motivation and inspiration.
 
@@ -100,11 +100,15 @@ The research presented in this thesis was generously funded by TrygFonden, under
 
 published in [Sensors](https://doi.org/10.3390/s21248442).
 
+The first paper is focused on evaluating the manual annotation to enrich datasets for use in machine learning of in-bed periods by comparing the manual annotation method with established EEG-based sleep monitoring devices and self-reported sleep diaries.
+
 ## Paper II
 
 > Generalizability and Performance of Methods to Detect Non‑Wear with Free‑Living Accelerometer Recordings[@skovgaard_generalizability_2023]
 
-published in [Scientific Reports](www.nature.com/scientificreports).
+published in [Scientific Reports](https://doi.org/10.1038/s41598-023-29666-x).
+
+The second paper delve into a more specific challenge in physical activity sensor usage - the detection of non-wear. We propose decision tree models that combine raw acceleration and skin temperature data to detect non-wear time and emphasize the importance of external validation in machine-learned models.
 
 ## Paper III
 
@@ -112,33 +116,21 @@ published in [Scientific Reports](www.nature.com/scientificreports).
 
 Submitted to [npj Digital Medicin](https://www.nature.com/npjdigitalmed/).
 
+The third paper focuses on sleep quality estimation using machine learning and deep learning models. We evaluate these models using data from thigh-worn accelerometers, presenting a potential alternative for large-scale sleep studies. We underscore the challenges of classifying awake periods during in-bed time and the need for further precision in assessing sleep quality metrics an individual-basis.
+
+\newpage
+
 # English Summary
 
 bla
+
+\newpage
 
 # Danish Summary
 
 bla
 
-## Overview of Included Papers
-
-The first paper is focused on improving the manual annotation of in-bed periods by comparing the manual annotation method with established EEG-based sleep monitoring devices and self-reported sleep diaries.
-
-In the second paper, you delve into a more specific challenge in physical activity sensor usage - the detection of non-wear. You propose decision tree models that combine raw acceleration and skin temperature data and emphasize the importance of external validation in machine-learned models. [check out google](www.google.com)
-
-The third paper focuses on sleep quality estimation using machine learning and deep learning models. You evaluate these models using data from thigh-worn accelerometers, presenting a potential alternative for large-scale sleep studies. You underscore the challenges of classifying awake periods during in-bed time and the need for precision in assessing individual sleep quality metrics.
-
-There is a clear common thread that ties together all three of your research papers. The overarching theme is the application of innovative methods, particularly machine learning techniques, to improve the utility, reliability, and accuracy of free-living accelerometer data in monitoring human sleep and physical activity.
-
-This common thread manifests in various aspects across your research:
-
-1.  **Annotation of Time in Bed:** You worked on developing and validating a method for manually annotating in-bed periods in accelerometer data, which is essential for the accurate classification of sleep and other behaviors.
-
-2.  **Non-Wear Detection:** In this paper, you focused on a specific challenge with wearable activity sensors - the detection of non-wear time. You investigated machine learning-based decision tree models that leverage raw acceleration and skin temperature data for this purpose.
-
-3.  **Sleep Quality Estimation:** Lastly, you explored the use of both machine learning and deep learning models to estimate sleep and sleep quality metrics, specifically leveraging data from thigh-worn accelerometers, an underexplored area in the field.
-
-Throughout your work, there is a consistent emphasis on improving and validating methods to better leverage accelerometer data for studying human behaviors. This recurring theme suggests a significant contribution to the field of sleep and physical activity research, particularly in the context of large-scale studies where traditional methods may be impractical or cost-prohibitive.
+\newpage
 
 # Introduction
 
@@ -149,6 +141,13 @@ Throughout your work, there is a consistent emphasis on improving and validating
 -   The importance of sleep and physical activity tracking in health research.
 -   The limitations of traditional methods, such as polysomnography and self-reported diaries.
 -   The emergence and potential of wearable accelerometers and machine learning models in this field.
+
+Throughout the course of a single day, a variety of activities encompass physical behaviors including sleep, physical activity (PA), and sedentary behavior[@rollo_whole_2020]. Over the last decade, numerous studies have highlighted the unique health advantages of high PA levels, especially moderate-to-vigorous physical activity (MVPA)[@kraus_physical_2019; @lee_effect_2012], minimal sedentary periods[@wilmot_sedentary_2012], and adequate sleep[@cappuccio_sleep_2010]. The robust evidence highlighting the health benefits of optimal sleep and daily moderate-to-vigorous physical activity (MVPA) has led to the formation of public guidelines such as the American recommendation of 150 minutes of MVPA per week[@kl_physical_2018], and the Danish suggestion of 30 minutes of MVPA per day for adults[@el-zine_fysisk_voksne] and 60 minutes per day for children[@el-zine_fysisk_børn]. Furthermore, it's advised that adults get 7-8 hours of sleep[@consensus_conference_panel_recommended_2015], whereas children aged 6-12 should sleep 9-12 hours and teenagers aged 13-18 should aim for 8-10 hours of sleep regularly[@paruthi_consensus_2016]. A growing body of evidence suggesting a link between high sedentary periods and negative health outcomes has led to guidelines advocating for decreasing and interrupting sitting time[@tremblay_sedentary_2017]. Traditionally, the relationship between time spent on each of these behaviors throughout a 24-hour cycle and health outcomes has been studied separately, neglecting the potential inter-connectedness of these activities[@rosenberger_24-hour_2019].
+
+Previous research has shown that, apart from the many health benefits linked to maintaining sufficient PA levels, it also correlates with improved sleep duration and quality[@kredlow_effects_2015]. As expected, there is also evidence suggesting that better sleep may encourage increased PA[@lambiase_temporal_2013; @mcglinchey_physical_2014], with a rising number of studies indicating a connection between these two behaviors[@dolezal_interrelationship_2017; @chennaoui_sleep_2015]. Various studies have observed daily correlations between PA and sleep[@pettee_gabriel_bidirectional_2017; @kishida_intensive_2016]. However, these findings have shown inconsistencies, largely attributed to the varied measurement methodologies. Traditionally, data on time spent on different physical behaviors has been gathered using self-reported tools such as questionnaires, diaries, or interviews[@dowd_systematic_2018]. In addition to recall and response bias, the challenges of self-reporting include the difficulty of monitoring multiple behaviors simultaneously[@rosenberger_24-hour_2019]. As a result, most published research has generally focused on a single behavior. 
+Some of these limitations can be addressed with 24-hour accelerometer-based protocols, especially those worn on the wrist (9). Wrist accelerometers are small, non-invasive, waterproof (18), allowing for continuous, 24-hour wear with minimal disruption to the wearer, and permit uninterrupted activity measurement throughout the day, thereby tracking and analyzing daily changes in PA and sleep behaviors. Furthermore, the latest accelerometers supply raw acceleration data that can be processed using open-source analytical techniques to produce estimates of sleep, sedentary behavior, and PA (19). Simultaneous measurement of physical behaviors, particularly feasible with wrist accelerometry, can offer a better comprehension of the influence of these behaviors on health indicators and their interrelationships. This data could be critical in shaping future health recommendations or interventions.
+
+
 
 #### Scope and Relevance
 
@@ -199,16 +198,48 @@ Provide an outline of the subsequent chapters of your thesis.
 
 # Test Header
 
-Over the past decade, an expanding body of literature has underscored the vital role of physical activity and sleep in sustaining overall human health. These key components of our daily routine are not merely elements of lifestyle; they are closely interwoven with our mental and physical well-being, and disturbances in these areas can precipitate a cascade of health issues. Our understanding of the dynamics of physical activity and sleep and their implications on health, however, are contingent upon the accuracy and precision of the methods we employ to measure them. This raises a need for efficient, cost-effective, and minimally invasive tools for longitudinal physical activity and sleep monitoring.
+Utilizing machine learning for sleep and physical activity identification from accelerometry data is a burgeoning field. This approach offers potential to model complex non-linear relationships unattainable with simple statistical methods such as multiple linear or logistic regression [@fiorillo_automated_2019]. However, supervised machine learning requires large amounts of accurately annotated data to ensure accuracy and generalizability[@van_der_ploeg_modern_2014].
 
-In this context, body-worn motion sensors, specifically accelerometers, have emerged as a significant advancement, providing valuable insights into human physical activity and sleep patterns. Utilizing accelerometers to measure and classify the intensity of human movement and non-wear time has been an integral part of my research during my Ph.D. These devices offer high cost efficiency and minimal participant burden, making them an ideal choice for large-scale studies. However, the challenge lies in effectively interpreting the data generated by these devices, particularly when it comes to accurately distinguishing between wear and non-wear time.
+Sleep is considered a vital element for the overall health and development of children[@chaput_systematic_2017; @chaput_systematic_2016; @st-onge_sleep_2016]. Healthy sleep is characterized by sufficient duration, appropriate timing, quality, and absence of disturbances or disorders[@gruber_position_2014]. Despite its importance, the use of advanced machine learning techniques to assess sleep measures from accelerometer data remains underdeveloped[@haghayegh_application_2020].
 
-Addressing this challenge has involved utilizing sophisticated machine learning techniques to classify non-wear time in raw accelerometer data, and my studies have extended to investigate the generalizability and performance of these models on unseen data. As part of this effort, we examined the potential benefits and limitations of machine learning in detecting patterns from training data and approximating complex models, taking care to balance model variance and bias. These findings underscore the vital role of these technologies in enhancing the accuracy and precision of non-wear time classification, and underscore the importance of maintaining a balance between overfitting and underfitting.
+Accelerometry provides an affordable and minimally invasive method to analyze sleep patterns. Objective measurements are crucial for insights into individual and population-wide circadian rhythms. Polysomnography (PSG), the gold standard for objective sleep assessment, records electroencephalographic (EEG), electromyographic (EMG), and electrooculographic (EOG) activity. However, PSG is costly and burdensome due to technician support requirements, intrusive sensor placements, and overnight monitoring[@vaughn_technical_2008].
 
-Further extending the utility of accelerometers, my research delved into the domain of sleep science. Here, we utilized accelerometers as a convenient and affordable means of tracking sleep patterns over extended periods. Recognizing that sleep analysis has been dominated by wrist and hip-worn accelerometers, our focus shifted to the less-explored, but promising, realm of thigh-worn accelerometers for sleep assessment. While there has been progress in estimating sleep duration using these devices, the application of machine learning techniques in this area remains underdeveloped, a gap that our research aimed to address.
+Recent studies have tried to use machine learning techniques for PSG-assessed sleep-wake classification with wrist acceleration[@haghayegh_application_2020; @sundararajan_sleep_2021; @hees_novel_2015]. Sundararajan et al.[@sundararajan_sleep_2021] used a random forest machine learning algorithm, achieving an F1 score of 73.9%. However, the high false discovery rate indicates limitations in wrist-worn accelerometers, possibly due to the lack of subject variation and the use of single-night PSG-recordings.
 
-We explored a range of machine learning and deep learning models, utilizing raw data collected from a tri-axial thigh-worn accelerometer to estimate in-bed and sleep time. We validated our models against an electroencephalography-based (EEG) sleep tracking device, which served as the gold standard for measuring sleep. Moreover, we evaluated the models' performance in assessing crucial sleep quality metrics, reinforcing the potential of accelerometers as a tool for comprehensive sleep and physical activity tracking.
+To overcome these limitations, researchers should increase the number of subjects and recording days to capture more variation in movement behavior during sleep. Accelerometry, despite its limitations, is practical for extended recordings outside of the lab [@van_de_water_objective_2011]. The focus should be on developing algorithms for sleep timing rather than sleep staging.
 
-Taken together, this body of work sheds light on the immense potential of wearable technology, particularly accelerometers, in revolutionizing the field of human physical activity and sleep research. While significant strides have been made in the development and validation of advanced machine learning models to interpret accelerometer data, the journey towards more accurate, user-friendly, and holistic methods of tracking human physical activity and sleep continues. As I continue to navigate this fascinating field, my research aims to bridge the gaps in our understanding and contribute to a future where personalized health monitoring is both accessible and precise.
+Identifying sleep/wake cycles from accelerometry data requires time in bed annotation, when participants go to bed and wake up. Although this isn't actual sleep time, accelerometry is still widely used in sleep research due to its practical advantages [@hees_novel_2015; @madsen_actigraphy_2013; @schwab_actigraphy_2018; @barouni_ambulatory_2020] This annotation could be based on individual sleep diaries, EEG-based recordings [@younes_staging_2016], or systems for recording tracheal sounds [@dafna_sleep-wake_2015; @montazeri_ghahjaverestan_sleepwakefulness_2020].
+
+This study aims to (1) describe a method for manual annotation of bedtime and wake-up time with raw accelerometry, (2) evaluate the accuracy of manual annotation against a single-channel EEG-based sleep staging system and sleep diary, and (3) assess the inter- and intra-rater reliability of annotations.
+
+------------------------------------------------------------------------
+
+The use of body-worn motion sensors, especially accelerometers, to study human physical activity behavior has gained significant popularity over recent years, offering an efficient and cost-effective method for capturing objective movement data [@dowd_systematic_2018; @loyen_sedentary_2017; @montoye_raw_2018; @migueles_comparability_2019]. These devices can be worn during various activities with some protocols allowing detachment during water-based activities, sleep, or certain sports to prevent injury.
+
+However, such detachment periods, referred to as non-wear time, present researchers with a challenge in the form of missing data. Non-wear time can significantly influence the outcomes derived from the acceleration measurements [@lee_missing_2018]. While some researchers exclude these periods or attempt to impute the missing data using various methods, such strategies can introduce bias, particularly when non-wear times are longer. This issue underscores the importance of accurately classifying and handling non-wear periods for reliable estimates of subjects' physical activity behavior during free-living [@lee_missing_2018].
+
+The classification of non-wear periods can be acquired by having subjects keep individual log diaries, although this method can be cumbersome and potentially error-prone [@ainsworth_recommendations_2012]. In a bid to reduce subject burden and enhance accuracy, researchers have employed rule-based methods and advanced algorithms to classify non-wear time [@hecht_methodology_2009; @ruiz_objectively_2011; @troiano_physical_2008]. Yet, such methods can yield disparate physical activity and sedentary behavior aggregates depending on non-wear settings, age, and obesity level, limiting their utility and the ability to make comparisons across studies [@aadland_comparison_2018; @toftager_accelerometer_2013].
+
+Advancements in accelerometer technology in recent years have enabled researchers to store raw accelerations, enhancing data granularity and potentially improving non-wear period classification [@duncan_wear-time_2018; @rasmussen_short-term_2020; @zhou_classification_2015]. However, even with access to higher quantity and quality data, simple duration-based algorithms carry the risk of falsely misclassifying true non-wear as inactivity, restricting the ability to detect non-wear episodes shorter than the designated interval.
+
+Recently, studies have explored the potential of machine learning, including random forests and deep learning techniques, to classify non-wear using raw accelerometer data [@sundararajan_sleep_2021, @syed_novel_2021]. Machine learning algorithms aim to learn patterns from the training data and approximate the complex model that best describes the relationship between the predictors and the outcome. The balance between model variance and bias is a critical consideration in this process, with the ultimate goal of optimizing the predictive performance of a machine-learned model on unseen data.
+
+Despite the performance of models utilizing complex machine learning algorithms on testing data, their performance on external unseen data remains largely unknown. This gap in knowledge is often due to a lack of out-of-distribution data sources and the desire to incorporate all available data into model training to maximize information capture. Some studies have utilized surface skin temperature in conjunction with raw acceleration for non-wear classification [@duncan_wear-time_2018; @zhou_classification_2015], but the performance and generalizability of adding surface skin temperature with advanced machine learning methods have yet to be explored.
+
+Despite technological advancements, there is still room for improvement in accurately classifying non-wear time in raw accelerometer data. It prompts the question: what heuristic algorithm or machine-learned model will perform best on unseen data for classifying non-wear time? To address this, we created three datasets of raw accelerometer data with correctly labeled wear- and non-wear time, including surface skin temperature measurements. Our study aims to (1) train three decision tree models on accelerometer data from thigh and hip-worn accelerometers for non-wear time classification and evaluate the importance of surface skin temperature and minimizing the number of predictors provided to the model, and (2) assess the performance of machine-learned models and simple heuristic algorithms across datasets of varying age ranges for non-wear time classification.
+
+------------------------------------------------------------------------
+
+A vast body of research highlights the critical role of sleep in maintaining both mental and physical health[@ma_sleep_2017; @meyer_circadian_2022; @k_pavlova_sleep_2019; @difrancesco_sleep_2019]. Consequently, accurate sleep assessment methods are crucial for tracking sleep patterns and improving our understanding of the sleep-health relationship. Furthermore, the ease of use and high acceptability of these methods are essential to facilitate large-scale, longitudinal studies.
+
+The traditional gold standard for objective sleep measurement, laboratory-based polysomnography (PSG), has been found to be impractical in large-scale epidemiological studies due to its high cost, need for professional administration, and susceptibility to rater bias[@van_de_water_objective_2011; @lee_interrater_2022]. As an alternative, diaries have been used due to their cost-effectiveness and simplicity, although they are subject to recall bias and other limitations[@moore_actigraphy_2015]. An innovative approach involves device-based measurement methods. These tools, which estimate sleep duration, are advantageous due to their reduced participant burden and elimination of potential recall biases. A prominent example of such tools is body-worn accelerometers, which offer a practical and affordable means of objectively assessing sleep patterns at home for extended periods. Accelerometers collect continuous, high-resolution data for several weeks without requiring recharging, further minimizing participant burden. Their use in sleep and wake classification began with a wrist movement-based algorithm developed in 1982, and validated using PSG[@webster_activity-based_1982]. This algorithm was refined in 1992[@cole_automatic_1992], leading to the widely adopted Cole-Kripke model. With advancements in the field, a variety of techniques, including heuristic algorithms, machine learning models, regression, and deep learning, are now used to analyze data from hip and wrist-worn accelerometers[@palotti_benchmark_2019; @cole_automatic_1992; @sazonov_activity-based_2004; @sadeh_activity-based_1994; @hees_novel_2015; @sundararajan_sleep_2021].
+
+While wrist and hip-worn devices have benefited from extensive methodological development, thigh-worn accelerometers have not seen the same level of advancement. Existing studies mainly focus on distinguishing sleep from wakefulness, with emphasis on defining 'waking time' and 'bedtime' [@carlson_validity_2021; @inan-eroglu_comparison_2021; @van_der_berg_identifying_2016; @winkler_identifying_2016]. Recent strides in estimating sleep duration using thigh-worn devices have been made, including the introduction of a promising algorithm and its comparison against PSG[@johansson_development_2023]. Despite these advancements, the application of machine learning techniques in this area is still unexplored. Considering the potential of thigh-worn accelerometers for accurate physical behavior assessment[@skotte_detection_2014; @arvidsson_re-examination_2019], there is a significant research gap. Therefore, future studies need to develop techniques similar to those used for wrist and hip-worn accelerometers, with the ultimate goal of establishing a more holistic, accurate, and user-friendly method of sleep and physical activity tracking.
+
+The Zmachine®️ Insight+ (ZM) emerges as a valuable tool within this landscape. Favorably validated against PSG[@kaplan_performance_2014; @wang_evaluation_2015], the ZM provides comparable data without the high costs or the need for professional monitoring typically associated with PSG. Crucially, the ZM facilitates multi-night analysis in free-living conditions due to its ease of use[@pedersen_self-administered_2021], capturing the natural variations in sleep patterns. This makes it advantageous over single-night PSG, particularly as a gold standard data source in machine learning tasks, as it provides multiple nights of measurements without inter-rater bias. Despite these benefits, the ZM, like PSG, still poses a significant participant burden and cost, reinforcing the need for more accessible alternatives like accelerometers.
+
+Our primary objective in this study was to evaluate a range of machine learning and deep learning models, utilizing the raw data collected from a tri-axial thigh-worn accelerometer to estimate in-bed and sleep time. To ensure the reliability and effectiveness of our models, we compared their outputs with an electroencephalography-based (EEG) sleep tracking device, which we, in this current study, considered as the gold standard for measuring sleep. Furthermore, our secondary goal was to assess the developed models' performance in evaluating important sleep quality metrics, including sleep period time (SPT), total sleep time (TST), sleep efficiency (SE), latency until persistent sleep (LPS), and wake after sleep onset (WASO).
 
 \newpage
+
+# References
