@@ -36,13 +36,33 @@
     </names>
   </macro>
   <macro name="access">
-    <choose>
-      <if variable="volume" type="article" match="any"/>
-      <else-if variable="DOI">
-        <text variable="DOI" prefix="doi:"/>
-      </else-if>
-    </choose>
-  </macro>
+  <choose>
+    <if variable="URL">
+      <group>
+        <text value="URL: " />
+        <text variable="URL"/>
+      </group>
+    </if>
+    <else-if variable="DOI">
+      <text variable="DOI" prefix="doi:"/>
+    </else-if>
+  </choose>
+</macro>
+<macro name="access-date">
+  <choose>
+    <if variable="accessed">
+      <group prefix="Accessed " delimiter=" ">
+        <date variable="accessed">
+          <date-part name="day" suffix=" "/>
+          <date-part name="month" suffix=" "/>
+          <date-part name="year" suffix=", "/>
+          <date-part name="hour" suffix=":"/>
+          <date-part name="minute"/>
+        </date>
+      </group>
+    </if>
+  </choose>
+</macro>
   <macro name="issuance">
     <choose>
       <if type="bill book graphic legal_case legislation motion_picture song thesis chapter paper-conference" match="any">
@@ -148,6 +168,7 @@
         <text variable="page"/>
         <text macro="issuance"/>
         <text macro="access"/>
+        <text macro="access-date"/>
       </group>
     </layout>
   </bibliography>

@@ -1,0 +1,7 @@
+.landcape-img img {
+  transform: rotate(90deg);
+}
+
+table {
+  font-size: 6pt; /* Adjust the font size as needed */
+}

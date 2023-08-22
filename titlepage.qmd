@@ -11,7 +11,7 @@ format:
     titlepage-header: "University of Southern Denmark"
     titlepage-logo: "img/SDU_BLACK_RGB.png"
     mainfont: EB Garamond
-    sansfont: Libertinus Sans
+    sansfont: Montserrat
     fontsize: 8pt
     geometry:
       - margin=20mm
