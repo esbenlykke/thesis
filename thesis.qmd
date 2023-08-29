@@ -5,6 +5,8 @@ format:
       # - paperheight=24cm
     # documentclass: scrreprt
     toc: true
+    lof: true
+    lot: true
     
     # toccolor: BrickRed
     # biblio-style: biblatex
@@ -43,9 +45,12 @@ format:
         \usepackage{afterpage}
         \usepackage[nottoc,numbib]{tocbibind}
         \newcommand{\aftertocpagenum}{
-          \cleardoublepage  % Ensure we start on a new page
+          \cleardoublepage
           \pagenumbering{arabic}
         }
+        \usepackage{sectsty}
+        \allsectionsfont{\sffamily}
+
 bibliography: refs.bib
 editor: source
 editor_options: 
@@ -203,7 +208,7 @@ Provide an outline of the subsequent chapters of your thesis.
 
 \newpage
 
-# Manual Annotation of Time in Bed Using Free-Living Recordings of Accelerometry Data
+# Paper I: Manual Annotation of Time in Bed Using Free-Living Recordings of Accelerometry Data
 
 This segment of the thesis encompasses the methods, results, and discussion for Paper I. The study underscores the importance of effective machine learning algorithms for sleep/wake cycles, which ideally necessitate correct data annotations over a span of 7-10 days. Although sleep diaries or EEG recordings can annotate 'time in bed', many researches predominantly rely on accelerometry. This emphasizes the imperative for enhanced annotation techniques and their validity. Our objective is to introduce a manual annotation method, gauge its precision, and determine its consistency. Some of the details presented here were previously mentioned in the published version of Paper I[@skovgaard_manual_2021].
 
@@ -243,7 +248,7 @@ Audacity®️ is a distinguished free audio editing software[@audacity]. The gen
 
 In the realm of accelerometer data analysis, Audacity stands out. It furnishes researchers with the capability to meticulously scrutinize high-resolution raw accelerometer data with unparalleled precision. Users can quickly zoom in to delve deeper into specific segments of the recording, like certain patterns around bedtime, or zoom out for a broader perspective, such as data spanning a week. Furthermore, Audacity's sophisticated labeling function is pivotal for annotating the accelerometry data. Any generated labels can be preserved in an individual file and later integrated into machine learning algorithms. This level of detailed manual inspection of high-resolution accelerometer data offered by Audacity is, based on our knowledge, unparalleled by any other software.
 
-Within the Audacity interface, there's the possibility of amalgamating over 100 channels of data. This aids in the merging of distinct signal features derived from acceleration. The integration of multiple signal features is intriguing as it might enhance the visual comprehension and classification of inherent behaviors. Nevertheless, an excessive conglomeration of signal features might obscure the precise identification of targeted behaviors. For our study, we incorporated a total of seven distinct signal features. The criteria for classifying "lying" in the first feature are explicit: if the inclination of the hip accelerometer surpasses 65 degrees and the thigh accelerometer simultaneously identifies as "sitting" based on Skotte et al.'s activity type classification algorithm[@skotte_detection_2014]. The other signal features, barring "time", are directly procured from Skotte et al.'s algorithm. These features, delineated in Table 1, concern the longitudinal axis of the body. Data derived from accelerometry undergoes processing using a window length of two seconds (60 samples) and has a 50% overlap (30 samples), ensuring a resolution of one second. The methodologies from Skotte et al. and those generating the first feature rely exclusively on the accelerometer's inclination(s). Hence, while they can determine time in bed and participant's posture, they aren't precise indicators for pinpointing exact in-bed and out-of-bed moments.
+Within the Audacity interface, there's the possibility of amalgamating over 100 channels of data. This aids in the merging of distinct signal features derived from acceleration. The integration of multiple signal features is intriguing as it might enhance the visual comprehension and classification of inherent behaviors. Nevertheless, an excessive conglomeration of signal features might obscure the precise identification of targeted behaviors. For our study, we incorporated a total of seven distinct signal features. The criteria for classifying "lying" in the first feature are explicit: if the inclination of the hip accelerometer surpasses 65 degrees and the thigh accelerometer simultaneously identifies as "sitting" based on Skotte et al.'s activity type classification algorithm[@skotte_detection_2014]. The other signal features, barring "time", are directly procured from Skotte et al.'s algorithm. These features, delineated in @tbl-man_signal_features, concern the longitudinal axis of the body. Data derived from accelerometry undergoes processing using a window length of two seconds (60 samples) and has a 50% overlap (30 samples), ensuring a resolution of one second. The methodologies from Skotte et al. and those generating the first feature rely exclusively on the accelerometer's inclination(s). Hence, while they can determine time in bed and participant's posture, they aren't precise indicators for pinpointing exact in-bed and out-of-bed moments.
 
 To provide a visual perspective, @fig-screen_full and @fig-screen_night depict the Audacity interface displaying all seven signal features as cataloged in @tbl-man_signal_features. @fig-screen_full offers a glimpse of a week's data, whereas @fig-screen_night zooms into an approximate 24-hour span, showcasing a single annotated night.
 
@@ -261,7 +266,7 @@ To provide a visual perspective, @fig-screen_full and @fig-screen_night depict t
 #| tbl-cap: Summary of the specific signal features utilized in Audacity for the accurate detection and analysis of in-bed periods.
 #| tbl-cap-location: bottom
 
-source("code/table1_signal_features.R")
+source("code/tables.R")
 
 tbl_signal_features %>% as_latex()
 ```
@@ -415,6 +420,241 @@ tbl_icc_test_retest
 
 tbl_7
 
+```
+
+```{=tex}
+\endgroup
+```
+### Density Plots
+
+@fig-ridge_plot presents the probability density distribution of the differences between the "to-bed" and "out-of-bed" scorings, comparing manual annotations and self-reports to ZM. These plots offer a visual illustration of the bias and spread arond zero, showcasing how manual annotations and self-reports diverge from ZM, as previously highlighted in[@van_hees_estimating_2018].
+
+![Probability density distributions for differences between manual in-bed annotations and self-report compared to ZM.](figures/paper1_ridge_plot.pdf){#fig-ridge_plot}
+
+## Discussion
+
+\newpage
+
+# Paper II: Generalizability and Performance of Methods to Detect Non-Wear With Free-Living Accelerometer Recordings
+
+This segment of the thesis encompasses the methods, results, and discussion for Paper II. Wearable sensors, commonly used to track physical activity, face challenges in detecting "non-wear" times. While traditional methods use fixed interval heuristic algorithms, this study explored decision trees that use raw acceleration and skin temperature data. By training on thigh- and hip-worn devices from 64 children and validating with wrist-worn data from 42 adolescents, results showed traditional methods excel for non-wear durations over 60 minutes. However, for durations below 60 minutes, decision tree models, especially those with the top six predictors, were superior. The study emphasizes method selection's significance and promotes external validation for machine learning models in this area. Some of the details presented here were previously mentioned in the published version of Paper I[@skovgaard_generalizability_2023].
+
+## Methods
+
+The classification and generalizability of non-wear classification methods were evaluated using free-living data collected from accelerometers positioned on the wrist, thigh, and hip. This data amalgamated findings from the Physical Activity in Schools After the Reform (PHASAR)[@pedersen_protocol_2018] study, which provided hip and thigh data, with an in-house validation study that used wrist-worn accelerometers. @fig-paper2_flowchart illustrates the data utilization process. By leveraging these datasets, we ensured that established non-wear classification methods underwent assessment on an external dataset. Moreover, our decision tree models were tested on an independent external dataset, including wear locations not initially considered during model development. Therefore, all machine-learned models underwent evaluation using test data from various anatomical positions, regardless of their inclusion in the model's initial development.
+
+### Reference Methods
+
+To thoroughly evaluate and compare the performance of our three newly developed algorithms, we incorporated four additional non-wear classification methods. The selection of these existing methods was grounded in our aim to span a broad range of methodological flexibility. We specifically targeted techniques ranging from the most simplistic and commonly used to the most recent and sophisticated.
+
+1.  \textsf{\textbf{Consecutive Zeros-Algorithm (cz\_60):}} Over the years, there have been various consecutive zero-algorithms designed for accelerometer data, with the aim of identifying non-wear periods within stipulated timeframes, such as 30-, 60-, or 90-minute intervals[@hecht_methodology_2009; @troiano_physical_2008; @choi_validation_2011]. In addition, van Hees and colleagues have developed non-wear algorithms for raw acceleration using a 30-minute interval[@van_hees_estimation_2011]. They later expanded this approach to include a 60-minute interval[@rasmussen_short-term_2020]. Another method utilizes a 135-minute interval with adjusted hyperparameters, as introduced by Syed et al.[@syed_evaluating_2020]. In our study, we adopted a straightforward approach to this concept. Using Actigraphy counts, we identified periods of no movement that registered zero counts for at least 60 continuous minutes. Notably, these Actigraphy counts operate with a deadband set at 68 mg, which denotes the minimum detectable acceleration threshold.
+
+2.  \textsf{\textbf{Heuristic Algorithm (heu\_alg):}} As detailed by Rasmussen and colleagues[@rasmussen_short-term_2020], this algorithm merges raw acceleration data with surface skin temperature measurements. Non-wear time is determined for periods surpassing 120 minutes with accelerations less than 20 mg. For durations between 45 to 120 minutes, non-wear is identified if the temperature falls below a personalized non-moving temperature threshold. Additionally, the algorithm can spot non-wear periods ranging from 10 to 45 minutes, but only if these intervals end within the anticipated awake hours.
+
+3.  \textsf{\textbf{Random Forests Model(sunda\_RF):}} Sundararajan et al.[@sundararajan_sleep_2021] delineated a non-wear classification technique grounded in a random forest ensemble model. This model was informed by raw accelerometer data derived from 134 participants aged between 20 to 70 years. These subjects were fitted with an accelerometer on their wrist for a singular overnight PSG session. The verifiable labels for non-wear periods were anchored in the assumption that the accelerometer was donned only during the PSG. Any epoch with a standard deviation in the acceleration signal exceeding 13.0 mg outside the PSG was classified as wear time. The model utilized 36 predictors, and a nested cross-validation method was employed both to ascertain the model's generalization capability and to refine its hyperparameters.
+
+4.  \textsf{\textbf{Deep Convolutional Neural Network (syed\_CNN):}} This method, introduced by Syed et al.[@syed_novel_2021], employs a unique approach. It's built upon a deep convolutional neural network (CNN) that diverges from traditional techniques. Initially, all potential non-wear episodes are discerned using a standard deviation threshold. However, instead of scrutinizing the acceleration within these intervals, the focus shifts to the signal shape of the raw acceleration immediately before and after a non-wear episode. Through the CNN, the method discerns non-wear periods by detecting the moments when the accelerometer is removed and reattached. For our study's purposes, we chose a window length of 10 seconds on each side of the identified non-wear episode, as this yielded the most accurate results. The training dataset that informed the CNN consisted of data from hip-mounted accelerometers worn by 583 participants. These individuals ranged in age from 40 to 84 years, with an average age of 62.74 and a standard deviation of 10.25.
+
+### Data Collection and Devices Used
+
+Both the PHASAR study and the in-house validation research utilized the Axivity AX3 accelerometer (Axivity Ltd., Newcastle upon Tyne, UK) to record raw acceleration data along with surface skin temperature. The device, weighing a mere 11 g and with dimensions of 23 mm × 32.5 mm × 7.6 mm, measures acceleration in gravity units (g) across three axes (vertical, mediolateral, and anteroposterior). The sampling frequencies were set at 50 Hz for the PHASAR study and 25 Hz for the in-house study. However, all recorded data from both studies were uniformly resampled to 30 Hz.
+
+### Description of the Studies
+
+*PHASAR Study:* The PHASAR study involved a representative sample of over 2000 school-aged children from 31 public schools in Denmark. The study, conducted between 2017 and 2018, captured data from 1,315 boys (49%) and 1,358 girls (51%), aged between 8.1 to 17.9 years (mean age = 12.14, SD = 2.40). Accelerometers were placed at two specific anatomical sites: the right hip and midway on the right thigh. They were worn for a recommended seven consecutive days to reliably estimate habitual physical activity. For this analysis, data from 64 randomly selected participants from the PHASAR cohort were used. A dataset indicating genuine non-wear time was created via manual annotation, a method elaborated in another publication. Essentially, non-wear periods were determined by visually examining raw accelerations coupled with skin temperature readings. True non-wear episodes with specific start and end times were manually labelled in each dataset and were utilized as reference labels in subsequent analyses.
+
+*In-House Validation Study:* This study consisted of accelerometer data from 42 youth athletes, evenly split between boys and girls, aged 14.5 to 16.4 years (mean age = 15.4, SD = 0.37 years). These athletes, part of a specialized talent program in the Region of Southern Denmark, wore the Axivity accelerometer on their non-dominant wrist for 14 consecutive days. This study was initiated in the spring of 2021. A dataset mirroring the one from the PHASAR study was created, including all 42 participants.
+
+### Ethical Considerations
+
+The PHASAR study was reviewed by the Regional Committee on Health Research Ethics for Southern Denmark (ID: S-20170031) and was determined not to require an ethics review, as per Danish regulations, which mandate only biomedical research or risk-involved studies to undergo a formal ethics review. Documentation regarding this decision is available upon request from the principal author. Conversely, the in-house validation study received an ethical approval waiver from the Research & Innovation Organization and the legal department of the University of Southern Denmark. All participants, or their legal guardians, provided written informed consent for both studies, which adhered to the Danish Data Protection Agency (2015-57-0008) standards and globally recognized guidelines like the Declaration of Helsinki.
+
+![The flowchart depicts the division of the PHASAR dataset into training and testing segments. On the left, boxes signify 79.2% of the PHASAR data designated for training across five-fold resamples. On the right, the yellow and blue boxes collectively represent 20.2% of the PHASAR data, specifically delineating the hip and thigh data for testing. The green box represents our separate in-house test dataset, which was gathered from wrist-worn devices.](figures/paper2_flowchart.pdf){#fig-paper2_flowchart}
+
+### Development of Decision Tree Models:
+
+For our decision tree models, we sourced 12 predictors from the raw PHASAR accelerometer data, which encompassed elements like temperature, time of day, indicators for device placement, day of the week, and moving average statistics (detailed in @tbl-8). These moving average metrics were collated in 10-second increments. To train the model, we utilized 79.2% of the PHASAR data, incorporating data from both hip- and thigh-worn devices (as shown in @fig-paper2_flowchart). A critical aspect of our methodology was the data partitioning: we made certain that data from individual participants was exclusively allocated to either the training or test datasets. This strategy was crucial in ensuring that the model could effectively generalize to unfamiliar data, rather than overfitting to specific participant data. During the tuning phase, to boost model accuracy and avoid overfitting, we opted for a five-fold cross-validation approach. This process entailed refining several hyperparameters, such as the tree's depth, its cost-complexity, and the minimum amount of data points necessary in a node for it to split further. To effectively explore the hyperparameter space, we employed Latin hypercube sampling. This method systematically divides the parameter range into segments, randomly drawing a value from each segment, resulting in a well-distributed set of parameter combinations. In our case, we established a 10-level parameter grid, guaranteeing a comprehensive exploration of the hyperparameter space.
+
+Following this procedure, we introduced three distinct model variations:
+
+1.  A full-scope model (*tree_full*) incorporating every predictor.
+
+2.  A refined model (*tree_imp6*) centered on the six most crucial predictors, as established by permutation predictor importance (@fig-importance).
+
+3.  A model excluding surface skin temperature data (*tree_no_temp*).
+
+In sum, our methodology generated 50 distinct models for each decision tree variant. Given our data's distribution - 55.8% wear time compared to 44.2% non-wear time - there was no need to adopt synthetic minority oversampling methods like SMOTE or other balancing techniques.
+
+```{=tex}
+\begingroup
+```
+\footnotesize
+
+```{r}
+#| echo: false
+#| message: false
+#| label: tbl-8
+#| tbl-cap: Predictors derived from the raw sensor signals.
+
+tbl_8
+
+```
+
+```{=tex}
+\endgroup
+```
+![Permutation importance plot depicting the significance of predictors in the decision tree. The top six predictors informed the tree_imp6 model, while a third model, tree_no_temp, was trained using all predictors except temperature.](figures/paper2_vip.pdf){#fig-importance}
+
+\newpage
+
+### Statistics
+
+We assessed the classification performance to each ground truth test dataset, which combined consisted of over 7 million 10-second epochs from 104 distinct subjects. True positives (TP) represent correctly identified non-wear time, and true negatives (TN) denote correctly identified wear time. Both TPs and TNs are vital for the algorithm's accuracy. These correct classifications are vital for the high accuracy of our non-wear time algorithm. Misclassifications, where non-wear time is labeled as wear and vice-versa, resulted in False Negatives (FN) and False Positives (FP). To determine these classifications, we analyzed the acceleration data in 10-second intervals, comparing inferred results with ground truth labels. This comparison allowed us to construct a confusion matrix. We then computed the overall accuracy, sensitivity, precision, and F1-score to evaluate the effectiveness of each non-wear detection method. Notably, a high F1-score, which is the harmonic mean of precision and sensitivity, indicates superior classification performance. We further delved into the permutation predictor importance to discern the factors behind the enhanced performance of our decision tree models. All our analyses and model developments were conducted using R (version 4.1.2, Bird Hippie) and RStudio (version 2021.9.1.372, Ghost Orchid), with Tidymodels for machine learning and the rpart package serving as the decision tree algorithm engine.
+
+$$accuracy = \frac{TP+TN}{TP+TN+FP+FN}$$ $$sensitivity = \frac{TP}{TP+FN}$$ $$precision = \frac{TP}{TP+FP}$$ $$F_1 = 2 \cdot \frac{precision \cdot sensitivity}{precision + sensitivity}$$
+
+The F1-score, which is the harmonic mean of precision and sensitivity, provides an indicator of the classification performance. A high F1-score suggests commendable classification prowess.
+
+Additionally, we delved into the permutation predictor importance to discern what factors contributed to the superior performance of certain decision tree models.
+
+For all analytical processes and model development, we utilized R (version 4.1.2, Bird Hippie) and RStudio (version 2021.9.1.372, Ghost Orchid). The machine learning tasks were primarily facilitated by the Tidymodels[@kuhn2020] suite of packages, and we used the rpart[@rpart] package as the engine for our decision tree algorithms.
+
+## Results
+
+In our gold standard datasets spanning three wear locations, there were 1,598 non-wear time episodes. Of these, 1,148 episodes (or 71.8%) lasted 60 minutes or more, with an average duration of about 13 hours (794 minutes with a standard deviation of 1,142 minutes). In contrast, episodes lasting 60 minutes or less made up 28.2% (450 episodes) with an average duration of 26.4 minutes (SD = 16.4). Interestingly, the briefest episodes (less than 60 minutes) made up just 1.3% of the total non-wear time across all wear locations (refer to @tbl-9). @fig-paper2_nw_dists depicts the frequency distribution for episodes shorter than 60 minutes and those 60 minutes or longer. The PHASAR dataset showed a bimodal distribution for shorter episodes, with longer episodes peaking around 10 hours. For the in-house wrist-worn dataset, shorter episodes displayed a uniform distribution, while longer episodes were significantly right-skewed.
+
+```{=tex}
+\begingroup
+```
+\footnotesize
+
+```{r}
+#| echo: false
+#| message: false
+#| label: tbl-9
+#| tbl-cap: Overview of non-wear episodes grouped in short and long non-wear episodes. ¹ Aggregated in minutes. ² Proportion of total non-wear time by wear location.
+
+tbl_9
+```
+
+```{=tex}
+\endgroup
+```
+![Distribution of the length of the non-wear episodes across hip, thigh, and wrist data. Distributions are shown for episodes shorter than 60 min (binwidth = 1 minute) and longer than 60 min (binwidth = 1 hour).](figures/paper2_plot_nw_dists.pdf){#fig-paper2_nw_dists}
+
+### Classification Performance
+
+In assessing classification performance, @fig-paper2_preds_ex visually contrasts the results from machine-learned models and rule-based algorithms against the ground truth non-wear time, which is highlighted with a light blue background. This visualization underscores that while tree-based models tend to be precise, they can also be unpredictable. On the other hand, threshold-based methods, such as Syed_CNN, heu_alg, and cz_60, offer more consistency. Notably, both cz_60 and heu_alg algorithms fall short in identifying shorter non-wear episodes.
+
+Detailing further, @fig-paper2_performance_all compiles performance metrics from all methods evaluated in this study. The CNN model by Syed et al. demonstrated consistency across three datasets, achieving an overall accuracy between 75% and 80%. It stood out with a sensitivity score between 93% and 96%. However, its F1 scores, which hovered between 82% and 84%, were hampered by only average precision. Conversely, the random forests model by Sundararajan et al. shone with wrist data, boasting an F1 score of 94% and accuracy of 93%. Still, its performance dwindled with hip and thigh data, marking an overall accuracy of 56% and precision of 59%. This drop suggests a significant number of false positives.
+
+Among the decision tree models, the variant excluding surface skin temperature as a predictor fared the poorest for wrist data, achieving a mere 72% accuracy. While it secured a high sensitivity score of 98%, its subpar precision dragged its F1 score down to 81%. The other two decision tree models---one incorporating the six most critical predictors and the other using all predictors---consistently performed well across metrics and datasets. Remarkably, both the heu_alg and cz_60 algorithms approached perfection across evaluations.
+
+Further, @fig-paper2_performance_short zeroes in on performance metrics for episodes 60 minutes or shorter. The consecutive zeros algorithm was unable to detect any non-wear, a result absent from the figure. Syed et al.'s deep learning model underperformed, detecting a mere 1--2% of all non-wear time, leading to F1 scores below 5%. Although the heu_alg algorithm boasted high precision, its lackluster sensitivity resulted in F1 scores spanning from 12% to 16% across wear locations. The random forest model displayed average results for thigh and wrist data but faltered with hip data, recording F1 scores of 46%, 57%, and 8%, respectively. Among the trio of decision tree models, the one leveraging the six pivotal predictors outshone the rest, with F1 scores between 72% and 79%. Meanwhile, the decision tree model encompassing all predictors faced challenges with hip data due to a 23% sensitivity score. Excluding the surface skin temperature, another decision tree model exhibited commendable precision; however, its low sensitivity culminated in F1 scores ranging from 45% to 57%.
+
+![Visual example of the output of non-wear detection models and algorithms for a random person from the in-house wrist dataset (14 consecutive days). The grey shade is ground-truth non-wear time. Syed_CNN, cz_60, and tree_full are vertically offset for easier interpretation.](figures/paper2_plot_preds_example.pdf){#fig-paper2_preds_ex}
+
+![Classification performance metrics on all non-wear episodes for the seven included methods for classifying non-wear time. Metrics are shown for the three different ground-truth dataset including hip-worn, thigh-worn, and wrist-worn raw accelerometer data.](figures/paper2_performance_all.pdf){#fig-paper2_performance_all}
+
+![Classification performance for episodes no longer than 60 min in length. Metrics are shown for the three different gold-standard dataset including hip-worn, thigh-worn, and wrist-worn raw accelerometer data.](figures/paper2_performance_short.pdf){#fig-paper2_performance_short}
+
+## Discussion
+
+\newpage
+
+# Paper III: Improving Sleep Quality Estimation in Children and Adolescents: A Comparative Study of Machine Learning and Deep Learning Techniques Utilizing Free-Living Accelerometer Data from Thigh-Worn Devices and EEG-Based Sleep Tracking
+
+This segment of the thesis encompasses the methods, results, and discussion for Paper III. Polysomnography, the premier method for sleep evaluation, is not always feasible for extensive research due to its high costs and impracticality. Wearable accelerometers present an affordable solution. While wrist and hip-worn devices dominate sleep studies, the potential of thigh-worn accelerometers remains largely untapped. This paper delves into the use of machine learning and deep learning models that leverage data from thigh-worn accelerometers to gauge sleep and its quality. By comparing these models with an EEG-based sleep monitor and utilizing data from 585 days and nights of children aged 4-17 years, we discerned that the XGBoost model, particularly when applied to 5-minute median filtered data, showcased the most promise. This model demonstrated minimal biases and a robust correlation with total sleep time, highlighting its applicability. Nevertheless, our findings also exposed certain limitations, especially in determining awake intervals during in-bed periods. Thus, while our results are encouraging for group-level sleep quality estimation using machine learning, further refinement is essential for precise individual assessments due to observed limits of agreement in thigh-worn accelerometry data.
+
+## Methods
+
+### Dataset and Participants
+
+The current study uses data from the SCREENS trial, which took place from June 2019 to March 2021 in the Region of Southern Denmark. Conducted by Rasmussen and Pedersen[@rasmussen_short-term_2020; @pedersen_effects_2022], the trial aimed to evaluate the impact of limiting screen media usage among Danish families. We specifically analyzed data from children between the ages of 4 and 17, with a mean age of 9.1 years, who were part of the SCREENS cohort. To gather our primary data, we utilized accelerometer readings from Axivity AX3 devices attached to the children's thighs and sleep metrics derived from EEG readings using the ZM device by General Sleep Corporation.
+
+The Axivity AX3 is a 3-axis accelerometer positioned midway between the hip and knee on the right anterior thigh. This device records movement data, and it is unobtrusive, allowing for natural behavior from the children. On the other hand, the ZM device uses advanced EEG hardware and signal processing algorithms to gather sleep data. It features three self-adhesive, disposable sensors placed outside the hairline, ensuring reliable EEG signal acquisition. Participants were instructed to attach the device at bedtime and remove it upon leaving bed. To process the sleep data, the ZM device uses two proprietary algorithms, Z-ALG and Z-PLUS. The former is known for its accurate sleep detection capabilities, which make it suitable for in-home monitoring as supported by Kaplan et al.[@kaplan_performance_2014], while the latter differentiates between sleep stages and aligns well with expert evaluations using PSG data, as demonstrated by Wang et al.[@wang_evaluation_2015].
+
+In this study, we didn't focus on different sleep stages like light sleep (N1 & N2), deep sleep (N3), and REM sleep; instead, we categorized the output of the ZM into "awake" and "asleep." This simplification was made to streamline the data for the machine learning algorithms and because distinguishing between sleep stages was not crucial for the sleep quality metrics of interest. As illustrated in @fig-paper3_flow, we only considered recordings that had complete accelerometer data from the Axivity AX3 and ZM readings lasting between 7 and 14 hours. Recordings with sensor issues reported by the ZM were excluded. As a result, our study included a total of 585 nights from 151 children, with an average of 3.87 nights per child (SD = 1.86). The mean age of these children was 9.4 years, with a standard deviation of 2.1. Our study encompassed 696,779 epochs, each lasting 30 seconds, and about 84% of the ZM recordings were classified as sleep.
+
+Lastly, the study adhered to ethical guidelines, receiving approval from the Regional Scientific Committee of Southern Denmark. All data handling processes were in compliance with the General Data Protection Regulation (GDPR), ensuring the secure and ethical management of participant information.
+
+![Flowchart of eligible ZM recording nights included in the study.](figures/paper3_flowchart.pdf){#fig-paper3_flow}
+
+### Data preprocessing and Feature Extraction
+
+In this study, we began by processing raw accelerometer data through a low-pass filtration step, utilizing a 4th order Butterworth filter with a 5 Hz cut-off frequency to remove high-frequency noise as described by Skotte and colleagues[@skotte_detection_2014]. Non-wear data was identified and eliminated using the methods outlined in Paper 2[@skovgaard_generalizability_2023], and the remaining data was resampled into 30-second epochs to align with ZM recordings.
+
+We then conducted feature extraction, generating 64 features that offered a comprehensive characterization of the data. These features were derived from both accelerometer and temperature signals and included temporal elements, which utilized both lag and lead values to capture dynamic data trends. Additionally, we took inspiration from Walch et al.[@walch_sleep_2019] to include sensor-independent features that encapsulate circadian rhythms, offering unique insights that are not directly discernible from sensor outputs (see @fig-paper3_sensor_independent). We further enriched the feature set by incorporating signal characteristics such as vector magnitude, mean crossing rate, skewness, and kurtosis for each of the x, y, and z dimensions.
+
+The ZM recordings and the corresponding accelerometer data were then merged. Any time overlap between these two sets of data was categorized as 'in-bed' time, while the remaining time was considered 'out-of-bed.' This process yielded a comprehensive dataset that provided a 24-hour view of each participant's activity and sleep patterns.
+
+We also chose to integrate median-filtered raw predictions from the ZM device into our modeling process. This decision was based on existing knowledge that children typically experience between five to eight sleep cycles per night, with awakenings most likely to occur at the end of each cycle, as indicated by Galland et al. However, upon examining the raw ZM predictions, we noticed an overestimation in the number of awakenings among the children in our study, surpassing typical sleep cycle patterns (refer to @fig-paper3_raw_filt). Additionally, the ZM device's average sleep efficiency rating for our sample was 83%, falling short of the recognized standards of 85% as good efficiency and over 90% as ideal---a finding that contradicted prior research on similar child cohorts.
+
+This suggested that the raw ZM predictions might be including a lot of noise by overestimating awake periods, potentially affecting the performance of machine learning algorithms by obscuring underlying patterns. As a result, we decided to train and evaluate our models using not only the raw ZM output but also versions that underwent 5-minute and 10-minute median filtering. This method effectively reduced the noise and provided a more age-appropriate count of awakenings, offering, to the best of our knowledge, a more accurate representation of children's sleep patterns (see @tbl-10).
+
+![Sensor-independent features of circadian rhythms across two consecutive nights. A) cosinus feature, B) linear feature.](/home/esbenlykke/projects/thesis/figures/paper3_sensor_independent.pdf){#fig-paper3_sensor_independent}
+
+![The difference in number of awakenings between the raw ZM predictions vs. 5-minute, and 10-minute median filtered predictions for a random night (boy, 9 years). Grey line is the raw predictions, black line is the median filtered predictions. A: 5-minute median filter on raw ZM predictions, B: 10-minute median filter on raw ZM predictions.](/home/esbenlykke/projects/thesis/figures/paper3_zm_raw_vs_filtered.pdf){#fig-paper3_raw_filt}
+
+### Algorithms
+
+In our study to assess sleep patterns, we utilized thigh-mounted accelerometer data and employed two distinct modeling strategies. The first approach involved a sequential strategy using a series of binary classifiers, aiming to simplify the task by breaking down the multiclass problem into more manageable parts. Initially, we predicted 'in-bed' times, which were then subjected to a 5-minute median filter to eliminate transient blips. This allowed us to identify a single continuous time interval, termed the Sleep Period Time (SPT), which represents the total time spent in bed attempting to sleep. The SPT served as the input for a second set of binary classifiers focused on predicting 'sleep' time, thereby improving their predictive accuracy.
+
+Four machine learning algorithms were applied in this sequential strategy. Logistic regression acted as a fast and straightforward baseline model, although its linear nature limited its ability to capture complex, non-linear patterns. Decision trees, capable of handling non-linear patterns, were implemented with a maximum tree depth of 8 to mitigate overfitting and maintain easy interpretability. Single-layer feed-forward neural networks, while challenging to interpret, were effective in capturing non-linear relationships. Careful tuning was required to avoid overfitting. Lastly, XGBoost was used for its high accuracy and built-in overfitting prevention techniques, despite its computational intensity and interpretational challenges.
+
+Simultaneously, we also explored a second modeling strategy using a multiclass algorithm based on a bidirectional Long Short-Term Memory (biLSTM) neural network[@hochreiter_long_1997]. This model was designed to predict three distinct sleep states: 'out-of-bed-awake,' 'in-bed-awake,' and 'in-bed-asleep.' It featured four layers and 128 hidden units per layer, balancing model complexity and training efficiency. The bidirectional architecture doubled the hidden units at each time step, enhancing data interpretation and reducing the risk of overfitting. The model accepted sequences of tensors spanning 10 minutes with a step size of one epoch. This approach is supported by previous research such as studies by Sano et al. (2019)[@sano_multimodal_2019]\] and Chen et al. (2021)[@chen_attention_2021]\], which have demonstrated the efficacy of LSTM models in sleep detection by capturing complex temporal patterns in accelerometer data.
+
+### Model Training
+
+We trained a total of four pairs of models sequentially to distinguish between two sets of states: in-bed/out-of-bed and asleep/awake. The dataset was randomly split into a training and a testing set, each containing approximately half of the subjects. To ensure the robustness of the results, we made sure that data from the same night was not distributed across both sets. To optimize our models, we used a specific set of hyperparameters for each type of machine learning algorithm. For the Decision Tree, we tuned the cost complexity, tree depth, and minimum number of samples required at a leaf node. The decision tree model was set up using the `rpart`[@rpart] engine for classification, with tree depth ranging from 3 to 7. For Logistic Regression, implemented using the `glmnet`[@friedman_glmnet_2010] engine, we considered tuning the penalty and mixture parameters. The feed-forward neural network was implemented with a single-layer feed-forward architecture using the `nnet`[@nnet] engine, with the maximum number of allowable weights set to 7000 as a form of regularization. The hyperparameters we tuned for this model were the number of hidden units, the penalty, and the number of epochs. The range for the number of hidden units was between 3 and 27. Lastly, the XGBoost model was configured with the `xgboost`[@xgboost] engine. The hyperparameters subjected to tuning included tree depth, learning rate, loss reduction, minimum number of samples required at a leaf node, sample size, and number of trees. For this algorithm, the number of trees was specifically tuned within a range of 200 to 800. These hyperparameters were optimized using a 10-fold Monte Carlo cross-validation, carried out on a regular grid comprising different combinations of these parameters. By providing the range and the specific hyperparameters considered for each model, we ensured the most robust and optimal model fitting.
+
+After identifying the best-performing hyperparameters, we proceeded to fit the models to the full training dataset. This approach made it possible to use all available data for model parameter estimation, thus maximizing performance. However, an imbalance issue was noted after the initial step of our sequential model strategy. This imbalance in the resulting dataset - the awake in-bed class was underrepresented, making up only about 15% of the training data - could induce biases during model training, as models tend to favor the majority class. To correct this, we employed the Synthetic Minority Over-sampling Technique (SMOTE) as outlined by Chawla et al. [@chawla_smote_2002]. Using the themis R package [@themis], we implemented SMOTE to achieve a balanced distribution of training samples across both classes. The F1 score served as the optimization metric because it balances both precision and recall, and therefore is more robust to class imbalance.
+
+In parallel to these sequential models, we also trained a bidirectional Long Short-Term Memory (biLSTM) model to classify three distinct states: out-of-bed-awake, in-bed-awake, and in-bed-asleep. The data for this model was divided into training, validation, and test sets, adhering to a 50/25/25 split ratio. Again, caution was exercised to avoid having data from the same night across different sets. For efficient and adaptive learning, the Adam optimizer was used during the training process. Given that we were dealing with a multiclass classification task with mutually exclusive classes, the cross-entropy loss function was employed. At the output layer, a softmax activation function was applied to obtain a probability distribution over the classes. We monitored the model's performance using the F1 score for both the training and validation sets and employed early stopping with a patience of 3 epochs, ceasing training if no improvement in the validation loss was observed over three consecutive epochs.
+
+## Model Validation
+
+In our study, we utilized standard evaluation metrics to assess the performance of each model on an epoch-to-epoch basis. These include $$accuracy = \frac{TP+TN}{TP+TN+FP+FN}$$ $$sensitivity = \frac{TP}{TP+FN}$$ $$specificity = \frac{TN}{TN+FP}$$ $$precision = \frac{TP}{TP+FP}$$ $$NPV = \frac{TN}{TN + FN}$$ $$F_1 = 2 \cdot \frac{precision \cdot sensitivity}{precision + sensitivity}$$
+
+where $NPV$ is negative predictive value, $F_1$ is the F1 score, $TP$ is true positives, $FP$ is false positives, $TN$ is true negatives, and $FN$ is false negatives.
+
+In our sequential model strategy, we initially focused on models that carried out binary classification tasks distinguishing between in-bed and out-of-bed states. We gauged these models' performance through various metrics, including the F1-score, accuracy, sensitivity, specificity, and precision. Subsequently, we shifted our focus to models that could identify the binary state of being asleep or awake, using the same metrics as well as the negative predictive rate. Due to the class imbalance, we calculated the F1 score as an unweighted macro-average. We also scrutinized a multiclass biLSTM classifier using the same metrics, interpreting its multiclass output as two separate binary classifications: out-of-bed versus all other states, and in-bed-awake versus in-bed-asleep. To give a comprehensive view of model performance, we offered confusion matrices for the entire dataset, covering both in-bed and out-of-bed data. These matrices report relative counts, column percentages for accurate predictions of the true class, and row percentages for correctly classified predictions. Both in-bed/out-of-bed and awake/asleep classification tasks were treated as binary, designating 'in-bed' and 'asleep' as positive labels and 'out-of-bed' and 'awake' as negative labels, in line with prior studies [@hjorth_measure_2012; @kushida_comparison_2001].
+
+To evaluate how well our models performed in generating sleep quality metrics, we employed Bland-Altman plots and Pearson correlations. Specifically, the Bland-Altman approach was used to gauge the level of agreement between two different measurement techniques. Since our dataset included multiple but uneven observations per subject, we used a bootstrap procedure to account for extra variability. We initially calculated the mean difference or bias, and then determined the limits of agreement (LOA) as the bias ± 1.96 times the standard deviation of these differences. Given the possibility of non-normal distribution and skewness in our data, we opted for a bias-corrected and accelerated (BCa) bootstrap method \[\@diciccio_bootstrap_1996\]. This allowed for more accurate estimation, taking into account intra-subject variability. Using 10,000 bootstrap replicates, we confirmed 95% confidence intervals for both the bias and LOA, thereby ensuring robust measurements. Our sleep quality metrics conformed to ZM definitions and included the following:
+
+1.  Sleep Period Time (SPT) - This refers to the total duration of time in
+    bed with the intention to sleep, which is defined as the time from the
+    start to the end of the ZM recording.
+2.  Total Sleep Time (TST) - This is the time spent asleep within the SPT.
+3.  Sleep Efficiency (SE) - This is the ratio between TST and SPT,
+    representing the proportion of the sleep period that was actually spent
+    asleep.
+4.  Latency Until Persistent Sleep (LPS) - This metric represents the time
+    it takes to transition from wakefulness to sustained sleep. It is
+    calculated as the time from the beginning of the ZM recording until the
+    first period when 10 out of 12 minutes are scored as sleep.
+5.  Wake After Sleep Onset (WASO) - This refers to the time spent awake
+    after initially falling asleep and before the final awakening. In our
+    analysis, a period is counted as 'awake' only if it consists of 3 or
+    more contiguous 30-second epochs which is also how the ZM summarizes
+    WASO.
+
+The technical frameworks used for model development and analyses were R version 4.3.0 [@rcoreteam_2023] along with the Tidymodels[@kuhn_tidymodels_2020] and Tidyverse[@wickham_tidyverse_2019] package suites. For the biLSTM model, we used Python version 3.10.6 [@vanrossum_python_2009] and PyTorch [@paszke_pytorch_2019].
+
+## Results
+
+```{=tex}
+\begingroup
+```
+\footnotesize
+
+```{r}
+#| echo: false
+#| message: false
+#| label: tbl-10
+#| tbl-cap: "Overview of characteristics of the ZM sleep quality summaries per night (585 nights from 151 children). Values are represented as mean (SD). Hrs: hours, min: minutes."
+
+tbl_10
 ```
 
 ```{=tex}
