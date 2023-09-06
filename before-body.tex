@@ -32,15 +32,23 @@ Professor WSR Jasper Schiperijn, PhD
 
 Research Unit of Active Living, Danish centre for motivation and behaviour science, Playground Research, Department of Sports Science and Clinical Biomechanics, University of Southern Denmark, 5230 Odense, Denmark
 
+\bigskip
+
 \textbf{Opponents}
+
+\begin{multicols}{2}
 
 Associate Professor Samuel Emil Schmidt, PhD
 
 Department of Health Science and Technology, Aalborg University, Denmark
 
+\columnbreak
+
 Associate Professor Alex Rowlands, PhD
 
 Diabetes Research Centre, NIHR Leicester Biomedical Research Centre - Lifestyle Theme, University of Leicester, United Kingdom
+
+\end{multicols}
 
 \vspace{2cm}
 
@@ -48,7 +56,7 @@ Diabetes Research Centre, NIHR Leicester Biomedical Research Centre - Lifestyle 
 
 \vspace*{\baselineskip}
 
-The research presented in this thesis was generously funded by TrygFonden, under grant numbers ID 130081 and 115606, and by the European Research Council, under grant number 716657. Additional support was provided by a one-year scholarship from the Faculty of Health Sciences.
+The research presented in this thesis was generously funded by TrygFonden, under grant numbers ID 130081 and 115606, and by the European Research Council, under grant number 716657. Additional support was provided by a one-year scholarship from the Faculty of Health Sciences, University of Southern Denmark.
 
 \newpage
 
@@ -60,21 +68,19 @@ The research presented in this thesis was generously funded by TrygFonden, under
 
 \vspace*{\baselineskip}
 
-The journey of my PhD has been a fulfilling expedition, layered with explorations, discoveries, struggles, and growth. This endeavor was fueled by my interest in understanding the objective measurements of physical behavior and sleep. During my Masters, I found myself increasingly engrossed in these domains.
+The present thesis delves into the objective measurements of physical behavior and sleep, a subject that has captivated me since my Master's program. This work represents a fulfilling journey marked by exploration, discovery, struggles, and both personal and professional growth.
 
-My subsequent role as a research assistant at Aarhus University opened another dimension of learning for me. The works of my peers, employing machine learning and advanced statistics on accelerometer data, intrigued me. It was as if I found the nexus of my research interests, a perfect alignment that seamlessly fused my curiosities and passions.
+The thesis is based on data from several different studies and is the product of collaboration with numerous internal and external co-authors. It employs machine learning and advanced statistical methods on accelerometer data to bring new insights into the field of sleep and physical behavior.
 
-One of the most significant hurdles was my limited experience with programming and machine learning, which proved to be a steep learning curve. However, through persistence, I slowly developed the necessary skills to analyze and interpret my data effectively. Another major setback was the failed data collection for my third paper. I spent months visiting families, mounting an ambulatory PSG device on children before bedtime, and facing the harsh reality of dealing with poor data quality.
+This thesis comprises three distinct papers, each focusing on improving and validating methods for leveraging accelerometer data in the study of human behaviors—particularly sleep and physical activity. Each paper applies innovative methods, such as machine learning techniques, to enhance the utility, reliability, and accuracy of free-living accelerometer data in large-scale studies. Two of these papers have already been published in peer-reviewed journals, and the third is under preparation. These works are integral to this thesis and are included as appendices.
 
-This thesis brings together my explorations and findings across three papers that carry a consistent emphasis on improving and validating methods to leverage accelerometer data for studying human behaviors. The common thread across these papers is the application of innovative methods, particularly machine learning techniques, to enhance the utility, reliability, and accuracy of free-living accelerometer data for monitoring human sleep and physical activity. The work presented here constitutes a substantial contribution to the field of sleep and physical activity research, particularly in the context of large-scale studies.
+My research journey began during my Master's program, where I was introduced to the capabilities of accelerometer data. This early exposure culminated in the publication of my Master's thesis and solidified my desire to pursue a career in research. Embarking on my PhD, I faced a series of challenges. Initially, my limited experience with programming and machine learning posed a steep learning curve. However, persistent effort enabled me to acquire the necessary skills for data analysis. A significant hurdle arose during the data collection phase of my main paper. I attempted to collect overnight polysomnography data, along with readings from multiple accelerometers and wrist photoplethysmography, from 55 children in their homes. Regrettably, the sensitive nature of EEG electrodes did not mix well with children, resulting in data that was largely unsuitable for model development. Fortunately, I could turn to the SCREENS trial for alternative data, allowing me to complete the third paper.
 
-Two of these papers have already found their place in peer-reviewed scientific journals, and the third is under review. All of these works are included as appendices to this thesis, and their content has been weaved into the fabric of this thesis.
+The PhD experience has fundamentally shaped my approach to work and life, instilling in me qualities like discipline, precision, and a keen attention to detail. This journey has been as much about professional development as it has been a personal voyage of self-discovery and growth.
 
-As I look back at my journey through the PhD program, I am grateful for this opportunity to delve deep into a subject that I am passionate about and to contribute to a field that is evolving rapidly. This experience has instilled in me a sense of tenacity and patience, qualities that I have come to value deeply. I learned that even the most frustrating problems have solutions, and the path to those solutions often leads to personal growth and novel insights.
+As I stand on the threshold of new beginnings, I am filled with excitement about the future possibilities. This thesis reflects the lessons and experiences gathered along the way and serves as a stepping stone for further exploration in this rapidly evolving field.
 
-As I stand on the precipice of my future, I am filled with a sense of anticipation and excitement for the possibilities that lie ahead. I am eager to explore new horizons, to encounter new challenges, and to continue growing as a researcher and as an individual. However, wherever I go and whatever I do, I will carry with me the memories, experiences, and lessons from this incredible journey.
-
-These years have shaped me in ways I could never have imagined at the outset, and for that, I am profoundly grateful. As I close this chapter of my life, I do so with a sense of accomplishment and a promise of continued exploration and discovery in my field. After all, every ending is but a new beginning, and I look forward to the adventures that await.
+Enjoy reading.
 
 \newpage
 
@@ -86,19 +92,16 @@ These years have shaped me in ways I could never have imagined at the outset, an
 
 \vspace*{\baselineskip}
 
-Throughout this journey, there have been several people who have influenced, inspired, and supported me. My Main Supervisor, Jan Christian Brønd, deserves special mention for his guidance and patience. His commitment to nurturing my development as a researcher and lecturer has been instrumental. Our collaborative dialogues, be it at the office or during examinations, have been pivotal in my growth. I also extend my sincere gratitude to my co-supervisors [insert name 2] and [insert name 3], and my colleague [insert name 4], who have always provided invaluable insights and perspectives.
+As I reflect on the transformative journey that my PhD has been, I find myself indebted to numerous individuals whose support, guidance, and inspiration have been instrumental in shaping both my professional and personal growth.
+First and foremost, I extend my deepest gratitude to my Main Supervisor, Jan Christian Brønd. Your unwavering guidance and patience have not only nurtured my development as a researcher but also as a lecturer. Our collaborative dialogues, whether they took place in the office or during examinations, have been a cornerstone in my academic development.
+To my co-supervisors, Anders Grøntved and Niels Christian Møller, your expert insights and unique perspectives have enriched my work immeasurably. My gratitude also extends to my colleague Jesper Schmidt-Persson, whose contributions have consistently elevated the quality of my research.
+Being part of an internationally recognized and experienced research group has been an enriching experience. It afforded me the privilege to work alongside some of the most brilliant minds in my field. This collective experience has not only broadened my understanding but also contributed significantly to our shared goal of advancing knowledge in our discipline.
+At the core of this journey has been the unceasing support of my family. To my wife, who has been the bedrock of our family, your constant support and curiosity about my work have been my emotional mainstay. The joy and love I've received from our four children have been ceaseless fountains of inspiration and motivation.
+This PhD journey has taught me more than just academic rigor; it has molded my approach to work and life in ways that are ineffably valuable. The discipline and precision inherent in research have permeated my daily life, influencing my problem-solving and decision-making processes. This endeavor has been much more than an academic pursuit; it has been a voyage of self-discovery.
+Whether it was solving a complex analytical problem, having my work accepted for publication, or receiving positive feedback, such milestones have fueled my motivation and are poignant reminders of the impact and importance of my work.
+In conclusion, I want to express my heartfelt gratitude to everyone who has supported me through this transformative period of my life—supervisors, colleagues, friends, and family. Your faith in my abilities and continuous encouragement have been the backbone of this journey, and I hope that the work presented in this thesis is a testament to that.
 
-Amidst all the academic pursuits, my family remained the cornerstone of my journey. My wife, the bedrock of our family, kept our home running smoothly and offered endless support and curiosity about my work. The joy and love from my four children were my constant sources of motivation and inspiration.
-
-The PhD journey has taught me the importance of rigour and attention to detail. My approach to work has been permanently shaped by my experience as a researcher. The discipline and precision that is required in research has translated into my everyday life, impacting my approach to problem-solving, decision-making, and even communication. It's impressive how research is not merely a vocation but a lens through which we view the world.
-
-There were also moments of immense joy and satisfaction, like finally solving a complex analytical problem, having my work accepted for publication, or simply receiving positive feedback from a student or a colleague. Those moments fueled my motivation and reminded me of the importance and impact of my work.
-
-One of the most rewarding aspects of this journey was the opportunity to be part of an international recognized and experienced research group. This gave me the chance to work with and learn from some of the most talented people in my field, to discuss ideas and collaborate on projects, and to be part of a collective effort to advance knowledge and understanding in our field.
-
-In retrospect, this PhD journey has been much more than a professional pursuit. It has been a personal voyage of self-discovery and growth. Through the highs and lows, the victories and setbacks, the late nights and early mornings, I've discovered a resilience in myself that I hadn't known before. I found that I could rise to challenges, learn from failures, and continue to strive for excellence, no matter the odds.
-
-In closing, I wish to express my deep gratitude for all those who have supported me throughout this journey - my supervisors, colleagues, friends, and family. Their faith in my abilities and their constant encouragement have been my pillars of strength. I hope that the work presented in this thesis reflects the depth of my dedication and the extent of my learning journey.
+I am incredibly grateful for all the support and wisdom I have been fortunate to receive, and it is my earnest hope that this thesis stands as a tribute to each of you. Thank you.
 
 \newpage
 
@@ -126,8 +129,6 @@ Paper III
 
 \textsf{Improving Sleep Quality Estimation: A Comparative Study of Machine Learning and Deep Learning Techniques Utilizing Free-Living Accelerometer Data from Thigh-Worn Devices and EEG-Based Sleep Tracking}
 
-Submitted to \href{https://www.nature.com/npjdigitalmed/}{npj Digital Medicine}
+In preparation for \href{https://academic.oup.com/sleep}{SLEEP}
 
 \end{center}
-
-\newpage

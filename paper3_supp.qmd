@@ -1,0 +1,47 @@
+---
+title: "Supplmentary Material for Paper III:"
+date: last-modified
+format:
+  pdf:
+    mainfont: EB Garamond
+    sansfont: Montserrat
+    fontsize: 9pt
+    pdf-engine: lualatex
+---
+Precision-recall curves depicting the performance of the awake/asleep during in-bed time classification task. 
+
+![Precision-recall curves of the models evaluated across the different ZM predictions, including raw ZM predictions, as well as 5-minute and 10-minute median smoothing of the ZM raw predictions. The x-axis of the plot represents the proportion of true wake epochs that were correctly classified as wake, while the y-axis represents the proportion of all epochs labeled as wake by the classifier that were classified correctly. The area under the curve values are displayed as color-coded text in the plot indicate the area under the Precision-Recall curve for each model and condition.](~/projects/sleep_study/manuscript/visuals/plot_sleep_pr.pdf){#fig-pr_curves}
+
+![Receiver operating characteristic curves of the models evaluated across the different ZM predictions, including raw ZM predictions, as well as 5-minute and 10-minute median smoothing of the ZM raw predictions. The x-axis of the plot represents the proportion of true asleep epochs that were incorrectly classified as awake, while the y-axis represents the proportion of all epochs labeled as awake by the classifier that were correctly classified. The area under the curve values displayed are displayed as color-coded text in the plot to indicate the area under the receiver operating characteristic curve for each model and condition.](~/projects/sleep_study/manuscript/visuals/plot_sleep_roc.pdf){#fig-roc_curves}
+
+Plots similar to figure 5 for all model and filtering combinations (75 plots in total) are available upon request.
+
+![Decision tree, raw](~/projects/sleep_study/manuscript/visuals/raw_decision_tree_ba_cor.pdf)
+
+![Decision tree, median_5](~/projects/sleep_study/manuscript/visuals/median_5_decision_tree_ba_cor.pdf)
+
+![Decision tree, median_10](~/projects/sleep_study/manuscript/visuals/median_10_decision_tree_ba_cor.pdf)
+
+![Logistic regression, raw](~/projects/sleep_study/manuscript/visuals/raw_logistic_regression_ba_cor.pdf)
+
+![Logistic regression, median_5](~/projects/sleep_study/manuscript/visuals/median_5_logistic_regression_ba_cor.pdf)
+
+![Logistic regression, median_10](~/projects/sleep_study/manuscript/visuals/median_10_logistic_regression_ba_cor.pdf)
+
+![Neural_network, raw](~/projects/sleep_study/manuscript/visuals/raw_neural_network_ba_cor.pdf)
+
+![Neural_network, median_5](~/projects/sleep_study/manuscript/visuals/median_5_neural_network_ba_cor.pdf)
+
+![Neural_network, median_10](~/projects/sleep_study/manuscript/visuals/median_10_neural_network_ba_cor.pdf)
+
+![XGBoost, raw](~/projects/sleep_study/manuscript/visuals/raw_xgboost_ba_cor.pdf)
+
+![XGBoost, median_5](~/projects/sleep_study/manuscript/visuals/median_5_xgboost_ba_cor.pdf)
+
+![XGBoost, median_10](~/projects/sleep_study/manuscript/visuals/median_10_xgboost_ba_cor.pdf)
+
+![biLSTM, raw](~/projects/sleep_study/manuscript/visuals/raw_biLSTM_ba_cor.pdf)
+
+![biLSTM, median_5](~/projects/sleep_study/manuscript/visuals/median_5_biLSTM_ba_cor.pdf)
+
+![biLSTM, median_10](~/projects/sleep_study/manuscript/visuals/median_10_biLSTM_ba_cor.pdf)
