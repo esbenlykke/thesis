@@ -39,7 +39,7 @@ dens_fup_tb <-
 
 p1 <-
   ggplot(dens_fup_tb, aes(x, rater, fill = rater)) +
-  geom_density_ridges(alpha = .8, size = .1, show.legend = FALSE) +
+  geom_density_ridges(alpha = .8, size = .1, show.legend = FALSE, color = "white") +
   scale_y_discrete(expand = c(0, 0), limits = c("self", "man2", "man1")) +
   scale_x_continuous(breaks = seq(-25, 25, 5)) +
   coord_cartesian(clip = "off") +
@@ -78,7 +78,7 @@ dens_bsl_tb <-
 
 p2 <-
   ggplot(dens_bsl_tb, aes(x, rater, fill = rater)) +
-  geom_density_ridges(alpha = .8, size = .1, show.legend = FALSE) +
+  geom_density_ridges(alpha = .8, size = .1, show.legend = FALSE, color = "white") +
   scale_y_discrete(expand = c(0, 0), limits = c("self", "man2", "man1")) +
   scale_x_continuous(breaks = seq(-25, 25, 5)) +
   coord_cartesian(clip = "off") +
@@ -118,7 +118,7 @@ dens_fup_ob <-
 
 p3 <-
   ggplot(dens_fup_ob, aes(x, rater, fill = rater)) +
-  geom_density_ridges(alpha = .8, size = .1, show.legend = TRUE) +
+  geom_density_ridges(alpha = .8, size = .1, show.legend = TRUE, color = "white") +
   scale_y_discrete(expand = c(0, 0), limits = c("self", "man2", "man1")) +
   scale_x_continuous(breaks = seq(-25, 25, 5)) +
   coord_cartesian(clip = "off") +
@@ -158,7 +158,7 @@ dens_bsl_ob <-
 
 p4 <-
   ggplot(dens_fup_ob, aes(x, rater, fill = rater)) +
-  geom_density_ridges(alpha = .8, size = .1, show.legend = FALSE) +
+  geom_density_ridges(alpha = .8, size = .1, show.legend = FALSE, color = "white") +
   scale_y_discrete(expand = c(0, 0), limits = c("self", "man2", "man1")) +
   scale_x_continuous(breaks = seq(-25, 25, 5)) +
   coord_cartesian(clip = "off") +
