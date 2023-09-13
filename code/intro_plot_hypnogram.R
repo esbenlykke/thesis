@@ -40,5 +40,5 @@ hyp %>%
     axis.line.y = element_blank()
   )
 
-ggsave(filename = "figures/hypnogram.pdf", width = 12.5, height = 6, units = "cm", dpi = 600)
+ggsave(filename = "figures/hypnogram.pdf", width = 12.5, height = 4, units = "cm", dpi = 600)
   
