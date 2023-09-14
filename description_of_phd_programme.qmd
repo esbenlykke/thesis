@@ -1,0 +1,66 @@
+---
+title: "Description of PhD Programme"
+format: 
+  pdf:
+    mainfont: EB Garamond
+    sansfont: Montserrat
+    pdf-engine: lualatex
+editor: visual
+bibliography: phd_pubs.bib
+csl: nature.csl
+---
+
+# Completed PhD Courses
+
+```{=tex}
+\begingroup
+```
+\footnotesize
+
+| ECTS | Start Date | End Date   | Course Name                                                                      |
+|-----------------|-----------------|-----------------|----------------------|
+| 1,5  | 13.05.2020 | 14.05.2020 | Introduction to "R"                                                              |
+| 0,7  | 02.12.2020 | 02.12.2020 | Introduction to Health Research                                                  |
+| 5,0  | 17.09.2020 | 28.10.2020 | Biostatistics I                                                                  |
+| 1,8  | 03.02.2021 | 04.02.2021 | AI Statistical Learners in Health Science                                        |
+| 2,4  | 03.11.2020 | 26.11.2020 | Advanced R course                                                                |
+| 2,0  | 18.01.2022 | 25.01.2022 | Responsible Conduct of Research - Online                                         |
+| 2,4  | 11.01.2022 | 26.01.2022 | Basic data science skills for health researchers using R and the Tidyverse       |
+| 2,4  | 01.03.2022 | 04.03.2022 | How to structure an article                                                      |
+| 3,1  | 07.03.2022 | 16.03.2022 | Introduction to machine learning in health sciences                              |
+| 2,5  | 01.11.2021 |            | Fundamentals of Electroencephalography (EEG) Data Acquisition and Interpretation |
+| 2,0  | 01.09.2021 |            | Time Series Modeling and Analytics                                               |
+| 6,4  | 07.04.2021 | 28.04.2021 | Basic Biostatistics - part 2                                                     |
+
+```{=tex}
+\endgroup
+```
+# Teaching Activities
+
+```{=tex}
+\begingroup
+```
+\footnotesize
+
+| Year        | Course                                               | Role                      |
+|------------------|---------------------------------|---------------------|
+| 2022---2023 | Data Science in Health Science (MSc course)          | Instructor and Censor     |
+| 2020---2022 | Applied Statistics (BSc course)                      | Instructor                |
+| 2020        | Project Managment with External Partner (BSc course) | Instructor and Examinator |
+| 2020        | Public health projects in practice (BSc course)      | Instructor and Examinator |
+
+```{=tex}
+\endgroup
+```
+# Knowledge Dissemination Activities
+
+## PhD Publications
+
+The following papers has been published in Sensors[@skovgaard_manual_2021] and Scientific Reports[@skovgaard_generalizability_2023]. \bigskip
+
+::: {#refs}
+:::
+
+The results of my research has been presented to our research group on a timely basis, on seminars and to students on some of my courses.
+
+I have had no collaborations with other research environments during my PhD. I have only had discussions with researchers from within my field.

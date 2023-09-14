@@ -28,7 +28,8 @@ hip_thigh_nw %>%
     fill = NULL
   ) +
   scale_fill_npg(labels = c("Hip", "Thigh", "Wrist")) +
-  scale_y_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0),
+                     breaks = seq(2, 8, 2)) +
   facet_wrap(~location, ncol = 1) +
   theme_classic() +
   theme(

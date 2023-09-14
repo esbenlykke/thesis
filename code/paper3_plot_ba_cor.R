@@ -119,7 +119,7 @@ plot_ba_cor <- function(model, variable, type) {
     geom_hline(data = bias_data, aes(yintercept = loa_upper), color = "black", lty = 2) +
     geom_point(
       data = stats_data, aes(x = !!sym(paste0("avg_", variable)), y = !!sym(paste0("diff_", variable))),
-      color = "grey20", fill = "#71C9DD", shape = 21, size = 2.5, stroke = .2, alpha = .7
+      color = "grey20", fill = "#3C5487", shape = 21, size = 2.5, stroke = .2, alpha = .7
     ) +
     labs(
       x = paste(
@@ -155,7 +155,7 @@ plot_ba_cor <- function(model, variable, type) {
   cor_plot <-
     stats_data %>%
     ggplot(aes(x = !!sym(variable), y = !!sym(paste0("zm_", variable)))) +
-    geom_point(color = "grey20", fill = "#EB6F5D", shape = 21, size = 2.5, stroke = .2, alpha = .7) +
+    geom_point(color = "grey20", fill = "#3C5487", shape = 21, size = 2.5, stroke = .2, alpha = .7) +
     geom_abline(slope = 1, intercept = 0, color = "black", lty = 2, linewidth = .5) +
     geom_smooth(method = "lm", color = "black", se = FALSE, linewidth = .5) +
     geom_label(
