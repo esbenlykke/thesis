@@ -18,7 +18,7 @@ csl: nature.csl
 \footnotesize
 
 | ECTS | Start Date | End Date   | Course Name                                                                      |
-|-----------------|-----------------|-----------------|----------------------|
+|------|------------|------------|----------------------------------------------------------------------------------|
 | 1,5  | 13.05.2020 | 14.05.2020 | Introduction to "R"                                                              |
 | 0,7  | 02.12.2020 | 02.12.2020 | Introduction to Health Research                                                  |
 | 5,0  | 17.09.2020 | 28.10.2020 | Biostatistics I                                                                  |
@@ -43,7 +43,7 @@ csl: nature.csl
 \footnotesize
 
 | Year        | Course                                               | Role                      |
-|------------------|---------------------------------|---------------------|
+|-------------|------------------------------------------------------|---------------------------|
 | 2022---2023 | Data Science in Health Science (MSc course)          | Instructor and Censor     |
 | 2020---2022 | Applied Statistics (BSc course)                      | Instructor                |
 | 2020        | Project Managment with External Partner (BSc course) | Instructor and Examinator |
