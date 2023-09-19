@@ -110,8 +110,16 @@
  \usepackage[margin=20mm, paperwidth=17cm, paperheight=24cm]{geometry}
  \pagestyle{plain}
  \usepackage{sectsty}
- \allsectionsfont{\sffamily}
+ \usepackage{color}
+ \definecolor{color1}{RGB}{80, 80, 80}
+ \allsectionsfont{\sffamily \color{color1}}
  \usepackage{multicol}
+
+ \let\originaltextbf\textbf
+ \renewcommand{\textbf}[1]{\textcolor{color1}{\originaltextbf{#1}}}
+
+ \let\originalbfseries\bfseries
+ \renewcommand{\bfseries}{\originalbfseries\color{color1}}
 
  % Landscape handling
  \usepackage{lscape}
@@ -209,7 +217,7 @@
 
 \newpage
 
-\textsf{\textbf{\Large{Supervisor}}}
+\textcolor{color1}{\textsf{\textbf{\Large{Supervisor}}}}
 
 \vspace*{\baselineskip}
 
@@ -219,11 +227,11 @@ Research Unit for Exercise Epedimiology, Centre of Research in Childhood Health,
 
 \vspace{2cm}
 
-\textsf{\textbf{\Large{Assessment Committee}}}
+\textcolor{color1}{\textsf{\textbf{\Large{Assessment Committee}}}}
 
 \vspace*{\baselineskip}
 
-\textbf{Chair}
+\textcolor{color1}{\textbf{Chair}}
 
 Professor WSR Jasper Schiperijn, PhD
 
@@ -231,7 +239,7 @@ Research Unit of Active Living, Danish centre for motivation and behaviour scien
 
 \bigskip
 
-\textbf{Opponents}
+\textcolor{color1}{\textbf{Opponents}}
 
 \begin{multicols}{2}
 
@@ -249,7 +257,7 @@ Biomedical Research Centre, \newline University of Leicester, United Kingdom
 
 \vspace{2cm}
 
-\textsf{\textbf{\Large{Funding}}}
+\textcolor{color1}{\textsf{\textbf{\Large{Funding}}}}
 
 \vspace*{\baselineskip}
 
@@ -261,7 +269,7 @@ The research presented in this thesis was generously funded by TrygFonden, under
   %   Preface
 %----------------------------------------------
   
-\textsf{\textbf{\Large{Preface}}}
+\textcolor{color1}{\textsf{\textbf{\Large{Preface}}}}
 
 \vspace*{\baselineskip}
 
@@ -285,7 +293,7 @@ Enjoy reading.
   %   Acknowledgement
 %----------------------------------------------
   
-\textsf{\textbf{\Large{Acknowledgment}}}
+\textcolor{color1}{\textsf{\textbf{\Large{Acknowledgment}}}}
 
 \vspace*{\baselineskip}
 
@@ -302,7 +310,7 @@ I am incredibly grateful for all the support and wisdom I have been fortunate to
 
 \newpage
 
-\textsf{\textbf{\Large{Included Papers}}}
+\textcolor{color1}{\textsf{\textbf{\Large{Included Papers}}}}
 
 \vspace{2cm}
 
@@ -625,24 +633,24 @@ activity\textsuperscript{\protect\hyperlink{ref-kraus_physical_2019}{1},\protect
 minimal sedentary
 periods\textsuperscript{\protect\hyperlink{ref-wilmot_sedentary_2012}{3}},
 and adequate sleep across all age
-groups\textsuperscript{\protect\hyperlink{ref-jennum_suxf8vn_sundhed_2015}{4},\protect\hyperlink{ref-cappuccio_sleep_2010B}{\textbf{cappuccio\_sleep\_2010B?}}}.
+groups\textsuperscript{\protect\hyperlink{ref-cappuccio_sleep_2010}{4},\protect\hyperlink{ref-jennum_suxf8vn_sundhed_2015}{5}}.
 These findings have informed public health
-guidelines,\textsuperscript{\protect\hyperlink{ref-kl_physical_2018}{5}--\protect\hyperlink{ref-el-zine_fysisk_nodate}{7}}
+guidelines,\textsuperscript{\protect\hyperlink{ref-kl_physical_2018}{6}--\protect\hyperlink{ref-el-zine_fysisk_nodate}{8}}
 as well as recommendations on sleep
-duration\textsuperscript{\protect\hyperlink{ref-hirshkowitz_2015}{8}}.
+duration\textsuperscript{\protect\hyperlink{ref-hirshkowitz_2015}{9}}.
 The integration of sleep tracking in health research is increasingly
 crucial for a comprehensive understanding of individual well-being.
 Sleep and physical activity are instrumental in influencing a broad
 spectrum of health aspects, ranging from mental
-health\textsuperscript{\protect\hyperlink{ref-biddle_physical_2011}{9}}
+health\textsuperscript{\protect\hyperlink{ref-biddle_physical_2011}{10}}
 to physical
-fitness\textsuperscript{\protect\hyperlink{ref-warburton_health_2017}{10}},
+fitness\textsuperscript{\protect\hyperlink{ref-warburton_health_2017}{11}},
 and even extending to disease
-prevention\textsuperscript{\protect\hyperlink{ref-strath_guide_2013}{11},\protect\hyperlink{ref-arem_leisure_2015}{12}}.
+prevention\textsuperscript{\protect\hyperlink{ref-strath_guide_2013}{12},\protect\hyperlink{ref-arem_leisure_2015}{13}}.
 With advancements in wearable technology and tracking systems, we now
 have tools that enable in-depth investigations into the complex
 interplay between sleep, physical activity, and general
-health\textsuperscript{\protect\hyperlink{ref-rollo_whole_2020}{13}}.
+health\textsuperscript{\protect\hyperlink{ref-rollo_whole_2020}{14}}.
 Given the established significance of sleep and physical activity in
 health, underscored by extensive research and public health guidelines,
 integrating sleep tracking into broader health research becomes
@@ -654,33 +662,33 @@ holistic grasp of a healthy life.
 We spend approximately one-third of our lives asleep, yet much about
 this state of consciousness remains elusive, including its biological
 function and what defines its
-quality\textsuperscript{\protect\hyperlink{ref-ma_sleep_2017}{14}}.
+quality\textsuperscript{\protect\hyperlink{ref-ma_sleep_2017}{15}}.
 However, what is clear is the essential role of adequate sleep in
 maintaining both physical and psychological well-being, consolidating
 memories, and regulating
-emotions\textsuperscript{\protect\hyperlink{ref-worley_2018}{15}--\protect\hyperlink{ref-scott_2021}{17}}.
+emotions\textsuperscript{\protect\hyperlink{ref-worley_2018}{16}--\protect\hyperlink{ref-scott_2021}{18}}.
 On the flip side, insufficient sleep has been linked to a range of
 negative health outcomes such as weight gain, obesity, heart disease,
 stroke, impaired immune function, and even an elevated risk of
-death\textsuperscript{\protect\hyperlink{ref-consensus_conference_panel_recommended_2015}{18}--\protect\hyperlink{ref-hale_2020}{20}}.
+death\textsuperscript{\protect\hyperlink{ref-consensus_conference_panel_recommended_2015}{19}--\protect\hyperlink{ref-hale_2020}{21}}.
 The impact of sleep deprivation is felt not just in the long term but
 also immediately. Short-term consequences include reduced alertness,
 heightened stress levels, diminished concentration, delayed reaction
 times, and a propensity for risk-taking
-behavior\textsuperscript{\protect\hyperlink{ref-shochat_2014}{21}--\protect\hyperlink{ref-bonnet_1985}{24}}.
+behavior\textsuperscript{\protect\hyperlink{ref-shochat_2014}{22}--\protect\hyperlink{ref-bonnet_1985}{25}}.
 When poor sleep becomes a chronic issue, it can severely affect one's
 quality of life. For example, daytime sleepiness increases the risk of
 accidents in occupational settings and while driving, as well as
 negatively impacts academic and work performance, with broader social
 and economic repercussions like school dropouts or job
-loss\textsuperscript{\protect\hyperlink{ref-connor_2002}{25}--\protect\hyperlink{ref-roth_1996}{27}}.
+loss\textsuperscript{\protect\hyperlink{ref-connor_2002}{26}--\protect\hyperlink{ref-roth_1996}{28}}.
 The concern over daytime sleepiness becomes particularly acute given
 that it is widespread, affecting around 10-20\% of
-society\textsuperscript{\protect\hyperlink{ref-wang_2019}{28}}. Various
+society\textsuperscript{\protect\hyperlink{ref-wang_2019}{29}}. Various
 factors contribute to this, ranging from lifestyle choices like
 irregular bedtime and shift work to medical conditions that affect the
 central nervous system and certain
-medications\textsuperscript{\protect\hyperlink{ref-roth_1996}{27}}.
+medications\textsuperscript{\protect\hyperlink{ref-roth_1996}{28}}.
 
 \hypertarget{determinants-of-sleep-in-relation-to-health}{%
 \section{Determinants of Sleep in Relation to
@@ -689,9 +697,9 @@ Health}\label{determinants-of-sleep-in-relation-to-health}}
 Sleep is complex, defined by its structure, length, quality, and when it
 occurs during a day. Growing research indicates that disrupted sleep can
 harm health, elevating the risk of issues like obesity and
-diabetes\textsuperscript{\protect\hyperlink{ref-reutrakul_2018}{29}},
+diabetes\textsuperscript{\protect\hyperlink{ref-reutrakul_2018}{30}},
 heart-related
-diseases\textsuperscript{\protect\hyperlink{ref-cappuccio_sleep_2010}{30}},
+diseases\textsuperscript{\protect\hyperlink{ref-cappuccio_sleep_2010}{4}},
 and mental health
 challenges\textsuperscript{\protect\hyperlink{ref-jouxe3o_2018}{31}}.
 
@@ -720,7 +728,7 @@ indicate a ``U''-shaped relationship, where both shorter sleep durations
 (typically less than 6 hours) and longer durations (typically more than
 8 hours) correlate with heightened risks of obesity, mental health
 disorders, coronary heart disease, stroke, and
-diabetes\textsuperscript{\protect\hyperlink{ref-reutrakul_2018}{29}--\protect\hyperlink{ref-jouxe3o_2018}{31},\protect\hyperlink{ref-cappuccio_2011}{35},\protect\hyperlink{ref-cappuccio_2008}{36}}.
+diabetes\textsuperscript{\protect\hyperlink{ref-cappuccio_sleep_2010}{4},\protect\hyperlink{ref-reutrakul_2018}{30},\protect\hyperlink{ref-jouxe3o_2018}{31},\protect\hyperlink{ref-cappuccio_2011}{35},\protect\hyperlink{ref-cappuccio_2008}{36}}.
 In controlled experiments, depriving healthy adults of sleep negatively
 impacted their endocrine functions and triggered adverse metabolic and
 inflammatory
@@ -1085,7 +1093,7 @@ algorithms:
   It predicts the probability of an instance belonging to a particular
   category. The outcome is transformed using the logistic function,
   ensuring it lies between 0 and 1, making it interpretable as a
-  probability\textsuperscript{\protect\hyperlink{ref-cox_regression_1958}{92}}.
+  probability\textsuperscript{\protect\hyperlink{ref-McCullagh_1989}{92}}.
 \item
   \textbf{Decision Trees}: Decision trees offer a graphical
   representation of possible outcomes to a decision, making them easily
@@ -1095,11 +1103,11 @@ algorithms:
   analysis\textsuperscript{\protect\hyperlink{ref-quinlan_1986}{93}}.
 \item
   \textbf{Multilayer Perceptron}: Often termed a single-layer,
-  feed-forward neural network, MLPs consist of at least three layers: an
-  input layer, a hidden layer, and an output layer. They can model
-  complex relationships by adjusting weights between nodes during
-  training. Activation functions, like the sigmoid or ReLU, introduce
-  non-linearity into the
+  feed-forward neural network, multilayer perceptrons consist of at
+  least three layers: an input layer, a hidden layer, and an output
+  layer. They can model complex relationships by adjusting weights
+  between nodes during training. Activation functions, like the sigmoid
+  or ReLU, introduce non-linearity into the
   model\textsuperscript{\protect\hyperlink{ref-Goodfellow-et-al-2016}{87}}.
 \item
   \textbf{XGBoost}: An optimized gradient boosting machine learning
@@ -1108,7 +1116,7 @@ algorithms:
   correcting errors from previous stages, resulting in a strong
   prediction model. The algorithm has been a dominant force in various
   Kaggle competitions and is favored for structured or tabular
-  data\textsuperscript{\protect\hyperlink{ref-xgboost}{94}}.
+  data\textsuperscript{\protect\hyperlink{ref-Chen_xgboost_2016}{94}}
 \item
   \textbf{Bidirectional LSTM (Long Short-Term Memory)}: LSTM networks, a
   type of Recurrent Neural Network (RNN), are designed to remember
@@ -1122,27 +1130,26 @@ algorithms:
 Machine learning and its advanced subset, deep learning, have
 revolutionized numerous sectors, from healthcare and finance to
 entertainment and technology. At the core of these advancements lies
-data, often termed as the new ``oil'' (coined by Clive Humby, 2006) of
-the digital era. The efficacy and accuracy of machine learning and deep
-learning models are inherently tied to the volume, variety, and quality
-of the data they are trained on. The rationale behind this reliance on
-data is twofold. Firstly, machine learning and deep learning algorithms,
-by design, identify patterns and relationships within data. The richer
-and more diverse the dataset, the better these algorithms can generalize
-and make accurate predictions on new, unseen data. Sparse or limited
-data can lead to overfitting, where the model becomes overly specialized
-to the training data and performs poorly in real-world applications.
-Secondly, especially deep learning models, which often employ
-multi-layered neural networks, have a vast number of parameters. To
-train these parameters effectively and avoid overfitting, a substantial
-volume of data is necessary. It's akin to fitting pixels in an image
-together---the more pixels (or data) you have, the clearer the overall
-picture (or pattern) becomes. It's worth noting, however, that the sheer
-volume isn't the only concern. The quality, relevance, and diversity of
-data play equally crucial roles. High-quality datasets that encompass a
-broad spectrum of scenarios and edge cases ensure that machine learning
-and deep learning models are robust, versatile, and reliable in diverse
-applications.
+data, often termed as the new ``oil'' (a term coined by Clive Humby,
+2006) of the digital era. The efficacy and accuracy of machine learning
+models are inherently tied to the volume, variety, and quality of the
+data they are trained on. The rationale behind this reliance on data is
+twofold. Firstly, machine learning algorithms, by design, identify
+patterns and relationships within data. The richer and more diverse the
+dataset, the better these algorithms can generalize and make accurate
+predictions on new, unseen data. Sparse or limited data can lead to
+overfitting, where the model becomes overly specialized to the training
+data and performs poorly in real-world applications. Secondly,
+especially deep learning models, which often employ multi-layered neural
+networks, have a vast number of parameters. To train these parameters
+effectively and avoid overfitting, a substantial volume of data is
+necessary. It's akin to fitting pixels in an image together---the more
+pixels (or data) you have, the clearer the overall picture (or pattern)
+becomes. It's worth noting, however, that the sheer volume isn't the
+only concern. The quality, relevance, and diversity of data play equally
+crucial roles. High-quality datasets that encompass a broad spectrum of
+scenarios and edge cases ensure that machine learning and deep learning
+models are robust, versatile, and reliable in diverse applications.
 
 The availability of large datasets from wearable devices have set the
 stage for the incorporation of machine learning techniques into research
@@ -1150,7 +1157,7 @@ using accelerometry. These algorithms have the capability to analyze
 vast and complex data sets, delivering insights that were previously
 difficult or impossible to discern. Whether it's recognizing subtle
 patterns indicative of sleep apnea for timely
-intervention\textsuperscript{\protect\hyperlink{ref-cappuccio_sleep_2010}{30}},
+intervention\textsuperscript{\protect\hyperlink{ref-cappuccio_sleep_2010}{4}},
 or evaluating the effectiveness of antidepressant medications in
 patients with sleep
 disturbances\textsuperscript{\protect\hyperlink{ref-paruthi_consensus_2016}{96}},
@@ -1234,15 +1241,15 @@ especially for lengthy annotation tasks. Inherent limitations in the
 precision of manual labeling mean that any missteps can profoundly skew
 results.
 
-In the context of machine learning models tailored for multi-day
-accelerometry recordings, accurately annotating bedtimes and wake-up
-moments is essential. While one might consider sourcing annotations from
-sleep diaries or EEG recordings, many studies have not integrated these
-with accelerometry data, leading to an information gap which can be
-circumvented via manually annotating targets of importance. Moreover,
-many current methods aimed at detecting sleep don't effectively capture
-the `in-bed' time also termed the sleep period time. An exception is the
-HDCZA algorithm by Van Hees et
+In the context of machine learning models tailored for sleep detection
+in multi-day accelerometry recordings, accurately annotating bedtimes
+and wake-up moments is essential. While one might consider sourcing
+annotations from sleep diaries or EEG recordings, many studies have not
+integrated these within their study design, leading to an information
+gap which can be circumvented via manually annotating targets of
+importance. Moreover, many current methods aimed at detecting sleep
+don't effectively capture the `in-bed' time also termed the sleep period
+time. An exception is the HDCZA algorithm by Van Hees et
 al.\textsuperscript{\protect\hyperlink{ref-van_hees_estimating_2018}{100}}.
 The question then becomes whether manual annotations of `in-bed' times
 in accelerometry data can serve as a reliable alternative to sleep
@@ -1252,14 +1259,28 @@ sleep logs or other `in-bed' time indicators, making it more suitable
 for machine learning tasks. However, as of now, there's no research
 showcasing the effectiveness and precision of such manual annotations.
 
-\hypertarget{data-quality-and-integrity-of-accelerometry-data}{%
-\section{Data Quality and Integrity of Accelerometry
-Data}\label{data-quality-and-integrity-of-accelerometry-data}}
+\hypertarget{integrity-of-accelerometry-data}{%
+\section{Integrity of Accelerometry
+Data}\label{integrity-of-accelerometry-data}}
+
+Data integrity is a cornerstone of any credible research or analytic
+endeavor. This is especially true for the world of accelerometry, where
+data accuracy and completeness are important for understanding human
+motion and behavior. In the context of accelerometry, devices are
+commonly mounted using tape, elastic belts, or other secure mechanisms.
+However, as mundane as this step might sound, its significance cannot be
+overstated. Proper mounting ensures consistent data capture, while
+flawed or insecure attachments can introduce erroneous readings.
+Moreover, there's the potential of a device being unintentionally
+flipped or reattached to an incorrect wearsite after a non-wear period,
+further complicating the data quality. These seemingly minor missteps
+can lead to substantial data inaccuracies, casting doubts on the ensuing
+analyses and findings.
 
 As outlined in previous sections, accelerometry-based activity monitors
 have proven their worth by providing objective data on movement
 intensity in a cost-effective manner while minimizing participant
-disruption\textsuperscript{\protect\hyperlink{ref-dowd_systematic_2018}{101}--\protect\hyperlink{ref-migueles_comparability_2019}{104}}.
+burden\textsuperscript{\protect\hyperlink{ref-dowd_systematic_2018}{101}--\protect\hyperlink{ref-migueles_comparability_2019}{104}}.
 However, challenges emerge when considering non-wear time, the intervals
 during which devices aren't worn due to activities like swimming,
 sleeping, certain sports, or sensor malfunctioning or other unforeseen
@@ -1307,9 +1328,7 @@ algorithms is that they may erroneously classify true non-wear as
 inactivity due to their time-specific intervals, missing shorter
 non-wear episodes. Furthermore, the volume and quality of the data
 collected do not directly correspond to better performance. Contrary to
-machine learning models that improves with increasing amounts of data,
-these rudimentary duration-based algorithms faced the risk of
-misclassifying short non-wear bouts as inactivity.
+machine learning models that improves with increasing amounts of data.
 
 With the progress in technology, machine learning methods such as random
 forests\textsuperscript{\protect\hyperlink{ref-sundararajan_sleep_2021}{98}}
@@ -1365,8 +1384,8 @@ al.\textsuperscript{\protect\hyperlink{ref-sundararajan_sleep_2021}{98}}.
 The inclusion of multiple nights per subject may be beneficial as this
 aproach captures the important intra-individual variances in sleep.
 However, multiple nights recorded with PSG is impractical which is why a
-system like the Zmachine® Insight+ could prove to be advantages to
-employ over traditional PSG.
+system like the ZM could prove to be advantages to employ over
+traditional PSG.
 
 \hypertarget{thesis-aim-and-objectives}{%
 \section{Thesis Aim and Objectives}\label{thesis-aim-and-objectives}}
@@ -1974,11 +1993,11 @@ to ZM.}
 In this study, we introduced a methodology for manually annotating
 periods spent in bed using accelerometry data. The accuracy of this
 method was rigorously evaluated through multiple raters and then
-compared to sleep assessments made with EEG-based Zmachine Insight+®
-(ZM) and self-reported sleep data. When examining the lower limit of the
-95\% confidence interval in Intraclass Correlation Coefficient (ICC)
-analyses, we found several noteworthy results. First, the method
-exhibited good-to-excellent interrater reliability. Second, intra-rater
+compared to sleep assessments made with EEG-based ZM and self-reported
+sleep data. When examining the lower limit of the 95\% confidence
+interval in Intraclass Correlation Coefficient (ICC) analyses, we found
+several noteworthy results. First, the method exhibited
+good-to-excellent interrater reliability. Second, intra-rater
 reliability also showed good to excellent agreement across all three
 raters between their first and second rounds of annotations. Third, when
 compared to ZM, the average manual in-bed annotations from all raters
@@ -1994,12 +2013,11 @@ when the manual annotations and self-reported sleep times were compared
 to ZM.
 
 The high accuracy observed in the prospective sleep diaries in this
-study can be attributed to their being synchronized with Zmachine
-Insight+® (ZM). Having participants manually start and end ZM recordings
-every morning and evening enhances their ability to accurately recall
-their times of going to bed and getting out of bed. This minimizes the
-usual discrepancies often seen between objectively and subjectively
-measured sleep
+study can be attributed to their being synchronized with ZM. Having
+participants manually start and end ZM recordings every morning and
+evening enhances their ability to accurately recall their times of going
+to bed and getting out of bed. This minimizes the usual discrepancies
+often seen between objectively and subjectively measured sleep
 durations\textsuperscript{\protect\hyperlink{ref-aili_reliability_2017}{130}}.
 If participants had been instructed to log their sleep using only
 subjective measures without these protocol anchors, we would not expect
@@ -3147,7 +3165,7 @@ regularization. The hyperparameters we tuned for this model were the
 number of hidden units, the penalty, and the number of epochs. The range
 for the number of hidden units was between 3 and 27. Lastly, the XGBoost
 model was configured with the
-\texttt{xgboost}\textsuperscript{\protect\hyperlink{ref-xgboost}{94}}
+\texttt{xgboost}\textsuperscript{\protect\hyperlink{ref-xgboost}{161}}
 engine. The hyperparameters subjected to tuning included tree depth,
 learning rate, loss reduction, minimum number of samples required at a
 leaf node, sample size, and number of trees. For this algorithm, the
@@ -3168,9 +3186,9 @@ up only about 15\% of the training data - could induce biases during
 model training, as models tend to favor the majority class. To correct
 this, we employed the Synthetic Minority Over-sampling Technique (SMOTE)
 as outlined by Chawla et
-al.\textsuperscript{\protect\hyperlink{ref-chawla_smote_2002}{161}}.
+al.\textsuperscript{\protect\hyperlink{ref-chawla_smote_2002}{162}}.
 Using the themis R
-package\textsuperscript{\protect\hyperlink{ref-themis}{162}}, we
+package\textsuperscript{\protect\hyperlink{ref-themis}{163}}, we
 implemented SMOTE to achieve a balanced distribution of training samples
 across both classes. The F1 score served as the optimization metric
 because it balances both precision and recall, and therefore is more
@@ -3225,7 +3243,7 @@ percentages for correctly classified predictions. Both in-bed/out-of-bed
 and awake/asleep classification tasks were treated as binary,
 designating `in-bed' and `asleep' as positive labels and `out-of-bed'
 and `awake' as negative labels, in line with prior
-studies\textsuperscript{\protect\hyperlink{ref-hjorth_measure_2012}{74},\protect\hyperlink{ref-kushida_comparison_2001}{163}}.
+studies\textsuperscript{\protect\hyperlink{ref-hjorth_measure_2012}{74},\protect\hyperlink{ref-kushida_comparison_2001}{164}}.
 
 To evaluate how well our models performed in generating sleep quality
 metrics, we employed Bland-Altman plots and Pearson correlations.
@@ -3272,15 +3290,15 @@ included the following:
 
 The technical frameworks used for model development and analyses were R
 version
-4.3.0\textsuperscript{\protect\hyperlink{ref-rcoreteam_2023}{164}} along
+4.3.0\textsuperscript{\protect\hyperlink{ref-rcoreteam_2023}{165}} along
 with the
 Tidymodels\textsuperscript{\protect\hyperlink{ref-kuhn_tidymodels_2020}{142}}
 and
-Tidyverse\textsuperscript{\protect\hyperlink{ref-wickham_tidyverse_2019}{165}}
+Tidyverse\textsuperscript{\protect\hyperlink{ref-wickham_tidyverse_2019}{166}}
 package suites. For the biLSTM model, we used Python version
-3.10.6\textsuperscript{\protect\hyperlink{ref-vanrossum_python_2009}{166}}
+3.10.6\textsuperscript{\protect\hyperlink{ref-vanrossum_python_2009}{167}}
 and
-PyTorch\textsuperscript{\protect\hyperlink{ref-paszke_pytorch_2019}{167}}.
+PyTorch\textsuperscript{\protect\hyperlink{ref-paszke_pytorch_2019}{168}}.
 
 \hypertarget{results-2}{%
 \section{Results}\label{results-2}}
@@ -3797,7 +3815,7 @@ night-only recordings and 24-hour recordings. For night recordings, SE
 and LPS can be readily derived since SPT can be inferred from the length
 of the recording itself, as indicated by studies from Conley et al.~and
 Patterson et
-al\textsuperscript{\protect\hyperlink{ref-conley_agreement_2019}{69},\protect\hyperlink{ref-patterson_40_2023}{168}}.
+al\textsuperscript{\protect\hyperlink{ref-conley_agreement_2019}{69},\protect\hyperlink{ref-patterson_40_2023}{169}}.
 In contrast, when applied to 24-hour recordings, most sleep detection
 methods face the challenge of inferring SPT without the aid of sleep
 diaries, as presented by several
@@ -3811,7 +3829,7 @@ commonly used sleep quality metrics. In a similar vein, Van Hees et
 al.\textsuperscript{\protect\hyperlink{ref-van_hees_estimating_2018}{100}}
 proposed an algorithm for determining SPT using wrist-worn devices, an
 approach that was subsequently validated by Plekhanova and her
-team\textsuperscript{\protect\hyperlink{ref-plekhanova_validation_2023}{169}}.
+team\textsuperscript{\protect\hyperlink{ref-plekhanova_validation_2023}{170}}.
 When combined with other methods, this algorithm enables the estimation
 of additional sleep quality metrics based on the identified SPT. Van
 Hees et al.~reported favorable results with low mean differences when
@@ -3854,7 +3872,7 @@ rsc\textsuperscript{\protect\hyperlink{ref-palotti_benchmark_2019}{97}},
 and
 LSTM-50\textsuperscript{\protect\hyperlink{ref-palotti_benchmark_2019}{97}}
 as evaluated in the Patterson et
-al.~study\textsuperscript{\protect\hyperlink{ref-patterson_40_2023}{168}},
+al.~study\textsuperscript{\protect\hyperlink{ref-patterson_40_2023}{169}},
 our XGBoost model displayed narrower LOAs for TST, SE, and WASO.
 Interestingly, the LOAs were also narrower when pitted against the
 algorithm tailored for thigh-worn devices by Johansson et
@@ -4021,11 +4039,6 @@ stated that:
   ensuring a robust validation process.
 \end{itemize}
 
-\hypertarget{perspectives}{%
-\section{Perspectives}\label{perspectives}}
-
-bla bla
-
 \hypertarget{references}{%
 \chapter{References}\label{references}}
 
@@ -4053,51 +4066,59 @@ Systematic review and meta-analysis. \emph{Diabetologia} \textbf{55},
 2895--2905 (2012) URL: \url{https://doi.org/10.1007/s00125-012-2677-z}
 Accessed 5 August 2023, 2023:2023.}
 
-\leavevmode\vadjust pre{\hypertarget{ref-jennum_suxf8vn_sundhed_2015}{}}%
+\leavevmode\vadjust pre{\hypertarget{ref-cappuccio_sleep_2010}{}}%
 \CSLLeftMargin{4. }%
+\CSLRightInline{Cappuccio, F. P., D'Elia, L., Strazzullo, P. \& Miller,
+M. A. Sleep duration and all-cause mortality: A systematic review and
+meta-analysis of prospective studies. \emph{Sleep} \textbf{33}, 585--592
+(2010)
+doi:\href{https://doi.org/10.1093/sleep/33.5.585}{10.1093/sleep/33.5.585}.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-jennum_suxf8vn_sundhed_2015}{}}%
+\CSLLeftMargin{5. }%
 \CSLRightInline{Jennum, P. \emph{et al.} Søvn og sundhed \textbar{}
 Vidensråd for Forebyggelse. URL:
 \url{https://vidensraad.dk/rapport/soevn-og-sundhed}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-kl_physical_2018}{}}%
-\CSLLeftMargin{5. }%
+\CSLLeftMargin{6. }%
 \CSLRightInline{Kl, P. \emph{et al.} The physical activity guidelines
 for americans. \emph{{JAMA}} \textbf{320}, (2018) URL:
 \url{https://pubmed.ncbi.nlm.nih.gov/30418471/} Accessed 5 August 2023,
 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-el-zine_fysisk_nodate-1}{}}%
-\CSLLeftMargin{6. }%
+\CSLLeftMargin{7. }%
 \CSLRightInline{El-Zine, H. Fysisk aktivitet for voksne (18-64 år).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-el-zine_fysisk_nodate}{}}%
-\CSLLeftMargin{7. }%
+\CSLLeftMargin{8. }%
 \CSLRightInline{El-Zine, H. Fysisk aktivitet for børn og unge (5-17
 år).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-hirshkowitz_2015}{}}%
-\CSLLeftMargin{8. }%
+\CSLLeftMargin{9. }%
 \CSLRightInline{Hirshkowitz, M. \emph{et al.} National Sleep
 Foundation's sleep time duration recommendations: methodology and
 results summary. \emph{Sleep Health} \textbf{1}, 40--43 (2015)
 doi:\href{https://doi.org/10.1016/j.sleh.2014.12.010}{10.1016/j.sleh.2014.12.010}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-biddle_physical_2011}{}}%
-\CSLLeftMargin{9. }%
+\CSLLeftMargin{10. }%
 \CSLRightInline{Biddle, S. J. H. \& Asare, M. Physical activity and
 mental health in children and adolescents: A review of reviews. \emph{Br
 J Sports Med} \textbf{45}, 886--895 (2011)
 doi:\href{https://doi.org/10.1136/bjsports-2011-090185}{10.1136/bjsports-2011-090185}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-warburton_health_2017}{}}%
-\CSLLeftMargin{10. }%
+\CSLLeftMargin{11. }%
 \CSLRightInline{Warburton, D. E. R. \& Bredin, S. S. D. Health benefits
 of physical activity: A systematic review of current systematic reviews.
 \emph{Curr Opin Cardiol} \textbf{32}, 541--556 (2017)
 doi:\href{https://doi.org/10.1097/HCO.0000000000000437}{10.1097/HCO.0000000000000437}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-strath_guide_2013}{}}%
-\CSLLeftMargin{11. }%
+\CSLLeftMargin{12. }%
 \CSLRightInline{Strath, S. J. \emph{et al.} Guide to the assessment of
 physical activity: Clinical and research applications: A scientific
 statement from the american heart association. \emph{Circulation}
@@ -4105,14 +4126,14 @@ statement from the american heart association. \emph{Circulation}
 doi:\href{https://doi.org/10.1161/01.cir.0000435708.67487.da}{10.1161/01.cir.0000435708.67487.da}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-arem_leisure_2015}{}}%
-\CSLLeftMargin{12. }%
+\CSLLeftMargin{13. }%
 \CSLRightInline{Arem, H. \emph{et al.} Leisure time physical activity
 and mortality: A detailed pooled analysis of the dose-response
 relationship. \emph{{JAMA} Intern Med} \textbf{175}, 959--967 (2015)
 doi:\href{https://doi.org/10.1001/jamainternmed.2015.0533}{10.1001/jamainternmed.2015.0533}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-rollo_whole_2020}{}}%
-\CSLLeftMargin{13. }%
+\CSLLeftMargin{14. }%
 \CSLRightInline{Rollo, S., Antsygina, O. \& Tremblay, M. S. The whole
 day matters: Understanding 24-hour movement guideline adherence and
 relationships with health indicators across the lifespan. \emph{Journal
@@ -4121,28 +4142,28 @@ of Sport and Health Science} \textbf{9}, 493--510 (2020) URL:
 Accessed 5 August 2023, 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-ma_sleep_2017}{}}%
-\CSLLeftMargin{14. }%
+\CSLLeftMargin{15. }%
 \CSLRightInline{Ma, G. Sleep, health, and society. \emph{Sleep medicine
 clinics} \textbf{12}, (2017) URL:
 \url{https://pubmed.ncbi.nlm.nih.gov/28159089/} Accessed 26 June 2023,
 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-worley_2018}{}}%
-\CSLLeftMargin{15. }%
+\CSLLeftMargin{16. }%
 \CSLRightInline{Worley, S. L. The Extraordinary Importance of Sleep: The
 Detrimental Effects of Inadequate Sleep on Health and Public Safety
 Drive an Explosion of Sleep Research. \emph{P \& T: A Peer-Reviewed
 Journal for Formulary Management} \textbf{43}, 758--763 (2018).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-matricciani_2019}{}}%
-\CSLLeftMargin{16. }%
+\CSLLeftMargin{17. }%
 \CSLRightInline{Matricciani, L., Paquet, C., Galland, B., Short, M. \&
 Olds, T. Children's sleep and health: A meta-review. \emph{Sleep
 Medicine Reviews} \textbf{46}, 136--150 (2019) URL:
 \url{https://www.sciencedirect.com/science/article/pii/S1087079219300188}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-scott_2021}{}}%
-\CSLLeftMargin{17. }%
+\CSLLeftMargin{18. }%
 \CSLRightInline{Scott, A. J., Webb, T. L., Martyn-St James, M., Rowse,
 G. \& Weich, S. Improving sleep quality leads to better mental health: A
 meta-analysis of randomised controlled trials. \emph{Sleep Medicine
@@ -4150,7 +4171,7 @@ Reviews} \textbf{60}, 101556 (2021) URL:
 \url{https://www.sciencedirect.com/science/article/pii/S1087079221001416}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-consensus_conference_panel_recommended_2015}{}}%
-\CSLLeftMargin{18. }%
+\CSLLeftMargin{19. }%
 \CSLRightInline{Consensus Conference Panel \emph{et al.} Recommended
 amount of sleep for a healthy adult: A joint consensus statement of the
 american academy of sleep medicine and sleep research society. \emph{J
@@ -4158,54 +4179,54 @@ Clin Sleep Med} \textbf{11}, 591--592 (2015)
 doi:\href{https://doi.org/10.5664/jcsm.4758}{10.5664/jcsm.4758}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-ji_2020}{}}%
-\CSLLeftMargin{19. }%
+\CSLLeftMargin{20. }%
 \CSLRightInline{Ji, A. \emph{et al.} Interactive effect of sleep
 duration and sleep quality on risk of stroke: An 8-year follow-up study
 in China. \emph{Scientific Reports} \textbf{10}, 8690 (2020) URL:
 \url{https://www.nature.com/articles/s41598-020-65611-y}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-hale_2020}{}}%
-\CSLLeftMargin{20. }%
+\CSLLeftMargin{21. }%
 \CSLRightInline{Hale, L., Troxel, W. \& Buysse, D. J. Sleep Health: An
 Opportunity for Public Health to Address Health Equity. \emph{Annual
 Review of Public Health} \textbf{41}, 81--99 (2020)
 doi:\href{https://doi.org/10.1146/annurev-publhealth-040119-094412}{10.1146/annurev-publhealth-040119-094412}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-shochat_2014}{}}%
-\CSLLeftMargin{21. }%
+\CSLLeftMargin{22. }%
 \CSLRightInline{Shochat, T., Cohen-Zion, M. \& Tzischinsky, O.
 Functional consequences of inadequate sleep in adolescents: a systematic
 review. \emph{Sleep Medicine Reviews} \textbf{18}, 75--87 (2014)
 doi:\href{https://doi.org/10.1016/j.smrv.2013.03.005}{10.1016/j.smrv.2013.03.005}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-kecklund_2016}{}}%
-\CSLLeftMargin{22. }%
+\CSLLeftMargin{23. }%
 \CSLRightInline{Kecklund, G. \& Axelsson, J. Health consequences of
 shift work and insufficient sleep. \emph{BMJ (Clinical research ed.)}
 \textbf{355}, i5210 (2016)
 doi:\href{https://doi.org/10.1136/bmj.i5210}{10.1136/bmj.i5210}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-obrien_2005}{}}%
-\CSLLeftMargin{23. }%
+\CSLLeftMargin{24. }%
 \CSLRightInline{O'Brien, E. M. \& Mindell, J. A. Sleep and risk-taking
 behavior in adolescents. \emph{Behavioral Sleep Medicine} \textbf{3},
 113--133 (2005) URL: \url{https://doi.org/10.1207/s15402010bsm0303_1}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-bonnet_1985}{}}%
-\CSLLeftMargin{24. }%
+\CSLLeftMargin{25. }%
 \CSLRightInline{Bonnet, M. H. Effect of sleep disruption on sleep,
 performance, and mood. \emph{Sleep} \textbf{8}, 11--19 (1985) URL:
 \url{https://doi.org/10.1093/sleep/8.1.11}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-connor_2002}{}}%
-\CSLLeftMargin{25. }%
+\CSLLeftMargin{26. }%
 \CSLRightInline{Connor, J. \emph{et al.} Driver sleepiness and risk of
 serious injury to car occupants: population based case control study.
 \emph{BMJ (Clinical research ed.)} \textbf{324}, 1125 (2002)
 doi:\href{https://doi.org/10.1136/bmj.324.7346.1125}{10.1136/bmj.324.7346.1125}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-dewald_2010}{}}%
-\CSLLeftMargin{26. }%
+\CSLLeftMargin{27. }%
 \CSLRightInline{Dewald, J. F., Meijer, A. M., Oort, F. J., Kerkhof, G.
 A. \& Bögels, S. M. The influence of sleep quality, sleep duration and
 sleepiness on school performance in children and adolescents: A
@@ -4214,14 +4235,14 @@ meta-analytic review. \emph{Sleep Medicine Reviews} \textbf{14},
 doi:\href{https://doi.org/10.1016/j.smrv.2009.10.004}{10.1016/j.smrv.2009.10.004}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-roth_1996}{}}%
-\CSLLeftMargin{27. }%
+\CSLLeftMargin{28. }%
 \CSLRightInline{Roth, T. \& Roehrs, T. A. Etiologies and sequelae of
 excessive daytime sleepiness. \emph{Clinical Therapeutics} \textbf{18},
 562--576 (1996) URL:
 \url{https://www.sciencedirect.com/science/article/pii/S0149291896802074}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-wang_2019}{}}%
-\CSLLeftMargin{28. }%
+\CSLLeftMargin{29. }%
 \CSLRightInline{Wang, H. \emph{et al.} Genome-wide association analysis
 of self-reported daytime sleepiness identifies 42 loci that suggest
 biological subtypes. \emph{Nature Communications} \textbf{10}, 3503
@@ -4229,19 +4250,11 @@ biological subtypes. \emph{Nature Communications} \textbf{10}, 3503
 doi:\href{https://doi.org/10.1038/s41467-019-11456-7}{10.1038/s41467-019-11456-7}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-reutrakul_2018}{}}%
-\CSLLeftMargin{29. }%
+\CSLLeftMargin{30. }%
 \CSLRightInline{Reutrakul, S. \& Van Cauter, E. Sleep influences on
 obesity, insulin resistance, and risk of type 2 diabetes.
 \emph{Metabolism: Clinical and Experimental} \textbf{84}, 56--66 (2018)
 doi:\href{https://doi.org/10.1016/j.metabol.2018.02.010}{10.1016/j.metabol.2018.02.010}.}
-
-\leavevmode\vadjust pre{\hypertarget{ref-cappuccio_sleep_2010}{}}%
-\CSLLeftMargin{30. }%
-\CSLRightInline{Cappuccio, F. P., D'Elia, L., Strazzullo, P. \& Miller,
-M. A. Sleep duration and all-cause mortality: A systematic review and
-meta-analysis of prospective studies. \emph{Sleep} \textbf{33}, 585--592
-(2010)
-doi:\href{https://doi.org/10.1093/sleep/33.5.585}{10.1093/sleep/33.5.585}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-jouxe3o_2018}{}}%
 \CSLLeftMargin{31. }%
@@ -4700,11 +4713,10 @@ analysis of multivariate observations. in vol. 5.1 281--298 (University
 of California Press, 1967). URL:
 \url{https://projecteuclid.org/ebooks/berkeley-symposium-on-mathematical-statistics-and-probability/Proceedings-of-the-Fifth-Berkeley-Symposium-on-Mathematical-Statistics-and/chapter/Some-methods-for-classification-and-analysis-of-multivariate-observations/bsmsp/1200512992}.}
 
-\leavevmode\vadjust pre{\hypertarget{ref-cox_regression_1958}{}}%
+\leavevmode\vadjust pre{\hypertarget{ref-McCullagh_1989}{}}%
 \CSLLeftMargin{92. }%
-\CSLRightInline{Cox, D. R. The regression analysis of binary sequences.
-\emph{Journal of the Royal Statistical Society: Series B
-(Methodological)} \textbf{20}, 215--232 (1958).}
+\CSLRightInline{McCullagh, P. \& Nelder, J. A. \emph{Generalized linear
+models}. (Chapman \& Hall / CRC, 1989).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-quinlan_1986}{}}%
 \CSLLeftMargin{93. }%
@@ -4712,11 +4724,13 @@ of California Press, 1967). URL:
 \emph{Machine Learning} \textbf{1}, 81--106 (1986) URL:
 \url{https://doi.org/10.1007/BF00116251}.}
 
-\leavevmode\vadjust pre{\hypertarget{ref-xgboost}{}}%
+\leavevmode\vadjust pre{\hypertarget{ref-Chen_xgboost_2016}{}}%
 \CSLLeftMargin{94. }%
-\CSLRightInline{Chen, T. \emph{et al.} \emph{Xgboost: Extreme gradient
-boosting}. (2023). URL:
-\url{https://CRAN.R-project.org/package=xgboost}.}
+\CSLRightInline{Chen, T. \& Guestrin, C. {XGBoost}: A scalable tree
+boosting system. in \emph{Proceedings of the 22nd ACM SIGKDD
+international conference on knowledge discovery and data mining}
+785--794 (ACM, 2016). URL:
+\url{http://doi.acm.org/10.1145/2939672.2939785}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-graves_2005}{}}%
 \CSLLeftMargin{95. }%
@@ -5223,8 +5237,14 @@ Descent. \emph{Journal of Statistical Software} \textbf{33}, 1--22
 statistics with s}. (Springer, 2002). URL:
 \url{https://www.stats.ox.ac.uk/pub/MASS4/}.}
 
-\leavevmode\vadjust pre{\hypertarget{ref-chawla_smote_2002}{}}%
+\leavevmode\vadjust pre{\hypertarget{ref-xgboost}{}}%
 \CSLLeftMargin{161. }%
+\CSLRightInline{Chen, T. \emph{et al.} \emph{Xgboost: Extreme gradient
+boosting}. (2023). URL:
+\url{https://CRAN.R-project.org/package=xgboost}.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-chawla_smote_2002}{}}%
+\CSLLeftMargin{162. }%
 \CSLRightInline{Chawla, N. V., Bowyer, K. W., Hall, L. O. \& Kegelmeyer,
 W. P. {SMOTE}: Synthetic minority over-sampling technique. \emph{Journal
 of Artificial Intelligence Research} \textbf{16}, 321--357 (2002) URL:
@@ -5232,44 +5252,44 @@ of Artificial Intelligence Research} \textbf{16}, 321--357 (2002) URL:
 June 2023, 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-themis}{}}%
-\CSLLeftMargin{162. }%
+\CSLLeftMargin{163. }%
 \CSLRightInline{Hvitfeldt, E. \emph{Themis: Extra recipes steps for
 dealing with unbalanced data}. (2023). URL:
 \url{https://CRAN.R-project.org/package=themis}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-kushida_comparison_2001}{}}%
-\CSLLeftMargin{163. }%
+\CSLLeftMargin{164. }%
 \CSLRightInline{Kushida, C. A. \emph{et al.} Comparison of actigraphic,
 polysomnographic, and subjective assessment of sleep parameters in
 sleep-disordered patients. \emph{Sleep Med} \textbf{2}, 389--396 (2001)
 doi:\href{https://doi.org/10.1016/s1389-9457(00)00098-8}{10.1016/s1389-9457(00)00098-8}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-rcoreteam_2023}{}}%
-\CSLLeftMargin{164. }%
+\CSLLeftMargin{165. }%
 \CSLRightInline{R Core Team. \emph{R: A language and environment for
 statistical computing}. (R Foundation for Statistical Computing, 2023).
 URL: \url{https://www.R-project.org/}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-wickham_tidyverse_2019}{}}%
-\CSLLeftMargin{165. }%
+\CSLLeftMargin{166. }%
 \CSLRightInline{Wickham, H. \emph{et al.} Welcome to the tidyverse.
 \emph{Journal of Open Source Software} \textbf{4}, 1686 (2019)
 doi:\href{https://doi.org/10.21105/joss.01686}{10.21105/joss.01686}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-vanrossum_python_2009}{}}%
-\CSLLeftMargin{166. }%
+\CSLLeftMargin{167. }%
 \CSLRightInline{Van Rossum, G. \& Drake, F. L. \emph{Python 3 reference
 manual}. (CreateSpace, 2009).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-paszke_pytorch_2019}{}}%
-\CSLLeftMargin{167. }%
+\CSLLeftMargin{168. }%
 \CSLRightInline{Paszke, A. \emph{et al.} PyTorch: An imperative style,
 high-performance deep learning library. in 80248035 (Curran Associates,
 Inc., 2019). URL:
 \url{http://papers.neurips.cc/paper/9015-pytorch-an-imperative-style-high-performance-deep-learning-library.pdf}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-patterson_40_2023}{}}%
-\CSLLeftMargin{168. }%
+\CSLLeftMargin{169. }%
 \CSLRightInline{Patterson, M. R. \emph{et al.} 40 years of actigraphy in
 sleep medicine and current state of the art algorithms. \emph{npj Digit.
 Med.} \textbf{6}, 1--7 (2023) URL:
@@ -5277,7 +5297,7 @@ Med.} \textbf{6}, 1--7 (2023) URL:
 2023, 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-plekhanova_validation_2023}{}}%
-\CSLLeftMargin{169. }%
+\CSLLeftMargin{170. }%
 \CSLRightInline{Plekhanova, T. \emph{et al.} Validation of an automated
 sleep detection algorithm using data from multiple accelerometer brands.
 \emph{J Sleep Res} \textbf{32}, e13760 (2023)

@@ -1,0 +1,14 @@
+---
+title: "Declarations of co-authorship"
+format: pdf
+editor: visual
+include-in-header:
+  text: |
+    \usepackage{pdfpages}
+---
+
+\includepdf[pages=-]{/home/esbenlykke/projects/thesis/misc_docs/declarations_of_co-authorship/co-authorship_manus1_JSP_NCM_AG_JCB.pdf}
+
+\includepdf[pages=-]{/home/esbenlykke/projects/thesis/misc_docs/declarations_of_co-authorship/co-authorship_manus2_AG_NHP_KTL_JCB_MR.pdf}
+
+\includepdf[pages=-]{/home/esbenlykke/projects/thesis/misc_docs/declarations_of_co-authorship/co-authorship_manus3_JSP_SOS_AG_SRM_plk_JCB.pdf}

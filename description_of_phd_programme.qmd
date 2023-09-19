@@ -15,10 +15,10 @@ csl: nature.csl
 ```{=tex}
 \begingroup
 ```
-\footnotesize
+\scriptsize
 
 | ECTS | Start Date | End Date   | Course Name                                                                      |
-|------|------------|------------|----------------------------------------------------------------------------------|
+|-------------|-------------|-------------|-----------------------------------|
 | 1,5  | 13.05.2020 | 14.05.2020 | Introduction to "R"                                                              |
 | 0,7  | 02.12.2020 | 02.12.2020 | Introduction to Health Research                                                  |
 | 5,0  | 17.09.2020 | 28.10.2020 | Biostatistics I                                                                  |
@@ -32,29 +32,37 @@ csl: nature.csl
 | 2,0  | 01.09.2021 |            | Time Series Modeling and Analytics                                               |
 | 6,4  | 07.04.2021 | 28.04.2021 | Basic Biostatistics - part 2                                                     |
 
+: {tbl-colwidths="\[10, 10, 10, 70\]"}
+
 ```{=tex}
 \endgroup
 ```
-# Teaching Activities
+# Teaching Activities and # Knowledge Dissemination Activities
+
+During my PhD, I have taught several different courses. The courses are listed below.
 
 ```{=tex}
 \begingroup
 ```
-\footnotesize
+\scriptsize
 
-| Year        | Course                                               | Role                      |
-|-------------|------------------------------------------------------|---------------------------|
-| 2022---2023 | Data Science in Health Science (MSc course)          | Instructor and Censor     |
-| 2020---2022 | Applied Statistics (BSc course)                      | Instructor                |
-| 2020        | Project Managment with External Partner (BSc course) | Instructor and Examinator |
-| 2020        | Public health projects in practice (BSc course)      | Instructor and Examinator |
+| Year        | Course                                                                                  | Role                      |
+|------------------|-------------------------------------|------------------|
+| 2023 | Basic data science skills for health researchers using R and the Tidyverse (PhD course) | Instructor\*              |
+| 2022---2023 | Data Science in Health Science (MSc course)                                             | Instructor and Censor     |
+| 2020---2022 | Applied Statistics (BSc course)                                                         | Instructor                |
+| 2020        | Project Managment with External Partner (BSc course)                                    | Instructor and Examinator |
+| 2020        | Public health projects in practice (BSc course)                                         | Instructor and Examinator |
+
+: {tbl-colwidths="\[10, 70, 20\]"}
+
+\* Due to a sick leave, I was not able to attend the class in person, however, I took part in the planning of the course and had prepared material for my own teaching.
 
 ```{=tex}
 \endgroup
 ```
-# Knowledge Dissemination Activities
 
-## PhD Publications
+# PhD Publications
 
 The following papers has been published in Sensors[@skovgaard_manual_2021] and Scientific Reports[@skovgaard_generalizability_2023]. \bigskip
 
@@ -63,4 +71,6 @@ The following papers has been published in Sensors[@skovgaard_manual_2021] and S
 
 The results of my research has been presented to our research group on a timely basis, on seminars and to students on some of my courses.
 
-I have had no collaborations with other research environments during my PhD. I have only had discussions with researchers from within my field.
+# Contact with other research environments
+
+Due to a maternity leave, the effects of COVID19, and a sick leave combined with having a four small children including a child that needs special care, I have not had a research stay abroad or in another research environment during my PhD. Nevertheless, during the preproratory phase of my PhD, I co-first aurthored a review paper as a member of the INTERLIVES network group which is a joint European initiative of six universities and Huawei.
