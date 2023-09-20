@@ -47,7 +47,7 @@ tbl_man_describe <-
     Population = c(rep("Children", 3), rep("Adults", 7)),
     Characteristic = c(
       "N", "Gender (% female)", "Age (years)",
-      "N", "Gender (% female)", "Age (years)", "Education Level",
+      "N", "Gender (% female)", "Age (years)", "ISCE",
       "0–3 (%)", "4–6 (%)", "7–8 (%)"
     ),
     Value = c(
@@ -80,8 +80,9 @@ tbl_icc_zm_man <-
       "(0.97; 0.99)", "(0.96; 0.98)", "(0.97; 0.99)", "(0.95; 0.98)"
     )
   ) %>%
+  unite("ICC (95% CI)", c(ICC, "95% CI"), sep = " ", remove = TRUE) %>% 
   gt(groupname_col = c("Timepoint")) %>%
-  cols_label(Round = "")
+  cols_label(Round = "", Action = "")
 
 
 # table 4 -----------------------------------------------------------------
