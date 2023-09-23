@@ -32,4 +32,4 @@ vi_scores %>%
     )
 
 
-ggsave(filename = "figures/paper2_vip.pdf", width = 12.5, height = 6, units = "cm", dpi = 600)
+ggsave(filename = "figures/paper2_vip.pdf", width = 10, height = 4, units = "cm", dpi = 600)

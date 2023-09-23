@@ -169,7 +169,7 @@ p4 <-
 
 ridge_plot <- (p2 / p1 / p4 / p3) +
   plot_layout(guides = "collect") &
-  scale_fill_npg(labels = c("Self-report", "Manual, Round 1", "Manual, round 2"),
+  scale_fill_npg(labels = c("Manual, Round 1", "Manual, round 2", "Self-report"),
                        name = NULL) &
   theme_tufte() &
   theme(

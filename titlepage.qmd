@@ -1,5 +1,5 @@
 ---
-title: "Enhancing the Accuracy and Efficiency of Sleep and Physical Activity Monitoring through Innovative Techniques Utilizing Free-Living Accelerometer Data"
+title: "Accelerometry- and temperature-based algorithms to Assess Sleep HabitsAmong Danish Children and Adolescence"
 subtitle: "PhD Thesis\nOctober 2023"
 author:
   name: "Esben Høegholm Lykke"

@@ -81,8 +81,17 @@ tbl_icc_zm_man <-
     )
   ) %>%
   unite("ICC (95% CI)", c(ICC, "95% CI"), sep = " ", remove = TRUE) %>% 
-  gt(groupname_col = c("Timepoint")) %>%
-  cols_label(Round = "", Action = "")
+  pivot_wider(names_from = c("Timepoint", "Round"), values_from = "ICC (95% CI)") %>% 
+  gt() %>% 
+  tab_spanner(label = "Baseline (N = 110)", columns = 2:3) %>%
+  tab_spanner(label = "Followup (N = 62)", columns = 4:5) %>% 
+  # tab_spanner(label = "Round 1", columns = c(2, 4)) %>%
+  # tab_spanner(label = "Round 2", columns = c(3, 5)) %>%
+  cols_label(Action = "",
+             "Baseline (n = 94 Nights)_Round 1" = "Round 1",
+             "Baseline (n = 94 Nights)_Round 2" = "Round 2",
+             "Follow-Up (n = 54 Nights)_Round 1" = "Round 1",
+             "Follow-Up (n = 54 Nights)_Round 2" = "Round 2")
 
 
 # table 4 -----------------------------------------------------------------
@@ -90,13 +99,13 @@ tbl_icc_zm_man <-
 tbl_icc_self_zm <-
   tibble(
     Measurement = c("To bed", "Out of bed"),
-    `ICC (95% CI)` = c("0.98 (0.98; 0.99)", "0.98 (0.97; 0.99)"),
-    ` ICC (95% CI)` = c("0.96 (0.94; 0.98)", "0.98 (0.96; 0.99)")
+    "Baseline (N = 94)" = c("0.98 (0.98; 0.99)", "0.98 (0.97; 0.99)"),
+    "Followup (N = 54)" = c("0.96 (0.94; 0.98)", "0.98 (0.96; 0.99)")
   ) %>%
   gt() %>%
-  cols_label(Measurement = "") %>%
-  tab_spanner(label = "Baseline (N = 94)", columns = 2) %>%
-  tab_spanner(label = "Followup (N = 54)", columns = 3)
+  cols_label(Measurement = "") 
+  # tab_spanner(label = "Baseline (N = 94)", columns = 2) %>%
+  # tab_spanner(label = "Followup (N = 54)", columns = 3)
 
 
 # table 5 -----------------------------------------------------------------
@@ -104,15 +113,22 @@ tbl_icc_self_zm <-
 tbl_icc_man_man <-
   tibble(
     Metric = rep(c("To bed", "Out of bed"), times = 4),
-    Phase = c(rep("Baseline", times = 4), rep("Follow-Up", times = 4)),
+    Phase = c(rep("Baseline (N = 110)", times = 4), rep("Follow-Up (N = 62)", times = 4)),
     Round = rep(rep(c("Round 1", "Round 2"), each = 2), times = 2),
     "ICC (95% CI)" = c(
       "0.91 (0.88; 0.94)", "0.93 (0.9; 0.95)", "0.92 (0.89; 0.94)", "0.97 (0.96; 0.98)",
       "0.94 (0.9; 0.96)", "0.97 (0.96; 0.98)", "0.97 (0.95; 0.98)", "0.98 (0.98; 0.99)"
     )
   ) %>%
-  gt(groupname_col = "Phase") %>%
-  cols_label(Metric = "")
+  pivot_wider(names_from = c("Phase", "Metric"), values_from = "ICC (95% CI)") %>% 
+  gt() %>%
+  tab_spanner(label = "Baseline (N = 110)", columns = 2:3) %>%
+  tab_spanner(label = "Followup (N = 62)", columns = 4:5) %>% 
+  cols_label(Round = "",
+             "Baseline (N = 110)_To bed" = "To Bed",
+             "Baseline (N = 110)_Out of bed" = "Out of Bed",
+             "Follow-Up (N = 62)_To bed" = "To Bed",
+             "Follow-Up (N = 62)_Out of bed" = "Out of Bed")
 
 
 # table 6 -----------------------------------------------------------------
@@ -146,10 +162,10 @@ tbl_icc_test_retest <-
   gt(groupname_col = c("")) %>%
   cols_label(
     Rater = "",
-    "To Bed_Baseline" = "To Bed\nICC (CI 95%)",
-    "Out of Bed_Baseline" = "Out of Bed\nICC (CI 95%)",
-    "To Bed_Follow-Up" = "To Bed\nICC (CI 95%)",
-    "Out of Bed_Follow-Up" = "Out of Bed\nICC (CI 95%)"
+    "To Bed_Baseline" = "To Bed",
+    "Out of Bed_Baseline" = "Out of Bed",
+    "To Bed_Follow-Up" = "To Bed",
+    "Out of Bed_Follow-Up" = "Out of Bed"
   ) %>%
   tab_spanner(label = "Baseline (N = 110)", columns = 2:3) %>%
   tab_spanner(label = "Followup (N = 62)", columns = 4:5)
@@ -210,7 +226,7 @@ tbl_8 <-
 nw_thigh_hip <- read_rds("data/nw_episodes_thigh_hip.rds")
 nw_wrist <- read_rds("data/nw_episodes_wrist.rds")
 
-tbl_9 <- 
+tbl_9 <-
   nw_thigh_hip %>%
   bind_rows(nw_wrist) %>%
   mutate(
@@ -221,13 +237,14 @@ tbl_9 <-
   group_by(location, group_duration) %>%
   summarise(
     mean = mean(duration),
-    duration_total = sum(duration)
+    duration_total = sum(duration) / 60 
   ) %>%
-  mutate(duration_prop = duration_total / sum(duration_total)) %>%
+  mutate(duration_prop = round((duration_total / sum(duration_total)) * 100, digits = 1),
+         across(mean:duration_total, ~round(.x, digits = 0))) %>% 
   group_by(group_duration) %>%
   gt() %>%
-  fmt_number(columns = mean:duration_total, decimals = 0) %>%
-  fmt_percent(duration_prop, decimals = 1) %>%
+  # fmt_number(columns = mean:duration_total, decimals = 0) %>%
+  # fmt_percent(duration_prop, decimals = 1) %>%
   # tab_header(
   #   title = "Overview of non-wear episodes",
   #   subtitle = "Grouped in short and long non-wear episodes"
@@ -240,9 +257,9 @@ tbl_9 <-
   #              locations = cells_column_labels(5)) %>% 
   cols_label(
     location = "Wear location",
-    mean = "Mean¹",
-    duration_total = "Cumulated¹",
-    duration_prop = "Proportion²") 
+    mean = "Mean (min)",
+    duration_total = "Cumulated (hrs)",
+    duration_prop = "Proportion (%)") 
 
 
 # table 10 ----------------------------------------------------------------
@@ -296,13 +313,14 @@ tbl_11 <-
                       model == "log_reg" ~ "Logistic Regression",
                       model == "mlp" ~ "Feed-Forward Neural Net",
                       model == "xgboost" ~ "XGBoost",
-                      TRUE ~ model)
+                      TRUE ~ model),
+    across(where(is.numeric), ~ round(.x, digits = 1))
   ) %>%
   select(-.estimator) %>%
   pivot_wider(names_from = .metric, values_from = .estimate) %>%
   gt() %>%
-  cols_label(model = "") %>% 
-  fmt_number(decimals = 1) 
+  cols_label(model = "") 
+  # fmt_number(decimals = 1) 
 
 
 # table 12 ----------------------------------------------------------------
@@ -326,12 +344,13 @@ tbl_12 <-
     .metric = factor(.metric,
                      levels = c("f_meas", "precision", "npv", "sensitivity", "specificity"),
                      labels = c("F1 Score", "Precision", "NPV", "Sensitivity", "Specificity")
-    )
+    ),
+    across(where(is.numeric), ~ round(.x, digits = 1))
   ) %>% 
   pivot_wider(names_from = .metric, values_from = .estimate) %>%
   rename_with(.cols = "F1 Score":"Specificity", ~ paste(.x, "(%)")) %>% 
   gt(groupname_col = "group") |>
-  fmt_number(everything(), decimals = 1) %>% 
+  # fmt_number(everything(), decimals = 1) %>% 
   tab_options(table.font.names = "ibm") |>
   cols_width(everything() ~ px(140)) |>
   cols_align(align = "left", columns = 1:2) %>%
@@ -400,11 +419,11 @@ tbl_13 <-
       variable == "WASO" ~ "WASO (min)"
     )
   ) %>%
-  gt(groupname_col = c("type", "model")) %>%
+  gt(groupname_col = c("type", "variable")) %>%
   cols_label(
     bias = "Bias (95% CI)", lower_loa = "lower LOA (95% CI)",
     upper_loa = "upper LOA (95% CI)", pearson = md("Pearson, _r_ (95% CI)"),
-    variable = ""
+    model = ""
   ) %>%
   cols_align(align = "right", columns = bias:pearson) %>%
   cols_width(variable ~ px(200)) %>%
