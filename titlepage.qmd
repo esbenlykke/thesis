@@ -1,16 +1,17 @@
 ---
-title: "Accelerometry- and temperature-based algorithms to Assess Sleep HabitsAmong Danish Children and Adolescence"
-subtitle: "PhD Thesis\nOctober 2023"
+title: "Accelerometry- and temperature-based algorithms to Assess Sleep Habits Among Danish Children and Adolescence"
+subtitle: |
+  PhD Thesis -- October 2023
 author:
   name: "Esben Høegholm Lykke"
   affiliation: 
-    name: "Research Unit for Exercise Epedimiology, Centre of Research in Childhood Health, Department of Sports Science and Clinical Biomechanics, University of Southern Denmark, 5230 Odense, Denmark"
+    name: "Research Unit for Exercise Epedimiology, Centre of Research in Childhood Health, Department of Sports Science and Clinical Biomechanics, University of Southern Denmark"
 format: 
   titlepage-pdf:
     titlepage: academic
     titlepage-header: "University of Southern Denmark"
     titlepage-logo: "img/SDU_BLACK_RGB.png"
-    mainfont: EB Garamond
+    mainfont: Zilla Slab Light
     sansfont: Montserrat
     fontsize: 8pt
     geometry:

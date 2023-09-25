@@ -372,34 +372,24 @@ accelerometers are based on data from wrist-worn and hip-worn devices,
 while data from thigh-worn accelerometers remains largely untapped for
 sleep estimation.
 
-\textbf{Aims:} This thesis has the following objectives. Firstly, we
-will assess the accuracy of manual annotation of bedtime in raw
-accelerometer data compared to EEG-based bedtime and sleep diaries.
+\textbf{Objectives:} Firstly, we will assess the accuracy of manual
+annotation of in-bed time in raw accelerometer data compared to in- bed
+time as determined by sleep diaries and an EEG-based sleep monior.
 Secondly, we will assess heuristic algorithms and machine learning
 models for detecting non-wear. Finally, we will develop machine learning
 models for sleep classification and the estimation of sleep quality
 metrics using data from thigh-worn accelerometers and compare them with
-EEG-based sleep recordings. Overall, this thesis aims to understand the
-potential and challenges of using machine learning to estimate sleep via
-accelerometry.
+EEG-based sleep recordings.
 
-\textbf{Methods:} The data for the papers included in this thesis are
-sourced from the SCREENS pilot trial (paper I), the PHASAR study, and an
-internal validation study (paper II), as well as the SCREENS trial
-(paper III). Accelerometer data, sleep recordings, and diaries of
-bedtimes are used from the SCREENS experiments, while PHASAR and the
-internal validation study provide accelerometer data. All accelerometer
-data were collected using Axivity AX3 triaxial accelerometers, and sleep
-was recorded using the EEG-based Zmachine® Insight+ system.
-
-For paper I, accelerometer data from the hip and thigh of 14 children
-and 19 adults were used. Using Audacity, an open-source audio editing
-program, three raters annotated each accelerometer recording by marking
-the times when the person went to bed and when they got out of bed. Two
-rounds of annotations were performed to test reliability. The manual
-annotations were evaluated against both sleep log and EG-based sleep
-recordings. Concordance and agreement was evaluated using the intraclass
-correlation coefficient and Bland-Altman analyses.
+\textbf{Methods:} For Paper I, accelerometer data from the hip and thigh
+of 14 children and 19 adults were used. Using Audacity, an open-source
+audio editing program, three raters annotated each accelerometer
+recording by marking the times when the person went to bed and when they
+got out of bed. Two rounds of annotations were performed to test
+reliability. The manual annotations were evaluated against both sleep
+log and EG-based sleep recordings. Concordance and agreement was
+evaluated using the intraclass correlation coefficient and Bland-Altman
+analyses.
 
 Paper II used accelerometer data from sensors placed on the wrist,
 thigh, and hip. In data from 64 PHASAR participants and 42 participants
@@ -414,57 +404,42 @@ External validation was performed on wrist data from all 42 participants
 from the internal validation study. All included algorithms and models
 were evaluated using metrics derived from confusion matrices.
 
-For paper III, accelerometry and EEG-based sleep recordings from
-children aged 4-17 years were used. The predicted sleep stage classes
-from the EEG-based sleep recording were reduced to ``awake'' and
-``sleep'', as information about sleep stages is not relevant for
-generating the sleep quality metrics of interest for this thesis. Data
-preprocessing included a low-pass Butterworth filter, removal of periods
-non-wear using the method described paper II, and a set of 64 predictors
-were constructed. Sleep recordings were median filtered in 5 and
-10-minute windows before models were trained to better capture true
-awakenings. Two model strategies were used, a sequential approach with
-four types of binary classification models, and the other strategy used
-a multi-class model. Data for the four pairs of sequential models were
-divided into training and test sets, and hyperparameter optimization was
-performed using ten-fold Monte Carlo cross-validation. An imbalance in
-training data was addressed using the synthetic minority oversampling
-technique. Data for training the multi-class model was split in a ratio
-of 50/25/25 for training, validation, and testing. For both strategies,
-the F1 score was used as an optimization target. To evaluate the
-performance of all models, metrics derived from confusion matrices were
-used, and to understand the effectiveness of our models in estimating
-sleep quality measures, Bland-Altman plots and Pearson correlations were
-used. The following sleep quality measures were evaluated: sleep period
-time, total sleep time, sleep efficiency, latency until persistent
-sleep, and wake after sleep onset.
+For Paper III, accelerometry and EEG-based sleep recordings from
+children aged 4-17 years were used. Data preprocessing included a
+low-pass Butterworth filter, removal of non-wear periods using the
+method described paper II, and a set of 64 predictors were extracted.
+Sleep recordings were median filtered in 5 and 10-minute windows before
+models were trained to better capture true awakenings. Two model
+strategies were used, a sequential approach with four pairs of binary
+classification models, and the other strategy used a multi-class model.
+Hyperparameter optimization was performed using ten-fold Monte Carlo
+cross-validation on the binary classifiers. Class imbalance was
+addressed using the synthetic minority oversampling technique. Data for
+training the multi-class model was split in a ratio of 50/25/25 for
+training, validation, and testing. For both strategies, the F1 score was
+used as an optimization target. Confusion matrix derivatives were used
+to assess epoch-to-epoch performance, and agreements on sleep quality
+metrics were assessed using Bland-Altman plots and Pearson correlations.
 
-\textbf{Results:} In paper 1, we compared manual annotations of three
-expert raters of in-bed timestamps with EEG-based and sleep diary in-bed
-timestamps. The results indicated excellent inter- and intra-rater
-agreement. Furthermore, the Bland--Altman limits of agreement were
-approximately ±30 min, showcasing only a minimal mean bias of manual
-annotation compared to EEG-based and sleep diary in-bed timestamps.
+\textbf{Results:} The results of Paper I indicated excellent inter- and
+intra-rater agreement. Furthermore, the Bland--Altman limits of
+agreement were approximately ±30 min, showcasing only a minimal mean
+bias of manual annotation compared to EEG-based and sleep diary in-bed
+timestamps.
 
-In paper 2, our focus was on non-wear detection. For non-wear periods
-longer than 60 minutes, the established consecutive zeros algorithms
-were the most effective, registering F1-scores above 0.96. However, for
-durations shorter than 60 minutes, decision trees stood out, achieving
-F1-scores of over 0.74 across all sensor locations. Notably, the newly
-developed deep learning and random forests models couldn't match these
-performances.
-
-Paper 3 examined sleep classification and the estimation of sleep
-quality metrics using thigh-worn accelerometers. Here, the XGBoost model
-excelled, especially when analyzing 5-minute filtered data. The model
-demonstrated only small discrepancies in several sleep quality metrics:
-sleep period time (0.2 minutes), total sleep time (-7.0 minutes), sleep
-efficiency (-1.1\%), and wake after sleep onset (-0.9 minutes).
-Additionally, this model exhibited a moderate correlation of 0.66 with
-total sleep time. It's worth noting that the limits of agreement in our
-findings mirrored those in previous studies on hip and wrist devices.
-Specifically, total sleep time exhibited LoAs of (95\%CI): -95.5 (-105.2
-to -88) minutes to 81.4 (72.4 to 92.5) minutes.
+In Paper II, for detecting non-wear periods longer than 60 minutes, the
+established consecutive zeros algorithms were the most effective,
+registering F1-scores above 0.96. However, for durations shorter than 60
+minutes, decision trees stood out, achieving F1-scores of over 0.74
+across all sensor locations. Notably, the recently published deep
+learning and random forests models could not match this performance. In
+Paper III the XGBoost model performed the best when compared to an
+EEG-based sleep monitor in detecting sleep. The model demonstrated small
+biases in sleep period time (0.2 minutes), total sleep time (-7.0
+minutes), sleep efficiency (-1.1\%), and wake after sleep onset (-0.9
+minutes). The model showed a 0.66 correlation with total sleep time. Our
+limits of agreement for total sleep time, ranging from -95.5 to 81.4
+minutes, were consistent with previous studies on hip and wrist devices.
 
 \textbf{Conclusions:} Overall, the findings of this thesis underscore
 the reliability and precision of emerging technological methods in sleep
@@ -1021,9 +996,9 @@ full potential of this data. This makes a shift towards machine learning
 methods increasingly crucial, as they offer advanced tools for analyzing
 these vast datasets.
 
-\hypertarget{machine-learning-and-its-use-with-accelerometry}{%
-\section{Machine Learning and Its Use With
-Accelerometry}\label{machine-learning-and-its-use-with-accelerometry}}
+\hypertarget{machine-learning-to-detect-sleep}{%
+\section{Machine Learning To Detect
+Sleep}\label{machine-learning-to-detect-sleep}}
 
 Machine learning, a subfield of artificial intelligence, focuses on the
 development of algorithms that enable computers to learn from and make
@@ -1276,10 +1251,34 @@ further complicating the data quality. These seemingly minor missteps
 can lead to substantial data inaccuracies, casting doubts on the ensuing
 analyses and findings.
 
+Detecting non-wear time is an important initial step in acceleromtry
+data processing that demands careful decision-making. Typically, the
+software chosen for analyzing accelerometer data incorporates these
+non-wear detection algorithms. For instance, the GGIR package, which is
+open-source, determines non-wear time using the raw data's standard
+deviation and value range from each accelerometer
+axis\textsuperscript{\protect\hyperlink{ref-migueles_ggir_2019}{101}}.
+Meanwhile, Actilife, a proprietary software by Actigraph device's
+creators, provides a selection of algorithms grounded on
+Actigraph-specific activity counts. Once non-wear detection is complete,
+a decision is needed regarding the necessary wear time for a day to be
+deemed valid. The broadly accepted threshold is 600 minutes or 10
+hours\textsuperscript{\protect\hyperlink{ref-migueles_accelerometer_2017}{63}}.
+An alternative approach offered by the GGIR package involves
+substituting the non-wear segments with imputed values. These values are
+computed based on the average of the same time point from other
+measurement
+days\textsuperscript{\protect\hyperlink{ref-migueles_ggir_2019}{101}}.
+For the final analysis, the general criteria for participant inclusion
+involve having at least four valid days of data. Of these, it's
+imperative to have data from at least one weekend day. It's also
+essential to understand that the proper use and placement of
+accelerometers play a crucial role in data accuracy.
+
 As outlined in previous sections, accelerometry-based activity monitors
 have proven their worth by providing objective data on movement
 intensity in a cost-effective manner while minimizing participant
-burden\textsuperscript{\protect\hyperlink{ref-dowd_systematic_2018}{101}--\protect\hyperlink{ref-migueles_comparability_2019}{104}}.
+burden\textsuperscript{\protect\hyperlink{ref-dowd_systematic_2018}{102}--\protect\hyperlink{ref-migueles_comparability_2019}{105}}.
 However, challenges emerge when considering non-wear time, the intervals
 during which devices aren't worn due to activities like swimming,
 sleeping, certain sports, or sensor malfunctioning or other unforeseen
@@ -1287,36 +1286,45 @@ incidences. This non-wear time introduces what can be equated to
 `missing data' in the dataset. Such missing data could be overlooked or
 replaced using statistical imputations like zero-inflated Poisson and
 Log-normal
-distributions\textsuperscript{\protect\hyperlink{ref-lee_missing_2018}{105}}.
+distributions\textsuperscript{\protect\hyperlink{ref-lee_missing_2018}{106}}.
 Yet, this process is not without its pitfalls, as imputation might
-infuse biases rooted in data assumptions. The importance of an accurate
-classification of non-wear time thus gains paramount significance,
-ensuring the data quality remains pristine, especially in free-living
-scenarios.
+infuse biases rooted in data assumptions. Additionally, distinguishing
+between non-wear periods and actual sleep periods is crucial for
+accurate
+analysis\textsuperscript{\protect\hyperlink{ref-choi_validation_2011}{107},\protect\hyperlink{ref-winkler_identifying_2016}{108}}.
+When calculating secondary parameters for physical activity, especially
+in expansive datasets, automatic wear time detection becomes
+pivotal\textsuperscript{\protect\hyperlink{ref-matthews_2002}{109}}. Any
+misclassification, like erroneously marking sleep or sedentary behavior
+as non-wear, can distort physical activity (PA) estimates, jeopardizing
+the reliability of accelerometer-derived PA
+metrics\textsuperscript{\protect\hyperlink{ref-king_2011}{110}}. Hence,
+achieving precise non-wear time classification is of utmost importance
+to maintain data quality, particularly in real-world settings.
 
 To circumvent this classification challenge, some research methods
 require subjects to maintain a log diary of all non-wear periods, an
 approach that is susceptible to errors and can be taxing on
-participants\textsuperscript{\protect\hyperlink{ref-ainsworth_recommendations_2012}{106}}.
+participants\textsuperscript{\protect\hyperlink{ref-ainsworth_recommendations_2012}{111}}.
 Seeking better accuracy, the scientific community turned to both
 rule-based methods and more advanced algorithms. A notable early method
 designed for ActiGraph counts data would identify non-wear time when
 consecutive zero counts surpassed a certain
-duration\textsuperscript{\protect\hyperlink{ref-hecht_methodology_2009}{107}--\protect\hyperlink{ref-troiano_how_2020}{109}}.
+duration\textsuperscript{\protect\hyperlink{ref-hecht_methodology_2009}{112}--\protect\hyperlink{ref-troiano_how_2020}{114}}.
 But even a minor tweak in this duration threshold could sway the results
 by a notable
-10\%\textsuperscript{\protect\hyperlink{ref-aadland_comparison_2018}{110}}.
+10\%\textsuperscript{\protect\hyperlink{ref-aadland_comparison_2018}{115}}.
 The field also grappled with proprietary algorithms that not only lacked
 transparency but also were affected by factors like age and obesity.
 These variables subsequently hindered the comparability across multiple
-studies\textsuperscript{\protect\hyperlink{ref-toftager_accelerometer_2013}{111}}.
+studies\textsuperscript{\protect\hyperlink{ref-toftager_accelerometer_2013}{116}}.
 
 But technology, being ever-evolving, introduced accelerometers capable
 of storing raw acceleration data. This leap promised enhanced
 granularity of data and a more precise non-wear period classification.
 Algorithms soon popped up aiming to decode non-wear time from this raw
 data, with some even harnessing skin temperature measurements for better
-results\textsuperscript{\protect\hyperlink{ref-duncan_wear-time_2018}{112}--\protect\hyperlink{ref-zhou_classification_2015}{114}}.
+results\textsuperscript{\protect\hyperlink{ref-duncan_wear-time_2018}{117}--\protect\hyperlink{ref-zhou_classification_2015}{119}}.
 These heuristic approaches are generalizable across various populations,
 device brands, and wear-sites. In this setting, the term
 ``generalizability'' refers to how a model performs when applied to
@@ -1332,7 +1340,7 @@ machine learning models that improves with increasing amounts of data.
 With the progress in technology, machine learning methods such as random
 forests\textsuperscript{\protect\hyperlink{ref-sundararajan_sleep_2021}{98}}
 and deep
-learning\textsuperscript{\protect\hyperlink{ref-syed_novel_2021}{115}}
+learning\textsuperscript{\protect\hyperlink{ref-syed_novel_2021}{120}}
 entered the scene, aimed at classifying non-wear using raw accelerometer
 data. However, these models must balance between variance and bias.
 While high bias results in underfitting, high variance leads to
@@ -1345,7 +1353,7 @@ methods. But often, this step is overlooked either due to limited
 out-of-distribution data or the intent to harness all data for training.
 Some studies have tried blending surface skin temperature with raw
 acceleration data for non-wear
-classification\textsuperscript{\protect\hyperlink{ref-zhou_classification_2015}{114}},
+classification\textsuperscript{\protect\hyperlink{ref-zhou_classification_2015}{119}},
 yet the broader implications of this combination using machine learning
 are still unexplored. Despite these strides in technology and
 methodology, the perfect classification of non-wear time in raw
@@ -1367,7 +1375,7 @@ devices mounted to the thigh remains unexplored despite the potential
 advantages of this sensor location in estimating physical activity
 behaviors\textsuperscript{\protect\hyperlink{ref-bruxf8nd_2020}{66}}.
 Only a few studies have leveraged this sensor-location for heuristic
-algorithms\textsuperscript{\protect\hyperlink{ref-winkler_identifying_2016}{119}}.
+algorithms\textsuperscript{\protect\hyperlink{ref-winkler_identifying_2016}{108}}.
 One must wonder how this skewed focus impacts the adaptability and
 performance of these models in diverse real-world scenarios. For
 example, specific sleep-related behaviors or positions might be better
@@ -1378,7 +1386,7 @@ overlooked nuances in sleep detection.
 A significant hurdle in assessing sleep using accelerometer data is the
 extraction of the sleep period time window without supplementary data
 from sleep logs or
-diaries\textsuperscript{\protect\hyperlink{ref-doherty_large_2017}{120}--\protect\hyperlink{ref-anderson_assessment_2014}{122}}.
+diaries\textsuperscript{\protect\hyperlink{ref-doherty_large_2017}{124}--\protect\hyperlink{ref-anderson_assessment_2014}{126}}.
 This dependence on subjective sleep logs can introduce biases, and it
 inherently assumes participants consistently record accurate and precise
 timings. In reality, this can be a substantial point of failure,
@@ -1387,7 +1395,7 @@ be less consistent with logging such as children who often rely on their
 parents reporting accurate bed times on their behalf. Typical approaches
 that rely on traditional accelerometers often necessitate participants
 to diligently log their bedtime, sleep initiation, and wake-up
-moments\textsuperscript{\protect\hyperlink{ref-girschik_validation_2012}{44},\protect\hyperlink{ref-littner_2003}{77},\protect\hyperlink{ref-lockley_1999}{123}}.
+moments\textsuperscript{\protect\hyperlink{ref-girschik_validation_2012}{44},\protect\hyperlink{ref-littner_2003}{77},\protect\hyperlink{ref-lockley_1999}{127}}.
 This reliance is burdensome and can lead to incomplete or inaccurate
 datasets, compromising the integrity and reliability of any derived
 insights. Moreover, the data foundation used to develop these algorithms
@@ -1411,8 +1419,8 @@ opportunities to collect accurate and objective data on human behavior,
 particularly in the realm of free-living accelerometer recordings. This
 thesis situates itself within this developing domain, with the ambition
 of harnessing the potential of wearable accelerometer technology for
-sleep estimation. At its core, the objective is to innovate methods and
-models for the analysis and interpretation of sleep. Building on the
+sleep estimation. At its core, the overall aim is to innovate methods
+and models for the analysis and interpretation of sleep. Building on the
 challenges delineated in earlier sections, this thesis endeavors to
 advance the field through a series of papers, as detailed below.
 
@@ -1455,7 +1463,7 @@ techniques. Our objective is to introduce a manual annotation method,
 assess its precision, and determine its consistency. Some of the details
 presented here were previously mentioned in the published version of
 Paper
-I\textsuperscript{\protect\hyperlink{ref-skovgaard_manual_2021}{124}}.
+I\textsuperscript{\protect\hyperlink{ref-skovgaard_manual_2021}{128}}.
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
@@ -1467,7 +1475,7 @@ The data for this study was sourced from the SCREENS pilot trial
 (www.clinicaltrials.gov, NCT03788525), a two-arm parallel-group
 cluster-randomized trial with two intervention groups, conducted between
 October 2018 and March
-2019\textsuperscript{\protect\hyperlink{ref-rasmussen_short-term_2020}{113},\protect\hyperlink{ref-rasmussen_feasibility_2021}{125}}.
+2019\textsuperscript{\protect\hyperlink{ref-rasmussen_short-term_2020}{118},\protect\hyperlink{ref-rasmussen_feasibility_2021}{129}}.
 There was no control group in this trial.
 
 Families from the Middelfart municipality in Denmark were approached for
@@ -1508,7 +1516,7 @@ the USB connector also facing away from the body. For both the baseline
 and follow-up, the devices were worn for a duration of one week (seven
 consecutive days). This duration aligns with the recommended number of
 days to reliably assess habitual physical
-activity\textsuperscript{\protect\hyperlink{ref-jaeschke_variability_2018}{126}}.
+activity\textsuperscript{\protect\hyperlink{ref-jaeschke_variability_2018}{130}}.
 
 \hypertarget{eeg-based-and-self-report-sleep-recordings}{%
 \subsection{EEG-based and Self-Report Sleep
@@ -1554,7 +1562,7 @@ diary.
 \subsection{Annotation Software}\label{annotation-software}}
 
 Audacity®️ is a distinguished free audio editing
-software\textsuperscript{\protect\hyperlink{ref-audacity}{127}}. The
+software\textsuperscript{\protect\hyperlink{ref-audacity}{131}}. The
 genesis of Audacity can be traced back to the fall of 1999, when it
 emerged as an innovative project led by Dominic Mazzoni and Roger
 Dannenberg at Carnegie Mellon University. By May 2000, it was unveiled
@@ -1581,7 +1589,7 @@ separate file and subsequently incorporated into the training phase of
 machine learning algorithms. The depth of manual inspection for
 high-resolution accelerometer data that Audacity provides is, to our
 knowledge, matched by only a few other software
-options\textsuperscript{\protect\hyperlink{ref-visplore}{128},\protect\hyperlink{ref-label_studio}{129}}.
+options\textsuperscript{\protect\hyperlink{ref-visplore}{132},\protect\hyperlink{ref-label_studio}{133}}.
 
 Within the Audacity interface, there's the possibility of amalgamating
 over 100 channels of data. This aids in the merging of distinct signal
@@ -1712,18 +1720,18 @@ human raters were sampled from a broader population, we used a two-way
 random-effects model when assessing inter-rater reliability between
 different human raters. Here, ICC(2,\emph{k}) was chosen, reflecting the
 absolute agreement between multiple rater's
-ratings\textsuperscript{\protect\hyperlink{ref-shrout_1979}{130}}.
+ratings\textsuperscript{\protect\hyperlink{ref-shrout_1979}{134}}.
 However, when comparing human raters against the ZM or sleep diaries, a
 two-way mixed-effects model was used. In this context, the human raters
 are treated as random effects, while the ZM and sleep diaries are
 treated as fixed effects. The corresponding ICC that represents this
 model is known as
-ICC(3,\emph{k})\textsuperscript{\protect\hyperlink{ref-shrout_1979}{130}}.
+ICC(3,\emph{k})\textsuperscript{\protect\hyperlink{ref-shrout_1979}{134}}.
 For intra-rater agreement, a two-way mixed effects models was employed
 treating human raters as random effects and occasion (test/retest) as
 fixed effects. We adopted the ICC(3,\emph{k}) to estimate the agreement
 of each individual rater's ratings across
-occasions\textsuperscript{\protect\hyperlink{ref-mcgraw_1996}{131}}. In
+occasions\textsuperscript{\protect\hyperlink{ref-mcgraw_1996}{135}}. In
 general, the ICC serves as a more nuanced tool than simple correlation;
 it goes further by evaluating the alignment in magnitude between two
 datasets, serving as a robust metric for consistency between
@@ -1743,12 +1751,12 @@ of 0.83-0.94 indicates ``good'' to ``excellent'' agreement, while a CI
 of 0.92-0.99 is solely ``excellent'' as even the lowest value surpasses
 0.9. By doing so, we adhere to recommended guidelines as presented by
 Koo et
-al.\textsuperscript{\protect\hyperlink{ref-koo_guideline_2016}{132}} and
+al.\textsuperscript{\protect\hyperlink{ref-koo_guideline_2016}{136}} and
 was calculated using the R package
-psych\textsuperscript{\protect\hyperlink{ref-psych}{133}}. The
+psych\textsuperscript{\protect\hyperlink{ref-psych}{137}}. The
 Bland--Altman analysis, on the other hand, is a tool to measure the
 concurrence between two measuring
-techniques\textsuperscript{\protect\hyperlink{ref-bland_measuring_1999}{134}}.
+techniques\textsuperscript{\protect\hyperlink{ref-bland_measuring_1999}{138}}.
 It calculates the average of the differences (representing bias) between
 the two methods, and also establishes the limits of this agreement. A
 positive mean difference suggests an earlier underestimation of the
@@ -2023,7 +2031,7 @@ heuristic algorithms and recently developed random forest and
 convolutional neural network models was assessed. Some of the details
 presented here were previously mentioned in the published version of
 Paper
-II\textsuperscript{\protect\hyperlink{ref-skovgaard_generalizability_2023}{135}}.
+II\textsuperscript{\protect\hyperlink{ref-skovgaard_generalizability_2023}{139}}.
 
 \hypertarget{methods-1}{%
 \section{Methods}\label{methods-1}}
@@ -2045,9 +2053,9 @@ most commonly used techniques to the latest and most complex ones.
   years, there have been various consecutive zero-algorithms designed
   for accelerometer data, with the aim of identifying non-wear periods
   within predefined timeframes, such as 30-, 60-, or 90-minute
-  intervals\textsuperscript{\protect\hyperlink{ref-hecht_methodology_2009}{107},\protect\hyperlink{ref-troiano_physical_2008}{136},\protect\hyperlink{ref-choi_validation_2011}{137}}.
+  intervals\textsuperscript{\protect\hyperlink{ref-choi_validation_2011}{107},\protect\hyperlink{ref-hecht_methodology_2009}{112},\protect\hyperlink{ref-troiano_physical_2008}{140}}.
   In research by van Hees et
-  al.\textsuperscript{\protect\hyperlink{ref-van_hees_estimation_2011}{138}},
+  al.\textsuperscript{\protect\hyperlink{ref-van_hees_estimation_2011}{141}},
   the potential of a simple summary measure derived from raw triaxial
   accelerometer data to aid in the estimation of PA-related energy
   expenditure in both pregnant and non-pregnant women was explored. The
@@ -2060,14 +2068,14 @@ most commonly used techniques to the latest and most complex ones.
   deviation was below 3.0 mg (1 mg = 0.00981 m⋅s−2) for at least two of
   the three axes, or if the value range was under 50 mg for at least two
   of the three axes. In a subsequent study by van Hees et
-  al.\textsuperscript{\protect\hyperlink{ref-hees_separating_2013}{139}},
+  al.\textsuperscript{\protect\hyperlink{ref-hees_separating_2013}{142}},
   the interval length was extended to 60 minutes to reduce the
   likelihood of misidentifying sedentary periods as non-wear time.
   Furthermore, a 15-minute sliding window was introduced to account for
   overlapping episodes and to pinpoint non-wear episode boundaries more
   accurately. Another method utilizes a 135-minute interval with
   adjusted hyperparameters, as introduced by Syed et
-  al.\textsuperscript{\protect\hyperlink{ref-syed_evaluating_2020}{140}}.
+  al.\textsuperscript{\protect\hyperlink{ref-syed_evaluating_2020}{143}}.
   In our study, we adopted a straightforward approach to this concept.
   Using Actigraphy counts, we identified periods of no movement that
   registered zero counts for at least 60 continuous minutes. Notably,
@@ -2076,7 +2084,7 @@ most commonly used techniques to the latest and most complex ones.
 \item
   \textsf{\textbf{Heuristic Algorithm (heu\_alg):}} As detailed by
   Rasmussen and
-  colleagues\textsuperscript{\protect\hyperlink{ref-rasmussen_short-term_2020}{113}},
+  colleagues\textsuperscript{\protect\hyperlink{ref-rasmussen_short-term_2020}{118}},
   this algorithm merges raw acceleration data with surface skin
   temperature measurements. Non-wear time is determined for periods
   surpassing 120 minutes with accelerations less than 20 mg. For
@@ -2103,7 +2111,7 @@ most commonly used techniques to the latest and most complex ones.
 \item
   \textsf{\textbf{Deep Convolutional Neural Network (syed\_CNN):}} This
   method, introduced by Syed et
-  al.\textsuperscript{\protect\hyperlink{ref-syed_novel_2021}{115}},
+  al.\textsuperscript{\protect\hyperlink{ref-syed_novel_2021}{120}},
   employs a unique approach. It's built upon a deep convolutional neural
   network that diverges from traditional techniques. Initially, all
   potential non-wear episodes are discerned using a standard deviation
@@ -2323,9 +2331,9 @@ performance suggests role of that particular feature.
 For all analyses and model development, we utilized R (version 4.1.2,
 Bird Hippie) and RStudio (version 2021.9.1.372, Ghost Orchid). The
 machine learning tasks were primarily facilitated by the
-Tidymodels\textsuperscript{\protect\hyperlink{ref-kuhn_tidymodels_2020}{141}}
+Tidymodels\textsuperscript{\protect\hyperlink{ref-kuhn_tidymodels_2020}{144}}
 suite of packages, and we used the
-rpart\textsuperscript{\protect\hyperlink{ref-rpart}{142}} package as the
+rpart\textsuperscript{\protect\hyperlink{ref-rpart}{145}} package as the
 engine for our decision tree algorithms.
 
 \hypertarget{results-1}{%
@@ -2510,7 +2518,7 @@ and wake after sleep onset (WASO).
 The current study uses data from the SCREENS trial, which took place
 from June 2019 to March 2021 in the Region of Southern Denmark.
 Conducted by Rasmussen and
-Pedersen\textsuperscript{\protect\hyperlink{ref-rasmussen_short-term_2020}{113},\protect\hyperlink{ref-pedersen_effects_2022}{143}},
+Pedersen\textsuperscript{\protect\hyperlink{ref-rasmussen_short-term_2020}{118},\protect\hyperlink{ref-pedersen_effects_2022}{146}},
 the trial aimed to evaluate the impact of limiting screen media usage
 among Danish families. We specifically analyzed data from children
 between the ages of 4 and 17, with a mean age of 9.1 years, who were
@@ -2579,7 +2587,7 @@ Skotte and
 colleagues\textsuperscript{\protect\hyperlink{ref-skotte_detection_2014}{65}}.
 Non-wear data was identified and eliminated using the decision tree
 classifier, tree\_imp6, as outlined in Paper
-II\textsuperscript{\protect\hyperlink{ref-skovgaard_generalizability_2023}{135}},
+II\textsuperscript{\protect\hyperlink{ref-skovgaard_generalizability_2023}{139}},
 and the remaining data was resampled into 30-second epochs to align with
 ZM recordings. We then conducted feature extraction, generating 64
 features that offered a comprehensive characterization of the data.
@@ -2587,7 +2595,7 @@ These features were derived from both accelerometer and temperature
 signals and included temporal elements, which utilized both lag and lead
 values to capture dynamic data trends. Additionally, we took inspiration
 from Walch et
-al.\textsuperscript{\protect\hyperlink{ref-walch_sleep_2019}{144}} to
+al.\textsuperscript{\protect\hyperlink{ref-walch_sleep_2019}{147}} to
 include sensor-independent features that encapsulate circadian rhythms,
 offering unique insights that are not directly discernible from sensor
 outputs (see Figure~\ref{fig-paper3_sensor_independent}). We further
@@ -2674,15 +2682,15 @@ sample was 83\%, which is below recognized standards. An efficiency of
 85\% is considered good, and over 90\% is seen as ideal. This contrasts
 with prior research on similar child cohorts that reported a sleep
 efficiency of
-88.3\%\textsuperscript{\protect\hyperlink{ref-galland_2018}{145}}.
+88.3\%\textsuperscript{\protect\hyperlink{ref-galland_2018}{148}}.
 Recommendations from an expert panel by the National Sleep Foundation
 emphasized that fewer than 2 awakenings lasting more than 5 minutes each
 night qualify as good sleep across all age
-groups\textsuperscript{\protect\hyperlink{ref-ohayon_2017}{146}}.
+groups\textsuperscript{\protect\hyperlink{ref-ohayon_2017}{149}}.
 Additionally, it's widely recognized that children typically experience
 between five to eight sleep cycles every night, with awakenings most
 likely occurring at the conclusion of each
-cycle\textsuperscript{\protect\hyperlink{ref-galland_normal_2012}{147}}.
+cycle\textsuperscript{\protect\hyperlink{ref-galland_normal_2012}{150}}.
 However, definitions of a ``waking bout'' vary across studies. Some
 demand at least 5 continuous minutes of wakefulness for it to be counted
 as one bout, while others find a 1-minute duration adequate. Of
@@ -2766,7 +2774,7 @@ sequential strategy:
 Simultaneously, we also explored a second modeling strategy using a
 multiclass algorithm based on a bidirectional Long Short-Term Memory
 (biLSTM) neural
-network\textsuperscript{\protect\hyperlink{ref-hochreiter_long_1997}{148}}.
+network\textsuperscript{\protect\hyperlink{ref-hochreiter_long_1997}{151}}.
 This model was designed to predict the three distinct classes:
 `out-of-bed-awake,' `in-bed-awake,' and `in-bed-asleep.' It featured
 four layers and 128 hidden units per layer, balancing model complexity
@@ -2775,9 +2783,9 @@ hidden units at each time step, enhancing data interpretation and
 reducing the risk of overfitting. The model accepted sequences of
 tensors spanning 10 minutes with a step size of one epoch. As
 demonstrated by previous studies such as those by Sano et
-al.\textsuperscript{\protect\hyperlink{ref-sano_multimodal_2019}{149}}
+al.\textsuperscript{\protect\hyperlink{ref-sano_multimodal_2019}{152}}
 and Chen et
-al.\textsuperscript{\protect\hyperlink{ref-chen_attention_2021}{150}},
+al.\textsuperscript{\protect\hyperlink{ref-chen_attention_2021}{153}},
 LSTM models have shown great promise in sleep detection using
 accelerometer data, thanks to their ability to capture complex temporal
 patterns.
@@ -2795,20 +2803,20 @@ we used a specific set of hyperparameters for each type of machine
 learning algorithm. For the Decision Tree, we tuned the cost complexity,
 tree depth, and minimum number of samples required at a leaf node. The
 decision tree model was set up using the
-rpart\textsuperscript{\protect\hyperlink{ref-rpart}{142}} engine, with
+rpart\textsuperscript{\protect\hyperlink{ref-rpart}{145}} engine, with
 tree depth ranging from 3 to 7. For Logistic Regression, implemented
 using the
-glmnet\textsuperscript{\protect\hyperlink{ref-friedman_glmnet_2010}{151}}
+glmnet\textsuperscript{\protect\hyperlink{ref-friedman_glmnet_2010}{154}}
 engine, we tuned the penalty and mixture hyperparameters controlling
 regularization. The feed-forward neural network was implemented with a
 single-layer feed-forward architecture using the
-nnet\textsuperscript{\protect\hyperlink{ref-nnet}{152}} engine, with the
+nnet\textsuperscript{\protect\hyperlink{ref-nnet}{155}} engine, with the
 maximum number of allowable weights set to 7000 as a form of
 regularization. The hyperparameters we tuned for this model were the
 number of hidden units, the penalty, and the number of epochs. The range
 for the number of hidden units was between 3 and 27. Lastly, the XGBoost
 model was configured with the
-xgboost\textsuperscript{\protect\hyperlink{ref-xgboost}{153}} engine.
+xgboost\textsuperscript{\protect\hyperlink{ref-xgboost}{156}} engine.
 The hyperparameters subjected to tuning included tree depth, learning
 rate, loss reduction, minimum number of samples required at a leaf node,
 sample size, and number of trees. For this algorithm, the number of
@@ -2831,10 +2839,10 @@ space to balance out the classes. Specifically, it creates synthetic
 observations by randomly selecting a minority class instance and its
 nearest neighbors, then producing a new instance that is a blend of the
 two. This method, as outlined by Chawla et
-al.\textsuperscript{\protect\hyperlink{ref-chawla_smote_2002}{154}},
+al.\textsuperscript{\protect\hyperlink{ref-chawla_smote_2002}{157}},
 mitigates biases during model training that arise when models are skewed
 towards the majority class. Using the themis R
-package\textsuperscript{\protect\hyperlink{ref-themis}{155}}, we
+package\textsuperscript{\protect\hyperlink{ref-themis}{158}}, we
 implemented SMOTE to achieve a balanced distribution of training samples
 for both classes. The optimization was driven by the F1 score as a
 metric since it harmonizes precision and recall, rendering it more
@@ -2891,7 +2899,7 @@ class, and row percentages for correctly classified predictions. Both
 in-bed/out-of-bed and awake/asleep classification tasks were treated as
 binary, designating `in-bed' and `asleep' as positive labels and
 `out-of-bed' and `awake' as negative labels, in line with prior
-studies\textsuperscript{\protect\hyperlink{ref-hjorth_measure_2012}{74},\protect\hyperlink{ref-kushida_comparison_2001}{156}}.
+studies\textsuperscript{\protect\hyperlink{ref-hjorth_measure_2012}{74},\protect\hyperlink{ref-kushida_comparison_2001}{159}}.
 
 To evaluate how well our models performed in generating sleep quality
 metrics, we employed Bland-Altman plots and Pearson correlations.
@@ -2905,7 +2913,7 @@ the mean difference or bias, and then determined the limits of agreement
 differences. Given the possibility of non-normal distribution and
 skewness in our data, we opted for a bias-corrected and accelerated
 (BCa) bootstrap
-method\textsuperscript{\protect\hyperlink{ref-diciccio_bootstrap_1996}{157}}.
+method\textsuperscript{\protect\hyperlink{ref-diciccio_bootstrap_1996}{160}}.
 This allowed for more accurate estimation, taking into account
 intra-subject variability. Using 10,000 bootstrap replicates, we
 estimated the 95\% confidence intervals for both the bias and LOA,
@@ -2940,15 +2948,15 @@ conformed to ZM definitions and included the following:
 
 The technical frameworks used for model development and analyses were R
 version
-4.3.0\textsuperscript{\protect\hyperlink{ref-rcoreteam_2023}{158}} along
+4.3.0\textsuperscript{\protect\hyperlink{ref-rcoreteam_2023}{161}} along
 with the
-Tidymodels\textsuperscript{\protect\hyperlink{ref-kuhn_tidymodels_2020}{141}}
+Tidymodels\textsuperscript{\protect\hyperlink{ref-kuhn_tidymodels_2020}{144}}
 and
-Tidyverse\textsuperscript{\protect\hyperlink{ref-wickham_tidyverse_2019}{159}}
+Tidyverse\textsuperscript{\protect\hyperlink{ref-wickham_tidyverse_2019}{162}}
 package suites. For the biLSTM model, we used Python version
-3.10.6\textsuperscript{\protect\hyperlink{ref-vanrossum_python_2009}{160}}
+3.10.6\textsuperscript{\protect\hyperlink{ref-vanrossum_python_2009}{163}}
 and
-PyTorch\textsuperscript{\protect\hyperlink{ref-paszke_pytorch_2019}{161}}.
+PyTorch\textsuperscript{\protect\hyperlink{ref-paszke_pytorch_2019}{164}}.
 
 \hypertarget{results-2}{%
 \section{Results}\label{results-2}}
@@ -3326,14 +3334,16 @@ the 5-minute median filtered ZM data seemed to be the best performing
 model configuration. The Bland-Altman plot and scatterplot presented in
 Figure~\ref{fig-xgb_ba_cor} illustrate the level of agreement between
 the this XGBoost model and ZM-derived sleep quality metrics that were
-also median-smoothed over 5 minutes. For the sleep quality metrics SPT
-and TST, the bias is notably close to zero, revealing a minimal average
-difference with the ZM. The scatterplot for SPT also suggests a moderate
-linear correlation between the model's predictions and the ZM-derived
-metrics. The TST scatterplot further indicates a slightly higher
-correlation, mainly due to the lack of extreme outliers. In contrast,
-the remaining sleep quality metrics, namely SE, LPS, and WASO, show
-signs of heteroscedasticity unlike SPT and TST. While a moderate
+also median-smoothed over 5 minutes (to see all such plots corresponding
+to all included models, refer to
+\hyperref[app:paper3supp]{Appendix IV}). For the sleep quality metrics
+SPT and TST, the bias is notably close to zero, revealing a minimal
+average difference with the ZM. The scatterplot for SPT also suggests a
+moderate linear correlation between the model's predictions and the
+ZM-derived metrics. The TST scatterplot further indicates a slightly
+higher correlation, mainly due to the lack of extreme outliers. In
+contrast, the remaining sleep quality metrics, namely SE, LPS, and WASO,
+show signs of heteroscedasticity unlike SPT and TST. While a moderate
 positive linear correlation exists between the XGBoost model and the
 ZM-derived SE metrics, poorer correlations are observed for LPS and
 WASO.
@@ -3397,7 +3407,7 @@ recordings every morning and evening enhances their ability to
 accurately recall their times of going to bed and getting out of bed.
 This minimizes the usual discrepancies often seen between objectively
 and subjectively measured sleep
-durations\textsuperscript{\protect\hyperlink{ref-aili_reliability_2017}{162}}.
+durations\textsuperscript{\protect\hyperlink{ref-aili_reliability_2017}{165}}.
 If participants had been instructed to log their sleep using only
 subjective measures without these protocol anchors, we would not expect
 to see less strong agreement between the manual annotations and sleep
@@ -3422,8 +3432,8 @@ manual annotations.
 
 While numerous tools are available for annotating time series data,
 including Label
-Studio\textsuperscript{\protect\hyperlink{ref-label_studio}{129}},
-Visplore\textsuperscript{\protect\hyperlink{ref-visplore}{128}}, and
+Studio\textsuperscript{\protect\hyperlink{ref-label_studio}{133}},
+Visplore\textsuperscript{\protect\hyperlink{ref-visplore}{132}}, and
 others, our research determined that Audacity was sufficiently suited
 for our specific requirements. Both Label Studio and Visplore have their
 strengths and limitations. For instance, while Label Studio's capability
@@ -3463,7 +3473,7 @@ making direct comparisons with our study difficult. Pur manual
 annotations for marking time in bed yielded ICC scores that are
 comparable or even superior to previous studies that compared actigraphy
 sleep parameters with
-PSG\textsuperscript{\protect\hyperlink{ref-haghayegh_application_2020}{163},\protect\hyperlink{ref-yavuz-kodat_2019}{164}}.
+PSG\textsuperscript{\protect\hyperlink{ref-haghayegh_application_2020}{166},\protect\hyperlink{ref-yavuz-kodat_2019}{167}}.
 One study reported mean absolute errors of 39.9 minutes for sleep onset
 time and 29.9 minutes for wake-up time, with 95\% limits of agreement
 surpassing ±3 hours when comparing an algorithm to
@@ -3494,7 +3504,7 @@ Identifying sleep periods as opposed to merely lying down is a critical
 aspect of 24-hour behavior profiling. Traditional studies on sleep
 detection often rely on participants to self-report their time in bed,
 sleep onset, and wake-up
-times\textsuperscript{\protect\hyperlink{ref-girschik_validation_2012}{44},\protect\hyperlink{ref-littner_2003}{77},\protect\hyperlink{ref-lockley_1999}{123}}.
+times\textsuperscript{\protect\hyperlink{ref-girschik_validation_2012}{44},\protect\hyperlink{ref-littner_2003}{77},\protect\hyperlink{ref-lockley_1999}{127}}.
 However, the manual annotation methodology offers an alternative that
 not only reduces the burden on participants but also mitigates the
 recall bias inherent in self-reported measures. This method of manual
@@ -3550,106 +3560,155 @@ periods as it relates to circadian rhythms. As such, future research is
 required to validate the utility of this manual annotation methodology
 for detecting naps.
 
+In summing up, our study demonstrates that the use of Audacity for
+manually annotating in-bed periods based on thigh- and hip-worn
+accelerometer data aligns well with objective EEG-based sleep device
+estimates and prospective sleep diaries. Our findings reveal minimal
+mean bias and acceptable limits of agreement when comparing time to bed
+and time out of bed across these different methods. Additionally, the
+manual annotation process proved highly reliable, exhibiting excellent
+inter- and intra-rater agreement. Its accuracy in relation to EEG-based
+assessments was also comparable to that of sleep diaries. Importantly,
+the manual annotation method can be applied to pre-existing raw data
+that may not have accompanying sleep records. This offers a significant
+advantage for making better use of free-living data resources. The
+increased availability of such annotated data can be particularly
+beneficial when training data-intensive machine learning algorithms,
+potentially enhancing their generalizability in objectively assessing
+human behavior.
+
 \hypertarget{paper-ii}{%
 \section{Paper II}\label{paper-ii}}
 
-In our study, we evaluated various methods for classifying non-wear
-episodes in accelerometer data, focusing on episodes longer than 60
-minutes and those shorter than 60 minutes. Our findings showed that the
+In this study, we evaluated various methods for classifying non-wear
+episodes in free-living accelerometer data, focusing on all non-wear
+episodes and those shorter than 60 minutes. Our findings showed that the
 simplest methods, specifically cz\_60 and heu\_alg, excelled in
 identifying non-wear episodes longer than 60 minutes across all three
 sensor wear locations: wrist, hip, and thigh. They were closely followed
-in performance by decision tree models that included surface skin
-temperature as a predictive variable. On the other hand, the random
-forest model demonstrated excellent performance only on the wrist,
-delivering mediocre results on the hip and thigh. When we shifted our
-focus to short non-wear episodes lasting less than 60 minutes, we found
-limitations in the cz\_60 and heu\_alg algorithms due to their built-in
-minimum episode durations of 60 and 20 minutes, respectively. As a
-result, their performance was poor for these shorter episodes.
-Similarly, the deep learning model showed poor results, mainly
-attributable to a low sensitivity score that led to many episodes being
-misclassified as non-wear time. The random forest model's performance
-was also poor on the hip and only mediocre on the thigh and wrist.
-Decision tree models, both without temperature and with all predictors,
-showed mediocre performance as well. However, a decision tree model
-trained on the six most important predictors stood out as the best
-performer for short non-wear episodes. Our study also highlighted the
-value of incorporating surface skin temperature as a predictor to
-enhance the performance of non-wear time classification. Overall, these
-results provide valuable insights into the effectiveness of various
-methods for classifying non-wear episodes in accelerometer data,
-emphasizing the potential of simple algorithms like cz\_60 and heu\_alg,
-especially for longer episodes, and the benefit of including surface
-skin temperature as a predictive variable.
+in performance by the decision tree models that included surface skin
+temperature as a predictive variable (tree\_full and tree\_imp6). On the
+other hand, the random forest model demonstrated excellent performance
+only on data from the wrist, delivering mediocre results on hip and
+thigh data. The Syed\_CNN and tree\_no\_temp yielded mediocre results
+across all wear-locations. When we shifted our focus to short non-wear
+episodes lasting less than 60 minutes, the limitations in the cz\_60 and
+heu\_alg algorithms due to their built-in minimum episode durations of
+60 and 20 minutes, respectively, became evident. Similarly, the deep
+learning model (Syed\_CNN) showed poor results, mainly attributable to
+very low sensitivity scores across all wear-locations that led to many
+episodes being misclassified as non-wear time. The random forest model's
+performance was also poor on the hip and only mediocre on the thigh and
+wrist. The decision tree models, both without temperature and with all
+predictors, showed mediocre performance as well. However, the decision
+tree model trained on the six most important predictors stood out as the
+best performer for short non-wear episodes on all wear-locations. This
+study also highlighted the value of incorporating surface skin
+temperature as a predictor to enhance the performance of non-wear time
+classification. Overall, these results provide valuable insights into
+the effectiveness of various methods for classifying non-wear episodes
+in accelerometer data, emphasizing the potential of simple algorithms
+like cz\_60 and heu\_alg, especially for longer non-wear episodes, and
+the benefit of including surface skin temperature as a predictive
+variable.
 
 We discovered that most non-wear episodes in our ground truth datasets
 had a duration exceeding 60 minutes, with a noticeable peak around the
 10-hour mark. This finding contrasts with previous research that
 typically reported shorter episodes as being more
-prevalent\textsuperscript{\protect\hyperlink{ref-aadland_comparison_2018}{110},\protect\hyperlink{ref-jaeschke_variability_2018}{126},\protect\hyperlink{ref-hutto_identifying_2013}{165}}.
+prevalent\textsuperscript{\protect\hyperlink{ref-aadland_comparison_2018}{115},\protect\hyperlink{ref-jaeschke_variability_2018}{130},\protect\hyperlink{ref-hutto_identifying_2013}{168}}.
 Our data prominently features children and physically active
-adolescents, a demographic known to spend less time in sedentary
-activities and to frequently interrupt such
-periods\textsuperscript{\protect\hyperlink{ref-cooper_objectively_2015}{166},\protect\hyperlink{ref-kwon_breaks_2012}{167}}.
-This likely contributed to both the longer non-wear episodes and
-clarified the differentiation between sedentary behavior and non-wear
-time in our study. The data favored simple heuristic algorithms for
-classifying non-wear time, largely because the limitations imposed by
-minimum window lengths had a negligible impact on the proportion of
-non-wear time that was incorrectly classified. These algorithms achieved
-excellent precision scores, confirming that neither sedentary time nor
-sleep was misclassified as non-wear time. This is a significant finding,
-given that multiple previous studies have pointed out the complexities
-in making this very
-distinction\textsuperscript{\protect\hyperlink{ref-duncan_wear-time_2018}{112},\protect\hyperlink{ref-doherty_large_2017}{120},\protect\hyperlink{ref-troiano_physical_2008}{136},\protect\hyperlink{ref-choi_validation_2011}{137},\protect\hyperlink{ref-barouni_ambulatory_2020}{168}}.
-Our study suggests that a consecutive zeros algorithm could be deemed
-best practice for capturing non-wear episodes lasting over 60 minutes in
-children and adolescents. This recommendation is applicable across the
-various wear locations that we evaluated, including the hip, thigh, and
-wrist. However, it's important to consider that the specific behaviors
-of children and adolescents may not make these findings directly
-transferable to older adults. Yet, certain standardized procedures like
-the syed\_CNN model for mounting and unmounting accelerometers might
-have more universal applicability.
+adolescents. While this demographic, known to spend less time in
+sedentary activities and frequently interrupt such
+periods\textsuperscript{\protect\hyperlink{ref-cooper_objectively_2015}{169}},
+might remove wearables for sports or other activities, the extended
+non-wear durations, especially those of several hours, are unlikely to
+be mistaken for sedentary behavior. Such prolonged episodes more
+definitively signal non-wear rather than inactivity. This clearer
+distinction minimizes potential overlaps or ambiguities between non-wear
+and sedentary periods in our dataset. This also meant that the data
+favored the simple heuristic algorithms for classifying non-wear time,
+largely because the limitations imposed by minimum window lengths had a
+negligible impact on the proportion of non-wear time that was
+incorrectly classified. These algorithms achieved excellent precision
+scores, confirming that neither sedentary time nor sleep was
+misclassified as non-wear time. This is a significant finding, given
+that multiple previous studies have pointed out the complexities in
+making this very
+distinction\textsuperscript{\protect\hyperlink{ref-choi_validation_2011}{107},\protect\hyperlink{ref-duncan_wear-time_2018}{117},\protect\hyperlink{ref-doherty_large_2017}{124},\protect\hyperlink{ref-troiano_physical_2008}{140},\protect\hyperlink{ref-barouni_ambulatory_2020}{170},\protect\hyperlink{ref-mn_non-wear_2020}{171}}.
 
-Creating a model to classify non-wear time appears to be a relatively
-straightforward task, likely because the decision boundary involved is
-close to linear. In this context, the use of complex models, as we've
-included in our current study, may lead to overfitting. This overfitting
-would capture random variations specific to the training dataset,
-thereby reducing the model's ability to generalize to new, unseen data.
-Consequently, we hypothesize that a well-optimized logistic regression
-model could perform just as well as the more intricate methodologies
-we've tested. The reason for this is that a logistic regression model
-would establish a separating linear hyperplane capable of distinguishing
-between wear and non-wear time effectively. Therefore, employing highly
-non-linear models for this classification task might be an unnecessary
-complication, particularly if the goal is to develop a machine learning
-model that can be applied across diverse populations and wear locations.
-It is also crucial to enrich the training data with multiple wear
-locations and various physical activity profiles to improve
-generalizability.
+Creating a model to classify non-wear time seems to be a relatively
+straightforward task. A primary reason is the distinct data patterns
+that wear and non-wear times produce. For instance, non-wear times
+should typically yield consistent zero or near-zero readings due to the
+absence of movement, while wear times elicit varied readings reflecting
+activity levels. This distinction implies that the decision boundary
+involved in this classification is likely close to linear. Given the
+binary nature of this classification task -- the device is either worn
+or not -- such clear data patterns could make more complex models
+unnecessary. In fact, using intricate models, like the ones employed in
+the current study, can introduce the risk of overfitting. Overfitting
+tends to capture the random fluctuations or noise inherent in the
+training dataset, ultimately compromising the model's performance on
+unseen, real-world data. In light of these observations, we hypothesize
+that a simpler, well-optimized logistic regression model could be just
+as effective, if not more so, than the complex models that was
+evaluated. The strength of logistic regression in this context lies in
+its ability to establish a separating linear hyperplane. This hyperplane
+may effectively differentiate between wear and non-wear times without
+the added intricacy of non-linear decision boundaries. Furthermore,
+complex models, while offering sophisticated decision-making
+capabilities, may be redundant for this task and could introduce
+unnecessary complications. This is especially evident when the objective
+is creating a universally applicable machine learning model suited for
+diverse populations and various wear locations. To optimize the
+performance of any chosen model, be it simple or complex, the quality
+and diversity of the training data are important. It is vital to source
+data that spans multiple wear locations and encompasses a variety of
+physical activity profiles. Training on such a comprehensive dataset
+ensures that the model is equipped to discern between wear and non-wear
+times across different scenarios and populations. While our discussion
+leans towards simpler models given the nature of the decision boundary,
+the emphasis remains on the crucial role of a rich and varied dataset in
+ensuring model efficacy.
+
+This study emphasizes the potential of the consecutive zeros algorithm
+as a leading approach for identifying non-wear episodes exceeding 60
+minutes in children and adolescents. This method showed efficacy across
+various wear locations, such as the hip, thigh, and wrist. However, due
+to the distinctive behaviors and routines of these younger age groups,
+our results may not be seamlessly extended to older populations. In
+comparison, models like the syed\_CNN, which detect accelerometer
+mounting and unmounting events, present certain complexities. The
+motions associated with putting on or taking off a device may not be
+universally consistent, as they could vary depending on age, dexterity,
+or other factors related to the population in question. Therefore, while
+the syed\_CNN model employs a standardized approach, its results might
+still be influenced by age or other population-specific factors. Though
+our research provides valuable insights for younger demographics, it's
+essential to approach the syed\_CNN's results with an understanding of
+its potential limitations across varied age groups in
+accelerometer-based studies as well.
 
 Incorporating surface skin temperature for the classification of
-non-wear time has been minimally explored in the realm of machine
+non-wear time has been scarcely explored in the field of machine
 learning. One study did indicate that using acceleration data along with
 rate-of-change in surface skin temperature could create a robust
 decision tree model for detecting non-wear
-time\textsuperscript{\protect\hyperlink{ref-vert_detecting_2022}{169}}.
+time\textsuperscript{\protect\hyperlink{ref-vert_detecting_2022}{172}}.
 This aligns with previous heuristic studies that have shown improved
 predictive performance when temperature data is
-included\textsuperscript{\protect\hyperlink{ref-duncan_wear-time_2018}{112},\protect\hyperlink{ref-zhou_classification_2015}{114}}.
+included\textsuperscript{\protect\hyperlink{ref-duncan_wear-time_2018}{117},\protect\hyperlink{ref-zhou_classification_2015}{119}}.
 Our own findings also corroborate this, as we observed that adding
-surface skin temperature as a variable significantly enhances the
-performance of the non-wear time model. However, a critical
-consideration is the precise detection of the transition between wear
-and non-wear periods, especially given the slow temperature step
-response time of sensors. Solely relying on temperature data could
-introduce classification delays if the sensor's response time is
-sluggish. Combining both temperature and acceleration data is therefore
-a more effective
-approach\textsuperscript{\protect\hyperlink{ref-zhou_classification_2015}{114}}.
+surface skin temperature as a feature enhanced the performance of the
+non-wear decision tree models. However, a critical consideration is the
+precise detection of the transition between wear and non-wear periods,
+especially given the slow temperature step response time of sensors.
+Solely relying on temperature data could introduce classification delays
+if the sensor's response time is sluggish. Combining both temperature
+and acceleration data is therefore a more effective approach as
+highlighted by Zhou and
+colleagues\textsuperscript{\protect\hyperlink{ref-zhou_classification_2015}{119}}.
 During our study, we noted a 20-minute step response in the Axivity
 temperature sensor, which could be attributed to the design of the
 device's casing. The sensor's response time may also be influenced by
@@ -3661,24 +3720,24 @@ found to have varying optimal temperature thresholds, further
 complicating the issue. As noted by Duncan et al.~and Zhou et al.,
 algorithmic modifications are needed for devices to function optimally
 in different
-latitudes\textsuperscript{\protect\hyperlink{ref-duncan_wear-time_2018}{112},\protect\hyperlink{ref-zhou_classification_2015}{114}}.
+latitudes\textsuperscript{\protect\hyperlink{ref-duncan_wear-time_2018}{117},\protect\hyperlink{ref-zhou_classification_2015}{119}}.
 Therefore, the type of device and its attachment method can be critical
-variables for improving the accuracy of non-wear time classification
+components for improving the accuracy of non-wear time classification
 models.
 
-In the study of accelerometry data processing, the ideal scenario is to
-employ a single model that performs reliably across different wear
-locations and populations. To evaluate the generalizability and
-robustness of the methods used in our study, we included a dataset from
-wrist-worn devices for external validation. This ensures that the
-performance metrics of our decision tree models are not artificially
-inflated due to overfitting or lack of variance between the training and
-testing data. External validation involves testing a model with
-independently sourced datasets to confirm its performance. If a
+When analyzing acceleromtry data, the ideal scenario is to employ a
+single model that performs reliably across different wear locations and
+populations. To evaluate the generalizability and robustness of the
+developed decision tree models used in the present study, we included a
+dataset from wrist-worn devices for external validation. This ensures
+that the performance metrics of our decision tree models are not
+artificially inflated due to overfitting or lack of variance between the
+training and testing data. External validation involves testing a model
+with independently sourced datasets to confirm its performance. If a
 predictor set has been inaccurately selected due to characteristics
 inherent to the training data, such as technical or sampling bias, it is
 likely to perform poorly during external
-validation\textsuperscript{\protect\hyperlink{ref-steyerberg_prediction_2016}{170}}.
+validation\textsuperscript{\protect\hyperlink{ref-steyerberg_prediction_2016}{173}}.
 The rationale behind using external validation is strong: while data
 from different sources may have fewer similarities, they can nonetheless
 capture important domain-relevant information. A model trained to
@@ -3687,7 +3746,7 @@ when exposed to new data. Therefore, the external validation in our
 study acts as a verification step, ensuring that our decision tree
 models that pass this criterion are not just robust but also likely to
 be interpretable within the
-domain\textsuperscript{\protect\hyperlink{ref-altman_prognosis_2009}{171}}.
+domain\textsuperscript{\protect\hyperlink{ref-altman_prognosis_2009}{174}}.
 While Syed et al.'s methodology for identifying non-wear time is
 innovative and logically coherent, we believe its performance may vary
 depending on the age of the population in the dataset. The approach by
@@ -3696,65 +3755,77 @@ acceleration signal at the start and end of a non-wear episode. In
 contrast, methods that simply identify non-wear time based on the
 absence of acceleration are less dependent on the characteristics of the
 population, since zero movement during non-wear is a universal trait.
+Our results support this idea. The Syed\_CNN model showed poor
+performance across all wear locations in our study. One possible reason
+for this could be the age differences in the populations of the
+datasets. The original model was trained on an older population, aged
+between 40-84 years (mean = 62.74, SD = 10.25), whereas our study
+involved datasets of younger individuals aged 8.1-17.9 years (mean =
+12.14, SD = 2.40) for hip and thigh data, and 14.5-16.4 years (mean =
+15.4, SD = 0.37) for wrist data. Contrastingly, the sunda\_RF model
+showed acceptable performance in identifying non-wear episodes shorter
+than 60 minutes on both the thigh and wrist data. This suggests that the
+model by Sundararajan et al.~is less affected by population
+characteristics, as anticipated, compared to the syed\_CNN model.
+Another point worth noting is that the syed\_CNN model was originally
+trained on data with a frequency of 100 Hz, while we applied it to data
+with frequencies of 50 Hz and 25 Hz. Although it's unclear whether this
+frequency difference impacted the model's performance, we believe that
+the 25 Hz data is sufficient for capturing true movement behavior, given
+that movement frequencies are generally below 5 Hz.
 
-Our results support this idea. The Convolutional Neural Network (CNN)
-model developed by Syed et al.~showed poor performance across all wear
-locations in our study. One possible reason for this could be the age
-differences in the populations of the datasets. The original model was
-trained on an older population, aged between 40-84 years (mean = 62.74,
-SD = 10.25), whereas our study involved datasets of younger individuals
-aged 8.1-17.9 years (mean = 12.14, SD = 2.40) for hip and thigh data,
-and 14.5-16.4 years (mean = 15.4, SD = 0.37) for wrist data.
-Contrastingly, the sunda\_RF model showed acceptable performance in
-identifying non-wear episodes shorter than 60 minutes on both the thigh
-and wrist data. This suggests that the model by Sundararajan et al.~is
-less affected by population characteristics, as anticipated, compared to
-the syed\_CNN model. Another point worth noting is that the syed\_CNN
-model was originally trained on data with a frequency of 100 Hz, while
-we applied it to data with frequencies of 50 Hz and 25 Hz. Although it's
-unclear whether this frequency difference impacted the model's
-performance, we believe that the 25 Hz data is sufficient for capturing
-true movement behavior, given that movement frequencies are generally
-below 5 Hz.
-
-While it's standard to evaluate a machine learning model using a test
-split from the same dataset used for training, known as internal
-validation, this approach has its limitations. For instance, Syed et
-al.~and Sundararajan et al.~report high metrics like sensitivity,
-specificity, and accuracy for classifying non-wear time, but these
-results are derived from cross-validation without an external validation
-dataset\textsuperscript{\protect\hyperlink{ref-sundararajan_sleep_2021}{98},\protect\hyperlink{ref-syed_evaluating_2020}{140}}.
-The absence of external validation raises questions about the models'
-generalizability. Highly flexible models, without rigorous testing on
-independent datasets, risk overfitting or learning dataset-specific
-nuances rather than broader, more generalizable characteristics. This
-concern is particularly relevant for Syed et al.'s model. Their
-methodology could become more robust with training data from a more
-varied population and a greater number of participants. Differences in
-signal shapes for mounting and unmounting devices may vary with age or
-other population characteristics, making a diverse training set
-essential for improved generalizability. Given these challenges, future
-research should focus on validating models with independent external
-datasets prior to publication. While we recognize that accumulating
-large and diverse datasets may not always be practically feasible, the
-benefits in terms of model reliability and generalizability make it an
-important consideration for future work.
+Evaluating the performance of a machine learning model is a critical
+step in ensuring its reliability. Typically, researchers use a portion
+of the dataset they trained the model on, segmenting it for testing
+purposes. This is termed as ``internal validation.'' While standard and
+useful, this method isn't without its shortcomings. To illustrate, the
+studies conducted by Syed et al.~and Sundararajan et al.~showcase
+impressive performance metrics, such as sensitivity, specificity, and
+accuracy in their endeavor to classify non-wear time. Yet, a closer look
+reveals that these high-performance results are rooted in
+cross-validation techniques that didn't incorporate external validation
+datasets\textsuperscript{\protect\hyperlink{ref-sundararajan_sleep_2021}{98},\protect\hyperlink{ref-syed_evaluating_2020}{143}}.
+This omission leads us to question the generalizability of their models.
+Can these models perform as well in real-world scenarios with diverse
+data as they did during testing? Models that are highly flexible and
+adaptive pose a risk, especially if they are not subjected to rigorous
+external validation. There's the potential danger of them overfitting to
+the training data, meaning they might excel at recognizing patterns from
+the specific dataset they were trained on but falter when faced with
+new, unseen data. Such models might inadvertently learn the unique
+quirks and nuances of the training dataset rather than universally
+applicable patterns. This potential for overfitting becomes especially
+concerning when considering the methodology of Syed et al.'s model.
+Their approach, while promising, would greatly benefit from training on
+a dataset enriched with data from a broader spectrum of participants.
+Factors like age, lifestyle, or health can lead to subtle differences in
+how devices are mounted or unmounted, creating variations in signal
+shapes. By including a more diverse population in their training data,
+the model's ability to generalize and correctly interpret signals from
+different user groups would likely improve. Considering these insights,
+it's evident that the next wave of research in this domain should
+prioritize validating their models using independent, external datasets
+before they're widely accepted or published. We understand the
+challenges tied to accumulating extensive and diverse datasets,
+especially in niche fields. However, the promise of crafting a model
+that's both reliable and universally applicable makes this a worthwhile
+pursuit.
 
 The robustness of this study is significantly enhanced by the use of
 external validation, which offers strong evidence of methodological
 generalizability. However, there are limitations to consider. One major
 issue is the absence of a universally accepted gold standard for ground
-truth datasets in this research area. This lack of a benchmark makes it
-challenging to compare performance metrics across different studies.
-Despite this, our approach remains transparent since it relies on raw
-accelerometer data, and no part of our data collection or analysis
-process is proprietary. It's important to note that our findings are
-based on a study population consisting of children and adolescents.
-Consequently, the results may not be directly applicable to older age
-groups. Additionally, while we chose to develop a decision tree model
-for its balance of complexity and interpretability, future research
-could explore the efficacy of other machine learning methods like
-logistic regression, gradient boosting, or support vector machines.
+truth datasets with non-wear periods in this research area. This lack of
+a benchmark makes it challenging to compare performance metrics across
+different studies. Despite this, our approach remains transparent since
+it relies on raw accelerometer data, and no part of our data collection
+or analysis process is proprietary. It's important to note that our
+findings are based on a study population consisting of children and
+adolescents. Consequently, the results may not be directly applicable to
+older age groups. Additionally, while we chose to develop a decision
+tree model for its balance of complexity and interpretability, future
+research could explore the efficacy of other machine learning methods
+like logistic regression, gradient boosting, or support vector machines.
 These alternative algorithms may offer different insights or advantages
 that could improve upon our current model.
 
@@ -3777,12 +3848,12 @@ carefully choose an appropriate method for this critical task.
 \hypertarget{paper-iii}{%
 \section{Paper III}\label{paper-iii}}
 
-In our quest to find the most effective method for estimating sleep
-based on thigh-worn accelerometers, we scrutinized various models
-designed to predict both in-bed and sleep times, as well as associated
-sleep quality metrics. These models were trained and assessed using both
-raw and median-filtered sleep estimates derived from the ZM EEG-based
-sleep monitor. Overall, all sequential models exhibited strong
+In this paper, we evaluated a series of machine learning models in
+sequence as well as a nulticlass deep learning model for estimating
+in-bed time and sleep time based on thigh-worn accelerometers as well as
+derived sleep quality metrics. These models were trained and assessed
+using both raw and median-filtered sleep estimates derived from the ZM
+EEG-based sleep monitor. Overall, all models exhibited strong
 performance in predicting when subjects were in bed. However,
 distinguishing between wakefulness and sleep during these in-bed periods
 proved to be more challenging. Interestingly, while the multiclass
@@ -3804,7 +3875,7 @@ choice for this particular application.
 While there is limited existing research on the epoch-to-epoch
 effectiveness of thigh-worn accelerometers in classifying in-bed time,
 Carlson and
-colleagues\textsuperscript{\protect\hyperlink{ref-carlson_validity_2021}{116}}
+colleagues\textsuperscript{\protect\hyperlink{ref-carlson_validity_2021}{121}}
 have offered valuable insights. Their study demonstrated that both a
 third-party algorithm called ``ProcessingPal'' and a proprietary
 algorithm named ``CREA'' were able to achieve high accuracies of 91\%
@@ -3817,18 +3888,18 @@ worth noting that all models in our study, with the exception of
 XGBoost, tended to underestimate SPT. The biLSTM model displayed the
 most significant underestimation, with a bias of -36 minutes. This
 aligns with previous research by Winkler et
-al.\textsuperscript{\protect\hyperlink{ref-winkler_identifying_2016}{119}},
+al.\textsuperscript{\protect\hyperlink{ref-winkler_identifying_2016}{108}},
 who reported a similar trend in both young-middle-aged and older adults.
 Their algorithm showed a moderate correlation with diary-recorded waking
 times but overestimated waking wear time by more than 30 minutes,
 resulting in an underestimation of in-bed time. This underestimation was
 further validated by Inan-Eroglu et
-al.\textsuperscript{\protect\hyperlink{ref-inan-eroglu_comparison_2021}{117}},
+al.\textsuperscript{\protect\hyperlink{ref-inan-eroglu_comparison_2021}{122}},
 who found an underestimation of 9.8 minutes when comparing Winkler et
 al.'s algorithm to self-reported measures in middle-aged adults.
 Contrastingly, another study reported only a slight underestimation of
 in-bed time in middle-aged and older
-adults\textsuperscript{\protect\hyperlink{ref-van_der_berg_identifying_2016}{118}}.
+adults\textsuperscript{\protect\hyperlink{ref-van_der_berg_identifying_2016}{123}}.
 They used a unique algorithmic approach that quantified the number and
 duration of sedentary periods to ascertain time in bed and active
 periods to identify wake times. Lastly, it's essential to clarify that
@@ -3900,11 +3971,11 @@ night-only recordings and 24-hour recordings. For night recordings, SE
 and LPS can be readily derived since SPT can be inferred from the length
 of the recording itself, as indicated by studies from Conley et al.~and
 Patterson et
-al\textsuperscript{\protect\hyperlink{ref-conley_agreement_2019}{69},\protect\hyperlink{ref-patterson_40_2023}{172}}.
+al\textsuperscript{\protect\hyperlink{ref-conley_agreement_2019}{69},\protect\hyperlink{ref-patterson_40_2023}{175}}.
 In contrast, when applied to 24-hour recordings, most sleep detection
 methods face the challenge of inferring SPT without the aid of sleep
 diaries, as presented by several
-studies\textsuperscript{\protect\hyperlink{ref-girschik_validation_2012}{44},\protect\hyperlink{ref-doherty_large_2017}{120},\protect\hyperlink{ref-anderson_assessment_2014}{122}}.
+studies\textsuperscript{\protect\hyperlink{ref-girschik_validation_2012}{44},\protect\hyperlink{ref-doherty_large_2017}{124},\protect\hyperlink{ref-anderson_assessment_2014}{126}}.
 This limitation prevents these methods from generating sleep quality
 metrics dependent on SPT. To address this issue, we designed models
 capable of distinguishing between in-bed awake time and in-bed asleep
@@ -3914,7 +3985,7 @@ commonly used sleep quality metrics. In a similar vein, Van Hees et
 al.\textsuperscript{\protect\hyperlink{ref-van_hees_estimating_2018}{100}}
 proposed an algorithm for determining SPT using wrist-worn devices, an
 approach that was subsequently validated by Plekhanova and her
-team\textsuperscript{\protect\hyperlink{ref-plekhanova_validation_2023}{173}}.
+team\textsuperscript{\protect\hyperlink{ref-plekhanova_validation_2023}{176}}.
 When combined with other methods, this algorithm enables the estimation
 of additional sleep quality metrics based on the identified SPT. Van
 Hees et al.~reported favorable results with low mean differences when
@@ -3957,7 +4028,7 @@ rsc\textsuperscript{\protect\hyperlink{ref-palotti_benchmark_2019}{97}},
 and
 LSTM-50\textsuperscript{\protect\hyperlink{ref-palotti_benchmark_2019}{97}}
 as evaluated in the Patterson et
-al.~study\textsuperscript{\protect\hyperlink{ref-patterson_40_2023}{172}},
+al.~study\textsuperscript{\protect\hyperlink{ref-patterson_40_2023}{175}},
 our XGBoost model displayed narrower LOAs for TST, SE, and WASO.
 Interestingly, the LOAs were also narrower when pitted against the
 algorithm tailored for thigh-worn devices by Johansson et
@@ -4015,7 +4086,8 @@ estimation methods, particularly in the use of thigh-worn
 accelerometers. One of the primary strengths of the research lies in its
 ability to distinguish between in-bed awake time and asleep time, as
 well as out-of-bed time. This distinction is crucial for extracting
-essential sleep quality metrics. Additionally, by evaluating multiple
+essential sleep quality metrics without the assistance of sleep diaries
+or other ways to determine the SPT. Additionally, by evaluating multiple
 nights per subject, the study offers valuable insights into
 intra-subject sleep variability, another important factor for sleep
 assessment. However, there are limitations to our approach. Most
@@ -4045,32 +4117,37 @@ for future research aimed at refining these models. The ultimate goal is
 to offer a more precise and accurate evaluation of sleep patterns and
 quality through the use of thigh-worn accelerometers.
 
-\hypertarget{overall-conclusions}{%
-\section{Overall Conclusions}\label{overall-conclusions}}
+\hypertarget{thesis-conclusions}{%
+\chapter{Thesis Conclusions}\label{thesis-conclusions}}
 
-\hypertarget{conclusions}{%
-\subsection{Conclusions}\label{conclusions}}
+The importance of sleep health and the limitations of conventional PSG
+examinations have highlighted the potential of wearable sensor systems
+as complementary measurement methods. In the previous sections of this
+thesis, it has been shown that accelerometers as a platform for
+long-term activity monitoring can be used to assess quantitative and
+qualitative aspects of sleep. Specifically, the findings of this thesis
+offer a deep dive into the methods and tools employed in the manual
+annotation of in-bed periods, the classification of non-wear periods in
+accelerometry data, and the application of various machine learning
+models to detect sleep.
 
-In summing up, our study demonstrates that the use of Audacity for
-manually annotating in-bed periods based on thigh- and hip-worn
-accelerometer data aligns well with objective EEG-based sleep device
-estimates and prospective sleep diaries. Our findings reveal minimal
-mean bias and acceptable limits of agreement when comparing time to bed
-and time out of bed across these different methods. Additionally, the
-manual annotation process proved highly reliable, exhibiting excellent
-inter- and intra-rater agreement. Its accuracy in relation to EEG-based
-assessments was also comparable to that of sleep diaries. Importantly,
-the manual annotation method can be applied to pre-existing raw data
-that may not have accompanying sleep records. This offers a significant
-advantage for making better use of free-living data resources. The
-increased availability of such annotated data can be particularly
-beneficial when training data-intensive machine learning algorithms,
-potentially enhancing their generalizability in objectively assessing
-human behavior. \#\#\# Conclusions
+We demonstrated that the use of Audacity for manually annotating in-bed
+periods based on thigh- and hip-worn accelerometer data aligns well with
+objective EEG-based sleep device estimates and prospective sleep
+diaries. Our findings reveal minimal mean bias and acceptable limits of
+agreement when comparing time to bed and time out of bed across these
+different methods. Additionally, the manual annotation process proved
+highly reliable, exhibiting excellent inter- and intra-rater agreement.
+Its accuracy in relation to EEG-based assessments was also comparable to
+that of sleep diaries. Importantly, the manual annotation method can be
+applied to pre-existing raw data that may not have accompanying sleep
+records. This offers a significant advantage for making better use of
+free-living data resources. The increased availability of such annotated
+data can be particularly beneficial when training data-intensive machine
+learning algorithms, potentially enhancing their generalizability in
+objectively assessing human behavior.
 
-\#\#\# Conclusions
-
-In this study, we examine the effectiveness and generalizability of both
+Further, we examined the effectiveness and generalizability of both
 existing techniques and our newly-developed decision tree models for
 classifying non-wear periods in accelerometer data collected in
 free-living conditions. While current heuristic methods offer promising
@@ -4086,63 +4163,21 @@ given the importance of accurately detecting non-wear time as the
 initial step in analyzing accelerometer data, we urge researchers to
 carefully choose an appropriate method for this critical task.
 
-In terms of model performance, we tested a variety of machine learning
-and deep learning models to predict in-bed and sleep times as well as
-corresponding sleep quality metrics. The sequential models performed
-particularly well in predicting in-bed time, although they encountered
-difficulties in accurately discerning sleep from wake epochs during that
-period. Among all the models evaluated, the XGBoost model stood out for
-its superior performance in epoch-to-epoch predictions and sleep quality
-metrics.The study also brings attention to the existing limitations of
-current sleep detection methods. Specifically, there are challenges in
-effectively identifying wake periods during in-bed time, and
-improvements are needed to enhance the accuracy of individual sleep
-assessments. Overall, we believe our work serves as a foundational step
-for future research aimed at refining these models. The ultimate goal is
-to offer a more precise and accurate evaluation of sleep patterns and
-quality through the use of thigh-worn accelerometers.
-
-\hypertarget{thesis-perspectives}{%
-\chapter{Thesis Perspectives}\label{thesis-perspectives}}
-
-The importance of sleep health and the limitations of conventional PSG
-examinations have highlighted the potential of wearable sensor systems
-as complementary measurement methods. In the previous sections of this
-thesis, it has been shown that accelerometers as a platform for
-long-term activity monitoring can be used to assess quantitative and
-qualitative aspects of sleep. Specifically, the findings of this thesis
-offer a deep dive into the methods and tools employed in the manual
-annotation of in-bed periods, the classification of non-wear periods in
-accelerometer data, and the application of various machine learning
-models to detect sleep.
-
-The findings regarding in-bed period annotations using Audacity, based
-on thigh- and hip-worn accelerometer data, showcased notable alignment
-with EEG-based sleep devices and sleep diaries. The approach exhibited
-minimal bias, high reliability, and favorable inter-rater agreement.
-Particularly, the methodology's adaptability to pre-existing raw data
-without sleep records stands out, paving the way for leveraging
-free-living data sources. This accessible annotated data holds promise
-for honing machine learning algorithms in assessing human behaviors.
-
-In assessing non-wear period classification in accelerometer data, we
-assessed established techniques with our novel decision tree models.
-Traditional methods, though effective, have their constraints. Notably,
-some advanced machine learning models risked overfitting. The integrity
-and volume of data remain central to machine learning efficacy,
-emphasizing the need for a balanced model generalizable across various
-datasets. To ensure pragmatic outcomes, we champion external validation
-and underscore the imperative of method precision for initial non-wear
-time detection.
-
-Evaluating various models for predicting in-bed and sleep times,
-sequential models emerged as adept in predicting in-bed times but
-faltered in distinguishing sleep from wake periods. Notably, the XGBoost
-model excelled in its predictive capabilities and sleep quality
-assessments. Yet, challenges persist in current sleep detection methods,
-especially pinpointing wake intervals during in-bed time. Our efforts
-underline an urgent need for refining these detection models to achieve
-nuanced evaluations of sleep patterns using thigh-worn accelerometers.
+Lastly, we tested a variety of machine learning and deep learning models
+to predict in-bed and sleep times as well as corresponding sleep quality
+metrics. The sequential models performed particularly well in predicting
+in-bed time, although they encountered difficulties in accurately
+discerning sleep from wake epochs during that period. Among all the
+models evaluated, the XGBoost model stood out for its superior
+performance in epoch-to-epoch predictions and sleep quality metrics.The
+study also brings attention to the existing limitations of current sleep
+detection methods. Specifically, there are challenges in effectively
+identifying wake periods during in-bed time, and improvements are needed
+to enhance the accuracy of individual sleep assessments. Overall, we
+believe our work serves as a foundational step for future research aimed
+at refining these models. The ultimate goal is to offer a more precise
+and accurate evaluation of sleep patterns and quality through the use of
+thigh-worn accelerometers.
 
 Regarding the objectives set in the beginning of the thesis, it can be
 stated that:
@@ -4178,12 +4213,246 @@ stated that:
   ensuring a robust validation process.
 \end{itemize}
 
-A logical next step in this research would be to create and validate a
-standardized procedure for manual sleep annotation, akin to what is
-available for EEG-based sleep annotation in the AASM Scoring
-Manual\textsuperscript{\protect\hyperlink{ref-aasm}{174}}. This would
-make the methodology more accessible to individuals with limited
-experience in the field of accelerometry.
+Based on the primary findings of this thesis, we have advanced the field
+of sleep monitoring using accelerometry data. In the following
+`perspectives' section, we will discuss the broader implications of
+these results and consider future directions in sleep research and
+technology.
+
+\hypertarget{perspectives}{%
+\chapter{Perspectives}\label{perspectives}}
+
+While the findings of this thesis has bridged knowledge gaps, further
+horizons beckon exploration. The following will discuss implications of
+the findings in this thesis and potential avenues for future reseach.
+
+\hypertarget{implications-of-findings}{%
+\section{Implications of Findings}\label{implications-of-findings}}
+
+As demonstrated in Paper I, the manual annotation method described for
+labeling in-bed periods using raw accelerometry data eliminates the need
+for sophisticated preprocessing to extract meaningful sleep information.
+This manual annotation serves as a valid and consistent alternative to
+sleep diaries or in-bed time determined by EEG recordings. Accurate and
+correct labeling is paramount, not just in sleep research, but across
+many fields, as it forms the foundation for effective machine learning
+applications. Having reliable labels enables more accurate model
+training, leading to better predictions and insights. This approach,
+especially when combined with a rich dataset like accelerometry without
+accompanying sleep diaries or other in-bed time estimates, can simplify
+and expedite data analysis workflows in sleep research, offering greater
+efficiency.
+
+Through the utilization of simple decision tree models and by
+recognizing the role of surface skin temperature, as presented in Paper
+II, we have advanced in our capability to accurately identify non-wear
+time. This may reduce potential data inaccuracies and biases, ensuring
+the integrity of our accelerometry datasets. Additionally, our detailed
+evaluation of different wear locations---including the hip, thigh, and
+wrist---offers researchers critical insights into the efficacy variances
+of different methods based on the device's position. We've also placed
+significant emphasis on the value of external validation, highlighting
+the essential need for stringent validation protocols before the
+declaration of model performance. Our findings clearly indicate that
+heuristic algorithms stand out as both population and wear-time
+agnostic. They offer enhanced flexibility in study design. However, when
+it comes to detecting shorter non-wear episodes---a domain where
+traditional algorithms often falter---it's worth considering machine
+learning model-based approaches but such should be carefully selected.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Refinement of Sleep Detection Algorithms}: The assessment of
+  various machine learning and deep learning models against an EEG-based
+  monitor offers valuable insights into which algorithms are best suited
+  for accurate sleep detection. This knowledge can lead to the wider
+  adoption of the most effective models and improve the quality of sleep
+  data obtained from accelerometry-based devices.
+\item
+  \textbf{Potential for Broader Application}: With validated methods for
+  sleep detection using accelerometers, there's potential for wider
+  application in clinical settings, public health studies, and personal
+  health monitoring. These methods could provide a cost-effective, less
+  intrusive alternative to traditional sleep monitoring techniques,
+  making sleep studies more accessible to a broader population.
+\end{enumerate}
+
+\hypertarget{multimodal-sensor-integration}{%
+\section{Multimodal Sensor
+Integration}\label{multimodal-sensor-integration}}
+
+Much research has focused on detecting sleep quality and duration using
+accelerometer
+sensors\textsuperscript{\protect\hyperlink{ref-baron_2018}{177}}.
+However, respiratory signals among others have also been employed for
+this purpose\textsuperscript{\protect\hyperlink{ref-dunn_2018}{178}}.
+The accuracy of accelerometer-based sleep wearables has been extensively
+reviewed\textsuperscript{\protect\hyperlink{ref-baron_2018}{177},\protect\hyperlink{ref-danzig_2020}{179},\protect\hyperlink{ref-haghayegh_2019}{180}},
+with a comprehensive analysis on wearables using various sensors
+provided in another review by de Zambotti et
+al.\textsuperscript{\protect\hyperlink{ref-dezambotti_2019}{181}}. While
+many devices can successfully differentiate between sleep and wake, they
+face challenges when trying to classify detailed sleep stages, including
+wake, light sleep, deep sleep, and REM
+sleep\textsuperscript{\protect\hyperlink{ref-dezambotti_2019}{181}},
+leading to inaccuracies, as concluded by de Zambotti et al.~Typical
+commercial accelerometers achieve an accuracy between 0.81 and 0.91 in
+distinguishing sleep from wake, with sensitivity values between 0.87 and
+0.99 and specificity values between 0.10 and
+0.52\textsuperscript{\protect\hyperlink{ref-haghayegh_2019}{180}}.
+However, their performance varies when pinpointing specific sleep
+stages. A review on these devices reported fluctuating accuracies:
+69\%-81\% for light sleep, 36\%-89\% for SWS, and 62\%-89\% for REM
+sleep\textsuperscript{\protect\hyperlink{ref-haghayegh_2019}{180}}. This
+inconsistency implies that relying solely on acceleration might not be
+enough for a dependable identification of sleep stages. Moreover, the
+evidence suggests that heart rate variability (HRV) can be a valuable
+indicator for identifying sleep
+stages\textsuperscript{\protect\hyperlink{ref-herzig_2018}{182},\protect\hyperlink{ref-chouchou_2014}{183}}.
+One study achieved an 89\% accuracy rate in identifying deep sleep using
+HRV combined with respiratory
+signals\textsuperscript{\protect\hyperlink{ref-long_2017}{184}}. Another
+investigation combined HRV with accelerometer data and was able to
+accurately detect 75\% of deep sleep episodes and over 70\% of REM sleep
+epochs, though their success rate for identifying light sleep hovered
+between 42\% and
+52\%\textsuperscript{\protect\hyperlink{ref-muzet_2016}{185}}. This
+thesis focussed on algorithms grounded only in acceleration. While
+including in heart rate and other physiological markers can potentially
+improve sleep classification, it comes at the cost of battery
+longevity\textsuperscript{\protect\hyperlink{ref-walch_sleep_2019}{147}}.
+However, evidence from studies utilizing heart rate suggests that
+distinguishing inactive wake time in bed from actual sleep could be more
+effectively achieved by integrating accelerometry with other biometric
+signals. This promising avenue points to future research directions. By
+harnessing biometric signals like heart rate and respiration, which vary
+as one transitions into sleep, we can enhance the precision of
+accelerometry-based sleep measurements. This approach still offers a
+more cost-effective alternative to PSG despite the use multimodal
+sensors but also broadens opportunities for comprehensive research and
+health interventions in the sleep domain.
+
+\hypertarget{external-validation-is-important}{%
+\section{External Validation Is
+Important}\label{external-validation-is-important}}
+
+External validation: The test data set in the current work was from one
+PSG study, future work should consider using multiple PSG studies as
+test data sets, to ensure generalizability to different PSG annotation
+styles. The challenge with this currently is that many open-source PSG
+data sets (MESA, STAGES) only include activity count data and not raw
+acceleration, making it impossible to test the raw acceleration-based
+algorithms.
+
+\hypertarget{non-wear-sleep-sedentary-behavior}{%
+\section{Non-wear, Sleep, Sedentary
+Behavior}\label{non-wear-sleep-sedentary-behavior}}
+
+Although raw accelerometer data has shown promising results in terms of
+detecting non-wear time, care must be given to sources of uncertainty
+and error when handling and processing raw accelerometer data. As
+previously mentioned, resampling to other sample frequencies can be
+considered, for example 30 to 100 Hz. However, the effects of resampling
+are ill understood. Sampling algorithms that interpolate make underlying
+assumptions with respect to interpolation errors and coefficient
+quantization errors, and as a result, are limited in their ability to
+correctly resample. How resampling effects the typically multi-axial
+acceleration values of accelerometers is an interesting directive to
+explore. Another potential source of error is the acceleration sensor
+calibration. Typically, this calibration is done during manufacturing in
+which the recorded acceleration values should not exceed the local
+gravitational acceleration during non-movement episodes. However, in
+some cases it is worth re-calibrating the accelerometer data with a
+process called
+auto-calibration\textsuperscript{\protect\hyperlink{ref-hees_2014}{186}}.
+How auto-calibration effects the activity patterns which are required
+for accurate non-wear detection is worth exploring as well
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Personalized Sleep Models}: Develop adaptive machine learning
+  models that adjust based on an individual's unique sleep patterns.
+  This could cater to outliers or individuals with specific sleep
+  disorders.
+\item
+  \textbf{Real-time Feedback}: Investigate the potential of wearables to
+  provide real-time feedback to users about their sleep quality or
+  disruptions, allowing them to make immediate behavioral adjustments.
+\item
+  \textbf{Multimodal Data Analysis}: Delve into the potential benefits
+  of combining accelerometer data with other health metrics. For
+  instance, can correlations between daily activity levels and sleep
+  patterns be identified to provide more holistic health
+  recommendations?
+\item
+  \textbf{Pediatric and Elderly Populations}: Assess the viability of
+  wearable sensor systems in specialized populations such as children or
+  the elderly, who may have different sleep characteristics.
+\item
+  \textbf{Sleep Disorder Identification}: Can these models be refined to
+  identify specific sleep disorders (e.g., insomnia, sleep apnea) based
+  on unique patterns detected by accelerometers?
+\item
+  \textbf{Improvement in Wake Detection}: Given the challenges in
+  discerning wake periods during in-bed times, dedicated research can be
+  undertaken to refine methods of wake detection using accelerometers,
+  perhaps by employing hybrid models or newer deep learning
+  architectures.
+\item
+  \textbf{Comparative Studies with Other Wearables}: Benchmark
+  thigh-worn accelerometers against other emerging wearable technologies
+  to discern their relative advantages and disadvantages.
+\item
+  \textbf{Long-term Health Outcomes}: Explore the long-term health
+  outcomes associated with sleep patterns identified by wearable sensor
+  systems. This could link sleep quality, as identified by wearables, to
+  chronic illnesses or cognitive decline.
+\item
+  \textbf{Economic and Scalability Studies}: Evaluate the economic
+  benefits of wearable sleep trackers compared to traditional PSG
+  examinations. Moreover, studies can also be conducted to understand
+  how these wearable solutions can be scaled to larger populations,
+  especially in resource-limited settings.
+\item
+  \textbf{User Experience and Compliance}: Investigate the user
+  experience associated with thigh-worn accelerometers. This includes
+  comfort, ease of use, and long-term compliance. Can design changes or
+  user education improve user satisfaction and compliance?
+\item
+  \textbf{Ethical and Privacy Implications}: As wearable technologies
+  continue to advance, research should also delve into the ethical and
+  privacy implications associated with continuous monitoring. How can
+  user data be protected and used responsibly?
+\item
+  \textbf{Integration with Other Health Interventions}: Investigate the
+  impact of various interventions, like dietary changes or physical
+  activity regimens, on sleep patterns as recorded by accelerometers.
+  This can offer a more comprehensive understanding of holistic health.
+\end{enumerate}
+
+The societal implications of understanding and improving sleep health
+are profound. Sleep disturbances, as we know by now, have cascading
+effects on mental health, productivity, cognitive function, and even
+chronic disease prevalence. Making sleep assessment tools more
+accessible and less obtrusive, as our research suggests, can democratize
+sleep health. By sidestepping the limitations of traditional PSG
+examinations, individuals across socio-economic spectra can gain
+insights into their sleep health, paving the way for proactive health
+management.
+
+In essence, the journey embarked upon in this thesis is not a
+culmination but a commencement. The vision is clear: to reenvision sleep
+health, making it more accessible, accurate, and actionable for society
+at large. As technology and healthcare coalesce, the dream of a
+well-rested world, empowered by data-driven insights, inches ever closer
+to reality.
+
+Conclusively, the research presented in this thesis, while significant
+in its attributions, reinforces a timeless academic tradition: with each
+answer, new questions arise, directing future research in the
+intersection of sleep health and technology.
 
 \hypertarget{code-availability}{%
 \chapter{Code Availability}\label{code-availability}}
@@ -4959,8 +5228,19 @@ parameters using an accelerometer without sleep diary. \emph{Sci Rep}
 \textbf{8}, 12975 (2018)
 doi:\href{https://doi.org/10.1038/s41598-018-31266-z}{10.1038/s41598-018-31266-z}.}
 
-\leavevmode\vadjust pre{\hypertarget{ref-dowd_systematic_2018}{}}%
+\leavevmode\vadjust pre{\hypertarget{ref-migueles_ggir_2019}{}}%
 \CSLLeftMargin{101. }%
+\CSLRightInline{Migueles, J. H., Rowlands, A. V., Huber, F., Sabia, S.
+\& Hees, V. T. van. {GGIR}: {A} {Research} {Community}--{Driven} {Open}
+{Source} {R} {Package} for {Generating} {Physical} {Activity} and
+{Sleep} {Outcomes} {From} {Multi}-{Day} {Raw} {Accelerometer} {Data}.
+\emph{Journal for the Measurement of Physical Behaviour} \textbf{2},
+188--196 (2019) URL:
+\url{https://journals.humankinetics.com/view/journals/jmpb/2/3/article-p188.xml}
+Accessed 25 September 2023, 2023:2023.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-dowd_systematic_2018}{}}%
+\CSLLeftMargin{102. }%
 \CSLRightInline{Dowd, K. P. \emph{et al.} A systematic literature review
 of reviews on techniques for physical activity measurement in adults: A
 {DEDIPAC} study. \emph{International Journal of Behavioral Nutrition and
@@ -4969,21 +5249,21 @@ Physical Activity} \textbf{15}, 15 (2018) URL:
 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-loyen_sedentary_2017}{}}%
-\CSLLeftMargin{102. }%
+\CSLLeftMargin{103. }%
 \CSLRightInline{Loyen, A. \emph{et al.} Sedentary time and physical
 activity surveillance through accelerometer pooling in four european
 countries. \emph{Sports Med} \textbf{47}, 1421--1435 (2017)
 doi:\href{https://doi.org/10.1007/s40279-016-0658-y}{10.1007/s40279-016-0658-y}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-montoye_raw_2018}{}}%
-\CSLLeftMargin{103. }%
+\CSLLeftMargin{104. }%
 \CSLRightInline{Montoye, A. H. K. \emph{et al.} Raw and count data
 comparability of hip-worn {ActiGraph} {GT}3X+ and link accelerometers.
 \emph{Med Sci Sports Exerc} \textbf{50}, 1103--1112 (2018)
 doi:\href{https://doi.org/10.1249/MSS.0000000000001534}{10.1249/MSS.0000000000001534}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-migueles_comparability_2019}{}}%
-\CSLLeftMargin{104. }%
+\CSLLeftMargin{105. }%
 \CSLRightInline{Migueles, J. H. \emph{et al.} Comparability of
 accelerometer signal aggregation metrics across placements and dominant
 wrist cut points for the assessment of physical activity in adults.
@@ -4992,21 +5272,52 @@ wrist cut points for the assessment of physical activity in adults.
 August 2023, 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-lee_missing_2018}{}}%
-\CSLLeftMargin{105. }%
+\CSLLeftMargin{106. }%
 \CSLRightInline{Lee, J. A. \& Gill, J. Missing value imputation for
 physical activity data measured by accelerometer. \emph{Stat Methods Med
 Res} \textbf{27}, 490--506 (2018)
 doi:\href{https://doi.org/10.1177/0962280216633248}{10.1177/0962280216633248}.}
 
+\leavevmode\vadjust pre{\hypertarget{ref-choi_validation_2011}{}}%
+\CSLLeftMargin{107. }%
+\CSLRightInline{Choi, L., Liu, Z., Matthews, C. E. \& Buchowski, M. S.
+Validation of accelerometer wear and nonwear time classification
+algorithm. \emph{Med Sci Sports Exerc} \textbf{43}, 357--364 (2011)
+doi:\href{https://doi.org/10.1249/MSS.0b013e3181ed61a3}{10.1249/MSS.0b013e3181ed61a3}.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-winkler_identifying_2016}{}}%
+\CSLLeftMargin{108. }%
+\CSLRightInline{Winkler, E. A. H. \emph{et al.} Identifying adults'
+valid waking wear time by automated estimation in {activPAL} data
+collected with a 24 h wear protocol. \emph{Physiol. Meas.} \textbf{37},
+1653 (2016) URL: \url{https://dx.doi.org/10.1088/0967-3334/37/10/1653}
+Accessed 12 June 2023, 2023:2023.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-matthews_2002}{}}%
+\CSLLeftMargin{109. }%
+\CSLRightInline{Matthews, C. E., Ainsworth, B. E., Thompson, R. W. \&
+Bassett, D. R. J. Sources of variance in daily physical activity levels
+as measured by an accelerometer. \emph{Medicine \& Science in Sports \&
+Exercise} \textbf{34}, 1376 (2002) URL:
+\url{https://journals.lww.com/acsm-msse/fulltext/2002/08000/sources_of_variance_in_daily_physical_activity.21.aspx}.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-king_2011}{}}%
+\CSLLeftMargin{110. }%
+\CSLRightInline{King, W. C., Li, J., Leishear, K., Mitchell, J. E. \&
+Belle, S. H. Determining Activity Monitor Wear Time: An Influential
+Decision Rule. \emph{Journal of Physical Activity and Health}
+\textbf{8}, 566--580 (2011) URL:
+\url{https://journals.humankinetics.com/view/journals/jpah/8/4/article-p566.xml}.}
+
 \leavevmode\vadjust pre{\hypertarget{ref-ainsworth_recommendations_2012}{}}%
-\CSLLeftMargin{106. }%
+\CSLLeftMargin{111. }%
 \CSLRightInline{Ainsworth, B. E. \emph{et al.} Recommendations to
 improve the accuracy of estimates of physical activity derived from self
 report. \emph{J Phys Act Health} \textbf{9 Suppl 1}, S76--84 (2012)
 doi:\href{https://doi.org/10.1123/jpah.9.s1.s76}{10.1123/jpah.9.s1.s76}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-hecht_methodology_2009}{}}%
-\CSLLeftMargin{107. }%
+\CSLLeftMargin{112. }%
 \CSLRightInline{Hecht, A., Ma, S., Porszasz, J., Casaburi, R. \& COPD
 Clinical Research Network. Methodology for using long-term accelerometry
 monitoring to describe daily activity patterns in {COPD}. \emph{{COPD}}
@@ -5014,14 +5325,14 @@ monitoring to describe daily activity patterns in {COPD}. \emph{{COPD}}
 doi:\href{https://doi.org/10.1080/15412550902755044}{10.1080/15412550902755044}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-ruiz_objectively_2011}{}}%
-\CSLLeftMargin{108. }%
+\CSLLeftMargin{113. }%
 \CSLRightInline{Ruiz, J. R. \emph{et al.} Objectively measured physical
 activity and sedentary time in european adolescents: The {HELENA} study.
 \emph{Am J Epidemiol} \textbf{174}, 173--184 (2011)
 doi:\href{https://doi.org/10.1093/aje/kwr068}{10.1093/aje/kwr068}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-troiano_how_2020}{}}%
-\CSLLeftMargin{109. }%
+\CSLLeftMargin{114. }%
 \CSLRightInline{Troiano, R. P., Stamatakis, E. \& Bull, F. C. How can
 global physical activity surveillance adapt to evolving physical
 activity guidelines? Needs, challenges and future directions. \emph{Br J
@@ -5030,7 +5341,7 @@ Sports Med} \textbf{54}, 1468--1473 (2020) URL:
 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-aadland_comparison_2018}{}}%
-\CSLLeftMargin{110. }%
+\CSLLeftMargin{115. }%
 \CSLRightInline{Aadland, E., Andersen, L. B., Anderssen, S. A. \&
 Resaland, G. K. A comparison of 10 accelerometer non-wear time criteria
 and logbooks in children. \emph{{BMC} Public Health} \textbf{18}, 323
@@ -5038,7 +5349,7 @@ and logbooks in children. \emph{{BMC} Public Health} \textbf{18}, 323
 August 2023, 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-toftager_accelerometer_2013}{}}%
-\CSLLeftMargin{111. }%
+\CSLLeftMargin{116. }%
 \CSLRightInline{Toftager, M. \emph{et al.} Accelerometer data reduction
 in adolescents: Effects on sample retention and bias.
 \emph{International Journal of Behavioral Nutrition and Physical
@@ -5047,7 +5358,7 @@ Activity} \textbf{10}, 140 (2013) URL:
 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-duncan_wear-time_2018}{}}%
-\CSLLeftMargin{112. }%
+\CSLLeftMargin{117. }%
 \CSLRightInline{Duncan, S. \emph{et al.} Wear-time compliance with a
 dual-accelerometer system for capturing 24-h behavioural profiles in
 children and adults. \emph{Int J Environ Res Public Health} \textbf{15},
@@ -5055,7 +5366,7 @@ children and adults. \emph{Int J Environ Res Public Health} \textbf{15},
 doi:\href{https://doi.org/10.3390/ijerph15071296}{10.3390/ijerph15071296}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-rasmussen_short-term_2020}{}}%
-\CSLLeftMargin{113. }%
+\CSLLeftMargin{118. }%
 \CSLRightInline{Rasmussen, M. G. B. \emph{et al.} Short-term efficacy of
 reducing screen media use on physical activity, sleep, and physiological
 stress in families with children aged 4--14: Study protocol for the
@@ -5065,7 +5376,7 @@ stress in families with children aged 4--14: Study protocol for the
 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-zhou_classification_2015}{}}%
-\CSLLeftMargin{114. }%
+\CSLLeftMargin{119. }%
 \CSLRightInline{Zhou, S.-M. \emph{et al.} Classification of
 accelerometer wear and non-wear events in seconds for monitoring
 free-living physical activity. \emph{{BMJ} Open} \textbf{5}, e007447
@@ -5073,7 +5384,7 @@ free-living physical activity. \emph{{BMJ} Open} \textbf{5}, e007447
 August 2023, 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-syed_novel_2021}{}}%
-\CSLLeftMargin{115. }%
+\CSLLeftMargin{120. }%
 \CSLRightInline{Syed, S., Morseth, B., Hopstock, L. A. \& Horsch, A. A
 novel algorithm to detect non-wear time from raw accelerometer data
 using deep convolutional neural networks. \emph{Sci Rep} \textbf{11},
@@ -5082,7 +5393,7 @@ using deep convolutional neural networks. \emph{Sci Rep} \textbf{11},
 August 2023, 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-carlson_validity_2021}{}}%
-\CSLLeftMargin{116. }%
+\CSLLeftMargin{121. }%
 \CSLRightInline{Carlson, J. A. \emph{et al.} Validity of two awake
 wear-time classification algorithms for {activPAL} in youth, adults, and
 older adults. \emph{Journal for the Measurement of Physical Behaviour}
@@ -5091,7 +5402,7 @@ older adults. \emph{Journal for the Measurement of Physical Behaviour}
 Accessed 12 June 2023, 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-inan-eroglu_comparison_2021}{}}%
-\CSLLeftMargin{117. }%
+\CSLLeftMargin{122. }%
 \CSLRightInline{Inan-Eroglu, E. \emph{et al.} Comparison of a thigh-worn
 accelerometer algorithm with diary estimates of time in bed and time
 asleep: The 1970 british cohort study. \emph{Journal for the Measurement
@@ -5100,23 +5411,15 @@ of Physical Behaviour} \textbf{4}, 60--67 (2021) URL:
 Accessed 12 June 2023, 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-van_der_berg_identifying_2016}{}}%
-\CSLLeftMargin{118. }%
+\CSLLeftMargin{123. }%
 \CSLRightInline{Berg, J. D. van der \emph{et al.} Identifying waking
 time in 24-h accelerometry data in adults using an automated algorithm.
 \emph{Journal of Sports Sciences} \textbf{34}, 1867--1873 (2016) URL:
 \url{https://doi.org/10.1080/02640414.2016.1140908} Accessed 12 June
 2023, 2023:2023.}
 
-\leavevmode\vadjust pre{\hypertarget{ref-winkler_identifying_2016}{}}%
-\CSLLeftMargin{119. }%
-\CSLRightInline{Winkler, E. A. H. \emph{et al.} Identifying adults'
-valid waking wear time by automated estimation in {activPAL} data
-collected with a 24 h wear protocol. \emph{Physiol. Meas.} \textbf{37},
-1653 (2016) URL: \url{https://dx.doi.org/10.1088/0967-3334/37/10/1653}
-Accessed 12 June 2023, 2023:2023.}
-
 \leavevmode\vadjust pre{\hypertarget{ref-doherty_large_2017}{}}%
-\CSLLeftMargin{120. }%
+\CSLLeftMargin{124. }%
 \CSLRightInline{Doherty, A. \emph{et al.} Large scale population
 assessment of physical activity using wrist worn accelerometers: The
 {UK} biobank study. \emph{{PLOS} {ONE}} \textbf{12}, e0169649 (2017)
@@ -5125,7 +5428,7 @@ URL:
 Accessed 12 July 2023, 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-dasilva_2014}{}}%
-\CSLLeftMargin{121. }%
+\CSLLeftMargin{125. }%
 \CSLRightInline{Silva, I. C. da \emph{et al.} Physical activity levels
 in three Brazilian birth cohorts as assessed with raw triaxial wrist
 accelerometry. \emph{International Journal of Epidemiology} \textbf{43},
@@ -5133,7 +5436,7 @@ accelerometry. \emph{International Journal of Epidemiology} \textbf{43},
 doi:\href{https://doi.org/10.1093/ije/dyu203}{10.1093/ije/dyu203}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-anderson_assessment_2014}{}}%
-\CSLLeftMargin{122. }%
+\CSLLeftMargin{126. }%
 \CSLRightInline{Anderson, K. N. \emph{et al.} Assessment of sleep and
 circadian rhythm disorders in the very old: The newcastle 85+ cohort
 study. \emph{Age and Ageing} \textbf{43}, 57--63 (2014) URL:
@@ -5141,7 +5444,7 @@ study. \emph{Age and Ageing} \textbf{43}, 57--63 (2014) URL:
 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-lockley_1999}{}}%
-\CSLLeftMargin{123. }%
+\CSLLeftMargin{127. }%
 \CSLRightInline{Lockley, S. W., Skene, D. J. \& Arendt, J. Comparison
 between subjective and actigraphic measurement of sleep and sleep
 rhythms. \emph{Journal of Sleep Research} \textbf{8}, 175--183 (1999)
@@ -5149,7 +5452,7 @@ URL:
 \url{https://onlinelibrary.wiley.com/doi/abs/10.1046/j.1365-2869.1999.00155.x}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-skovgaard_manual_2021}{}}%
-\CSLLeftMargin{124. }%
+\CSLLeftMargin{128. }%
 \CSLRightInline{Skovgaard, E. L., Pedersen, J., Møller, N. C., Grøntved,
 A. \& Brønd, J. C. Manual annotation of time in bed using free-living
 recordings of accelerometry data. \emph{Sensors (Basel)} \textbf{21},
@@ -5157,7 +5460,7 @@ recordings of accelerometry data. \emph{Sensors (Basel)} \textbf{21},
 doi:\href{https://doi.org/10.3390/s21248442}{10.3390/s21248442}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-rasmussen_feasibility_2021}{}}%
-\CSLLeftMargin{125. }%
+\CSLLeftMargin{129. }%
 \CSLRightInline{Rasmussen, M. G. B. \emph{et al.} Feasibility of two
 screen media reduction interventions: Results from the {SCREENS} pilot
 trial. \emph{{PLOS} {ONE}} \textbf{16}, e0259657 (2021) URL:
@@ -5165,7 +5468,7 @@ trial. \emph{{PLOS} {ONE}} \textbf{16}, e0259657 (2021) URL:
 Accessed 12 June 2023, 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-jaeschke_variability_2018}{}}%
-\CSLLeftMargin{126. }%
+\CSLLeftMargin{130. }%
 \CSLRightInline{Jaeschke, L., Steinbrecher, A., Jeran, S., Konigorski,
 S. \& Pischon, T. Variability and reliability study of overall physical
 activity and activity intensity levels using 24~h-accelerometry-assessed
@@ -5174,56 +5477,56 @@ data. \emph{{BMC} Public Health} \textbf{18}, 530 (2018) URL:
 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-audacity}{}}%
-\CSLLeftMargin{127. }%
+\CSLLeftMargin{131. }%
 \CSLRightInline{Audacity Team. Audacity\textregistered{} software is
 copyright © 1999--2021 audacity team. (2021).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-visplore}{}}%
-\CSLLeftMargin{128. }%
+\CSLLeftMargin{132. }%
 \CSLRightInline{Visplore {\textendash} software for visual time series
 analysis. URL: \url{https://visplore.com/home-11-2022/}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-label_studio}{}}%
-\CSLLeftMargin{129. }%
+\CSLLeftMargin{133. }%
 \CSLRightInline{Open Source Data Labeling. URL:
 \url{https://labelstud.io/}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-shrout_1979}{}}%
-\CSLLeftMargin{130. }%
+\CSLLeftMargin{134. }%
 \CSLRightInline{Shrout, P. E. \& Fleiss, J. L. Intraclass correlations:
 Uses in assessing rater reliability. \emph{Psychological Bulletin}
 \textbf{86}, 420--428 (1979)
 doi:\href{https://doi.org/10.1037/0033-2909.86.2.420}{10.1037/0033-2909.86.2.420}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-mcgraw_1996}{}}%
-\CSLLeftMargin{131. }%
+\CSLLeftMargin{135. }%
 \CSLRightInline{McGraw, K. O. \& Wong, S. P. Forming inferences about
 some intraclass correlation coefficients. \emph{Psychological Methods}
 \textbf{1}, 30--46 (1996)
 doi:\href{https://doi.org/10.1037/1082-989X.1.1.30}{10.1037/1082-989X.1.1.30}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-koo_guideline_2016}{}}%
-\CSLLeftMargin{132. }%
+\CSLLeftMargin{136. }%
 \CSLRightInline{Koo, T. K. \& Li, M. Y. A guideline of selecting and
 reporting intraclass correlation coefficients for reliability research.
 \emph{J Chiropr Med} \textbf{15}, 155--163 (2016)
 doi:\href{https://doi.org/10.1016/j.jcm.2016.02.012}{10.1016/j.jcm.2016.02.012}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-psych}{}}%
-\CSLLeftMargin{133. }%
+\CSLLeftMargin{137. }%
 \CSLRightInline{William Revelle. \emph{Psych: Procedures for
 psychological, psychometric, and personality research}. (Northwestern
 University, 2023). URL: \url{https://CRAN.R-project.org/package=psych}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-bland_measuring_1999}{}}%
-\CSLLeftMargin{134. }%
+\CSLLeftMargin{138. }%
 \CSLRightInline{Bland, J. M. \& Altman, D. G. Measuring agreement in
 method comparison studies. \emph{Stat Methods Med Res} \textbf{8},
 135--160 (1999) URL: \url{https://doi.org/10.1177/096228029900800204}
 Accessed 9 August 2023, 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-skovgaard_generalizability_2023}{}}%
-\CSLLeftMargin{135. }%
+\CSLLeftMargin{139. }%
 \CSLRightInline{Skovgaard, E. L. \emph{et al.} Generalizability and
 performance of methods to detect non-wear with free-living accelerometer
 recordings. \emph{Sci Rep} \textbf{13}, 2496 (2023) URL:
@@ -5231,28 +5534,21 @@ recordings. \emph{Sci Rep} \textbf{13}, 2496 (2023) URL:
 June 2023, 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-troiano_physical_2008}{}}%
-\CSLLeftMargin{136. }%
+\CSLLeftMargin{140. }%
 \CSLRightInline{Troiano, R. P. \emph{et al.} Physical activity in the
 united states measured by accelerometer. \emph{Med Sci Sports Exerc}
 \textbf{40}, 181--188 (2008)
 doi:\href{https://doi.org/10.1249/mss.0b013e31815a51b3}{10.1249/mss.0b013e31815a51b3}.}
 
-\leavevmode\vadjust pre{\hypertarget{ref-choi_validation_2011}{}}%
-\CSLLeftMargin{137. }%
-\CSLRightInline{Choi, L., Liu, Z., Matthews, C. E. \& Buchowski, M. S.
-Validation of accelerometer wear and nonwear time classification
-algorithm. \emph{Med Sci Sports Exerc} \textbf{43}, 357--364 (2011)
-doi:\href{https://doi.org/10.1249/MSS.0b013e3181ed61a3}{10.1249/MSS.0b013e3181ed61a3}.}
-
 \leavevmode\vadjust pre{\hypertarget{ref-van_hees_estimation_2011}{}}%
-\CSLLeftMargin{138. }%
+\CSLLeftMargin{141. }%
 \CSLRightInline{Hees, V. T. van \emph{et al.} Estimation of daily energy
 expenditure in pregnant and non-pregnant women using a wrist-worn
 tri-axial accelerometer. \emph{{PLoS} One} \textbf{6}, e22922 (2011)
 doi:\href{https://doi.org/10.1371/journal.pone.0022922}{10.1371/journal.pone.0022922}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-hees_separating_2013}{}}%
-\CSLLeftMargin{139. }%
+\CSLLeftMargin{142. }%
 \CSLRightInline{Hees, V. T. van \emph{et al.} Separating movement and
 gravity components in an acceleration signal and implications for the
 assessment of human daily physical activity. \emph{{PLOS} {ONE}}
@@ -5261,7 +5557,7 @@ assessment of human daily physical activity. \emph{{PLOS} {ONE}}
 Accessed 5 August 2023, 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-syed_evaluating_2020}{}}%
-\CSLLeftMargin{140. }%
+\CSLLeftMargin{143. }%
 \CSLRightInline{Syed, S., Morseth, B., Hopstock, L. A. \& Horsch, A.
 Evaluating the performance of raw and epoch non-wear algorithms using
 multiple accelerometers and electrocardiogram recordings. \emph{Sci Rep}
@@ -5270,19 +5566,19 @@ multiple accelerometers and electrocardiogram recordings. \emph{Sci Rep}
 August 2023, 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-kuhn_tidymodels_2020}{}}%
-\CSLLeftMargin{141. }%
+\CSLLeftMargin{144. }%
 \CSLRightInline{Kuhn, M. \& Wickham, H. \emph{Tidymodels: A collection
 of packages for modeling and machine learning using tidyverse
 principles.} (2020). URL: \url{https://www.tidymodels.org}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-rpart}{}}%
-\CSLLeftMargin{142. }%
+\CSLLeftMargin{145. }%
 \CSLRightInline{Therneau, T. \& Atkinson, B. \emph{Rpart: Recursive
 partitioning and regression trees}. (2022). URL:
 \url{https://CRAN.R-project.org/package=rpart}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-pedersen_effects_2022}{}}%
-\CSLLeftMargin{143. }%
+\CSLLeftMargin{146. }%
 \CSLRightInline{Pedersen, J. \emph{et al.} Effects of Limiting
 Recreational Screen Media Use on Physical Activity and Sleep in Families
 With Children: A Cluster Randomized Clinical Trial. \emph{JAMA
@@ -5290,7 +5586,7 @@ pediatrics} \textbf{176}, 741--749 (2022)
 doi:\href{https://doi.org/10.1001/jamapediatrics.2022.1519}{10.1001/jamapediatrics.2022.1519}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-walch_sleep_2019}{}}%
-\CSLLeftMargin{144. }%
+\CSLLeftMargin{147. }%
 \CSLRightInline{Walch, O., Huang, Y., Forger, D. \& Goldstein, C. Sleep
 stage prediction with raw acceleration and photoplethysmography heart
 rate data derived from a consumer wearable device. \emph{Sleep}
@@ -5299,35 +5595,35 @@ rate data derived from a consumer wearable device. \emph{Sleep}
 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-galland_2018}{}}%
-\CSLLeftMargin{145. }%
+\CSLLeftMargin{148. }%
 \CSLRightInline{Galland, B. C. \emph{et al.} Establishing normal values
 for pediatric nighttime sleep measured by actigraphy: a systematic
 review and meta-analysis. \emph{Sleep} \textbf{41}, (2018)
 doi:\href{https://doi.org/10.1093/sleep/zsy017}{10.1093/sleep/zsy017}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-ohayon_2017}{}}%
-\CSLLeftMargin{146. }%
+\CSLLeftMargin{149. }%
 \CSLRightInline{Ohayon, M. \emph{et al.} National Sleep Foundation's
 sleep quality recommendations: first report. \emph{Sleep Health}
 \textbf{3}, 6--19 (2017)
 doi:\href{https://doi.org/10.1016/j.sleh.2016.11.006}{10.1016/j.sleh.2016.11.006}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-galland_normal_2012}{}}%
-\CSLLeftMargin{147. }%
+\CSLLeftMargin{150. }%
 \CSLRightInline{Galland, B. C., Taylor, B. J., Elder, D. E. \& Herbison,
 P. Normal sleep patterns in infants and children: A systematic review of
 observational studies. \emph{Sleep Med Rev} \textbf{16}, 213--222 (2012)
 doi:\href{https://doi.org/10.1016/j.smrv.2011.06.001}{10.1016/j.smrv.2011.06.001}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-hochreiter_long_1997}{}}%
-\CSLLeftMargin{148. }%
+\CSLLeftMargin{151. }%
 \CSLRightInline{Hochreiter, S. \& Schmidhuber, J. Long short-term
 memory. \emph{Neural Computation} \textbf{9}, 1735--1780 (1997) URL:
 \url{https://doi.org/10.1162/neco.1997.9.8.1735} Accessed 12 June 2023,
 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-sano_multimodal_2019}{}}%
-\CSLLeftMargin{149. }%
+\CSLLeftMargin{152. }%
 \CSLRightInline{Sano, A., Chen, W., Lopez-Martinez, D., Taylor, S. \&
 Picard, R. W. Multimodal ambulatory sleep detection using {LSTM}
 recurrent neural networks. \emph{{IEEE} J Biomed Health Inform}
@@ -5335,7 +5631,7 @@ recurrent neural networks. \emph{{IEEE} J Biomed Health Inform}
 doi:\href{https://doi.org/10.1109/JBHI.2018.2867619}{10.1109/JBHI.2018.2867619}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-chen_attention_2021}{}}%
-\CSLLeftMargin{150. }%
+\CSLLeftMargin{153. }%
 \CSLRightInline{Chen, Z., Wu, M., Cui, W., Liu, C. \& Li, X. An
 attention based {CNN}-{LSTM} approach for sleep-wake detection with
 heterogeneous sensors. \emph{{IEEE} J Biomed Health Inform} \textbf{25},
@@ -5343,26 +5639,26 @@ heterogeneous sensors. \emph{{IEEE} J Biomed Health Inform} \textbf{25},
 doi:\href{https://doi.org/10.1109/JBHI.2020.3006145}{10.1109/JBHI.2020.3006145}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-friedman_glmnet_2010}{}}%
-\CSLLeftMargin{151. }%
+\CSLLeftMargin{154. }%
 \CSLRightInline{Friedman, J., Hastie, T. \& Tibshirani, R.
 Regularization Paths for Generalized Linear Models via Coordinate
 Descent. \emph{Journal of Statistical Software} \textbf{33}, 1--22
 (2010).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-nnet}{}}%
-\CSLLeftMargin{152. }%
+\CSLLeftMargin{155. }%
 \CSLRightInline{Venables, W. N. \& Ripley, B. D. \emph{Modern applied
 statistics with s}. (Springer, 2002). URL:
 \url{https://www.stats.ox.ac.uk/pub/MASS4/}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-xgboost}{}}%
-\CSLLeftMargin{153. }%
+\CSLLeftMargin{156. }%
 \CSLRightInline{Chen, T. \emph{et al.} \emph{Xgboost: Extreme gradient
 boosting}. (2023). URL:
 \url{https://CRAN.R-project.org/package=xgboost}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-chawla_smote_2002}{}}%
-\CSLLeftMargin{154. }%
+\CSLLeftMargin{157. }%
 \CSLRightInline{Chawla, N. V., Bowyer, K. W., Hall, L. O. \& Kegelmeyer,
 W. P. {SMOTE}: Synthetic minority over-sampling technique. \emph{Journal
 of Artificial Intelligence Research} \textbf{16}, 321--357 (2002) URL:
@@ -5370,51 +5666,51 @@ of Artificial Intelligence Research} \textbf{16}, 321--357 (2002) URL:
 June 2023, 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-themis}{}}%
-\CSLLeftMargin{155. }%
+\CSLLeftMargin{158. }%
 \CSLRightInline{Hvitfeldt, E. \emph{Themis: Extra recipes steps for
 dealing with unbalanced data}. (2023). URL:
 \url{https://CRAN.R-project.org/package=themis}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-kushida_comparison_2001}{}}%
-\CSLLeftMargin{156. }%
+\CSLLeftMargin{159. }%
 \CSLRightInline{Kushida, C. A. \emph{et al.} Comparison of actigraphic,
 polysomnographic, and subjective assessment of sleep parameters in
 sleep-disordered patients. \emph{Sleep Med} \textbf{2}, 389--396 (2001)
 doi:\href{https://doi.org/10.1016/s1389-9457(00)00098-8}{10.1016/s1389-9457(00)00098-8}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-diciccio_bootstrap_1996}{}}%
-\CSLLeftMargin{157. }%
+\CSLLeftMargin{160. }%
 \CSLRightInline{DiCiccio, T. J. \& Efron, B. Bootstrap confidence
 intervals. \emph{Statistical Science} \textbf{11}, 189--228 (1996) URL:
 \url{https://projecteuclid.org/journals/statistical-science/volume-11/issue-3/Bootstrap-confidence-intervals/10.1214/ss/1032280214.full}
 Accessed 1 August 2023, 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-rcoreteam_2023}{}}%
-\CSLLeftMargin{158. }%
+\CSLLeftMargin{161. }%
 \CSLRightInline{R Core Team. \emph{R: A language and environment for
 statistical computing}. (R Foundation for Statistical Computing, 2023).
 URL: \url{https://www.R-project.org/}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-wickham_tidyverse_2019}{}}%
-\CSLLeftMargin{159. }%
+\CSLLeftMargin{162. }%
 \CSLRightInline{Wickham, H. \emph{et al.} Welcome to the tidyverse.
 \emph{Journal of Open Source Software} \textbf{4}, 1686 (2019)
 doi:\href{https://doi.org/10.21105/joss.01686}{10.21105/joss.01686}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-vanrossum_python_2009}{}}%
-\CSLLeftMargin{160. }%
+\CSLLeftMargin{163. }%
 \CSLRightInline{Van Rossum, G. \& Drake, F. L. \emph{Python 3 reference
 manual}. (CreateSpace, 2009).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-paszke_pytorch_2019}{}}%
-\CSLLeftMargin{161. }%
+\CSLLeftMargin{164. }%
 \CSLRightInline{Paszke, A. \emph{et al.} PyTorch: An imperative style,
 high-performance deep learning library. in 80248035 (Curran Associates,
 Inc., 2019). URL:
 \url{http://papers.neurips.cc/paper/9015-pytorch-an-imperative-style-high-performance-deep-learning-library.pdf}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-aili_reliability_2017}{}}%
-\CSLLeftMargin{162. }%
+\CSLLeftMargin{165. }%
 \CSLRightInline{Aili, K., Åström-Paulsson, S., Stoetzer, U.,
 Svartengren, M. \& Hillert, L. Reliability of actigraphy and subjective
 sleep measurements in adults: The design of sleep assessments. \emph{J
@@ -5422,14 +5718,14 @@ Clin Sleep Med} \textbf{13}, 39--47 (2017)
 doi:\href{https://doi.org/10.5664/jcsm.6384}{10.5664/jcsm.6384}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-haghayegh_application_2020}{}}%
-\CSLLeftMargin{163. }%
+\CSLLeftMargin{166. }%
 \CSLRightInline{Haghayegh, S., Khoshnevis, S., Smolensky, M. H. \&
 Diller, K. R. Application of deep learning to improve sleep scoring of
 wrist actigraphy. \emph{Sleep Med} \textbf{74}, 235--241 (2020)
 doi:\href{https://doi.org/10.1016/j.sleep.2020.05.008}{10.1016/j.sleep.2020.05.008}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-yavuz-kodat_2019}{}}%
-\CSLLeftMargin{164. }%
+\CSLLeftMargin{167. }%
 \CSLRightInline{Yavuz-Kodat, E. \emph{et al.} Validity of Actigraphy
 Compared to Polysomnography for Sleep Assessment in Children With Autism
 Spectrum Disorder. \emph{Frontiers in Psychiatry} \textbf{10}, 551
@@ -5437,7 +5733,7 @@ Spectrum Disorder. \emph{Frontiers in Psychiatry} \textbf{10}, 551
 doi:\href{https://doi.org/10.3389/fpsyt.2019.00551}{10.3389/fpsyt.2019.00551}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-hutto_identifying_2013}{}}%
-\CSLLeftMargin{165. }%
+\CSLLeftMargin{168. }%
 \CSLRightInline{Hutto, B. \emph{et al.} Identifying accelerometer
 nonwear and wear time in older adults. \emph{International Journal of
 Behavioral Nutrition and Physical Activity} \textbf{10}, 120 (2013) URL:
@@ -5445,7 +5741,7 @@ Behavioral Nutrition and Physical Activity} \textbf{10}, 120 (2013) URL:
 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-cooper_objectively_2015}{}}%
-\CSLLeftMargin{166. }%
+\CSLLeftMargin{169. }%
 \CSLRightInline{Cooper, A. R. \emph{et al.} Objectively measured
 physical activity and sedentary time in youth: The international
 children's accelerometry database ({ICAD}). \emph{International Journal
@@ -5453,23 +5749,23 @@ of Behavioral Nutrition and Physical Activity} \textbf{12}, 113 (2015)
 URL: \url{https://doi.org/10.1186/s12966-015-0274-5} Accessed 5 August
 2023, 2023:2023.}
 
-\leavevmode\vadjust pre{\hypertarget{ref-kwon_breaks_2012}{}}%
-\CSLLeftMargin{167. }%
-\CSLRightInline{Kwon, S., Burns, T. L., Levy, S. M. \& Janz, K. F.
-Breaks in sedentary time during childhood and adolescence: Iowa bone
-development study. \emph{Med Sci Sports Exerc} \textbf{44}, 1075--1080
-(2012) URL: \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3623750/}
-Accessed 5 August 2023, 2023:2023.}
-
 \leavevmode\vadjust pre{\hypertarget{ref-barouni_ambulatory_2020}{}}%
-\CSLLeftMargin{168. }%
+\CSLLeftMargin{170. }%
 \CSLRightInline{Barouni, A. \emph{et al.} Ambulatory sleep scoring using
 accelerometers-distinguishing between nonwear and sleep/wake states.
 \emph{{PeerJ}} \textbf{8}, e8284 (2020)
 doi:\href{https://doi.org/10.7717/peerj.8284}{10.7717/peerj.8284}.}
 
+\leavevmode\vadjust pre{\hypertarget{ref-mn_non-wear_2020}{}}%
+\CSLLeftMargin{171. }%
+\CSLRightInline{Mn, A., N, N., R, S., L, W. \& Sg, T. Non-wear or sleep?
+Evaluation of five non-wear detection algorithms for raw accelerometer
+data. \emph{Journal of sports sciences} \textbf{38}, (2020) URL:
+\url{https://pubmed.ncbi.nlm.nih.gov/31826746/} Accessed 5 August 2023,
+2023:2023.}
+
 \leavevmode\vadjust pre{\hypertarget{ref-vert_detecting_2022}{}}%
-\CSLLeftMargin{169. }%
+\CSLLeftMargin{172. }%
 \CSLRightInline{Vert, A. \emph{et al.} Detecting accelerometer non-wear
 periods using change in acceleration combined with rate-of-change in
 temperature. \emph{{BMC} Medical Research Methodology} \textbf{22}, 147
@@ -5477,14 +5773,14 @@ temperature. \emph{{BMC} Medical Research Methodology} \textbf{22}, 147
 August 2023, 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-steyerberg_prediction_2016}{}}%
-\CSLLeftMargin{170. }%
+\CSLLeftMargin{173. }%
 \CSLRightInline{Steyerberg, E. W. \& Harrell, F. E. Prediction models
 need appropriate internal, internal-external, and external validation.
 \emph{J Clin Epidemiol} \textbf{69}, 245--247 (2016)
 doi:\href{https://doi.org/10.1016/j.jclinepi.2015.04.005}{10.1016/j.jclinepi.2015.04.005}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-altman_prognosis_2009}{}}%
-\CSLLeftMargin{171. }%
+\CSLLeftMargin{174. }%
 \CSLRightInline{Altman, D. G., Vergouwe, Y., Royston, P. \& Moons, K. G.
 M. Prognosis and prognostic research: Validating a prognostic model.
 \emph{{BMJ}} \textbf{338}, b605 (2009) URL:
@@ -5492,7 +5788,7 @@ M. Prognosis and prognostic research: Validating a prognostic model.
 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-patterson_40_2023}{}}%
-\CSLLeftMargin{172. }%
+\CSLLeftMargin{175. }%
 \CSLRightInline{Patterson, M. R. \emph{et al.} 40 years of actigraphy in
 sleep medicine and current state of the art algorithms. \emph{npj Digit.
 Med.} \textbf{6}, 1--7 (2023) URL:
@@ -5500,17 +5796,89 @@ Med.} \textbf{6}, 1--7 (2023) URL:
 2023, 2023:2023.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-plekhanova_validation_2023}{}}%
-\CSLLeftMargin{173. }%
+\CSLLeftMargin{176. }%
 \CSLRightInline{Plekhanova, T. \emph{et al.} Validation of an automated
 sleep detection algorithm using data from multiple accelerometer brands.
 \emph{J Sleep Res} \textbf{32}, e13760 (2023)
 doi:\href{https://doi.org/10.1111/jsr.13760}{10.1111/jsr.13760}.}
 
-\leavevmode\vadjust pre{\hypertarget{ref-aasm}{}}%
-\CSLLeftMargin{174. }%
-\CSLRightInline{AASM scoring manual - american academy of sleep
-medicine. URL:
-\url{https://aasm.org/clinical-resources/scoring-manual/}.}
+\leavevmode\vadjust pre{\hypertarget{ref-baron_2018}{}}%
+\CSLLeftMargin{177. }%
+\CSLRightInline{Baron, K. G. \emph{et al.} Feeling validated yet? A
+scoping review of the use of consumer-targeted wearable and mobile
+technology to measure and improve sleep. \emph{Sleep Medicine Reviews}
+\textbf{40}, 151--159 (2018) URL:
+\url{https://www.sciencedirect.com/science/article/pii/S1087079216301496}.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-dunn_2018}{}}%
+\CSLLeftMargin{178. }%
+\CSLRightInline{Dunn, J., Runge, R. \& Snyder, M. Wearables and the
+medical revolution. \emph{Personalized Medicine} \textbf{15}, 429--448
+(2018) URL:
+\url{https://www.futuremedicine.com/doi/10.2217/pme-2018-0044}.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-danzig_2020}{}}%
+\CSLLeftMargin{179. }%
+\CSLRightInline{Danzig, R., Wang, M., Shah, A. \& Trotti, L. M. The
+wrist is not the brain: Estimation of sleep by clinical and consumer
+wearable actigraphy devices is impacted by multiple patient- and
+device-specific factors. \emph{Journal of Sleep Research} \textbf{29},
+e12926 (2020) URL:
+\url{https://onlinelibrary.wiley.com/doi/abs/10.1111/jsr.12926}.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-haghayegh_2019}{}}%
+\CSLLeftMargin{180. }%
+\CSLRightInline{Haghayegh, S., Khoshnevis, S., Smolensky, M. H., Diller,
+K. R. \& Castriotta, R. J. Accuracy of Wristband Fitbit Models in
+Assessing Sleep: Systematic Review and Meta-Analysis. \emph{Journal of
+Medical Internet Research} \textbf{21}, e16273 (2019)
+doi:\href{https://doi.org/10.2196/16273}{10.2196/16273}.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-dezambotti_2019}{}}%
+\CSLLeftMargin{181. }%
+\CSLRightInline{Zambotti, M. de, Cellini, N., Goldstone, A., Colrain, I.
+M. \& Baker, F. C. Wearable Sleep Technology in Clinical and Research
+Settings. \emph{Medicine and Science in Sports and Exercise}
+\textbf{51}, 1538--1557 (2019)
+doi:\href{https://doi.org/10.1249/MSS.0000000000001947}{10.1249/MSS.0000000000001947}.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-herzig_2018}{}}%
+\CSLLeftMargin{182. }%
+\CSLRightInline{Herzig, D. \emph{et al.} Reproducibility of heart rate
+variability is parameter and sleep stage dependent. \emph{Frontiers in
+Physiology} \textbf{8}, (2018) URL:
+\url{https://www.frontiersin.org/articles/10.3389/fphys.2017.01100}.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-chouchou_2014}{}}%
+\CSLLeftMargin{183. }%
+\CSLRightInline{Chouchou, F. \& Desseilles, M. Heart rate variability: A
+tool to explore the sleeping brain? \emph{Frontiers in Neuroscience}
+\textbf{8}, (2014) URL:
+\url{https://www.frontiersin.org/articles/10.3389/fnins.2014.00402}.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-long_2017}{}}%
+\CSLLeftMargin{184. }%
+\CSLRightInline{Long, X. \emph{et al.} Detection of nocturnal slow wave
+sleep based on cardiorespiratory activity in healthy adults. \emph{IEEE
+Journal of Biomedical and Health Informatics} \textbf{21}, 123--133
+(2017) URL: \url{https://ieeexplore.ieee.org/document/7293114}.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-muzet_2016}{}}%
+\CSLLeftMargin{185. }%
+\CSLRightInline{Muzet, A. \emph{et al.} Assessing sleep architecture and
+continuity measures through the analysis of heart rate and wrist
+movement recordings in healthy subjects: Comparison with results based
+on polysomnography. \emph{Sleep Medicine} \textbf{21}, 47--56 (2016)
+URL:
+\url{https://www.sciencedirect.com/science/article/pii/S138994571600054X}.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hees_2014}{}}%
+\CSLLeftMargin{186. }%
+\CSLRightInline{Hees, V. T. van \emph{et al.} Autocalibration of
+accelerometer data for free-living physical activity assessment using
+local gravity and temperature: An evaluation on four continents.
+\emph{Journal of Applied Physiology} \textbf{117}, 738--744 (2014) URL:
+\url{https://journals.physiology.org/doi/full/10.1152/japplphysiol.00421.2014}.}
 
 \end{CSLReferences}
 
@@ -5610,6 +5978,8 @@ This manuscript is under preparation for submission to \href{https://academic.ou
 \textbf{\textsf{\Huge Appendix IV}}
 
 \phantomsection
+
+\label{app:paper3supp}
 
 \addcontentsline{toc}{subsection}{Appendix IV}
 
