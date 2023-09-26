@@ -18,7 +18,7 @@ csl: nature.csl
 \scriptsize
 
 | ECTS | Start Date | End Date   | Course Name                                                                      |
-|-------------|-------------|-------------|-----------------------------------|
+|------|------------|------------|----------------------------------------------------------------------------------|
 | 1,5  | 13.05.2020 | 14.05.2020 | Introduction to "R"                                                              |
 | 0,7  | 02.12.2020 | 02.12.2020 | Introduction to Health Research                                                  |
 | 5,0  | 17.09.2020 | 28.10.2020 | Biostatistics I                                                                  |
@@ -37,7 +37,7 @@ csl: nature.csl
 ```{=tex}
 \endgroup
 ```
-# Teaching Activities and # Knowledge Dissemination Activities
+# Teaching Activities and \# Knowledge Dissemination Activities
 
 During my PhD, I have taught several different courses. The courses are listed below.
 
@@ -47,8 +47,8 @@ During my PhD, I have taught several different courses. The courses are listed b
 \scriptsize
 
 | Year        | Course                                                                                  | Role                      |
-|------------------|-------------------------------------|------------------|
-| 2023 | Basic data science skills for health researchers using R and the Tidyverse (PhD course) | Instructor\*              |
+|-------------|-----------------------------------------------------------------------------------------|---------------------------|
+| 2023        | Basic data science skills for health researchers using R and the Tidyverse (PhD course) | Instructor\*              |
 | 2022---2023 | Data Science in Health Science (MSc course)                                             | Instructor and Censor     |
 | 2020---2022 | Applied Statistics (BSc course)                                                         | Instructor                |
 | 2020        | Project Managment with External Partner (BSc course)                                    | Instructor and Examinator |
@@ -61,7 +61,6 @@ During my PhD, I have taught several different courses. The courses are listed b
 ```{=tex}
 \endgroup
 ```
-
 # PhD Publications
 
 The following papers has been published in Sensors[@skovgaard_manual_2021] and Scientific Reports[@skovgaard_generalizability_2023]. \bigskip
