@@ -22,7 +22,7 @@ plot_all <-
   geom_col(
     width = .75,
     alpha = .8,
-    color = "black",
+    # color = "black",
     size = .1,
     position = "dodge2"
   ) +
@@ -66,12 +66,13 @@ plot_all <-
     legend.key.size = unit(2, "mm"),
     strip.background = element_blank(),
     axis.line = element_line(size = .2),
-    axis.ticks = element_blank()
+    axis.ticks = element_blank(),
+    panel.grid = element_blank()
   )
 
 
 ggsave(filename = "figures/paper2_performance_all.pdf", 
-       plot = plot_all, dpi = 600, width = 10, height = 10, units = "cm")
+       plot = plot_all, dpi = 600, width = 11.7, height = 10, units = "cm")
 
 all_metrics <- read_rds("data/all_metrics_60.rds")
 
@@ -88,7 +89,7 @@ plot_short <-
   geom_col(
     width = .75,
     alpha = .8,
-    color = "black",
+    # color = "black",
     size = .1,
     position = "dodge2"
   ) +
@@ -132,9 +133,10 @@ plot_short <-
     legend.key.size = unit(2, "mm"),
     strip.background = element_blank(),
     axis.line = element_line(size = .2),
-    axis.ticks = element_blank()
+    axis.ticks = element_blank(),
+    panel.grid = element_blank()
   )
 
 
 ggsave(filename = "figures/paper2_performance_short.pdf", 
-       plot = plot_short, dpi = 600, width = 8.57, height = 7.5, units = "cm")
+       plot = plot_short, dpi = 600, width = 10, height = 7.5, units = "cm")

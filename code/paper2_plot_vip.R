@@ -13,7 +13,7 @@ vi_scores %>%
   mutate(Variable = fct_reorder(Variable, Importance)) %>%
   ggplot(aes(Importance, Variable, fill = Importance)) +
   geom_col(color = "grey50", show.legend = FALSE, size = .08) +
-  scale_fill_gradient2(low = "white", high = "#3C5487") +
+  scale_fill_gradient2(low = "white", high = "#3C5488") +
   scale_x_continuous(labels = scales::scientific, expand = c(0, 0)) +
   labs(x = "Relative Importance",
        y = "Feature") +
