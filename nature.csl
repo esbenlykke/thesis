@@ -167,8 +167,6 @@
         <text macro="volume"/>
         <text variable="page"/>
         <text macro="issuance"/>
-        <text macro="access"/>
-        <text macro="access-date"/>
       </group>
     </layout>
   </bibliography>

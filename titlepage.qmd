@@ -5,7 +5,7 @@ subtitle: |
 author:
   name: "Esben Høegholm Lykke"
   affiliation: 
-    name: "Research Unit for Exercise Epedimiology, Centre of Research in Childhood Health, Department of Sports Science and Clinical Biomechanics, University of Southern Denmark"
+    name: "Research Unit for Exercise Epidemiology, Centre of Research in Childhood Health, Department of Sports Science and Clinical Biomechanics, University of Southern Denmark"
 format: 
   titlepage-pdf:
     titlepage: academic
