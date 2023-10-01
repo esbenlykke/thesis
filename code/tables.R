@@ -11,7 +11,7 @@ tbl_signal_features <-
   tibble(
     Name = c("Lying", "Activity", "Time", "Thigh-SDacc", "Thigh-Inclination", "Hip-SDacc", "Hip-Inclination"),
     Description = c(
-      "Classification based on thigh and back",
+      "Posture based on thigh and back",
       "Activity type classification",
       "Time categorized into four-hour windows",
       "Thigh longitudinal acceleration SD",
@@ -22,7 +22,7 @@ tbl_signal_features <-
     Values = c(
       "1: lying, -1: not lying",
       "1: Standing, moving, 0: Sitting, -1: Other",
-      "Time categorized throughout 24 h cycle",
+      "[−1,0.2) with step size Δ=0.2",
       "-1: No movement",
       "Range: −180 to 180 degrees",
       "-1: No movement",
@@ -34,7 +34,7 @@ tbl_signal_features <-
   #   title = "Signal features for the detection of in-bed periods in Audacity."
   # ) %>%
   cols_label(
-    Name = "Name",
+    Name = "Feature",
     Description = "Description",
     Values = "Values"
   )
@@ -83,8 +83,8 @@ tbl_icc_zm_man <-
   unite("ICC (95% CI)", c(ICC, "95% CI"), sep = " ", remove = TRUE) %>% 
   pivot_wider(names_from = c("Timepoint", "Round"), values_from = "ICC (95% CI)") %>% 
   gt() %>% 
-  tab_spanner(label = "Baseline (N = 110)", columns = 2:3) %>%
-  tab_spanner(label = "Followup (N = 62)", columns = 4:5) %>% 
+  tab_spanner(label = "Baseline (N = 94)", columns = 2:3) %>%
+  tab_spanner(label = "Followup (N = 54)", columns = 4:5) %>% 
   # tab_spanner(label = "Round 1", columns = c(2, 4)) %>%
   # tab_spanner(label = "Round 2", columns = c(3, 5)) %>%
   cols_label(Action = "",
@@ -195,7 +195,12 @@ tbl_7 <-
     Phase_Metric = glue("{Phase_Metric}, n = {n}")
   ) %>%
   select(Method, Phase_Metric, Bias, Lower_LOA, Upper_LOA) %>%
-  gt(groupname_col = "Phase_Metric")
+  gt(groupname_col = "Phase_Metric") %>% 
+  cols_label(
+    Bias = "Bias  (95% CI)",
+    Lower_LOA = "Lower LOA (95% CI)",
+    Upper_LOA = "Upper LOA (95% CI)"
+  )
 
 
 # table 8 -----------------------------------------------------------------
