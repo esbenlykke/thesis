@@ -126,6 +126,7 @@
  \newcommand{\blandscape}{\begin{landscape}}
  \newcommand{\elandscape}{\end{landscape}}
 
+
  % Captions and listings
  \usepackage[font=small,labelfont=bf]{caption}
  \captionsetup{font=footnotesize}
@@ -1432,7 +1433,8 @@ the imperative for valid annotation techniques. Our objective is to
 introduce a manual annotation method, assess its precision, and
 determine its consistency. Some of the details presented here were
 previously mentioned in the published version of Paper
-I\textsuperscript{\protect\hyperlink{ref-skovgaard_manual_2021}{127}}.
+I\textsuperscript{\protect\hyperlink{ref-skovgaard_manual_2021}{127}}
+(see Appendix I).
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
@@ -2160,22 +2162,6 @@ relates to circadian rhythms. As such, future research is required to
 validate the utility of this manual annotation methodology for detecting
 naps.
 
-In summing up, our study demonstrates that the use of Audacity for
-manually annotating in-bed and out-of-bed timestamps based on thigh- and
-hip-worn accelerometer data aligns well with these timestamps as
-determined by an EEG-based sleep device and prospective sleep diaries.
-Our findings reveal minimal mean bias and acceptable limits of agreement
-when comparing in-bed and out-of-bed timestamps across these different
-methods. Additionally, the manual annotation process proved highly
-reliable, exhibiting excellent inter- and intra-rater agreement.
-Importantly, the manual annotation method can be applied to pre-existing
-raw data that may not have accompanying sleep records. This offers a
-significant advantage for making better use of free-living data
-resources. The increased availability of such annotated data can be
-particularly beneficial when training data-intensive machine learning
-algorithms, potentially enhancing their generalizability in objectively
-assessing human behavior.
-
 \hypertarget{paper-ii-generalizability-and-performance-of-methods-to-detect-non-wear-with-free-living-accelerometer-recordings}{%
 \chapter{Paper II: Generalizability and Performance of Methods to Detect
 Non-Wear With Free-Living Accelerometer
@@ -2199,7 +2185,8 @@ of the developed decision tree models against basic heuristic algorithms
 and recently developed random forest and convolutional neural network
 models was assessed. Some of the details presented here were previously
 mentioned in the published version of Paper
-II\textsuperscript{\protect\hyperlink{ref-skovgaard_generalizability_2023}{141}}.
+II\textsuperscript{\protect\hyperlink{ref-skovgaard_generalizability_2023}{141}}
+(see Appendix II).
 
 \hypertarget{methods-1}{%
 \section{Methods}\label{methods-1}}
@@ -2920,22 +2907,6 @@ like logistic regression, gradient boosting, or support vector machines.
 These alternative algorithms may offer different insights or advantages
 that could improve upon our current model.
 
-In this study, we examine the effectiveness and generalizability of both
-existing techniques and our newly-developed decision tree models for
-classifying non-wear periods in accelerometer data collected in
-free-living conditions. While current heuristic methods offer promising
-results, they come with inherent limitations. On the other hand, our
-findings suggest that some of the newer, more complex machine learning
-methods may be prone to overfitting. The quality and quantity of data
-are pivotal factors in training a machine learning model, especially for
-a straightforward binary classification problem like this, where the aim
-is to make the model generalizable to different datasets. To mitigate
-over-optimistic projections about a model's performance on unseen data,
-we strongly recommend the use of external validation. Additionally,
-given the importance of accurately detecting non-wear time as the
-initial step in analyzing accelerometer data, we urge researchers to
-carefully choose an appropriate method for this critical task.
-
 \hypertarget{paper-iii-improving-sleep-quality-estimation-in-children-and-adolescents-a-comparative-study-of-machine-learning-and-deep-learning-techniques-utilizing-free-living-accelerometer-data-from-thigh-worn-devices-and-eeg-based-sleep-tracking}{%
 \chapter{Paper III: Improving Sleep Quality Estimation in Children and
 Adolescents: A Comparative Study of Machine Learning and Deep Learning
@@ -2944,23 +2915,21 @@ Devices and EEG-Based Sleep
 Tracking}\label{paper-iii-improving-sleep-quality-estimation-in-children-and-adolescents-a-comparative-study-of-machine-learning-and-deep-learning-techniques-utilizing-free-living-accelerometer-data-from-thigh-worn-devices-and-eeg-based-sleep-tracking}}
 
 This segment of the thesis encompasses the methods, results, and
-discussion for Paper III. Polysomnography, the premier method for sleep
-evaluation, is not always feasible for extensive research due to its
-high costs and impracticality. Wearable accelerometers present an
-affordable solution. While wrist and hip-worn devices dominate sleep
-studies, the potential of thigh-worn accelerometers remains largely
-untapped. This paper delves into the use of machine learning and deep
-learning models that leverage data from thigh-worn accelerometers to
-estimate sleep and its quality by comparing these models with an
-EEG-based sleep monitor. The primary aim was to assess various machine
-and deep learning models designed to estimate in-bed and sleep time
-using raw data from a tri-axial, thigh-worn accelerometer. For a robust
-validation, the outcomes of these models were compared with results from
-ZM, which served as our gold standard for sleep assessment in this
-study. Additionally, a secondary objective was to assess the efficacy of
-these models in determining key sleep quality metrics, including sleep
-period time (SPT), total sleep time (TST), sleep efficiency (SE),
-latency until persistent sleep (LPS), and wake after sleep onset (WASO).
+discussion for Paper III which is in preparation for SLEEP (see Appendix
+III). Polysomnography, the premier method for sleep evaluation, is not
+always feasible for extensive research due to its high costs and
+impracticality. Wearable accelerometers present an affordable solution.
+While wrist and hip-worn devices dominate sleep studies, the potential
+of thigh-worn accelerometers remains largely untapped. The primary aim
+of this paper was to assess various machine and deep learning models
+designed to estimate in-bed and sleep time using raw data from a
+tri-axial, thigh-worn accelerometer. For a robust validation, the
+outcomes of these models were compared with results from the ZM, which
+served as our gold standard for sleep assessment in this study.
+Additionally, a secondary objective was to assess the efficacy of these
+models in determining key sleep quality metrics, including sleep period
+time (SPT), total sleep time (TST), sleep efficiency (SE), latency until
+persistent sleep (LPS), and wake after sleep onset (WASO).
 
 \hypertarget{methods-2}{%
 \section{Methods}\label{methods-2}}
@@ -2968,37 +2937,35 @@ latency until persistent sleep (LPS), and wake after sleep onset (WASO).
 \hypertarget{dataset-and-participants}{%
 \subsection{Dataset and Participants}\label{dataset-and-participants}}
 
-The current study uses data from the SCREENS trial, which took place
-from June 2019 to March 2021 in the Region of Southern Denmark.
-Conducted by Rasmussen and
-Pedersen\textsuperscript{\protect\hyperlink{ref-rasmussen_short-term_2020}{116},\protect\hyperlink{ref-pedersen_effects_2022}{157}},
-the trial aimed to evaluate the impact of limiting screen media usage
-among Danish families. We specifically analyzed data from children
+The current study uses data from the SCREENS
+trial\textsuperscript{\protect\hyperlink{ref-rasmussen_short-term_2020}{116},\protect\hyperlink{ref-pedersen_effects_2022}{157}},
+which took place from June 2019 to March 2021 in the Region of Southern
+Denmark. The trial aimed to evaluate the impact of limiting screen media
+usage among Danish families. We specifically analyzed data from children
 between the ages of 4 and 17, with a mean age of 9.1 years, who were
-part of the SCREENS cohort. To gather our primary data, we utilized
-accelerometer readings from Axivity AX3 devices attached to the
-children's thighs and sleep metrics derived from EEG readings using the
-ZM device by General Sleep Corporation.
+part of the SCREENS cohort. Our primary sources of data were
+accelerometer readings from Axivity AX3 devices, and EEG-derived sleep
+states and sleep quality metrics from the ZM device. The children wore
+the Axivity AX3, a discreet 3-axis accelerometer, on their right thigh,
+halfway between the hip and knee, to capture their movement data.
 
-The Axivity AX3 is a 3-axis accelerometer positioned midway between the
-hip and knee on the right anterior thigh. This device records movement
-data with a 50 Hz sampling frequenzy, and it is unobtrusive, allowing
-for natural behavior from the children. On the other hand, the ZM device
-uses advanced EEG hardware and signal processing algorithms to gather
-sleep data into epochs of 30 seconds in duration. It features three
-self-adhesive, disposable sensors placed outside the hairline, ensuring
-reliable EEG signal acquisition. Participants were instructed to attach
-the device at bedtime and remove it upon leaving bed. To process the EEG
-data, the ZM device uses two proprietary algorithms, Z-ALG and Z-PLUS.
-The former is known for its accurate sleep detection capabilities as
-supported by Kaplan et
-al.\textsuperscript{\protect\hyperlink{ref-kaplan_performance_2014}{50}},
-while the latter differentiates between sleep stages and aligns well
-with expert evaluations using PSG data, as demonstrated by Wang et
-al.\textsuperscript{\protect\hyperlink{ref-wang_evaluation_2015}{51}}.
-As stated earlier in this thesis, the ZM has shown high complance among
-both children and adults for in-home
-monitoring\textsuperscript{\protect\hyperlink{ref-pedersen_self-administered_2021}{52}}.
+The ZM, developed by General Sleep Corporation, was utilized to extract
+sleep state information. The ZM device integrates advanced EEG
+technology and signal processing algorithms. Participants were
+instructed to attach three self-adhesive, disposable sensors outside
+their hairline when going to bed and to detach them upon waking up,
+ensuring consistent and clear EEG signal acquisition. Two key algorithms
+underpin the ZM: Z-ALG and Z-PLUS. Z-ALG is employed for sleep
+detection, proving ideal for single-channel EEG at-home
+monitoring\textsuperscript{\protect\hyperlink{ref-kaplan_performance_2014}{50}}.
+Supplementing Z-ALG, Z-PLUS effectively discerns between sleep stages,
+aligning closely with expert-assessed PSG
+data\textsuperscript{\protect\hyperlink{ref-wang_evaluation_2015}{51}}.
+However, in our study, we grouped all sleep stages (light sleep (N1 \&
+N2), deep sleep (N3), and REM sleep) into a single ``asleep'' category.
+This approach streamlined the machine learning process as
+differentiating between sleep stages wasn't essential for our target
+sleep quality metrics.
 
 Figure~\ref{fig-paper3_flow} outlines the selection criteria for
 children's recordings from the SCREENS study. Only recordings from ZM
@@ -3008,9 +2975,8 @@ issues were discarded. This left us with a total of 585 nights from 151
 children, averaging 3.87 nights per child (SD = 1.86). The age of these
 children averaged at 9.4 years with a standard deviation of 2.1 years.
 Across these recordings, ZM predictions spanned 696,779 epochs, each
-lasting 30 seconds. Significantly, around 84\% of the overall ZM
-recording time was classified as sleep, indicating a class imbalance in
-the nightly recordings.
+lasting 30 seconds with around 84\% of the overall ZM recording time
+classified as sleep.
 
 Lastly, we affirm that the SCREENS trials adhered to ethical guidelines,
 receiving approval from the Regional Scientific Committee of Southern
@@ -3038,20 +3004,33 @@ low-pass filtration step, utilizing a 4th order Butterworth filter with
 a 5 Hz cut-off frequency to remove high-frequency noise as described by
 Skotte and
 colleagues\textsuperscript{\protect\hyperlink{ref-skotte_detection_2014}{63}}.
-Non-wear data was identified and eliminated using the decision tree
+Non-wear data was identified and removed using the decision tree
 classifier, \textsf{tree\_imp6}, as outlined in Paper
 II\textsuperscript{\protect\hyperlink{ref-skovgaard_generalizability_2023}{141}},
-and the remaining data was resampled into 30-second epochs to align with
-ZM recordings. We then conducted feature extraction, generating 64
-features that offered a comprehensive characterization of the data.
-These features were derived from both accelerometer and temperature
-signals and included temporal elements, which utilized both lag and lead
-values to capture dynamic data trends. Additionally, we took inspiration
-from Walch et
+and the remaining data was then resampled into 30-second epochs to match
+the granularity of the ZM recordings.We then conducted feature
+extraction, generating 64 features that offered a comprehensive
+characterization of the data. These features were derived from both
+accelerometer and temperature signals and included temporal elements,
+which utilized both lag and lead values to capture dynamic data trends.
+Additionally, we took inspiration from Walch et
 al.\textsuperscript{\protect\hyperlink{ref-walch_sleep_2019}{158}} to
 include sensor-independent features that encapsulate circadian rhythms,
 offering unique insights that are not directly discernible from sensor
-outputs (see Figure~\ref{fig-paper3_sensor_independent}). We further
+outputs (see Figure~\ref{fig-paper3_sensor_independent}). Including both
+a cosine function and a linear function to represent circadian rhythm
+offers a nuanced depiction of time-based patterns in sleep data. The
+cosine function captures the inherent 24-hour rhythmicity of the
+circadian cycle, reflecting the natural ebb and flow of human behaviors
+and biological processes like melatonin
+secretion\textsuperscript{\protect\hyperlink{ref-lewy_1980}{159}}. On
+the other hand, the linear function provides a continuous representation
+of time, illustrating the progression throughout the night and
+accounting for gradual changes in sleep propensity as one transitions
+from early night to early morning. By integrating both these features,
+the models can holistically understand the repetitive nature of
+circadian rhythms and the distinct characteristics of each night,
+thereby potentially enhancing its predictive accuracy. We further
 enriched the feature set by incorporating signal characteristics such as
 vector magnitude, mean crossing rate, skewness, and kurtosis for each of
 the x, y, and z dimensions. All features are summarized in
@@ -3064,18 +3043,6 @@ sleep patterns, with a target feature which consisted of three classes
 of interest; ``out of bed awake'', ``in bed awake'', and ``in bed
 asleep''.
 
-\begin{figure}
-
-{\centering \includegraphics{/home/esbenlykke/projects/thesis/figures/paper3_sensor_independent.pdf}
-
-}
-
-\caption{\label{fig-paper3_sensor_independent}Sensor-independent
-features of circadian rhythms across two consecutive nights. A) cosinus
-feature, B) linear feature.}
-
-\end{figure}
-
 \begingroup
 
 \footnotesize
@@ -3085,8 +3052,8 @@ feature, B) linear feature.}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3000}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1000}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.6000}}@{}}
-\caption{\label{tbl-features}Features included in the models aggregated
-in 30-second epochs.}\tabularnewline
+\caption{\label{tbl-features}Features included in the all predictive
+models.}\tabularnewline
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Feature Category
@@ -3123,6 +3090,18 @@ Signal Distributions & 6 & kurtosis and skewness for x, y, and z \\
 
 \endgroup
 
+\begin{figure}
+
+{\centering \includegraphics{/home/esbenlykke/projects/thesis/figures/paper3_sensor_independent.pdf}
+
+}
+
+\caption{\label{fig-paper3_sensor_independent}Sensor-independent
+features of circadian rhythms across two consecutive nights. A) cosinus
+feature, B) linear feature.}
+
+\end{figure}
+
 Upon examining the raw ZM predictions, we observed that the device
 appeared to overestimate the number of awakenings among the children
 studied. Although the ZM software addresses many of these awakenings by
@@ -3135,15 +3114,15 @@ sample was 83\%, which is below recognized standards. An efficiency of
 85\% is considered good, and over 90\% is seen as ideal. This contrasts
 with prior research on similar child cohorts that reported a sleep
 efficiency of
-88.3\%\textsuperscript{\protect\hyperlink{ref-galland_2018}{159}}.
+88.3\%\textsuperscript{\protect\hyperlink{ref-galland_2018}{160}}.
 Recommendations from an expert panel by the National Sleep Foundation
 emphasized that fewer than 2 awakenings lasting more than 5 minutes each
 night qualify as good sleep across all age
-groups\textsuperscript{\protect\hyperlink{ref-ohayon_2017}{160}}.
+groups\textsuperscript{\protect\hyperlink{ref-ohayon_2017}{161}}.
 Additionally, it's widely recognized that children typically experience
 between five to eight sleep cycles every night, with awakenings most
 likely occurring at the conclusion of each
-cycle\textsuperscript{\protect\hyperlink{ref-galland_normal_2012}{161}}.
+cycle\textsuperscript{\protect\hyperlink{ref-galland_normal_2012}{162}}.
 However, definitions of a ``waking bout'' vary across studies. Some
 demand at least 5 continuous minutes of wakefulness for it to be counted
 as one bout, while others find a 1-minute duration adequate. Of
@@ -3179,20 +3158,27 @@ filter on raw ZM predictions.}
 \subsection{Algorithms and Modelling
 Strategies}\label{algorithms-and-modelling-strategies}}
 
-We utilized two distinct model strategies to analyze sleep patterns from
-accelerometer data mounted on the thigh. The first model strategy was
-designed as a sequence of two models, each functioning as a binary
-classifier. This method aimed to simplify the prediction task by
-breaking down the multiclass problem of distinguishing between
-`out-of-bed-awake', `in-bed-awake', and `in-bed-asleep' into two binary
-phases: first identifying `in-bed' periods, followed by determining
-`sleep' periods. The output from the first binary classifiers in
-sequence, which estimated in-bed time, underwent a 5-minute median
-filter to eliminate blips of in-bed time. This step allowed us to define
-a singular continuous interval recognized as the SPT, representing the
-total duration spent in bed attempting to sleep. This SPT then acted as
-input to the subsequent stage of binary classifiers predicting sleep
-within the SPT. Four machine learning algorithms were applied in this
+The task of analyzing sleep patterns based on accelerometer data has an
+inherent hierarchical nature. Broadly, the goal is to distinguish
+between the states of being `out-of-bed' versus `in-bed'. Once the
+`in-bed' state is determined, the finer classification into `awake' or
+`asleep' states follows. This hierarchical structure of the problem
+informs the first of our modeling strategies.
+
+Our first model strategy leveraged this hierarchical structure by
+deploying a sequence of two models, each functioning as a binary
+classifier. This method simplified the prediction task by breaking down
+the multiclass problem into two binary phases: first identifying
+`in-bed' periods, followed by determining `sleep' periods. The output
+from the first binary classifiers in sequence, which estimated in-bed
+time, underwent a 5-minute median filter to eliminate blips of in-bed
+time. This step allowed us to define a singular continuous interval
+recognized as the SPT, representing the total duration spent in bed
+attempting to sleep. This SPT subsequently served as input for the next
+stage of binary classifiers, which predicted sleep periods within the
+SPT.
+
+Four machine learning algorithms were employed in pairs in this
 sequential strategy:
 
 \begin{enumerate}
@@ -3209,12 +3195,12 @@ sequential strategy:
   require simultaneous consideration of multiple features. To combat
   this, we used a maximum tree depth of 8.
 \item
-  Single-layer Feed-forward Neural Network: Single-layer feed-forward
-  neural networks can effectively capture non-linear relationships, even
-  with their relatively simple structure. However, they tend to be more
-  challenging to interpret compared to simpler models. Additionally,
-  careful tuning of the network's architecture and training process is
-  required to mitigate the risk of overfitting.
+  Single-layer Feed-forward Neural Network (MLP): Also know as a
+  multi-layer perceptron, MLPs can effectively capture non-linear
+  relationships, even with their relatively simple structure. However,
+  they tend to be more challenging to interpret compared to simpler
+  models. Additionally, careful tuning of the network's architecture and
+  training process is required to mitigate the risk of overfitting.
 \item
   XGBoost: XGBoost is a powerful algorithm known for its ability to
   provide highly accurate predictions and handle complex, non-linear
@@ -3224,35 +3210,34 @@ sequential strategy:
   challenges.
 \end{enumerate}
 
-Simultaneously, we also explored a second modeling strategy using a
-bidirectional Long Short-Term Memory (biLSTM) neural
-network\textsuperscript{\protect\hyperlink{ref-hochreiter_long_1997}{162}}
+In contrast to the hierarchical approach, we also experimented with a
+standalone strategy using a bidirectional Long Short-Term Memory
+(biLSTM) neural
+network\textsuperscript{\protect\hyperlink{ref-hochreiter_long_1997}{163}}
 as a multiclass classifier. Opting not to use the biLSTM in the
 sequential approach was about strategy diversification rather than
 concerns over complexity or interpretability. We wanted to compare a
 sequence of traditional machine learning models with a standalone deep
-learning approach using the biLSTM. This way, we could see the strengths
-and weaknesses of both methods clearly. This distinction would
-underscore the advantages and limitations of each approach. Our choice
-to employ the biLSTM arose from its inherent capability to capture
-temporal sequences in accelerometer data, especially when distinguishing
-between the three states: `out-of-bed', `in-bed-awake', and
-`in-bed-asleep'. Each of these states doesn't exist in isolation; they
-transition from one to another in patterns that are critical for
-accurate predictions. For instance, understanding the sequential pattern
-leading from `in-bed-awake' to `in-bed-asleep' can provide vital
-context, and the biLSTM is adept at capturing such temporal
-dependencies. Specifically designed for these three classes, the model
-comprises four layers and 128 hidden units per layer, balancing
-complexity and efficiency. The bidirectional setup enhances data
-comprehension while mitigating overfitting risks. The model processes
-10-minute tensor sequences with a one-epoch step size. Previous studies,
-such as Sano et
-al.\textsuperscript{\protect\hyperlink{ref-sano_multimodal_2019}{163}}
+learning approach using the biLSTM. This distinction would underscore
+the advantages and limitations of each approach. Our choice to employ
+the biLSTM arose from its inherent capability to capture temporal
+sequences in accelerometer data, especially when distinguishing between
+the three states: `out-of-bed', `in-bed-awake', and `in-bed-asleep'.
+Each of these states doesn't exist in isolation; they transition from
+one to another in patterns that are critical for accurate predictions.
+For instance, understanding the sequential pattern leading from
+`in-bed-awake' to `in-bed-asleep' can provide vital context, and the
+biLSTM is adept at capturing such temporal dependencies. Specifically
+designed for these three classes, the model comprised of four layers and
+128 hidden units per layer, balancing complexity and efficiency. The
+bidirectional setup enhanced data comprehension while mitigating
+overfitting risks. The model processed 10-minute tensor sequences with a
+one-epoch step size. Previous studies, such as Sano et
+al.\textsuperscript{\protect\hyperlink{ref-sano_multimodal_2019}{164}}
 and Chen et
-al.\textsuperscript{\protect\hyperlink{ref-chen_attention_2021}{164}},
-have evidenced the effectiveness of LSTM models in detecting sleep from
-accelerometer data.
+al.\textsuperscript{\protect\hyperlink{ref-chen_attention_2021}{165}},
+have evidenced the effectiveness of LSTM models aiding in detecting
+sleep from accelerometer data.
 
 \hypertarget{model-training}{%
 \subsection{Model Training}\label{model-training}}
@@ -3260,36 +3245,115 @@ accelerometer data.
 We trained a total of four pairs of models in sequence, with each pair
 distinguishing between in-bed/out-of-bed and asleep/awake classes,
 respectively. The dataset was randomly split into a training and a
-testing set, each containing approximately half of the subjects. To
-ensure the robustness of the results, we made sure that data from the
-same night was not distributed across both sets. To optimize our models,
-we used a specific set of hyperparameters for each type of machine
-learning algorithm. For the Decision Tree, we tuned the cost complexity,
-tree depth, and minimum number of samples required at a leaf node. The
-decision tree model was set up using the
+testing set, each containing approximately half of the subjects. We made
+sure that data from the same night was not distributed across both sets.
+This approach was adopted to ensure that the model could effectively
+generalize to unfamiliar data, rather than overfitting to specific
+participant data similar to the data partitioning in Paper II. To tune
+the hyperparameters of our models, we used a specific set of
+hyperparameters for each type of machine learning algorithm. For the
+Decision Tree, we tuned the cost complexity, tree depth, and minimum
+number of samples required at a leaf node. The decision tree model was
+set up using the
 rpart\textsuperscript{\protect\hyperlink{ref-rpart}{148}} engine, with
 tree depth ranging from 3 to 7. For Logistic Regression, implemented
 using the
-glmnet\textsuperscript{\protect\hyperlink{ref-friedman_glmnet_2010}{165}}
+glmnet\textsuperscript{\protect\hyperlink{ref-friedman_glmnet_2010}{166}}
 engine, we tuned the penalty and mixture hyperparameters controlling
-regularization. The feed-forward neural network was implemented with a
-single-layer feed-forward architecture using the
-nnet\textsuperscript{\protect\hyperlink{ref-nnet}{166}} engine, with the
-maximum number of allowable weights set to 7000 as a form of
-regularization. The hyperparameters we tuned for this model were the
-number of hidden units, the penalty, and the number of epochs. The range
-for the number of hidden units was between 3 and 27. Lastly, the XGBoost
-model was configured with the
-xgboost\textsuperscript{\protect\hyperlink{ref-xgboost}{167}} engine.
+regularization. The MLP was implemented with a single-layer feed-forward
+architecture using the
+nnet\textsuperscript{\protect\hyperlink{ref-nnet}{167}} engine, with the
+maximum number of allowable weights (MaxNWts) set to 7000 as a form of
+regularization to constraint the model from becoming too large and
+possibly overfitting the training data. The hyperparameters we tuned for
+this model were the number of hidden units, the penalty, and the number
+of epochs. The range for the number of hidden units was between 3 and
+27. Lastly, the XGBoost model was configured with the
+xgboost\textsuperscript{\protect\hyperlink{ref-xgboost}{168}} engine.
 The hyperparameters subjected to tuning included tree depth, learning
 rate, loss reduction, minimum number of samples required at a leaf node,
 sample size, and number of trees. For this algorithm, the number of
-trees was specifically tuned within a range of 200 to 800. All model
-hyperparameters were optimized using a 10-fold grouped Monte Carlo
-cross-validation, carried out on a regular grid comprising different
-combinations of these parameters. By providing the range and the
-specific hyperparameters considered for each model, we ensured the most
-robust and optimal model fitting.
+trees was specifically tuned within a range of 200 to 800 to constraint
+training time. See Table~\ref{tbl-hyperparameters} for an overview of
+the model-specific hyperparameters. We optimized all model
+hyperparameters using a 10-fold Monte Carlo cross-validation technique,
+which involves randomly partitioning the dataset into training and
+validation sets across multiple iterations. The optimization of
+hyperparameters was carried out via a grid search paired with latin
+hypercube sampling. By defining specific ranges for each hyperparameter,
+latin hypercube sampling systematically divides these ranges into
+segments and draws a random value from each, ensuring a well-distributed
+set of hyperparameter combinations. The grid search then methodically
+assessed various combinations of these hyperparameters to determine
+which combination produced the best model performance.
+
+\blandscape
+\footnotesize
+
+\hypertarget{tbl-hyperparameters}{}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2000}}@{}}
+\caption{\label{tbl-hyperparameters}Details of the hyperparameters tuned
+for each machine learning model, their descriptions, and the specific
+range from which values were sampled during grid search
+optimization.}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Model
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Hyperparameter
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Range
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Model
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Hyperparameter
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Range
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Logistic Regression & Regularization Strength & Controls magnitude of
+regularization penalty & {[}-10, 0{]} (log scale) \\
+& Lasso Proportion & Mix between Ridge (0) and Lasso (1) regularization
+& {[}0, 1{]} \\
+Decision Tree & Cost Complexity & Controls the trade-off between tree's
+depth and fit & {[}-10, -1{]} (log scale) \\
+& Tree Depth & Maximum depth of the tree & {[}3, 7{]} \\
+& Minimal Node Size & Minimum number of samples required to split a node
+& {[}2, 40{]} \\
+Multi-layer Perceptron & Hidden Units & Number of units in the hidden
+layer(s) & {[}1, 10{]} \\
+& Regularization Strength & Controls magnitude of regularization penalty
+& {[}-10, 0{]} (log scale) \\
+& Number of Epochs & Number of complete passes through the dataset &
+{[}10, 1000{]} \\
+XGBoost & Learning Rate & Step size shrinkage to prevent overfitting &
+{[}-10, -1{]} (log scale) \\
+& Minimum Loss Reduction & Minimum loss reduction required for partition
+& {[}-10, 1.5{]} (log scale) \\
+& Minimal Node Size & Minimum number of samples required to split a node
+& {[}2, 40{]} \\
+& Observations Sampled & Proportion of samples used per iteration &
+{[}0.5, 1{]} \\
+& Number of Trees & Total boosting rounds or trees to train & {[}200,
+800{]} \\
+\end{longtable}
+
+\elandscape
 
 After identifying the best-performing hyperparameters, we proceeded to
 fit the models to the full training dataset. This approach allowed us to
@@ -3303,35 +3367,33 @@ space to balance out the classes. Specifically, it creates synthetic
 observations by randomly selecting a minority class instance and its
 nearest neighbors, then producing a new instance that is a blend of the
 two. This method, as outlined by Chawla et
-al.\textsuperscript{\protect\hyperlink{ref-chawla_smote_2002}{168}},
+al.\textsuperscript{\protect\hyperlink{ref-chawla_smote_2002}{169}},
 mitigates biases during model training that arise when models are skewed
 towards the majority class. Using the themis R
-package\textsuperscript{\protect\hyperlink{ref-themis}{169}}, we
+package\textsuperscript{\protect\hyperlink{ref-themis}{170}}, we
 implemented SMOTE to achieve a balanced distribution of training samples
 for both classes. The optimization was driven by the F1 score as a
 metric since it harmonizes precision and recall, rendering it more
 resilient to class imbalance.
 
-In parallel to these sequential models, we also trained a bidirectional
-Long Short-Term Memory (biLSTM) model to classify three distinct
-classes: ``out-of-bed awake'', ``in-bed awake'', and ``in-bed asleep''.
-The data for this model was divided into training, validation, and test
-sets, adhering to a 50/25/25 split ratio. Again, caution was exercised
-to avoid having data from the same night across different sets. For
-efficient and adaptive learning, the Adam optimizer was used during the
-training process. Given that we were dealing with a multiclass
-classification task with mutually exclusive classes, the cross-entropy
-loss function was employed. At the output layer, a softmax activation
-function was applied to obtain a probability distribution over the
-classes. We monitored the model's performance using the F1 score for
-both the training and validation sets and employed early stopping with a
+In parallel to these sequential models, we trained the biLSTM model to
+classify three distinct classes: ``out-of-bed awake'', ``in-bed awake'',
+and ``in-bed asleep''. The data for this model was divided into
+training, validation, and test sets, adhering to a 50/25/25 split ratio.
+Again, caution was exercised to avoid having data from the same night
+across different sets. For efficient and adaptive learning, the Adam
+optimizer was used during the training process. Given that we were
+dealing with a multiclass classification task with mutually exclusive
+classes, the cross-entropy loss function was employed. At the output
+layer, a softmax activation function was applied to obtain a probability
+distribution over the classes. We employed early stopping with a
 patience of 3 epochs, ceasing training if no improvement in the
 validation loss was observed over three consecutive epochs.
 
 \hypertarget{model-validation}{%
 \subsection{Model Validation}\label{model-validation}}
 
-In the current study, we utilized standard evaluation metrics dereived
+In the current study, we utilized standard evaluation metrics derived
 from confusion matrices to assess the performance of each model on an
 epoch-to-epoch basis. These include
 \[accuracy = \frac{TP+TN}{TP+TN+FP+FN}\]
@@ -3363,7 +3425,7 @@ class, and row percentages for correctly classified predictions. Both
 in-bed/out-of-bed and awake/asleep classification tasks were treated as
 binary, designating `in-bed' and `asleep' as positive labels and
 `out-of-bed' and `awake' as negative labels, in line with prior
-studies\textsuperscript{\protect\hyperlink{ref-hjorth_measure_2012}{72},\protect\hyperlink{ref-kushida_comparison_2001}{170}}.
+studies\textsuperscript{\protect\hyperlink{ref-hjorth_measure_2012}{72},\protect\hyperlink{ref-kushida_comparison_2001}{171}}.
 
 To evaluate how well our models performed in generating sleep quality
 metrics, we employed Bland-Altman plots and Pearson correlations.
@@ -3376,8 +3438,8 @@ the mean difference or bias, and then determined the limits of agreement
 (LOA) as the bias ± 1.96 times the standard deviation of these
 differences. Given the possibility of non-normal distribution and
 skewness in our data, we opted for a bias-corrected and accelerated
-(BCa) bootstrap
-method\textsuperscript{\protect\hyperlink{ref-diciccio_bootstrap_1996}{171}}.
+bootstrap
+method\textsuperscript{\protect\hyperlink{ref-diciccio_bootstrap_1996}{172}}.
 This allowed for more accurate estimation, taking into account
 intra-subject variability. Using 10,000 bootstrap replicates, we
 estimated the 95\% confidence intervals for both the bias and LOA,
@@ -3412,15 +3474,15 @@ conformed to ZM definitions and included the following:
 
 The technical frameworks used for model development and analyses were R
 version
-4.3.0\textsuperscript{\protect\hyperlink{ref-rcoreteam_2023}{172}} along
+4.3.0\textsuperscript{\protect\hyperlink{ref-rcoreteam_2023}{173}} along
 with the
 Tidymodels\textsuperscript{\protect\hyperlink{ref-kuhn_tidymodels_2020}{147}}
 and
-Tidyverse\textsuperscript{\protect\hyperlink{ref-wickham_tidyverse_2019}{173}}
+Tidyverse\textsuperscript{\protect\hyperlink{ref-wickham_tidyverse_2019}{174}}
 package suites. For the biLSTM model, we used Python version
-3.10.6\textsuperscript{\protect\hyperlink{ref-vanrossum_python_2009}{174}}
+3.10.6\textsuperscript{\protect\hyperlink{ref-vanrossum_python_2009}{175}}
 and
-PyTorch\textsuperscript{\protect\hyperlink{ref-paszke_pytorch_2019}{175}}.
+PyTorch\textsuperscript{\protect\hyperlink{ref-paszke_pytorch_2019}{176}}.
 
 \hypertarget{results-2}{%
 \section{Results}\label{results-2}}
@@ -3444,9 +3506,9 @@ the WASO metric decreased from a raw average of 39.0 ± 33.6 minutes to
 10-minute filtered data, respectively. Notably, the application of these
 filters also led to a significant reduction in the average number of
 awakenings per night. In the unfiltered data, the mean number of
-awakenings (or arousals) stood at 34.46 ± 11.33, which dramatically
-dropped to 4.43 ± 3.26 and 1.95 ± 2.01 in the 5-minute and 10-minute
-filtered datasets, respectively.
+awakenings (or arousals) stood at 34.46 ± 11.33, which dropped to 4.43 ±
+3.26 and 1.95 ± 2.01 in the 5-minute and 10-minute filtered datasets,
+respectively.
 
 \begingroup
 
@@ -3479,10 +3541,12 @@ various model types. The F1 score fluctuates slightly, ranging from
 94.4\% in the Decision Tree model to 95.4\% in the XGBoost model.
 Likewise, accuracy varies minimally from 95.3\% for the Decision Tree
 model to 96.1\% for the XGBoost model. Other metrics such as
-Sensitivity, Precision, and Specificity also exhibit uniform performance
+sensitivity, precision, and specificity also exhibit uniform performance
 across the different models. While the XGBoost model does exhibit the
 highest performance with an F1 score of 95.4\% and an accuracy of
 96.1\%, it only marginally surpasses the other models in these metrics.
+
+\pagebreak
 
 \begingroup
 
@@ -3586,7 +3650,7 @@ specific state.
 predictions. The middle of each tile is the normalized count (overall
 percentage). The bottom number of each tile is the column percentage and
 the right side of each tile is the row percentage. i) decision tree, ii)
-logistic regression, iii) feed-forward neural net, iv) XGBoost}
+logistic regression, iii) MLP, iv) XGBoost}
 
 \end{figure}
 
@@ -3607,51 +3671,53 @@ the right side of each tile is the row percentage.}
 \subsection{Evaluation of Sleep Quality
 Metrics}\label{evaluation-of-sleep-quality-metrics}}
 
-A comprehensive analysis of the included models predicting sleep quality
-metrics --- namely SPT, TST, SE, LPS, and WASO --- is detailed in
-@tbl-13. This assessment spans sleep quality metrics derived from three
-data categories: ZM raw data, 5-minute median filtered ZM data, and
-10-minute median filtered ZM data.
+Table~\ref{tbl-13} presents a comparative analysis of the included
+models used to predict various sleep quality metrics (SPT, TST, SE, LPS,
+WASO) using the 5-minute median filtered ZM predictions.
 
-Against the sleep quality metrics derived from the ZM raw data, biLSTM
-showed a prominent -36.7-minute bias for SPT, while XGboost stood out
-for its minimal bias and top correlation score of 0.56. Across metrics,
-varying biases emerged; for instance, in SE, the Feed-Forward Neural Net
-and biLSTM displayed contrasting biases. For LPS and WASO, biLSTM
-generally showed strong biases, with overall correlations being modest.
+Against the sleep quality metrics derived from the ZM raw data, the
+biLSTM model showed a -36.7-minute bias for SPT, while XGboost stood out
+for its minimal bias and correlation score of 0.56. Across metrics,
+varying biases emerged; for instance, in SE, the MLP and biLSTM
+displayed contrasting biases. For LPS and WASO, biLSTM generally showed
+strong biases, with overall correlations being poor.
 
 Using the sleep quality metrics of the 5-minute median filtered ZM data,
-biLSTM's bias for SPT remained significant. Yet, XGboost consistently
-shined in correlation, even when other models like Logistic Regression
-exhibited notable biases. The correlations for LPS, however, remained
-weak across models, while XGboost dominated in the WASO metric.
+biLSTM's bias for SPT remained large. XGboost consistently showed the
+best correlations and smallest biases. The correlations for SE, LPS, and
+WASO, however, remained weak across most models whith XGboost again
+performing best.
 
 Lastly, against the sleep quality metrics of 10-minute median filtered
 ZM data, biLSTM's bias persisted, especially in SPT, whereas XGboost and
-the Decision Tree exhibited competitive correlations. Notably, Logistic
-Regression and the Feed-Forward Neural Net displayed pronounced biases,
-especially in TST and SE. Overall, while biases varied across models and
-metrics, XGboost consistently showed high correlations, indicating its
-strong predictive performance relative to other models.
+the Decision Tree exhibited moderate correlations. Notably, Logistic
+Regression and the MLP displayed pronounced biases, especially in TST
+and SE. Overall, while biases varied across models and metrics, again,
+XGboost consistently showed the highest correlations with concurrent
+small biases, indicating its stronger predictive performance relative to
+other models.
 
 Overall, the decision tree model consistently underestimated SPT, TST,
 and SE, and overestimated LPS and WASO in comparison to ZM. The logistic
 regression model had similar trends, with more pronounced
-underestimation in TST and overestimation in LPS. The feed-forward
-neural network also exhibited similar bias as the decision tree and the
-logistic regression models, but with a higher overestimation in WASO. On
-the other hand, the XGBoost model showed least bias among all,
-especially in its 5-minute median predictions. Considering LOA, the
-decision tree had higher variability in the differences across different
-sleep quality metrics and filtering techniques, particularly for LPS and
-WASO, which indicates lower agreement with ZM. Other models had
-comparable LOA but with notable exceptions. For example, TST LOA for the
-logistic regression model was particularly wide in the 5-minute median
-predictions. Correlation-wise, the pearson coefficient, revealed that
-the XGBoost model consistently had the highest correlation with ZM
-across all sleep quality metrics and filtering methods Notably, the
-XGBoost's 5-minute median predictions showed the strongest correlation
-(0.66) for TST among all models and filterings.
+underestimation in TST and overestimation in LPS. The MLP also exhibited
+similar bias as the decision tree and the logistic regression models,
+but with a higher overestimation in WASO. On the other hand, the XGBoost
+model showed least bias among all, especially in its 5-minute median
+predictions. The biLSTM was the only model to overestimate TST, and as a
+consequence overestimate SE and underestimate LPS and WASO. This was
+true across raw and 5-minute filtered data but this trend did not apply
+to the 10-minute filtering. Considering LOA, the decision tree had
+higher variability in the differences across different sleep quality
+metrics and filterings, particularly for LPS and WASO, which indicates
+lower agreement with ZM. Other models had comparable LOA but with
+notable exceptions. For example, TST LOA for the logistic regression
+model was particularly wide in the 5-minute median predictions.
+Correlation-wise, the pearson coefficient, revealed that the XGBoost
+model consistently had the highest correlation with ZM across all sleep
+quality metrics and filtering methods Notably, the XGBoost's 5-minute
+median predictions showed the strongest correlation (0.66) for TST among
+all models and filterings.
 
 \begingroup
 
@@ -3662,9 +3728,9 @@ XGBoost's 5-minute median predictions showed the strongest correlation
 \caption{\label{tbl-13}Summary of bias, limits of agreement, and Pearson correlation for
 various sleep parameter predictions (SPT, TST, SE, LPS, WASO) using
 different machine learning and deep learning models (decision tree,
-logistic regression, feed-forward neural network, XGBoost) on raw ZM
-predictions, 5-minute and 10-minute median predictions. Each value is
-provided with its 95\% confidence interval (CI). }\tabularnewline
+logistic regression, MLP, XGBoost) on raw ZM predictions, 5-minute and
+10-minute median predictions. Each value is provided with its 95\%
+confidence interval (CI). }\tabularnewline
 
 \toprule
  & Bias (95\% CI) & lower LOA (95\% CI) & upper LOA (95\% CI) & Pearson, \emph{r} (95\% CI) \\ 
@@ -3831,29 +3897,32 @@ Pearson's correlations are annotated in the upper left corner}
 \hypertarget{discussion-2}{%
 \section{Discussion}\label{discussion-2}}
 
-In this paper, we evaluated a series of machine learning models in
-sequence as well as a nulticlass deep learning model for estimating
-in-bed time and sleep time based on thigh-worn accelerometers as well as
-derived sleep quality metrics. These models were trained and assessed
-using both raw and median-filtered sleep estimates derived from the ZM
-EEG-based sleep monitor. Overall, all models exhibited strong
-performance in predicting when subjects were in bed. However,
-distinguishing between wakefulness and sleep during these in-bed periods
-proved to be more challenging. Interestingly, while the multiclass
-biLSTM model excelled in terms of F1 score, precision, and NPV, it
-lagged behind in deriving sleep quality metrics when compared to the
-XGBoost model. The latter outperformed all others across every
-evaluation metric, including epoch-to-epoch prediction and various sleep
-quality indicators. Nonetheless, it's worth noting that all models
-struggled with low specificity values, indicating a common difficulty in
-accurately identifying awake epochs during time spent in bed. We also
-observed performance improvement in all models when 5-minute and
-10-minute median filters were applied. This filtering approach resulted
-in increased total sleep time and sleep efficiency metrics while
-reducing wake after sleep onset and the number of awakenings. Of all the
-models, the XGBoost demonstrated the smallest bias and the highest
-correlation with the ZM sleep quality metrics, making it the most robust
-choice for this particular application.
+In this paper, we assessed a range of machine learning models for
+estimating in-bed time, sleep time, and derived sleep quality metrics
+using data from thigh-worn accelerometers. We approached the task both
+as a hierarchical classification problem, applying models in sequence,
+and as a multiclass problem using a deep learning model specially
+tailored for time time series data. These models were trained and
+assessed using both raw and median-filtered sleep estimates derived from
+the ZM EEG-based sleep monitor. Overall, all models exhibited strong
+performance in predicting in bed time on an epoch-to-epoch basis.
+However, distinguishing between wakefulness and sleep during these
+in-bed periods proved to be more challenging. Interestingly, while the
+multiclass biLSTM model performed well in terms of F1 score, precision,
+and NPV for detecting epoch-to-epoch sleep, it lagged behind in deriving
+sleep quality metrics when compared to the XGBoost model due to low
+specificity. The XGBoost model outperformed all included models across
+every evaluation metric, including epoch-to-epoch prediction and sleep
+quality metrics. Nonetheless, it's worth noting that all models
+struggled with relatively low specificity values, indicating a common
+difficulty in accurately identifying awake epochs during time spent in
+bed. We also observed performance improvement in all models when
+5-minute and 10-minute median filters were applied. This filtering
+approach resulted in increased total sleep time and sleep efficiency
+metrics while reducing wake after sleep onset and the number of
+awakenings. Of all the models, the XGBoost demonstrated the smallest
+bias and the highest correlation with the ZM sleep quality metrics,
+making it the most robust choice for this particular application.
 
 While there is limited existing research on the epoch-to-epoch
 effectiveness of thigh-worn accelerometers in classifying in-bed time,
@@ -3861,16 +3930,16 @@ Carlson and
 colleagues\textsuperscript{\protect\hyperlink{ref-carlson_validity_2021}{120}}
 have offered valuable insights. Their study demonstrated that both a
 third-party algorithm called ``ProcessingPal'' and a proprietary
-algorithm named ``CREA'' were able to achieve high accuracies of 91\%
-and 86\%, respectively. Evaluated against self-reported measures in
-adolescents and adults, these algorithms yielded impressive F1 scores as
-high as 95\% and 96\%. This is consistent with our sequential models,
-which also managed to surpass 95\% in both F1 and accuracy scores for
-identifying in-bed time, equated in our study with SPT. However, it's
-worth noting that all models in our study, with the exception of
-XGBoost, tended to underestimate SPT. The biLSTM model displayed the
-most significant underestimation, with a bias of -36 minutes. This
-aligns with previous research by Winkler et
+algorithm, to the activePAL device, named ``CREA'' were able to achieve
+high accuracies of 91\% and 86\%, respectively. Evaluated against
+self-reported measures in adolescents and adults, these algorithms
+achieved impressive F1 scores of up to 95\% and 96\%. These results
+align with our models, which also achieved over 95\% in both F1 and
+accuracy scores when identifying in-bed epochs, representing time in the
+SPT. However, it's worth noting that all models in our study, with the
+exception of XGBoost, tended to underestimate SPT. The biLSTM model
+displayed the most significant underestimation, with a bias of -36
+minutes. This aligns with previous research by Winkler et
 al.\textsuperscript{\protect\hyperlink{ref-winkler_identifying_2016}{106}},
 who reported a similar trend in both young-middle-aged and older adults.
 Their algorithm showed a moderate correlation with diary-recorded waking
@@ -3909,20 +3978,22 @@ is not solely confined to thigh-worn devices. Conley et
 al.'s\textsuperscript{\protect\hyperlink{ref-conley_agreement_2019}{67}}
 meta-analysis reported issues with wrist-worn accelerometers as well,
 noting mean values of 0.89 for sensitivity, 0.88 for accuracy, and a low
-0.53 for specificity among healthy adults. Patterson and colleagues also
-recently summarized various heuristic algorithms, machine learning, and
-deep learning models for sleep prediction, finding mean sensitivity and
-specificity scores of 93\% and 60\%, respectively. These data
-collectively highlight the persistent difficulty in automating the
-identification of periods when individuals are awake yet still in bed.
-Interestingly, we noted a divergence in our study regarding the
-overestimation of LPS and WASO by several of our models, in contrast to
-most previous research. This overestimation is evident in the low NPV
-scores, suggesting that only a small fraction of the wake predictions
-are accurate. This inconsistency might be attributed to the SMOTE we
-used to balance the dataset. If the synthetic `wake' samples created by
-SMOTE don't accurately represent the actual `wake' data, it could cause
-the models to misclassify certain `sleep' epochs as `wake'.
+0.53 for specificity among healthy adults. Patterson and
+colleagues\textsuperscript{\protect\hyperlink{ref-patterson_40_2023}{177}}
+also recently summarized various heuristic algorithms, machine learning,
+and deep learning models for sleep prediction, finding mean sensitivity
+and specificity scores of 93\% and 60\% in data from wrist-worn devices,
+respectively. These data collectively highlight the persistent
+difficulty in automating the identification of periods when individuals
+are awake yet still in bed. Interestingly, our study revealed a
+divergence from most previous research concerning the overestimation of
+LPS and WASO by several of our models. This overestimation is reflected
+in the low NPV scores, indicating that a limited portion of the wake
+predictions were accurate with the exception of the biLSTM achieving NPV
+scores up tp 81.8\%. This inconsistency might be attributed to the SMOTE
+we used to balance the dataset. If the synthetic `wake' samples created
+by SMOTE don't accurately represent the actual `wake' data, it could
+cause the models to misclassify certain `sleep' epochs as `wake'.
 Consequently, this could lead to inflated LPS and WASO estimates, as the
 models would incorrectly identify more instances of wakefulness during
 sleep.
@@ -3931,34 +4002,41 @@ The application of the SMOTE in our study likely enhanced the
 performance of various models by addressing class imbalance issues.
 However, the introduction of synthetic ``wake'' samples through this
 method posed a challenge as they might not be fully indicative of
-genuine wake data. This could explain why some models, including the
-biLSTM which was not trained on SMOTE-processed data, overestimated TST
+genuine wake data. This could explain why most models, excluding the
+biLSTM which was not trained on SMOTE-processed data, underestimated TST
 and SE. Contrarily, the XGBoost model, trained on SMOTE-processed data,
 managed to navigate these synthetic ``wake'' samples more effectively
-and did not overestimate TST as much as other models. Interestingly,
-Bland-Altman statistics for the XGBoost model trained on 5-minute
-median-filtered ZM predictions indicated a mean difference of -7 minutes
-for TST and -1.1\% for SE. The limits of agreement for these metrics
-spanned from -95.5 to 81.4 minutes and -15.6\% to 13.3\% respectively.
-This suggests that the XGBoost model successfully maintained a balance
-between sensitivity and specificity without being overly swayed by the
-synthetic ``wake'' samples. The resilience of the XGBoost model to these
-synthetic samples could be attributed to its gradient boosting
-mechanism, which allows for iterative learning from prior models'
-errors. Such an iterative learning process likely rendered XGBoost more
-robust against inaccuracies that might be introduced by synthetic data,
-ultimately leading to a better overall model performance.
+and did not overestimate TST as much as other models. This is evident
+from the Bland-Altman statistics for the XGBoost model trained on
+5-minute median-filtered ZM predictions showing a mean difference of -7
+minutes for TST and -1.1\% for SE. The limits of agreement for these
+metrics spanned from -95.5 to 81.4 minutes and -15.6\% to 13.3\%
+respectively. This suggests that the XGBoost model successfully
+maintained a balance between sensitivity and specificity without being
+overly swayed by the synthetic ``wake'' samples. The robustness of the
+XGBoost model, especially when faced with synthetic samples, may arise
+from its gradient boosting mechanism, which involves learning
+iteratively from the errors of prior models. Unlike other models, such
+as the single decision tree, which makes decisions based on impurity
+measures in one go, or logistic regression, which tries to minimize the
+loss across the entire dataset, gradient boosting in XGBoost
+specifically corrects for errors made by previously trained trees with
+each subsequent tree. Even when compared to iterative algorithms like
+MLP or biLSTM, XGBoost's approach of directly focusing on and correcting
+mistakes might make it particularly resilient to inaccuracies or noise
+introduced by synthetic data. This attribute could lead to better
+overall model performance.
 
 Sleep detection methods are generally used in two distinct scenarios:
 night-only recordings and 24-hour recordings. For night recordings, SE
 and LPS can be readily derived since SPT can be inferred from the length
 of the recording itself, as indicated by studies from Conley et al.~and
 Patterson et
-al\textsuperscript{\protect\hyperlink{ref-conley_agreement_2019}{67},\protect\hyperlink{ref-patterson_40_2023}{176}}.
+al\textsuperscript{\protect\hyperlink{ref-conley_agreement_2019}{67},\protect\hyperlink{ref-patterson_40_2023}{177}}.
 In contrast, when applied to 24-hour recordings, most sleep detection
 methods face the challenge of inferring SPT without the aid of sleep
 diaries, as presented by several
-studies\textsuperscript{\protect\hyperlink{ref-girschik_validation_2012}{42},\protect\hyperlink{ref-doherty_large_2017}{123},\protect\hyperlink{ref-anderson_assessment_2014}{125},\protect\hyperlink{ref-dozydave2023snooze}{177}}.
+studies\textsuperscript{\protect\hyperlink{ref-girschik_validation_2012}{42},\protect\hyperlink{ref-doherty_large_2017}{123},\protect\hyperlink{ref-anderson_assessment_2014}{125},\protect\hyperlink{ref-dozydave2023snooze}{178}}.
 This limitation prevents these methods from generating sleep quality
 metrics dependent on SPT. To address this issue, we designed models
 capable of distinguishing between in-bed awake time and in-bed asleep
@@ -3968,14 +4046,14 @@ commonly used sleep quality metrics. In a similar vein, Van Hees et
 al.\textsuperscript{\protect\hyperlink{ref-van_hees_estimating_2018}{104}}
 proposed an algorithm for determining SPT using wrist-worn devices, an
 approach that was subsequently validated by Plekhanova and her
-team\textsuperscript{\protect\hyperlink{ref-plekhanova_validation_2023}{178}}.
+team\textsuperscript{\protect\hyperlink{ref-plekhanova_validation_2023}{179}}.
 When combined with other methods, this algorithm enables the estimation
 of additional sleep quality metrics based on the identified SPT. Van
 Hees et al.~reported favorable results with low mean differences when
 compared to self-reported measures and PSG for SPT, a finding later
 corroborated by Plekhanova et al.~However, both studies also highlighted
 challenges in achieving good agreement on metrics such as LPS and WASO,
-revealing low reliability with PSG. These challenges in accurately
+revealing low agreement with PSG. These challenges in accurately
 detecting wakefulness during in-bed time are similar to the issues we
 encountered in our own study.
 
@@ -3992,17 +4070,18 @@ ZM predictions, respectively. This discrepancy is not unique to our
 study; it is on par with the mean error of 23 minutes in sleep latency
 reported by Johansson et
 al\textsuperscript{\protect\hyperlink{ref-johansson_development_2023}{87}}.
-Johansson and colleagues attribute such inconsistencies to sleep state's
-multifaceted and complex physiological nature. Specifically, brief
-awakenings or transient sleep episodes may not always result in
-detectable thigh movements, complicating their identification and
-accurate classification. These observations are consistent with findings
-on wrist-worn devices by Conley and
+Johansson et al.~suggest that the discrepancy with the gold standard is
+likely due to the multifaceted nature of the sleep state, which is a
+complex physiological process. Short awakenings or sleep episodes may
+not necessarily correspond to noticeable changes in thigh movement,
+making them difficult to detect and accurately classify. These
+observations are consistent with findings on wrist-worn devices by
+Conley and
 colleagues\textsuperscript{\protect\hyperlink{ref-conley_agreement_2019}{67}},
-who reported that correlations between accelerometer data and
-polysomnography (PSG) sleep onset latency (equivalent to LPS) varied
-greatly across studies. The mean correlation was only 0.2, underscoring
-the challenges in leveraging accelerometry alone for estimating LPS.
+who reported that correlations between accelerometer data and PSG sleep
+onset latency (equivalent to LPS) varied greatly across studies. The
+mean correlation was only 0.2, underscoring the challenges in leveraging
+accelerometry alone for estimating LPS.
 
 Moreover, when compared to other models like the Van Hees
 algorithm\textsuperscript{\protect\hyperlink{ref-hees_novel_2015}{82}},
@@ -4011,7 +4090,7 @@ rsc\textsuperscript{\protect\hyperlink{ref-palotti_benchmark_2019}{99}},
 and
 LSTM-50\textsuperscript{\protect\hyperlink{ref-palotti_benchmark_2019}{99}}
 as evaluated in the Patterson et
-al.~study\textsuperscript{\protect\hyperlink{ref-patterson_40_2023}{176}},
+al.~study\textsuperscript{\protect\hyperlink{ref-patterson_40_2023}{177}},
 our XGBoost model displayed narrower LOAs for TST, SE, and WASO.
 Interestingly, the LOAs were also narrower when pitted against the
 algorithm tailored for thigh-worn devices by Johansson et
@@ -4022,7 +4101,7 @@ wide LOAs. This implies a high level of variability in sleep quality
 metrics derived from accelerometry, cautioning against its use as a
 stand-alone alternative to EEG-based ZM or PSG for individual-level
 sleep assessments. The presence of extreme outliers in our study
-appeared to exacerbate the width of LOAs, suggesting that current
+appeared to exacerbate the width of the LOAs, suggesting that current
 methods are better suited for group-level sleep quality metrics. As a
 result, there is a pressing need for further refinement to enhance the
 reliability and validity of these models for individual sleep
@@ -4040,17 +4119,17 @@ an aspect often impractical to achieve with PSG. Additionally, the use
 of ZM allowed us to incorporate more nights into our study than is
 typically possible with PSG-based studies. This is evident when
 comparing our data set to the more limited Newcastle dataset, which
-consists of only 28
-participants\textsuperscript{\protect\hyperlink{ref-hees_novel_2015}{82}}.
+consists of only 28 participants each with a single night of
+recoring\textsuperscript{\protect\hyperlink{ref-hees_newcastle_2018}{180}}.
 Despite its benefits, we found that the raw ZM outputs were not ideally
 suited for developing machine learning models, primarily due to a low
-signal-to-noise ratio, as indicated in Figure ZM Median
-(Figure~\ref{fig-paper3_raw_filt}). The ZM device itself employs certain
-filtering processes to mitigate this issue when generating sleep quality
-metrics. For example, WASO is determined using contiguous epochs of 3
-minutes, and sleep only contributes to sleep quality metrics if 10 out
-of 12 minutes are categorized as sleep. To enhance the effectiveness of
-our machine learning algorithms, we applied median filters to the raw ZM
+signal-to-noise ratio, as indicated in Figure~\ref{fig-paper3_raw_filt}.
+The ZM device itself employs certain filtering processes to mitigate
+this issue when generating sleep quality metrics. For example, WASO is
+determined using contiguous epochs of 3 minutes, and sleep only
+contributes to sleep quality metrics if 10 out of 12 minutes are
+categorized as sleep. To enhance the effectiveness of our machine
+learning algorithms, we applied median filters to the raw ZM
 predictions, which had a notable impact on the derived sleep quality
 metrics. The application of these filters led to several changes.
 Specifically, the mean WASO dropped from 39 minutes in the raw
@@ -4058,53 +4137,37 @@ predictions to 30.6 minutes when using a 5-minute median filter, and
 further decreased to 22.3 minutes with a 10-minute median filter.
 Likewise, TST, SE, and LPS all increased upon the application of the
 5-minute and 10-minute median filters. These shifts suggest that the
-median filters could potentially reclassify brief instances of
-wakefulness as sleep, and similarly, eliminate short awakenings. Despite
-these alterations, the sleep quality metrics derived from the
-median-filtered predictions remained largely consistent with those from
-the raw predictions, validating the approach we took in this study.
+median filters reclassify brief instances of wakefulness as sleep, and
+similarly, eliminate short awakenings. Despite these alterations, the
+sleep quality metrics derived from the median-filtered predictions
+remained largely consistent with those from the raw predictions,
+validating the approach we took in this study.
 
-Our current study offers significant contributions to the field of sleep
-estimation methods, particularly in the use of thigh-worn
-accelerometers. One of the primary strengths of the research lies in its
-ability to distinguish between in-bed awake time and asleep time, as
-well as out-of-bed time. This distinction is crucial for extracting
-essential sleep quality metrics without the assistance of sleep diaries
-or other ways to determine the SPT. Additionally, by evaluating multiple
-nights per subject, the study offers valuable insights into
-intra-subject sleep variability, another important factor for sleep
-assessment. However, there are limitations to our approach. Most
-notably, we utilized the ZM as our reference method, which is not
-considered the gold standard for sleep measurement. This choice might
-have impacted the validity of our findings. For future work, it would be
-beneficial to employ PSG as a reference, despite its own set of
-limitations, to provide a more accurate comparison and to easier extend
-to comparisons of other studies utilizing PSG as the gold standard.
-Another limitation is the lack of external validation for our models,
-which confines the applicability of our findings primarily to the
-children studied. Finally, another significant limitations of
-importantce is that the sequential strategy, during its initial step,
-identifies only one continuous SPT window. Consequently, it cannot
-detect multiple SPTs in a single night. So, if participants wake up for
-an extended period, engage in significant physical activity, and then
-return to sleep later, the detected SPT will terminate at the wake
-point, and any subsequent sleep will not be recognized.
-
-In terms of model performance, we tested a variety of machine learning
-and deep learning models to predict in-bed and sleep times as well as
-corresponding sleep quality metrics. The sequential models performed
-particularly well in predicting in-bed time, although they encountered
-difficulties in accurately discerning sleep from wake epochs during that
-period. Among all the models evaluated, the XGBoost model stood out for
-its superior performance in epoch-to-epoch predictions and sleep quality
-metrics.The study also brings attention to the existing limitations of
-current sleep detection methods. Specifically, there are challenges in
-effectively identifying wake periods during in-bed time, and
-improvements are needed to enhance the accuracy of individual sleep
-assessments. Overall, we believe our work serves as a foundational step
-for future research aimed at refining these models. The ultimate goal is
-to offer a more precise and accurate evaluation of sleep patterns and
-quality through the use of thigh-worn accelerometers.
+Our current study offers contributions to the field of sleep estimation
+methods, particularly in the use of thigh-worn accelerometers. One of
+the primary strengths of the research lies in its ability to distinguish
+between in-bed awake time and in-bed asleep time, as well as out-of-bed
+time. This distinction is crucial for extracting essential sleep quality
+metrics without the assistance of sleep diaries or other ways to
+determine the SPT. Additionally, by evaluating multiple nights per
+subject, the study offers valuable insights into intra-subject sleep
+variability, another important factor for sleep assessment. However,
+there are limitations to our approach. Most notably, we utilized the ZM
+as our reference method, which is not considered the gold standard for
+sleep measurement. This choice might have impacted the validity of our
+findings. For future work, it would be beneficial to employ PSG as a
+reference, despite its own set of limitations, to provide a more
+accurate comparison and to easier extend to comparisons of other studies
+utilizing PSG as the gold standard. Another limitation is the lack of
+external validation for our models, which confines the applicability of
+our findings primarily to the children studied. Finally, another
+significant limitations of importantce is that the sequential strategy,
+during its initial step, identifies only one continuous SPT window.
+Consequently, it cannot detect multiple SPTs in a single night. So, if
+participants wake up for an extended period, engage in significant
+physical activity, and then return to sleep later, the detected SPT will
+terminate at the wake point, and any subsequent sleep will not be
+recognized.
 
 \hypertarget{thesis-conclusions}{%
 \chapter{Thesis Conclusions}\label{thesis-conclusions}}
@@ -4250,7 +4313,7 @@ Research is inherently iterative, building upon existing knowledge while
 continuously adapting based on insights and practical experiences. At
 the outset of our project, we intended to harness the advanced
 capabilities of the SomnoTouch™️
-RESP\textsuperscript{\protect\hyperlink{ref-somnotouch}{179}}, an
+RESP\textsuperscript{\protect\hyperlink{ref-somnotouch}{181}}, an
 FDA-approved ambulatory PSG system, to monitor in-home sleep patterns
 alongside concurrent accelerometry assessments. Our goal was to create a
 comprehensive, multi-dimensional dataset. With manual annotation of
@@ -4315,7 +4378,7 @@ results. It's essential to understand how this affects accelerometer
 values. Additionally, accelerometer calibration, typically done during
 manufacturing, plays a role. Sometimes, recalibrating data, as with
 methods like
-auto-calibration\textsuperscript{\protect\hyperlink{ref-hees_2014}{180}},
+auto-calibration\textsuperscript{\protect\hyperlink{ref-hees_2014}{182}},
 can be beneficial, and understanding its impact on non-wear detection is
 crucial.
 
@@ -4350,11 +4413,11 @@ Daytime sleep behavior is another area of potential research interest.
 While the health implications of nocturnal insufficient and poor sleep
 are well-established, there's evidence indicating an increased mortality
 associated with habitual daytime
-sleep\textsuperscript{\protect\hyperlink{ref-burazeri_2003}{181}}.
+sleep\textsuperscript{\protect\hyperlink{ref-burazeri_2003}{183}}.
 However, other findings have shown potential benefits of daytime
 napping, particularly in enhancing glycaemic control for individuals
 with type 2
-diabetes\textsuperscript{\protect\hyperlink{ref-makino_2018}{182}}.
+diabetes\textsuperscript{\protect\hyperlink{ref-makino_2018}{184}}.
 Daytime sleep could also influence the relationship between physical
 activity and sleep. Consequently, forthcoming research could emphasize
 the creation of algorithms adept at detecting multiple sleep periods,
@@ -4373,7 +4436,11 @@ capture a wider range of sleep patterns and behaviors. Additionally, it
 would be prudent to explore more comprehensive biLSTM architectures.
 Integrating the biLSTM model in a sequential manner, similar to the
 approach taken with the XGBoost models, might also yield improved
-results and merits further investigation.
+results and merits further investigation. Finally, the biLSTM would
+likely benefit from another loss function like a soft version of the F1
+score like described by Pastor-Pellicer et
+al.\textsuperscript{\protect\hyperlink{ref-pastor-pellicer_2013}{185}}
+to better account for the class imbalance.
 
 As presented in this thesis, the estimation of sleep, as evidenced by
 the limits of agreements, is not sufficiently reliable to be conducted
@@ -4381,7 +4448,7 @@ on an individual basis. Looking beyond the present scope of our
 research, there lies an intriguing possibility in the development of
 adaptive machine learning models that tailor predictions based on
 individual sleep
-patterns\textsuperscript{\protect\hyperlink{ref-oyebode_2023}{183}}.
+patterns\textsuperscript{\protect\hyperlink{ref-oyebode_2023}{186}}.
 Such models, known for their real-time adaptability, could cater to
 outliers or individuals with specific sleep disorders, ensuring
 personalized insights. This adaptive approach presents an exciting
@@ -4402,21 +4469,21 @@ developmental changes, understanding their sleep behavior is crucial.
 However, to ensure our algorithm's utility across the life course, the
 need for diverse validation becomes all the more imperative. As noted by
 Mukherjee et
-al.\textsuperscript{\protect\hyperlink{ref-mukherjee_2015}{184}}, sleep
+al.\textsuperscript{\protect\hyperlink{ref-mukherjee_2015}{187}}, sleep
 physiology and habits evolve throughout an individual's life. This
 brings forward a critical consideration about the broader applicability
 of our algorithm across different age groups and clinical demographics.
 While studies have indicated that algorithms tailored for adults might
 not always align with children's sleep patterns, often detecting
 wakefulness when they are likely
-asleep\textsuperscript{\protect\hyperlink{ref-quante_2018}{185}}, our
+asleep\textsuperscript{\protect\hyperlink{ref-quante_2018}{188}}, our
 study was already grounded in pediatric sleep patterns. Nevertheless,
 the elderly and certain clinical populations exhibit distinct sleep
 profiles, often characterized by sleep-related
-challenges\textsuperscript{\protect\hyperlink{ref-cassidy_2016}{186},\protect\hyperlink{ref-espiritu_2008}{187}}.
+challenges\textsuperscript{\protect\hyperlink{ref-cassidy_2016}{189},\protect\hyperlink{ref-espiritu_2008}{190}}.
 Conditions such as obesity and type 2 diabetes, which are associated
 with a heightened risk of obstructive sleep
-apnoea\textsuperscript{\protect\hyperlink{ref-altaf_2017}{188},\protect\hyperlink{ref-heinzer_2015}{189}},
+apnoea\textsuperscript{\protect\hyperlink{ref-altaf_2017}{191},\protect\hyperlink{ref-heinzer_2015}{192}},
 could introduce variations in sleep detection. The algorithm developed
 by van Hees et al.~highlighted performance disparities between healthy
 sleepers and those with sleep
@@ -4434,7 +4501,7 @@ that amassing such data is a difficult task, demanding significant time
 and resources. Especially as there, to my knowledge, does not exist any
 publicly available datasets from thigh-worn accelerometers coupled with
 valid sleep records like the Newcastle or MESA
-datasets\textsuperscript{\protect\hyperlink{ref-hees_newcastle_2018}{190}--\protect\hyperlink{ref-chen_2015}{192}}.
+datasets\textsuperscript{\protect\hyperlink{ref-hees_newcastle_2018}{180},\protect\hyperlink{ref-zhang_2018}{193},\protect\hyperlink{ref-chen_2015}{194}}.
 It is thus essential to recognize the potential need for data that
 encapsulates diverse sleep behaviors, including napping, to ensure
 comprehensive sleep detection in future research.
@@ -4447,18 +4514,18 @@ Every year sees the release of an increasing number of devices. While
 the accuracy of early commercial devices faced skepticism based on
 scientific evaluations, recent multi-sensor devices now showcase
 precision that parallels leading research
-tools\textsuperscript{\protect\hyperlink{ref-dezambotti_2019}{193},\protect\hyperlink{ref-rentz_2021}{194}}.
+tools\textsuperscript{\protect\hyperlink{ref-dezambotti_2019}{195},\protect\hyperlink{ref-rentz_2021}{196}}.
 A prime example of advancements in consumer sleep wearables is the
 Oura-Ring. Designed to be worn on the finger, this device combines the
 functionalities of an accelerometer and a pulse-oximeter. The
 first-generation Oura Ring detected sleep with a sensitivity of 96\% and
 was able to pinpoint REM sleep with an accuracy of 61\% among
 adolescents and young
-adults\textsuperscript{\protect\hyperlink{ref-dezambotti_2019}{193}}.
+adults\textsuperscript{\protect\hyperlink{ref-dezambotti_2019}{195}}.
 Its successor, the second generation, touted an accuracy rate of 94\% in
 sleep detection using accelerometer-based features and reached 96\%
 accuracy when augmented with autonomic nervous system-derived
-features\textsuperscript{\protect\hyperlink{ref-altini_2021}{195}}.
+features\textsuperscript{\protect\hyperlink{ref-altini_2021}{197}}.
 Using a four-stage model for sleep detection---which encompasses light
 sleep (N1 and N2 stages), deep sleep (N3), REM, and wake---the device
 managed an accuracy of 57\% with accelerometer-derived data and jumped
@@ -4470,14 +4537,14 @@ REM sleep{[}@haghayegh\_2019{]}. Such fluctuations indicate that relying
 solely on acceleration data may not always yield a comprehensive view of
 sleep stages. Further evidence points to heart rate variability (HRV) as
 a significant marker for sleep stage
-detection\textsuperscript{\protect\hyperlink{ref-herzig_2018}{196},\protect\hyperlink{ref-chouchou_2014}{197}}.
+detection\textsuperscript{\protect\hyperlink{ref-herzig_2018}{198},\protect\hyperlink{ref-chouchou_2014}{199}}.
 A notable study achieved a striking 89\% accuracy in identifying deep
 sleep when HRV was combined with respiratory
-signals\textsuperscript{\protect\hyperlink{ref-long_2017}{198}}. Another
+signals\textsuperscript{\protect\hyperlink{ref-long_2017}{200}}. Another
 research effort merged HRV with accelerometer data, achieving accurate
 detection for 75\% of deep sleep and over 70\% of REM sleep instances,
 though light sleep identification varied between 42\% and
-52\%\textsuperscript{\protect\hyperlink{ref-muzet_2016}{199}}. This
+52\%\textsuperscript{\protect\hyperlink{ref-muzet_2016}{201}}. This
 thesis, however, zeroed in on algorithms rooted in acceleration and
 surface skin temperature data. While the inclusion of heart rate and
 other physiological markers could enhance sleep classification, this
@@ -5706,35 +5773,42 @@ pediatrics} \textbf{176}, 741--749 (2022).}
 raw acceleration and photoplethysmography heart rate data derived from a
 consumer wearable device}. \emph{Sleep} \textbf{42}, zsz180 (2019).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-galland_2018}{}}%
+\leavevmode\vadjust pre{\hypertarget{ref-lewy_1980}{}}%
 \CSLLeftMargin{159. }%
+\CSLRightInline{Lewy, A. J., Wehr, T. A., Goodwin, F. K., Newsome, D. A.
+\& Markey, S. P. \href{https://doi.org/10.1126/science.7434030}{Light
+suppresses melatonin secretion in humans}. \emph{Science (New York,
+N.Y.)} \textbf{210}, 1267--1269 (1980).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-galland_2018}{}}%
+\CSLLeftMargin{160. }%
 \CSLRightInline{Galland, B. C. \emph{et al.}
 \href{https://doi.org/10.1093/sleep/zsy017}{Establishing normal values
 for pediatric nighttime sleep measured by actigraphy: a systematic
 review and meta-analysis}. \emph{Sleep} \textbf{41}, (2018).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-ohayon_2017}{}}%
-\CSLLeftMargin{160. }%
+\CSLLeftMargin{161. }%
 \CSLRightInline{Ohayon, M. \emph{et al.}
 \href{https://doi.org/10.1016/j.sleh.2016.11.006}{National Sleep
 Foundation's sleep quality recommendations: first report}. \emph{Sleep
 Health} \textbf{3}, 6--19 (2017).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-galland_normal_2012}{}}%
-\CSLLeftMargin{161. }%
+\CSLLeftMargin{162. }%
 \CSLRightInline{Galland, B. C., Taylor, B. J., Elder, D. E. \& Herbison,
 P. \href{https://doi.org/10.1016/j.smrv.2011.06.001}{Normal sleep
 patterns in infants and children: A systematic review of observational
 studies}. \emph{Sleep Med Rev} \textbf{16}, 213--222 (2012).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-hochreiter_long_1997}{}}%
-\CSLLeftMargin{162. }%
+\CSLLeftMargin{163. }%
 \CSLRightInline{Hochreiter, S. \& Schmidhuber, J.
 \href{https://doi.org/10.1162/neco.1997.9.8.1735}{Long short-term
 memory}. \emph{Neural Computation} \textbf{9}, 1735--1780 (1997).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-sano_multimodal_2019}{}}%
-\CSLLeftMargin{163. }%
+\CSLLeftMargin{164. }%
 \CSLRightInline{Sano, A., Chen, W., Lopez-Martinez, D., Taylor, S. \&
 Picard, R. W.
 \href{https://doi.org/10.1109/JBHI.2018.2867619}{Multimodal ambulatory
@@ -5742,7 +5816,7 @@ sleep detection using {LSTM} recurrent neural networks}. \emph{{IEEE} J
 Biomed Health Inform} \textbf{23}, 1607--1617 (2019).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-chen_attention_2021}{}}%
-\CSLLeftMargin{164. }%
+\CSLLeftMargin{165. }%
 \CSLRightInline{Chen, Z., Wu, M., Cui, W., Liu, C. \& Li, X.
 \href{https://doi.org/10.1109/JBHI.2020.3006145}{An attention based
 {CNN}-{LSTM} approach for sleep-wake detection with heterogeneous
@@ -5750,39 +5824,39 @@ sensors}. \emph{{IEEE} J Biomed Health Inform} \textbf{25}, 3270--3277
 (2021).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-friedman_glmnet_2010}{}}%
-\CSLLeftMargin{165. }%
+\CSLLeftMargin{166. }%
 \CSLRightInline{Friedman, J., Hastie, T. \& Tibshirani, R.
 Regularization Paths for Generalized Linear Models via Coordinate
 Descent. \emph{Journal of Statistical Software} \textbf{33}, 1--22
 (2010).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-nnet}{}}%
-\CSLLeftMargin{166. }%
+\CSLLeftMargin{167. }%
 \CSLRightInline{Venables, W. N. \& Ripley, B. D.
 \emph{\href{https://www.stats.ox.ac.uk/pub/MASS4/}{Modern applied
 statistics with s}}. (Springer, 2002).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-xgboost}{}}%
-\CSLLeftMargin{167. }%
+\CSLLeftMargin{168. }%
 \CSLRightInline{Chen, T. \emph{et al.}
 \emph{\href{https://CRAN.R-project.org/package=xgboost}{Xgboost: Extreme
 gradient boosting}}. (2023).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-chawla_smote_2002}{}}%
-\CSLLeftMargin{168. }%
+\CSLLeftMargin{169. }%
 \CSLRightInline{Chawla, N. V., Bowyer, K. W., Hall, L. O. \& Kegelmeyer,
 W. P. \href{https://doi.org/10.1613/jair.953}{{SMOTE}: Synthetic
 minority over-sampling technique}. \emph{Journal of Artificial
 Intelligence Research} \textbf{16}, 321--357 (2002).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-themis}{}}%
-\CSLLeftMargin{169. }%
+\CSLLeftMargin{170. }%
 \CSLRightInline{Hvitfeldt, E.
 \emph{\href{https://CRAN.R-project.org/package=themis}{Themis: Extra
 recipes steps for dealing with unbalanced data}}. (2023).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-kushida_comparison_2001}{}}%
-\CSLLeftMargin{170. }%
+\CSLLeftMargin{171. }%
 \CSLRightInline{Kushida, C. A. \emph{et al.}
 \href{https://doi.org/10.1016/s1389-9457(00)00098-8}{Comparison of
 actigraphic, polysomnographic, and subjective assessment of sleep
@@ -5790,62 +5864,68 @@ parameters in sleep-disordered patients}. \emph{Sleep Med} \textbf{2},
 389--396 (2001).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-diciccio_bootstrap_1996}{}}%
-\CSLLeftMargin{171. }%
+\CSLLeftMargin{172. }%
 \CSLRightInline{DiCiccio, T. J. \& Efron, B.
 \href{https://doi.org/10.1214/ss/1032280214}{Bootstrap confidence
 intervals}. \emph{Statistical Science} \textbf{11}, 189--228 (1996).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-rcoreteam_2023}{}}%
-\CSLLeftMargin{172. }%
+\CSLLeftMargin{173. }%
 \CSLRightInline{R Core Team. \emph{\href{https://www.R-project.org/}{R:
 A language and environment for statistical computing}}. (R Foundation
 for Statistical Computing, 2023).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-wickham_tidyverse_2019}{}}%
-\CSLLeftMargin{173. }%
+\CSLLeftMargin{174. }%
 \CSLRightInline{Wickham, H. \emph{et al.}
 \href{https://doi.org/10.21105/joss.01686}{Welcome to the tidyverse}.
 \emph{Journal of Open Source Software} \textbf{4}, 1686 (2019).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-vanrossum_python_2009}{}}%
-\CSLLeftMargin{174. }%
+\CSLLeftMargin{175. }%
 \CSLRightInline{Van Rossum, G. \& Drake, F. L. \emph{Python 3 reference
 manual}. (CreateSpace, 2009).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-paszke_pytorch_2019}{}}%
-\CSLLeftMargin{175. }%
+\CSLLeftMargin{176. }%
 \CSLRightInline{Paszke, A. \emph{et al.}
 \href{http://papers.neurips.cc/paper/9015-pytorch-an-imperative-style-high-performance-deep-learning-library.pdf}{PyTorch:
 An imperative style, high-performance deep learning library}. in
 80248035 (Curran Associates, Inc., 2019).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-patterson_40_2023}{}}%
-\CSLLeftMargin{176. }%
+\CSLLeftMargin{177. }%
 \CSLRightInline{Patterson, M. R. \emph{et al.}
 \href{https://doi.org/10.1038/s41746-023-00802-1}{40 years of actigraphy
 in sleep medicine and current state of the art algorithms}. \emph{npj
 Digit. Med.} \textbf{6}, 1--7 (2023).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-dozydave2023snooze}{}}%
-\CSLLeftMargin{177. }%
+\CSLLeftMargin{178. }%
 \CSLRightInline{Dozy, D. \& Slumberton, S. Snooze analytics: A
 comprehensive guide to overthinking bedtime. \emph{Journal of
 Procrastination and Pillow Fluffing} \textbf{69}, Zzz--Zzzz (2023).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-plekhanova_validation_2023}{}}%
-\CSLLeftMargin{178. }%
+\CSLLeftMargin{179. }%
 \CSLRightInline{Plekhanova, T. \emph{et al.}
 \href{https://doi.org/10.1111/jsr.13760}{Validation of an automated
 sleep detection algorithm using data from multiple accelerometer
 brands}. \emph{J Sleep Res} \textbf{32}, e13760 (2023).}
 
+\leavevmode\vadjust pre{\hypertarget{ref-hees_newcastle_2018}{}}%
+\CSLLeftMargin{180. }%
+\CSLRightInline{Hees, V. van, Charman, S. \& Anderson, K.
+\href{https://doi.org/10.5281/zenodo.1160410}{Newcastle polysomnography
+and accelerometer data}.}
+
 \leavevmode\vadjust pre{\hypertarget{ref-somnotouch}{}}%
-\CSLLeftMargin{179. }%
+\CSLLeftMargin{181. }%
 \CSLRightInline{\href{https://somnomedics.de/enus/somnomedics-diagnostic-devices/sleep-diagnostics/home-sleep-testing-hst/somnotouch-resp-home-sleep-testing-hst/}{SOMNOtouch{\texttrademark}
 RESP - home sleep testing (HST)}.}
 
 \leavevmode\vadjust pre{\hypertarget{ref-hees_2014}{}}%
-\CSLLeftMargin{180. }%
+\CSLLeftMargin{182. }%
 \CSLRightInline{Hees, V. T. van \emph{et al.}
 \href{https://doi.org/10.1152/japplphysiol.00421.2014}{Autocalibration
 of accelerometer data for free-living physical activity assessment using
@@ -5853,22 +5933,30 @@ local gravity and temperature: An evaluation on four continents}.
 \emph{Journal of Applied Physiology} \textbf{117}, 738--744 (2014).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-burazeri_2003}{}}%
-\CSLLeftMargin{181. }%
+\CSLLeftMargin{183. }%
 \CSLRightInline{Burazeri, G., Gofin, J. \& Kark, J. D.
 \href{https://doi.org/10.1093/sleep/26.5.578}{Siesta and mortality in a
 Mediterranean population: a community study in Jerusalem}. \emph{Sleep}
 \textbf{26}, 578--584 (2003).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-makino_2018}{}}%
-\CSLLeftMargin{182. }%
+\CSLLeftMargin{184. }%
 \CSLRightInline{Makino, S. \emph{et al.}
 \href{https://doi.org/10.1016/j.sleep.2017.11.1124}{Association between
 nighttime sleep duration, midday naps, and glycemic levels in Japanese
 patients with type 2 diabetes}. \emph{Sleep Medicine} \textbf{44}, 4--11
 (2018).}
 
+\leavevmode\vadjust pre{\hypertarget{ref-pastor-pellicer_2013}{}}%
+\CSLLeftMargin{185. }%
+\CSLRightInline{Pastor-Pellicer, J., Zamora-Martínez, F.,
+España-Boquera, S. \& Castro-Bleda, M. J.
+\href{https://doi.org/10.1007/978-3-642-38679-4_37}{F-Measure as the
+Error Function to Train Neural Networks}. in (eds. Rojas, I., Joya, G.
+\& Gabestany, J.) 376--384 (Springer, 2013).}
+
 \leavevmode\vadjust pre{\hypertarget{ref-oyebode_2023}{}}%
-\CSLLeftMargin{183. }%
+\CSLLeftMargin{186. }%
 \CSLRightInline{Oyebode, O., Fowles, J., Steeves, D. \& Orji, R.
 \href{https://doi.org/10.1080/10447318.2022.2089085}{Machine learning
 techniques in adaptive and personalized systems for health and
@@ -5876,7 +5964,7 @@ wellness}. \emph{International Journal of Human{\textendash}Computer
 Interaction} \textbf{39}, 1938--1962 (2023).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-mukherjee_2015}{}}%
-\CSLLeftMargin{184. }%
+\CSLLeftMargin{187. }%
 \CSLRightInline{Mukherjee, S. \emph{et al.}
 \href{https://doi.org/10.1164/rccm.201504-0767ST}{An official american
 thoracic society statement: The importance of healthy sleep.
@@ -5885,7 +5973,7 @@ Respiratory and Critical Care Medicine} \textbf{191}, 1450--1458
 (2015).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-quante_2018}{}}%
-\CSLLeftMargin{185. }%
+\CSLLeftMargin{188. }%
 \CSLRightInline{Quante, M. \emph{et al.}
 \href{https://doi.org/10.2147/NSS.S151085}{Actigraphy-based sleep
 estimation in adolescents and adults: a comparison with polysomnography
@@ -5893,7 +5981,7 @@ using two scoring algorithms}. \emph{Nature and Science of Sleep}
 \textbf{10}, 13--20 (2018).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-cassidy_2016}{}}%
-\CSLLeftMargin{186. }%
+\CSLLeftMargin{189. }%
 \CSLRightInline{Cassidy, S., Chau, J. Y., Catt, M., Bauman, A. \&
 Trenell, M. I.
 \href{https://doi.org/10.1136/bmjopen-2015-010038}{Cross-sectional study
@@ -5903,14 +5991,14 @@ cardiovascular disease and type 2 diabetes}. \emph{BMJ open} \textbf{6},
 e010038 (2016).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-espiritu_2008}{}}%
-\CSLLeftMargin{187. }%
+\CSLLeftMargin{190. }%
 \CSLRightInline{Espiritu, J. R. D.
 \href{https://doi.org/10.1016/j.cger.2007.08.007}{Aging-related sleep
 changes}. \emph{Clinics in Geriatric Medicine} \textbf{24}, 1--14, v
 (2008).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-altaf_2017}{}}%
-\CSLLeftMargin{188. }%
+\CSLLeftMargin{191. }%
 \CSLRightInline{Altaf, Q. A. \emph{et al.}
 \href{https://doi.org/10.1164/rccm.201701-0175OC}{Obstructive Sleep
 Apnea and Retinopathy in Patients with Type 2 Diabetes. A Longitudinal
@@ -5918,35 +6006,29 @@ Study}. \emph{American Journal of Respiratory and Critical Care
 Medicine} \textbf{196}, 892--900 (2017).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-heinzer_2015}{}}%
-\CSLLeftMargin{189. }%
+\CSLLeftMargin{192. }%
 \CSLRightInline{Heinzer, R. \emph{et al.}
 \href{https://doi.org/10.1016/S2213-2600(15)00043-0}{Prevalence of
 sleep-disordered breathing in the general population: the HypnoLaus
 study}. \emph{The Lancet. Respiratory Medicine} \textbf{3}, 310--318
 (2015).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-hees_newcastle_2018}{}}%
-\CSLLeftMargin{190. }%
-\CSLRightInline{Hees, V. van, Charman, S. \& Anderson, K.
-\href{https://doi.org/10.5281/zenodo.1160410}{Newcastle polysomnography
-and accelerometer data}.}
-
 \leavevmode\vadjust pre{\hypertarget{ref-zhang_2018}{}}%
-\CSLLeftMargin{191. }%
+\CSLLeftMargin{193. }%
 \CSLRightInline{Zhang, G.-Q. \emph{et al.}
 \href{https://doi.org/10.1093/jamia/ocy064}{The National Sleep Research
 Resource: towards a sleep data commons}. \emph{Journal of the American
 Medical Informatics Association: JAMIA} \textbf{25}, 1351--1358 (2018).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-chen_2015}{}}%
-\CSLLeftMargin{192. }%
+\CSLLeftMargin{194. }%
 \CSLRightInline{Chen, X. \emph{et al.}
 \href{https://doi.org/10.5665/sleep.4732}{Racial/Ethnic Differences in
 Sleep Disturbances: The Multi-Ethnic Study of Atherosclerosis (MESA)}.
 \emph{Sleep} \textbf{38}, 877--888 (2015).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-dezambotti_2019}{}}%
-\CSLLeftMargin{193. }%
+\CSLLeftMargin{195. }%
 \CSLRightInline{Zambotti, M. de, Cellini, N., Goldstone, A., Colrain, I.
 M. \& Baker, F. C.
 \href{https://doi.org/10.1249/MSS.0000000000001947}{Wearable Sleep
@@ -5954,35 +6036,35 @@ Technology in Clinical and Research Settings}. \emph{Medicine and
 Science in Sports and Exercise} \textbf{51}, 1538--1557 (2019).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-rentz_2021}{}}%
-\CSLLeftMargin{194. }%
+\CSLLeftMargin{196. }%
 \CSLRightInline{Rentz, L. E., Ulman, H. K. \& Galster, S. M.
 \href{https://doi.org/10.3390/s21155071}{Deconstructing Commercial
 Wearable Technology: Contributions toward Accurate and Free-Living
 Monitoring of Sleep}. \emph{Sensors} \textbf{21}, 5071 (2021).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-altini_2021}{}}%
-\CSLLeftMargin{195. }%
+\CSLLeftMargin{197. }%
 \CSLRightInline{Altini, M. \& Kinnunen, H.
 \href{https://doi.org/10.3390/s21134302}{The Promise of Sleep: A
 Multi-Sensor Approach for Accurate Sleep Stage Detection Using the Oura
 Ring}. \emph{Sensors} \textbf{21}, 4302 (2021).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-herzig_2018}{}}%
-\CSLLeftMargin{196. }%
+\CSLLeftMargin{198. }%
 \CSLRightInline{Herzig, D. \emph{et al.}
 \href{https://www.frontiersin.org/articles/10.3389/fphys.2017.01100}{Reproducibility
 of heart rate variability is parameter and sleep stage dependent}.
 \emph{Frontiers in Physiology} \textbf{8}, (2018).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-chouchou_2014}{}}%
-\CSLLeftMargin{197. }%
+\CSLLeftMargin{199. }%
 \CSLRightInline{Chouchou, F. \& Desseilles, M.
 \href{https://www.frontiersin.org/articles/10.3389/fnins.2014.00402}{Heart
 rate variability: A tool to explore the sleeping brain?} \emph{Frontiers
 in Neuroscience} \textbf{8}, (2014).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-long_2017}{}}%
-\CSLLeftMargin{198. }%
+\CSLLeftMargin{200. }%
 \CSLRightInline{Long, X. \emph{et al.}
 \href{https://doi.org/10.1109/JBHI.2015.2487446}{Detection of nocturnal
 slow wave sleep based on cardiorespiratory activity in healthy adults}.
@@ -5990,7 +6072,7 @@ slow wave sleep based on cardiorespiratory activity in healthy adults}.
 123--133 (2017).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-muzet_2016}{}}%
-\CSLLeftMargin{199. }%
+\CSLLeftMargin{201. }%
 \CSLRightInline{Muzet, A. \emph{et al.}
 \href{https://doi.org/10.1016/j.sleep.2016.01.015}{Assessing sleep
 architecture and continuity measures through the analysis of heart rate

@@ -18,26 +18,28 @@ csl: nature.csl
 \scriptsize
 
 | ECTS | Start Date | End Date   | Course Name                                                                      |
-|------|------------|------------|----------------------------------------------------------------------------------|
+|----------|----------|----------|------------------------------------------|
 | 1,5  | 13.05.2020 | 14.05.2020 | Introduction to "R"                                                              |
-| 0,7  | 02.12.2020 | 02.12.2020 | Introduction to Health Research                                                  |
 | 5,0  | 17.09.2020 | 28.10.2020 | Biostatistics I                                                                  |
-| 1,8  | 03.02.2021 | 04.02.2021 | AI Statistical Learners in Health Science                                        |
+| 0,7  | 02.12.2020 | 02.12.2020 | Introduction to Health Research                                                  |
 | 2,4  | 03.11.2020 | 26.11.2020 | Advanced R course                                                                |
+| 1,8  | 03.02.2021 | 04.02.2021 | AI Statistical Learners in Health Science                                        |
+| 6,4  | 07.04.2021 | 28.04.2021 | Basic Biostatistics - part 2                                                     |
+| 2,0  | 01.09.2021 |            | Time Series Modeling and Analytics                                               |
+| 2,5  | 01.11.2021 |            | Fundamentals of Electroencephalography (EEG) Data Acquisition and Interpretation |
 | 2,0  | 18.01.2022 | 25.01.2022 | Responsible Conduct of Research - Online                                         |
 | 2,4  | 11.01.2022 | 26.01.2022 | Basic data science skills for health researchers using R and the Tidyverse       |
 | 2,4  | 01.03.2022 | 04.03.2022 | How to structure an article                                                      |
 | 3,1  | 07.03.2022 | 16.03.2022 | Introduction to machine learning in health sciences                              |
-| 2,5  | 01.11.2021 |            | Fundamentals of Electroencephalography (EEG) Data Acquisition and Interpretation |
-| 2,0  | 01.09.2021 |            | Time Series Modeling and Analytics                                               |
-| 6,4  | 07.04.2021 | 28.04.2021 | Basic Biostatistics - part 2                                                     |
+|------|------------|-----------|----------------------------------------------------------------------------------|
+| 32,2 |            |           | Total ECTS                                                                       |
 
 : {tbl-colwidths="\[10, 10, 10, 70\]"}
 
 ```{=tex}
 \endgroup
 ```
-# Teaching Activities and \# Knowledge Dissemination Activities
+# Teaching Activities and Knowledge Dissemination Activities
 
 During my PhD, I have taught several different courses. The courses are listed below.
 
@@ -47,7 +49,7 @@ During my PhD, I have taught several different courses. The courses are listed b
 \scriptsize
 
 | Year        | Course                                                                                  | Role                      |
-|-------------|-----------------------------------------------------------------------------------------|---------------------------|
+|----------------|-----------------------------------------|----------------|
 | 2023        | Basic data science skills for health researchers using R and the Tidyverse (PhD course) | Instructor\*              |
 | 2022---2023 | Data Science in Health Science (MSc course)                                             | Instructor and Censor     |
 | 2020---2022 | Applied Statistics (BSc course)                                                         | Instructor                |
