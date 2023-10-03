@@ -77,8 +77,8 @@ plot_proxy_cos <- tibble(
     size = text_size
   ) +
   scale_x_continuous(
-    breaks = seq(start_datetime, end_datetime, "3 hours"),
-    labels = format(seq(from = start_datetime, to = end_datetime, by = "3 hours"), format = "%H:%M")
+    breaks = seq(start_datetime, end_datetime, "4 hours"),
+    labels = format(seq(from = start_datetime, to = end_datetime, by = "4 hours"), format = "%H:%M")
   ) +
   # scale_y_continuous(expand = c(.001, 0)) +
   labs(
@@ -149,8 +149,8 @@ plot_proxy_lin <-
     size = text_size
   ) +
   scale_x_continuous(
-    breaks = seq(start_datetime, end_datetime, "3 hours"),
-    labels = format(seq(from = start_datetime, to = end_datetime, by = "3 hours"), format = "%H:%M")
+    breaks = seq(start_datetime, end_datetime, "4 hours"),
+    labels = format(seq(from = start_datetime, to = end_datetime, by = "4 hours"), format = "%H:%M")
   ) +
   # scale_y_continuous(expand = c(.001, 0)) +
   labs(
@@ -166,6 +166,14 @@ plot_proxy_lin <-
   )
 
 plot_proxy_cos / plot_proxy_lin &
-  plot_annotation(tag_levels = "A")
+  plot_annotation(tag_levels = "A") &
+  theme(
+    text = element_text(family = "Montserrat"),
+    plot.title = element_text(size = 8),
+    axis.title = element_text(size = 7),
+    axis.text = element_text(size = 6),
+    plot.tag = element_text(size = 8)
+  )
+  
 
 ggsave("figures/paper3_sensor_independent.pdf", width = 12.5, height = 6, units = "cm", dpi = 600)

@@ -26,10 +26,11 @@ plot_all <-
     size = .1,
     position = "dodge2"
   ) +
-  geom_text(aes(model, .estimate + .08,
+  geom_text(aes(model, .estimate + .1,
                 label = round(.estimate, 2)
   ),
-  size = 1.5, 
+  size = 2, 
+  color = "grey20",
   position = position_dodge(width = .8)
   ) +
   expand_limits(y = c(0, 1.2)) +
@@ -38,7 +39,7 @@ plot_all <-
   ) +
   scale_x_discrete(breaks = c("syed_CNN", "heuristic", "sunda_RF", "cz_60", "tree_no_temp", "tree_full", "tree_imp6"),
                    labels = c("syed_cnn", "hue_alg", "sunda_rf", "cv_60", "tree_no_temp", "tree_full", "tree_imp6")) +
-  scale_y_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0), breaks = c(0, .5, 1)) +
   labs(
     title = NULL,
     x = NULL,
@@ -58,8 +59,8 @@ plot_all <-
   theme(
     text = element_text(family = "Montserrat"),
     plot.title = element_text(size = 8),
-    axis.title = element_text(size = 6),
-    axis.text = element_text(size = 4),
+    axis.title = element_text(size = 7),
+    axis.text = element_text(size = 6),
     plot.title.position = "plot",
     legend.position = "bottom",
     legend.text = element_text(size = 6),
@@ -72,7 +73,7 @@ plot_all <-
 
 
 ggsave(filename = "figures/paper2_performance_all.pdf", 
-       plot = plot_all, dpi = 600, width = 11.7, height = 10, units = "cm")
+       plot = plot_all, dpi = 600, width = 13, height = 10, units = "cm")
 
 all_metrics <- read_rds("data/all_metrics_60.rds")
 
@@ -93,10 +94,11 @@ plot_short <-
     size = .1,
     position = "dodge2"
   ) +
-  geom_text(aes(model, .estimate + .08,
+  geom_text(aes(model, .estimate + .1,
                 label = round(.estimate, 2)
   ),
-  size = 1.5,
+  size = 2,
+  color = "grey20",
   position = position_dodge(width = .8)
   ) +
   expand_limits(y = c(0, 1.2)) +
@@ -105,7 +107,7 @@ plot_short <-
   ) +
   scale_x_discrete(breaks = c("syed_cnn", "heuristic", "sunda_rf", "tree_no_temp", "tree_full", "tree_imp6"),
                    labels = c("syed_cnn", "hue_alg", "sunda_rf", "tree_no_temp", "tree_full", "tree_imp6")) +
-  scale_y_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0), breaks = c(0, .5, 1)) +
   labs(
     title = NULL,
     x = NULL,
@@ -125,8 +127,8 @@ plot_short <-
   theme(
     text = element_text(family = "Montserrat"),
     plot.title = element_text(size = 8),
-    axis.title = element_text(size = 6),
-    axis.text = element_text(size = 4),
+    axis.title = element_text(size = 7),
+    axis.text = element_text(size = 6),
     plot.title.position = "plot",
     legend.position = "bottom",
     legend.text = element_text(size = 6),
@@ -139,4 +141,4 @@ plot_short <-
 
 
 ggsave(filename = "figures/paper2_performance_short.pdf", 
-       plot = plot_short, dpi = 600, width = 10, height = 7.5, units = "cm")
+       plot = plot_short, dpi = 600, width = 11.1, height = 7.5, units = "cm")

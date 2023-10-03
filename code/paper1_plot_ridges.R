@@ -175,8 +175,8 @@ ridge_plot <- (p2 / p1 / p4 / p3) +
   theme(
     text = element_text(family = "Montserrat"),
     plot.title = element_text(size = 8),
-    axis.title = element_text(size = 6),
-    axis.text = element_text(size = 4),
+    axis.title = element_text(size = 7),
+    axis.text = element_text(size = 6),
     axis.line = element_blank(),
     axis.ticks = element_blank(),
     axis.title.y = element_blank(),

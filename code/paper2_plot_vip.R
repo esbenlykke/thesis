@@ -21,11 +21,10 @@ vi_scores %>%
   theme(
     axis.text.x = element_blank(),
     panel.grid.major = element_blank(),
-    panel.grid.minor = element_line(size = .1, linetype = 2),
     text = element_text(family = "Montserrat"),
     plot.title = element_text(size = 8),
-    axis.title = element_text(size = 6),
-    axis.text = element_text(size = 4),
+    axis.title = element_text(size = 7),
+    axis.text = element_text(size = 6),
     axis.line = element_line(size = .2),
     axis.ticks = element_blank(),
     axis.title.y = element_blank(),

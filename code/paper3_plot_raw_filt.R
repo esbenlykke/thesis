@@ -31,7 +31,7 @@ p1 <- zm_score %>%
   geom_line(aes(y = sleep_median_5 - .05), lineend = "round", linewidth = linewidth + .1) +
   # geom_line(aes(y = sleep_median_10 - .1), lineend = "round") +
   scale_y_continuous(breaks = c(0, 1), labels = c("No", "Yes")) +
-  scale_x_datetime(breaks = "hour", date_labels = "%H:%M") +
+  scale_x_datetime(breaks = "2 hours", date_labels = "%H:%M") +
   labs(x = NULL,
        y = "Asleep") +
   # facet_wrap(~noon_day, scales = "free", ncol = 1) +
@@ -49,7 +49,7 @@ p2 <- zm_score %>%
   # geom_line(aes(y = sleep_median_5 - .05), lineend = "round") +
   geom_line(aes(y = sleep_median_10 - .05), lineend = "round", linewidth = linewidth + .1) +
   scale_y_continuous(breaks = c(0, 1), labels = c("No", "Yes")) +
-  scale_x_datetime(breaks = "hour", date_labels = "%H:%M") +
+  scale_x_datetime(breaks = "2 hours", date_labels = "%H:%M") +
   labs(x = NULL,
        y = "Asleep") +
   # facet_wrap(~noon_day, scales = "free", ncol = 1) +
@@ -62,6 +62,13 @@ p2 <- zm_score %>%
 
 p1 / p2 & 
   theme(text = element_text(family = "Montserrat")) & 
-  plot_annotation(tag_levels = "A")
+  plot_annotation(tag_levels = "A") &
+  theme(
+    text = element_text(family = "Montserrat"),
+    plot.title = element_text(size = 8),
+    axis.title = element_text(size = 7),
+    axis.text = element_text(size = 6),
+    plot.tag = element_text(size = 8)
+  )
 
 ggsave("figures/paper3_zm_raw_vs_filtered.pdf", width = 12.5, height = 6, units = "cm", dpi = 600)

@@ -63,8 +63,8 @@ preds_thigh %>%
   theme(
     text = element_text(family = "Montserrat"),
     plot.title = element_text(size = 8),
-    axis.title = element_text(size = 6),
-    axis.text = element_text(size = 4),
+    axis.title = element_text(size = 7),
+    axis.text = element_text(size = 6),
     plot.title.position = "plot",
     legend.position = "bottom",
     legend.text = element_text(size = 6),
@@ -111,8 +111,8 @@ heu_plots <-
   theme(
     text = element_text(family = "Montserrat"),
     plot.title = element_text(size = 8),
-    axis.title = element_text(size = 6),
-    axis.text = element_text(size = 4),
+    axis.title = element_text(size = 7),
+    axis.text = element_text(size = 6),
     plot.title.position = "plot",
     legend.position = "bottom",
     legend.text = element_text(size = 6),
@@ -161,8 +161,8 @@ tree_plots <-
   theme(
     text = element_text(family = "Montserrat"),
     plot.title = element_text(size = 8),
-    axis.title = element_text(size = 6),
-    axis.text = element_text(size = 4),
+    axis.title = element_text(size = 7),
+    axis.text = element_text(size = 6),
     plot.title.position = "plot",
     legend.position = "bottom",
     legend.text = element_text(size = 6),

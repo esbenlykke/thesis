@@ -120,15 +120,15 @@ rain_short <-
   scale_fill_npg(labels = c("Hip", "Thigh", "Wrist")) +
   labs(
     title = "<60 minutes",
-    x = "Non-wear episode duration (minutes)",
+    x = "Duration (minutes)",
     fill = NULL
   ) +
   theme_classic() +
   theme(
     text = element_text(family = "Montserrat"),
     plot.title = element_text(size = 8),
-    axis.title = element_text(size = 6),
-    axis.text = element_text(size = 4),
+    axis.title = element_text(size = 7),
+    axis.text = element_text(size = 6),
     plot.title.position = "plot",
     legend.position = "bottom",
     legend.text = element_text(size = 6),
@@ -165,7 +165,7 @@ rain_long <-
   scale_fill_npg(labels = c("Hip", "Thigh", "Wrist")) +
   labs(
     title = "\u2265 60 minutes",
-    x = "Non-wear episode duration (hours)",
+    x = "Duration (hours)",
     fill = NULL
   ) +
   xlim(0, 20) +
@@ -173,8 +173,8 @@ rain_long <-
   theme(
     text = element_text(family = "Montserrat"),
     plot.title = element_text(size = 8),
-    axis.title = element_text(size = 6),
-    axis.text = element_text(size = 4),
+    axis.title = element_text(size = 7),
+    axis.text = element_text(size = 6),
     plot.title.position = "plot",
     legend.position = "bottom",
     legend.text = element_text(size = 6),

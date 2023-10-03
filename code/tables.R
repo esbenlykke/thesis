@@ -207,11 +207,10 @@ tbl_7 <-
 
 tbl_8 <- 
   tibble(
-  Predictor = c("Weekday", "time_day", "Location", "macc_x", "macc_y", "macc_z", "sdacc_x", "sdacc_y", "sdacc_z", "Sdmax", "Incl", "Temp"),
+  Predictor = c("Weekday", "time_day", "macc_x", "macc_y", "macc_z", "sdacc_x", "sdacc_y", "sdacc_z", "Sdmax", "Incl", "Temp"),
   Description = c(
     "Day of week ([1:7])",
     "Time of day (milliseconds)",
-    "Device wear location: 0 = thigh, 1 = hip",
     "Moving average of the z axis acceleration",
     "Moving average of the y axis acceleration",
     "Moving average of the z axis acceleration",

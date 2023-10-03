@@ -1,5 +1,5 @@
 ---
-title: "Accelerometry- and temperature-based algorithms to Assess Sleep Habits Among Danish Children and Adolescence"
+title: "Accelerometry- and Temperature-Based Algorithms to Assess Sleep Habits Among Danish Children and Adolescents"
 subtitle: |
   PhD Thesis -- October 2023
 author:

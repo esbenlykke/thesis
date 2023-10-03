@@ -119,7 +119,7 @@ plot_ba_cor <- function(model, variable, type) {
     geom_hline(data = bias_data, aes(yintercept = loa_upper), color = "black", lty = 2) +
     geom_point(
       data = stats_data, aes(x = !!sym(paste0("avg_", variable)), y = !!sym(paste0("diff_", variable))),
-      color = "grey20", fill = "#3C5487", shape = 21, size = 2.5, stroke = .2, alpha = .7
+      color = "white", fill = "#3C5487", shape = 21, size = 3, stroke = .2, alpha = .7
     ) +
     labs(
       x = paste(
@@ -143,24 +143,17 @@ plot_ba_cor <- function(model, variable, type) {
         )
       )
     ) +
-    theme_classic() +
-    theme(
-      text = element_text(family = "Montserrat"),
-      panel.grid.minor = element_blank(),
-      strip.background = element_blank(),
-      strip.text = element_blank(),
-      strip.placement = "outside"
-    )
+    theme_classic()
   
   cor_plot <-
     stats_data %>%
     ggplot(aes(x = !!sym(variable), y = !!sym(paste0("zm_", variable)))) +
-    geom_point(color = "grey20", fill = "#3C5487", shape = 21, size = 2.5, stroke = .2, alpha = .7) +
+    geom_point(color = "white", fill = "#3C5487", shape = 21, size = 3, stroke = .2, alpha = .7) +
     geom_abline(slope = 1, intercept = 0, color = "black", lty = 2, linewidth = .5) +
     geom_smooth(method = "lm", color = "black", se = FALSE, linewidth = .5) +
     geom_label(
       data = cor_data, aes(x = -Inf, y = Inf, label = glue("r = {round(estimate, 2)}")),
-      hjust = 0, vjust = 1, label.padding = unit(.3, "lines"), label.size = NA, alpha = .5, size = 4
+      hjust = 0, vjust = 1, label.padding = unit(.3, "lines"), label.size = NA, alpha = .5, size = 3.5
     ) +
     labs(
       x = paste(
@@ -184,15 +177,20 @@ plot_ba_cor <- function(model, variable, type) {
         )
       )
     ) +
-    theme_classic() +
+    theme_classic() 
+    
+  
+  return(ba_plot + cor_plot & plot_annotation(tag_levels = "A")) &
     theme(
       text = element_text(family = "Montserrat"),
       panel.grid.minor = element_blank(),
-      strip.background = element_blank()
+      strip.background = element_blank(),
+      plot.title = element_text(size = 8),
+      axis.title = element_text(size = 7),
+      axis.text = element_text(size = 6),
+      plot.tag = element_text(size = 8)
       # strip.text = element_blank()
     )
-  
-  return(ba_plot + cor_plot & plot_annotation(tag_levels = "A"))
   
   # ggsave(paste0("manuscript/visuals/ba_cor_", model, "_", variable, ".pdf"), height = 8, width = 8)
 }
@@ -222,7 +220,7 @@ plots$xgboost_spt_median5 /
   plots$xgboost_lps_median5 /
   plots$xgboost_waso_median5
 
-ggsave(filename = "manuscript/visuals/median_5_xgboost_ba_cor.pdf", height = 10, width = 8)
+ggsave(filename = "figures/median_5_xgboost_ba_cor.pdf", height = 10, width = 8)
 
 plots$xgboost_spt_raw /
   plots$xgboost_tst_raw /

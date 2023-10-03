@@ -18,9 +18,9 @@ data <-
 
 # Function to create all confusion matrices as a list of plots
 create_confusion_matrix_plot <- function(data_list, truth_col, estimate_col,
-                                         font_row_percentages = font(size = 2),
-                                         font_col_percentages = font(2),
-                                         font_counts = font(size = 1.7),
+                                         font_row_percentages = font(size = 1.8),
+                                         font_col_percentages = font(1.8),
+                                         font_counts = font(size = 1.8),
                                          font_normalized = font(size = 1.7),
                                          arrow_size = 1,
                                          add_counts = FALSE,
@@ -53,7 +53,7 @@ create_confusion_matrix_plot <- function(data_list, truth_col, estimate_col,
       add_arrows = add_arrows,
       tile_border_color = "black"
     ) +
-      scale_fill_gradient(low = "#EEE8D5", high = "#33B39F") +
+      scale_fill_gradient(low = "white", high = "#4DBBD5") +
       theme(
         text = element_text(size = 6, family = "Montserrat")
       )
@@ -102,7 +102,7 @@ create_confusion_matrix_plot_lstm <- function(target, preds) {
       add_arrows = FALSE,
       tile_border_color = "black"
     ) +
-    scale_fill_gradient(low = "#EEE8D5", high = "#33B39F") +
+    scale_fill_gradient(low = "white", high = "#4DBBD5") +
     theme(
       text = element_text(size = 6, family = "Montserrat")
     )
@@ -129,7 +129,11 @@ raw <-
       title = "Raw",
       tag_levels = "i",
       theme =
-        theme(title = element_text(size = 8, family = "Montserrat"))
+        theme(title = element_text(size = 8, family = "Montserrat"),
+              plot.title = element_text(size = 8),
+              axis.title = element_text(size = 7),
+              axis.text = element_text(size = 6),
+              plot.tag = element_text(size = 8))
     )
 
 median5 <-
@@ -138,7 +142,11 @@ median5 <-
       title = "5-Minute Median",
       tag_levels = "i",
       theme =
-        theme(title = element_text(size = 8, family = "Montserrat"))
+        theme(title = element_text(size = 8, family = "Montserrat"),
+              plot.title = element_text(size = 8),
+              axis.title = element_text(size = 7),
+              axis.text = element_text(size = 6),
+              plot.tag = element_text(size = 8))
     )
 
 median10 <-
@@ -147,15 +155,19 @@ median10 <-
       title = "10-Minute Median",
       tag_levels = "i",
       theme =
-        theme(title = element_text(size = 8, family = "Montserrat"))
+        theme(title = element_text(size = 8, family = "Montserrat"),
+              plot.title = element_text(size = 8),
+              axis.title = element_text(size = 7),
+              axis.text = element_text(size = 6),
+              plot.tag = element_text(size = 8))
     ) 
 
 wrap_elements(raw) / wrap_elements(median5) / wrap_elements(median10)
 
 
-ggsave("~/projects/thesis/figures/all_binary_conf_mats.pdf", height = 15, width = 15, units = "cm", dpi = 600)
+ggsave("~/projects/thesis/figures/all_binary_conf_mats.pdf", height = 13, width = 13, units = "cm", dpi = 600)
 
 
 wrap_plots(conf_mat_lstm_raw, conf_mat_lstm_median5, conf_mat_lstm_median10)
 
-ggsave("~/projects/thesis/figures/all_multiclass_conf_mats.pdf", height = 5, width = 15, units = "cm", dpi = 600)
+ggsave("~/projects/thesis/figures/all_multiclass_conf_mats.pdf", height = 5, width = 13, units = "cm", dpi = 600)

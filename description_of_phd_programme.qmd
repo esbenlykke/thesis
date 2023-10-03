@@ -17,22 +17,22 @@ csl: nature.csl
 ```
 \scriptsize
 
-| ECTS | Start Date | End Date   | Course Name                                                                      |
-|----------|----------|----------|------------------------------------------|
-| 1,5  | 13.05.2020 | 14.05.2020 | Introduction to "R"                                                              |
-| 5,0  | 17.09.2020 | 28.10.2020 | Biostatistics I                                                                  |
-| 0,7  | 02.12.2020 | 02.12.2020 | Introduction to Health Research                                                  |
-| 2,4  | 03.11.2020 | 26.11.2020 | Advanced R course                                                                |
-| 1,8  | 03.02.2021 | 04.02.2021 | AI Statistical Learners in Health Science                                        |
-| 6,4  | 07.04.2021 | 28.04.2021 | Basic Biostatistics - part 2                                                     |
-| 2,0  | 01.09.2021 |            | Time Series Modeling and Analytics                                               |
-| 2,5  | 01.11.2021 |            | Fundamentals of Electroencephalography (EEG) Data Acquisition and Interpretation |
-| 2,0  | 18.01.2022 | 25.01.2022 | Responsible Conduct of Research - Online                                         |
-| 2,4  | 11.01.2022 | 26.01.2022 | Basic data science skills for health researchers using R and the Tidyverse       |
-| 2,4  | 01.03.2022 | 04.03.2022 | How to structure an article                                                      |
-| 3,1  | 07.03.2022 | 16.03.2022 | Introduction to machine learning in health sciences                              |
-|------|------------|-----------|----------------------------------------------------------------------------------|
-| 32,2 |            |           | Total ECTS                                                                       |
+| ECTS   | Start Date   | End Date    | Course Name                                                                        |
+|-------------|-------------|-------------|-----------------------------------|
+| 1,5    | 13.05.2020   | 14.05.2020  | Introduction to "R"                                                                |
+| 5,0    | 17.09.2020   | 28.10.2020  | Biostatistics I                                                                    |
+| 0,7    | 02.12.2020   | 02.12.2020  | Introduction to Health Research                                                    |
+| 2,4    | 03.11.2020   | 26.11.2020  | Advanced R course                                                                  |
+| 1,8    | 03.02.2021   | 04.02.2021  | AI Statistical Learners in Health Science                                          |
+| 6,4    | 07.04.2021   | 28.04.2021  | Basic Biostatistics - part 2                                                       |
+| 2,0    | 01.09.2021   |             | Time Series Modeling and Analytics                                                 |
+| 2,5    | 01.11.2021   |             | Fundamentals of Electroencephalography (EEG) Data Acquisition and Interpretation   |
+| 2,0    | 18.01.2022   | 25.01.2022  | Responsible Conduct of Research - Online                                           |
+| 2,4    | 11.01.2022   | 26.01.2022  | Basic data science skills for health researchers using R and the Tidyverse         |
+| 2,4    | 01.03.2022   | 04.03.2022  | How to structure an article                                                        |
+| 3,1    | 07.03.2022   | 16.03.2022  | Introduction to machine learning in health sciences                                |
+| ------ | ------------ | ----------- | ---------------------------------------------------------------------------------- |
+| 32,2   |              |             | Total ECTS                                                                         |
 
 : {tbl-colwidths="\[10, 10, 10, 70\]"}
 
@@ -49,7 +49,7 @@ During my PhD, I have taught several different courses. The courses are listed b
 \scriptsize
 
 | Year        | Course                                                                                  | Role                      |
-|----------------|-----------------------------------------|----------------|
+|-----------------|--------------------------------------|-----------------|
 | 2023        | Basic data science skills for health researchers using R and the Tidyverse (PhD course) | Instructor\*              |
 | 2022---2023 | Data Science in Health Science (MSc course)                                             | Instructor and Censor     |
 | 2020---2022 | Applied Statistics (BSc course)                                                         | Instructor                |
@@ -74,4 +74,4 @@ The results of my research has been presented to our research group on a timely 
 
 # Contact with other research environments
 
-Due to a maternity leave, the effects of COVID19, and a sick leave combined with having a four small children including a child that needs special care, I have not had a research stay abroad or in another research environment during my PhD. Nevertheless, during the preproratory phase of my PhD, I co-first aurthored a review paper as a member of the INTERLIVES network group which is a joint European initiative of six universities and Huawei.
+Due to a maternity leave, the effects of COVID19, and a sick leave combined with having a four small children including a child that needs special care, I have not had a research stay abroad or in another research environment during my PhD. Nevertheless, I have cooperated with several researchers from other research units or Departments of The University of Southern Denmark and from other institutions. Moreover, during the preproratory phase of my PhD, I co-first aurthored a review paper as a member of the INTERLIVES network group which is a joint European initiative of six universities and Huawei.
