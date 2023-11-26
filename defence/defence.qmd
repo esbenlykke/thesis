@@ -23,8 +23,9 @@ slide-number: true
 embed-resources: true
 bibliography: refs.bib
 citation: true
-# css: style.css
+css: style.css
 # csl: nature.csl
+callout-icon: false
 ---
 
 ```{r}
@@ -126,12 +127,12 @@ hyp %>%
 :::
 :::
 
-::: {.fragment .column width="15%" layout-ncol="1"}
-![](img/work.png){width="50%"} Specialized technicians
+::: {.fragment .column .smaller-font width="15%" layout-ncol="1"}
+![](img/work.png){width="80%"}
 
-![](img/time.png){width="50%"} Time consuming
+![](img/time.png){width="80%"}
 
-![](img/money.png){width="50%"} Expensive
+![](img/money.png){width="80%"}
 :::
 :::
 
@@ -220,28 +221,213 @@ ML have shown superior performance.
 Lots of data is necessary to effectively develop robust ML models.
 :::
 
-## Requirements For Machine Learning
+## Machine Learning Basics
 
 <br>
 
-![](img/database.png){width="10%"} Lots af data of good quality
+::: {layout-ncol=9}
 
-![](img/label.png){width="10%"} Correctly labeled data
+![](img/training_data.png)
 
+![](img/arrow_right.png)
 
-## How Do We Get Enough Data
+![](img/DL.png)
+
+![](img/arrow_right.png)
+
+![](img/model.png)
+
+![](img/arrow_right.png)
+
+![](img/testing_data.png)
+
+![](img/arrow_right.png)
+
+![](img/accuracy.png)
+
+:::
+
+- Sleep detection as a supervised learning task
+- Learn/train a model using the training data
+- Test the model on unseen data
+- Assess model performance
+
+::: {.notes}
+The goal is to construct a model from example inputs in order to make data-driven decisions rather than following strictly static instructions (heuristic algorithms)
+
+Learning (training): learn model using training data
+
+Testing: test model using unseen data to assess model performance
+:::
+
+## Advantages of Manually Labelling Training Data
+
+![](img/label.png){.absolute top=120 left=-70 width=20%} 
 
 <br>
 
--   Accurate labeled data
--   Multiple nights for intra-individual variability
--   Free-living conditions
+::: {.absolute top=120 left=150}
 
-Challenges in annotating and leveraging large volumes of data, particularly for sleep detection in accelerometry studies.
+- Labelled data sourced from PSG or sleep diaries/sleep logs
+- Many studies have exclusively collected accelerometer data
+- Potential of manual annotations to fill gaps in data
+- No participant burden
+- Multiple nights for intra-individual variability
+- Free-living conditions
 
-## hej
+:::
 
-![](img/man.png)
+![](img/exclamation.png){.absolute top=520 left=0 width=5%} 
+
+::: {.absolute top=520 left=60}
+**Precision of manually annotating in-bed time is unexplored**
+:::
+
+::: {.notes}
+
+:::
+
+## How To Handle Non-Wear time
+
+<br> 
+
+![](img/incomplete.png){.absolute top=70 left=0 width=15%} 
+
+::: {.absolute top=150 left=180}
+Non-wear time is to be considered as missing data
+:::
+
+<br>
+<br>
+<br>
+
+- Handling non-wear time is essential for human behavior analyses
+- Accurate differentiation between non-wear and sleep is crucial
+- Methods include participant log diaries and heuristic algorithms
+- As with sleep, more recent methods to detect non-wear use ML
+
+![](img/exclamation.png){.absolute top=520 left=0 width=5%} 
+
+::: {.absolute top=520 left=60}
+**Ongoing search for optimal method to classify non-wear time**
+:::
+
+
+::: {.notes}
+Besides accurate labels, the training data must not contain missing data
+
+Essential for accurate human motion and behavior analysis.
+
+Accurate differentiation between non-wear periods and sleep is crucial
+
+heuristic algorithms typically rely on consecutive zero counts
+
+ML methods include random forests and convolutional neural networks
+
+Ongoing search for an optimal method to classify non-wear time in diverse settings
+:::
+
+## Limitations of Current ML Methods to Detect Sleep
+
+<br>
+
+:::: columns
+::: {.column width=80%}
+
+- Limited exploration of thigh-mounted devices
+- Potential advantages in capturing sleep-related behaviors or positions
+
+<br>
+
+- Methods rely on sleep diaries to extract the time in bed
+- Potential advantages of consecutive nights
+
+::: 
+
+:::{.column width=20%}
+![](img/man.png){width=80%}
+![](img/period.png){width=80%}
+:::
+::::
+
+![](img/exclamation.png){.absolute top=520 left=0 width=5%} 
+
+::: {.absolute top=520 left=60}
+**ML on thigh-worn devices is unexplored**
+:::
+
+::: footer
+Conley et al. 2019, Brønd et al. 2020
+:::
+
+::: {.notes}
+Most methods focus on data from wrist- and hip-worn devices.
+
+No ML methods to detect sleep used on thigh data
+
+despite the advantages of this sensor location to classify physical activity behaviors
+
+
+:::
+
+# Thesis Aims and Objectives {.center-text}
+
+<br>
+
+> The overall aim was to develope methods and models for the analysis and interpretation of sleep in accelerometer data
+
+:::: columns
+::: {.column width=33% .center-text .smaller-font}
+**Paper 1**
+
+Introduce a method for manually annotating in-bed time in raw accelerometry data, validate these annotations against the Zmachine and sleep diaries, and evaluate the consistency of these manual annotations
+:::
+::: {.column width=33% .center-text .smaller-font}
+**Paper 2**
+:::
+::: {.column width=33% .center-text .smaller-font}
+**Paper 3**
+:::
+::::
+
+::: {.notes}
+The overall aim wass bla blabla through these three paper/manuscripts
+
+Paper 1: The objectives of paper I is to present a method for manually annotating individual
+bedtime and wake-up times using raw accelerometry data. Furthermore, to validate
+the accuracy of these annotations by comparing them with in-bed and out-of-bed
+timestamps as determined by the ZM and by a prospective sleep diary, and lastly,
+to assess both inter-rater and intra-rater agreement of the manual annotations.
+:::
+
+
+# Acknowledgements
+
+::: columns
+::: {.column width="50%"}
+In collaboration with...
+
+::: {style="font-size:.8em"}
+-   Jan Christian brønd
+-   Anders Grøntved
+-   Niels Christian Møller
+-   Jesper Schmidt-Persson
+-   Natascha Holbæk Pedersen
+-   Kristian Traberg
+-   Peter Lund Kristensen
+-   Sofie Rath Mortensen
+-   Sara Overgaard Sørensen
+-   Malthe Roswall
+-   All remaining wonderful colleagues...
+:::
+:::
+
+::: {.column width="50%"}
+Funded by...
+
+![](img/sdu.png){width="50%"} ![](img/trygfonden.png){width="50%"} ![](img/erc.png){width="50%"}
+:::
+:::
 
 # Thank You!
 
