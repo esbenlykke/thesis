@@ -1,0 +1,258 @@
+---
+title: "Accelerometry- and Temperature-Based Algorithms to Assess Sleep Habits Among Danish Children and Adolescents"
+subtitle: "PhD Thesis Defence"
+institute: University of Southern Denmark
+author: Esben Høegholm Lykke
+format:
+  metropolis-revealjs: 
+    transition: fade
+    slide-number: true
+    preview-links: auto
+    template-partials:
+      - title-slide.html
+    fig-cap-location: bottom
+# footer: Research Unit for Exercise Epidemiology, Department of Sports Science and Clinical Biomechanics
+date: last-modified
+date-format: "DD MMMM, YYYY"
+logo: ../img/SDU_BLACK_RGB.png
+execute: 
+  eval: true
+  echo: false
+  message: false
+slide-number: true
+embed-resources: true
+bibliography: refs.bib
+citation: true
+# css: style.css
+# csl: nature.csl
+---
+
+```{r}
+#| message: false
+library(tidyverse)
+library(ggthemes)
+library(ggsci)
+library(prismatic)
+library(ggwordcloud)
+library(ggtext)
+library(showtext)
+library(lubridate)
+
+showtext_auto()
+font_add_google("Montserrat", "Montserrat")
+font_add_google("Zilla Slab", "Zilla Slab")
+
+
+theme_color <- "#F0F1EB"
+
+my_theme <-
+  theme_classic(base_size = 25) +
+  theme(
+    text = element_text(family = "Zilla Slab"),
+    plot.background = element_rect(fill = theme_color, color = theme_color),
+    panel.background = element_rect(fill = theme_color, color = theme_color),
+    legend.background = element_rect(fill = theme_color, color = theme_color),
+    axis.line = element_line(linewidth = .2),
+    axis.ticks = element_line(linewidth = .2)
+  )
+```
+
+# Introduction
+
+::: notes
+Before presenting the core of my work, I will shortly introduce you to the field.
+:::
+
+## Why Do We Care About Sleep?
+
+![](img/sleep_health_effects.png)
+
+::: footer
+Feingold et al. 2022
+:::
+
+::: notes
+Sufficient sleep is important in maintaining overall health. <br> Yet insufficient sleep has become a widespread issue, heightening the risk of many serious illnesses. <br> Good sleep not only benefits physical health but also mental well-being and life quality. It's crucial for healthcare providers to educate patients about sleep health and promote lifestyle changes to enhance it.
+:::
+
+## How Is "Good Sleep" Defined?
+
+<br> Good sleep is both the **amount** of sleep and the **quality** of your sleep
+
+::: {layout-ncol="2"}
+![Questionnaires and Sleep Logs](img/questionnaire.png){width="70%"}
+
+![Polysomnography (PSG)](img/eeg.png){width="70%"}
+:::
+
+::: notes
+In simple terms, good sleep is both the amount of sleep you get in a night and the quality of your sleep. <br> Most commonly determined by self-report questionnaires or sleep logs. <br> Gold standard PSG. <br> But we can also evaluate sleep using accelerometers. Wrist-accelerometry being the most common wear-location.
+:::
+
+## PSG - The Gold Standard
+
+::: columns
+::: {.column width="85%"}
+::: {layout="[[-1], [1], [-1]]"}
+```{r}
+hyp <-
+  read_csv("../data/yasa_example_night_young_hypno.csv")
+
+hyp %>%
+  mutate(
+    time = 1:n(),
+    stage = case_when(
+      Stage == 0 ~ "Wake",
+      Stage == 4 ~ "REM",
+      Stage == 1 ~ "N1",
+      Stage == 2 ~ "N2",
+      Stage == 3 ~ "N3"
+    ),
+    stage = factor(stage, levels = c("N3", "N2", "N1", "REM", "Wake"))
+  ) %>%
+  ggplot(aes(time, stage, group = 1, fill = stage, color = stage)) +
+  geom_tile(show.legend = FALSE) +
+  scale_x_continuous(
+    breaks = seq(1, 1000, 120),
+    labels = c("22:00", "23:00", "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00")
+  ) +
+  labs(x = "Time",
+       y = "Stage",
+       caption = "Sample hypnogram showing the sleep stage cycles of an eight-hour polysomnography recording.") +
+  scale_fill_npg() +
+  scale_color_npg() +
+  my_theme
+```
+:::
+:::
+
+::: {.fragment .column width="15%" layout-ncol="1"}
+![](img/work.png){width="50%"} Specialized technicians
+
+![](img/time.png){width="50%"} Time consuming
+
+![](img/money.png){width="50%"} Expensive
+:::
+:::
+
+::: notes
+Polysomnography (PSG):
+
+Gold-standard technique in sleep research.<br> Combines EEG, EOG, EMG, ECG, respiratory and pulse oximetry measurements.<br> Captures comprehensive sleep data in a clinical setting.<br> Useful for diagnosing sleep disorders but costly, requires specialized personnel, and may not reflect free-living sleep conditions. <br> In summary, PSG is not feasible in large-scale studies <br> Note: rater bias -\> objectivity?
+:::
+
+## Alternatives to PSG
+
+::: {layout-ncol="2" layout-valign="top"}
+::: fragment
+![](img/zmachine.png){width="40%"}
+
+**Zmachine® Insight**
+
+-   Validated against PSG
+-   Reasonably user-friendly
+-   Multiple nights in home
+-   Automated scoring
+:::
+
+::: fragment
+![](img/wrist_acc.png){width="40%"}
+
+**Accelerometry**
+
+-   Several weeks of recording
+-   Very small participant burden
+-   Suited for free-living conditions
+-   Lots of raw data
+-   Heuristic algorithms
+:::
+:::
+
+::: footer
+Kaplan et al. 2014, Wang et al. 2015
+:::
+
+::: notes
+Emergence of single-channel EEG-based sleep staging algorithms.
+
+Zmachine® Insight+ (ZM): Gaining recognition in sleep studies. Validated against PSG, offering comparable data quality. Cost-effective and requires less specialized oversight. User-friendly for multi-night, real-world evaluations. Ideal for machine learning analyses due to consistent multi-night data. Despite advantages, still has considerable costs and participant demands.
+
+Another low-burden alternative is accelerometry.
+
+Heuristic algorithms to score sleep.
+
+Increasing data availability makes the use of ML more advantages.
+:::
+
+## Accelerometry for Assessing Sleep
+
+::: {layout-ncol="5" layout-valign="top"}
+![](img/algorithm.png)
+
+![](img/blank.png)
+
+![](img/arrow_right.png)
+
+![](img/blank.png)
+
+![](img/DL.png)
+:::
+
+Shift towards machine learning as more data becomes available
+
+-   Cole-Kripke algorithm (counts) [@cole_automatic_1992]
+
+-   van Hees algorithm (raw) [@hees_novel_2015]
+
+-   Random Forests in GGIR (raw) [@sundararajan_sleep_2021]
+
+::: notes
+Accelerometry as an Alternative to EEG:
+
+Used to overcome limitations of EEG systems and self-reported sleep assessments.
+
+Algorithm Development in Actigraphy:
+
+Evolution from activity count-based to raw acceleration data algorithms. Notable algorithms: ESS (Estimation of Stationary Sleep-segments), algorithm based on accelerometer orientation angle. Shift towards machine learning approaches for enhanced data utilization.
+
+ML have shown superior performance.
+
+Lots of data is necessary to effectively develop robust ML models.
+:::
+
+## Requirements For Machine Learning
+
+<br>
+
+![](img/database.png){width="10%"} Lots af data of good quality
+
+![](img/label.png){width="10%"} Correctly labeled data
+
+
+## How Do We Get Enough Data
+
+<br>
+
+-   Accurate labeled data
+-   Multiple nights for intra-individual variability
+-   Free-living conditions
+
+Challenges in annotating and leveraging large volumes of data, particularly for sleep detection in accelerometry studies.
+
+## hej
+
+![](img/man.png)
+
+# Thank You!
+
+![](img/clapping.png){fig-align="center"}
+
+# Supplementary Slides
+
+## Duration
+
+![](img/u-shape_all-cause_mortality.png){width="80%"}
+
+::: footer
+Yin, J. et al. Relationship of Sleep Duration With All-Cause Mortality and Cardiovascular Events: A Systematic Review and Dose-Response Meta-Analysis of Prospective Cohort Studies. Journal of the American Heart Association 6, e005947 (2017).
+:::

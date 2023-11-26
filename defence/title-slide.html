@@ -1,0 +1,24 @@
+<section id="$idprefix$title-slide"$for(title-slide-attributes/pairs)$ $it.key$="$it.value$"$endfor$>
+  <h1 class="title">$title$</h1>
+    $if(subtitle)$
+    <p class="subtitle">$subtitle$</p>
+      $endif$
+      $for(author)$
+      <p class="author">$author$</p>
+        $endfor$
+        $for(institute)$
+        <p class="institute">$institute$</p>
+          $endfor$
+          $if(date)$
+          <p class="date">$date$</p>
+            $endif$
+            
+            <!-- Speaker Notes -->
+            <aside class="notes">
+              <!-- Add your speaker notes here -->
+              <p>Hi everybody.<br>
+              Today I will present my phd thesis entitled ‘Accelerometry- and Temperature-Based Algorithms to Assess Sleep Habits Among Danish Children and Adolescents’. <br>Initially, I would like to thank the assessment commitee for reading and evaluating my work and for being here today. <br>The work i’ll present today was funded by trygfonden and a one year faculty scholarship.</p>
+              </aside>
+              
+              </section>
+              

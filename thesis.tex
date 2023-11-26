@@ -689,7 +689,7 @@ disease\textsuperscript{\protect\hyperlink{ref-basnet_2016}{38}}.
 
 The growing body of research underscores the importance of understanding
 sleep's complexities and its pivotal role in health, reinforcing the
-significance of studying both its quantity and quality.
+importance of studying both its quantity and quality.
 
 \hypertarget{the-gold-standard-for-measuring-sleep}{%
 \section{The Gold Standard for Measuring
@@ -1560,7 +1560,7 @@ genesis of Audacity can be traced back to the fall of 1999, when it
 emerged as an innovative project led by Dominic Mazzoni and Roger
 Dannenberg at Carnegie Mellon University. By May 2000, it was unveiled
 to the world as an open-source audio editor. Since its inception,
-Audacity has undergone significant evolution. The software, developed
+Audacity has undergone extensive evolution. The software, developed
 collaboratively by the community, now boasts of hundreds of unique
 features, offers complete support for professional-grade 24-bit and
 32-bit audio, has a comprehensive manual available in multiple
@@ -2437,10 +2437,10 @@ Temp & Surface skin temperature (degrees Celsius) \\
 }
 
 \caption{\label{fig-importance}Permutation importance plot depicting the
-significance of predictors in the decision tree. The top six predictors
-informed the \texttt{tree\_imp6} model, while a third model,
-\texttt{tree\_no\_temp}, was trained using all predictors except
-temperature.}
+relative importance of predictors in the full decision tree model
+(\texttt{tree\_full}). The top six predictors informed the
+\texttt{tree\_imp6} model, while a third model, \texttt{tree\_no\_temp},
+was trained using all predictors except temperature.}
 
 \end{figure}
 
@@ -2471,23 +2471,26 @@ the following performance metrics were extracted:
 \hfill\break
 \(​F1\ score=\frac{2 \cdot TP}{2 \cdot TP+FP+FN}​\)
 
-The F1-score, representing the harmonic mean of precision and
-sensitivity, serves as a robust metric for classification performance.
-Higher F1-scores signify good classification efficacy. Furthermore,
-permutation feature importance was employed to assess the performance of
-the features of the decision tree models. This method determines the
-significance of each feature by assessing how model accuracy diminishes
-when that feature's data is randomized. A significant drop in
-performance suggests role of that particular feature.
+The F1-score, which represents the harmonic mean of precision and
+sensitivity, serves as a robust metric for evaluating classification
+performance, with higher F1-scores indicating better classification
+efficacy. Additionally, we utilized permutation feature importance to
+assess the contribution of each feature in the full decision tree model.
+This method assesses the relative importance of each feature by
+evaluating the decrease in model accuracy when the data for that
+particular feature is randomized. A significant drop in performance upon
+randomizing a feature suggests an important role for that feature in the
+model.
 
-The decision tree models were trained on data from devices worn on the
-hip and thigh. In contrast, the random forest model by Sundarajan et
-al.~was developed using data from wrist-worn accelerometers, and the
-convolutional neural network by Syed et al.~was trained on hip-worn
-device data. To assess the generalizability of all meachine learning
-models, each underwent external validation. This involved testing them
-on datasets representing wear locations different from where they were
-initially trained, enabling a assessment of their generalizability
+The decision tree models were trained using data from devices worn on
+the hip and thigh. On the other hand, the random forest model by
+Sundarajan et al.~was developed using data from wrist-worn
+accelerometers, while the convolutional neural network by Syed et al.
+was trained on data from hip-worn devices. To assess the
+generalizability of all machine learning models, each underwent external
+validation. This process entailed testing them on datasets representing
+populations and wear locations different from those on which they were
+initially trained, enabling an assessment of their generalizability
 across varied anatomical positions and age spans (see
 Figure~\ref{fig-paper2_flowchart}).
 
@@ -2514,8 +2517,9 @@ Figure~\ref{fig-paper2_nw_dists} depicts the frequency distribution for
 episodes shorter than 60 minutes and those 60 minutes or longer. The
 PHASAR dataset (hip and thigh) showed a bimodal distribution for shorter
 episodes, with longer episodes peaking around 10 hours. For the in-house
-wrist-worn dataset, shorter episodes displayed a uniform distribution,
-while longer episodes were significantly right-skewed.
+wrist-worn dataset, shorter episodes displayed a more uniform
+distribution with a peak around 15 minutes in duration, while longer
+episodes were significantly right-skewed.
 
 \begingroup
 
