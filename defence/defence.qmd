@@ -95,7 +95,7 @@ Feingold et al. 2022
 :::
 
 ::: notes
-Sufficient sleep is important in maintaining overall health. <br> Yet insufficient sleep has become a widespread issue, heightening the risk of many serious illnesses. <br> Good sleep not only benefits physical health but also mental well-being and life quality. It's crucial for healthcare providers to educate patients about sleep health and promote lifestyle changes to enhance it.
+Sufficient sleep is important in maintaining overall health. <br> Yet insufficient sleep has become a widespread issue, heightening the risk of many serious illnesses. <br> Good sleep not only benefits physical health but also mental well-being and life quality. It's crucial for healthcare providers to educate patients about sleep health and promote lifestyle changes to enhance it. 
 :::
 
 ## How Is "Good Sleep" Defined?
@@ -435,7 +435,7 @@ to assess both inter-rater and intra-rater agreement of the manual annotations.
 I like to think of these three papers as enrichment of data, ensure integrity of data, utilization of the data with the combined aim to detect sleep
 :::
 
-# paper 1
+# Paper 1
 
 ::: {.center-text .bordered}
 Manual Annotation of Time in Bed Using Free-Living Recordings of Accelerometry Data
@@ -454,6 +454,7 @@ Manual Annotation of Time in Bed Using Free-Living Recordings of Accelerometry D
 - Two Axivity AX3 in elastic belts for 7 days all 24 hours/day
 - Single-channel EEG recording of sleep as ground truth
 - Sleep diaries with in-bed and out-of-bed times
+- Two batches of data: baseline and followup
 :::
 
 ::: {.column width=30%}
@@ -663,6 +664,128 @@ Probability density plots showed comparable symmetry and positioning of outliers
 
 ## Discussion
 
+<br> 
+
+::: {.r-fit-text}
+- Challenges in differentiating pre-bedtime and actual bedtime
+
+- Potential for broader research applications
+
+- Better precision compared to heuristic algorithms
+
+- Generalizability of raters
+:::
+
+::: {.notes}
+The difficulty raters faced in distinguishing between inactive behavior before bed and actual bedtime, indicating a potential area for method refinement.
+
+The adaptability of the manual annotation method to various research areas beyond sleep detection, like annotating non-wear time or synchronizing device clocks.
+
+Suggesting that manual annotations, while more labor-intensive, offer superior precision in identifying exact moments compared to automated algorithms
+:::
+
+# Paper 2
+
+::: {.center-text .bordered}
+Generalizability and performance of methods to detect non‑wear with free‑living accelerometer recordings
+
+(published in Scientific Reports 2023)
+:::
+
+::: {.notes}
+The objective was to train decision tree classifiers on data from hip- and thigh-worn devices and compare performance of these models to against basic heuristic algorithms and recently developed random forest and convolutional neural network models. And also to evaluate the importance of including surface skin temperature into a decision tree model.
+:::
+
+## Reference Methods
+
+![](img/algorithm.png){.absolute top=90 left=470 width=7%} 
+
+::: {.absolute top=100 left=0}
+* Consecutive Zeros-Algorithm
+:::
+
+![](img/algorithm.png){.absolute top=190 left=850 width=7%} 
+![](img/temp.png){.absolute top=190 left=920 width=7%} 
+
+::: {.absolute top=200 left=0}
+* Heuristic Algorithm that incorporates skin temperature
+:::
+
+![](img/forest.png){.absolute top=280 left=400 width=7%} 
+
+::: {.absolute top=300 left=0}
+* Random Forests Model
+:::
+
+![](img/DL.png){.absolute top=390 left=500 width=7%} 
+
+::: {.absolute top=400 left=0}
+* Convolutional Neural Network
+:::
+
+::: footer
+Rasmussen et al. 2020, Sundararajan et al. 2021, Syed et al. 2021
+:::
+
+::: {.notes}
+Using Actigraphy counts, we identified periods of no movement that registered
+zero counts for at least 60 continuous minutes. Actigraphy counts operate with a deadband set at 68 mg, which denotes the minimum detectable acceleration threshold.
+
+Uses raw acceleration and surface skin temperature. At least 120 minutes with less than 20 mg is non-wear. Periods between 45-120 minutes are non-wear if the average temperature is below a personalized threshold within the period. Finally, the algorithm can detect non-wear periods as short as 10 minutes, but only if the period ends within the expected wake time (6 AM to 10 PM).
+
+Random forests: trained on wrist data form 134 subjects aged 20-70 years. Ground truth non-wear time was determined as the the PSG system was not worn. Only if the sd of the acceleration exceeeded 13 mg outside the PSG recording, was the the data treated as wear-time. 
+
+CNN: trained on hip data from 583 subjects aged 40-84. It first identifies potential non-wear episodes using a standard deviation threshold. Then, rather than analyzing acceleration within these intervals, it focuses on the signal shape of raw acceleration immediately before and after these episodes. The method detects non-wear periods by identifying when the accelerometer is removed and reattached. 
+:::
+
+## Data Sources
+
+```{r}
+source("code/paper2_flowchart.R")
+
+flow1
+```
+
+## Building Trees {.auto-animate}
+
+<br>
+
+```{r}
+tbl_8 %>%
+  my_gt_theme()
+```
+
+## Building Trees {.auto-animate}
+
+```{r}
+source("code/paper2_plot_vip.R")
+
+vip_plot +
+  my_theme +
+  theme(
+    axis.text.x = element_blank()
+  )
+```
+
+::: {.notes}
+First a full model was trained.
+:::
+
+## Model Evaluation
+
+<br>
+
+::: {.center-text}
+$accuracy=\frac{TP+TN}{TP+TN+FP+FN}$
+
+$sensitivity=\frac{TP}{TP+FN}$
+
+$precision=\frac{TP}{TP+FP}$
+
+$F1\ score=\frac{2 \cdot TP}{2 \cdot TP+FP+FN}$
+:::
+
+# Results
 
 
 # Acknowledgements
