@@ -6,6 +6,10 @@
     font-size: .7em;
 }
 
+.even-smaller-font {
+    font-size: .5em;
+}
+
 .speaker-notes { 
     font-size: .8px; 
 }
@@ -20,4 +24,16 @@
   border-top: 3px solid;
   border-bottom: 3px solid;
   padding-left: 0.5em;
+}
+
+.bordered {
+    border: 2px solid black;
+    padding: 5px;
+}
+
+.vertical-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
 }

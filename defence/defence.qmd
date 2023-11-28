@@ -26,6 +26,8 @@ citation: true
 css: style.css
 # csl: nature.csl
 callout-icon: false
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r}
@@ -38,6 +40,8 @@ library(ggwordcloud)
 library(ggtext)
 library(showtext)
 library(lubridate)
+library(gt)
+library(gtExtras)
 
 showtext_auto()
 font_add_google("Montserrat", "Montserrat")
@@ -56,6 +60,24 @@ my_theme <-
     axis.line = element_line(linewidth = .2),
     axis.ticks = element_line(linewidth = .2)
   )
+
+my_gt_theme <- function(gt_object, ...) {
+  gt_object %>%
+    gt_theme_538() %>%
+    opt_table_font(
+      font = list(
+        google_font("Zilla Slab"),
+        default_fonts()
+      )
+    ) %>%
+    tab_options(
+      table.background.color = theme_color,
+      column_labels.background.color = theme_color
+    )
+}
+
+# tables
+source("code/tables.R")
 ```
 
 # Introduction
@@ -97,7 +119,7 @@ In simple terms, good sleep is both the amount of sleep you get in a night and t
 ::: {layout="[[-1], [1], [-1]]"}
 ```{r}
 hyp <-
-  read_csv("../data/yasa_example_night_young_hypno.csv")
+  read_csv("data/yasa_example_night_young_hypno.csv")
 
 hyp %>%
   mutate(
@@ -117,9 +139,11 @@ hyp %>%
     breaks = seq(1, 1000, 120),
     labels = c("22:00", "23:00", "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00")
   ) +
-  labs(x = "Time",
-       y = "Stage",
-       caption = "Sample hypnogram showing the sleep stage cycles of an eight-hour polysomnography recording.") +
+  labs(
+    x = "Time",
+    y = "Stage",
+    caption = "Sample hypnogram showing the sleep stage cycles of an eight-hour polysomnography recording."
+  ) +
   scale_fill_npg() +
   scale_color_npg() +
   my_theme
@@ -291,27 +315,30 @@ Testing: test model using unseen data to assess model performance
 
 <br> 
 
-![](img/incomplete.png){.absolute top=70 left=0 width=15%} 
+![](img/incomplete.png){.absolute top=70 left=0 width=10%} 
 
-::: {.absolute top=150 left=180}
+::: {.absolute top=100 left=130}
 Non-wear time is to be considered as missing data
 :::
 
-<br>
 <br>
 <br>
 
 - Handling non-wear time is essential for human behavior analyses
 - Accurate differentiation between non-wear and sleep is crucial
 - Methods include participant log diaries and heuristic algorithms
+- Including skin temperature has potential
 - As with sleep, more recent methods to detect non-wear use ML
 
 ![](img/exclamation.png){.absolute top=520 left=0 width=5%} 
 
 ::: {.absolute top=520 left=60}
-**Ongoing search for optimal method to classify non-wear time**
+**Ongoing search for methods to classify non-wear time**
 :::
 
+::: footer
+Zhou et al. 2015, Rasmussen et al. 2020, Duncan et al. 2018
+:::
 
 ::: {.notes}
 Besides accurate labels, the training data must not contain missing data
@@ -321,6 +348,8 @@ Essential for accurate human motion and behavior analysis.
 Accurate differentiation between non-wear periods and sleep is crucial
 
 heuristic algorithms typically rely on consecutive zero counts
+
+Also, some evidence suggest that incorporating surface skin temperature can enhance accuracy
 
 ML methods include random forests and convolutional neural networks
 
@@ -370,11 +399,11 @@ despite the advantages of this sensor location to classify physical activity beh
 
 :::
 
-# Thesis Aims and Objectives {.center-text}
+## Thesis Aims and Objectives {.center-text}
 
 <br>
 
-> The overall aim was to develope methods and models for the analysis and interpretation of sleep in accelerometer data
+> The overall aim was to develop methods and models for the analysis and interpretation of sleep in accelerometer data
 
 :::: columns
 ::: {.column width=33% .center-text .smaller-font}
@@ -384,9 +413,13 @@ Introduce a method for manually annotating in-bed time in raw accelerometry data
 :::
 ::: {.column width=33% .center-text .smaller-font}
 **Paper 2**
+
+Assess decision tree models for detecting non-wear time in data from thigh and hip-worn accelerometers, including skin temperature, and compare machine-learned models with heuristic algorithms for hip, thigh, and wrist-worn devices.
 :::
 ::: {.column width=33% .center-text .smaller-font}
 **Paper 3**
+
+Assess the performance of different ML models in estimating in-bed and sleep time and evaluate precision of derived sleep quality metrics, benchmarking all included methods against sleep recordings of the ZM.
 :::
 ::::
 
@@ -398,8 +431,208 @@ bedtime and wake-up times using raw accelerometry data. Furthermore, to validate
 the accuracy of these annotations by comparing them with in-bed and out-of-bed
 timestamps as determined by the ZM and by a prospective sleep diary, and lastly,
 to assess both inter-rater and intra-rater agreement of the manual annotations.
+
+I like to think of these three papers as enrichment of data, ensure integrity of data, utilization of the data with the combined aim to detect sleep
 :::
 
+# paper 1
+
+::: {.center-text .bordered}
+Manual Annotation of Time in Bed Using Free-Living Recordings of Accelerometry Data
+
+(published in Sensors 2021)
+:::
+
+## Data Sources
+
+<br>
+
+:::: columns
+::: {.column width=70%}
+- Data sourced from the SCREENS pilot trial
+- 14 children and 19 adults were included
+- Two Axivity AX3 in elastic belts for 7 days all 24 hours/day
+- Single-channel EEG recording of sleep as ground truth
+- Sleep diaries with in-bed and out-of-bed times
+:::
+
+::: {.column width=30%}
+```{r}
+tbl_man_describe %>%
+  my_gt_theme()
+```
+:::
+::::
+
+::: footer
+Rasmussen et al. 2020, Rasmussen et al. 2021
+:::
+
+## Annotation Software and Features
+
+```{r}
+tbl_signal_features %>%
+  my_gt_theme()
+```
+
+![](img/audacity.png){fig-align="center"}
+
+::: {.notes}
+We derived the following signal features from the raw acceleration signal...
+
+Criteria for "lying" based on hip accelerometer inclination (>65 degrees) and thigh accelerometer's "sitting" status.
+
+Most features, except for "time", derived directly from Skotte et al.’s activity type classification algorithm.
+
+Audacity, a open-source audio-editing tool (sorry for the poor-quality screenshot)
+
+Application in Accelerometer Data Analysis:
+
+Useful for detailed inspection of high-resolution raw accelerometer data.
+
+Enables zooming in on specific segments and broad overview of longer data spans.
+
+Annotation process:
+
+Three raters independently reviewed and labeled each wav-file for in-bed and out-of-bed actvities
+
+Annotations saved as individual text files.
+
+Each file labeled twice by each rater for reliability
+
+Raters unaware of prior annotations to avoid biases and maintain objectivity.
+:::
+
+## Statistics 
+
+![](img/statistics.png){.absolute left=50 top=80 width=10%}
+
+::: {.absolute top=250 left=0}
+- Agreement Assessment
+    + Intraclass correlation coefficient 
+    + Bland-Altman analysis
+    + Probability density plots
+:::
+
+::: {.absolute top=250 left=600 .even-smaller-font}
+$$\text{ICC} (< 0.5) \text{ indicates poor agreement}$$
+$$0.5 \leq \text{ICC} < 0.75 \text{ indicates moderate agreement}$$
+$$0.75 \leq \text{ICC} < 0.9 \text{ indicates good agreement}$$
+$$\text{ICC} \geq 0.90 \text{ indicates excellent agreement}$$
+:::
+
+
+::: {.notes}
+Intraclass correlation coefficient (ICC) and Bland-Altman analysis used.
+
+Timestamps converted to seconds past midnight for ICC.
+
+Two-way random-effects model for inter-rater reliability (ICC(2,k)).
+
+Two-way mixed-effects model for comparing human raters against ZM or sleep diaries (ICC(3,k)).
+:::
+
+# Results
+
+## Intraclass Correlation Coefficients 
+
+
+::: {.r-stack .vertical-center}
+::: {.fragment .fade-in-then-out}
+```{r}
+#| tbl-cap: ICCs between the ZM and the three human raters. Values are ICC (95% CI).
+
+tbl_icc_zm_man %>%
+  my_gt_theme()
+```
+::: 
+
+::: {.fragment .fade-in-then-out}
+```{r}
+#| tbl-cap: ICCs between self-report and the ZM. Values are ICC (95% CI).
+
+tbl_icc_self_zm %>%
+  my_gt_theme()
+```
+:::
+
+::: {.fragment .fade-in-then-out}
+```{r}
+#| tbl-cap: ICCs between self-report and the ZM. Values are ICC (95% CI).
+
+tbl_icc_man_man %>%
+  my_gt_theme()
+```
+:::
+
+::: {.fragment .fade-in-then-out}
+```{r}
+#| tbl-cap: ICCs between the three human raters. Values are ICC (95% CI).
+
+tbl_icc_test_retest %>%
+  my_gt_theme()
+```
+:::
+:::
+
+## Bland-Altman Analyses
+
+```{r}
+#| tbl-cap: Bland–Altman analysis comparing manual annotation and self-report to ZM measurements, with all data presented in minutes.
+
+tbl_7 %>%
+  my_gt_theme()
+```
+
+## Density Plots
+
+:::: columns
+::: {.column width=50%}
+```{r}
+source("code/paper1_plot_ridges.R")
+
+p2 +
+  scale_fill_npg() +
+  scale_color_npg() +
+  my_theme +
+  theme(
+    text = element_text(size = 40)
+  )
+```
+
+```{r}
+p1 +
+  scale_fill_npg() +
+  scale_color_npg() +
+  my_theme +
+  theme(
+    text = element_text(size = 40)
+  )
+```
+:::
+
+::: {.column width=50%}
+```{r}
+p4 +
+  scale_fill_npg() +
+  scale_color_npg() +
+  my_theme +
+  theme(
+    text = element_text(size = 40)
+  )
+```
+
+```{r}
+p3 +
+  scale_fill_npg() +
+  scale_color_npg() +
+  my_theme +
+  theme(
+    text = element_text(size = 40)
+  )
+```
+:::
+::::
 
 # Acknowledgements
 
@@ -428,10 +661,6 @@ Funded by...
 ![](img/sdu.png){width="50%"} ![](img/trygfonden.png){width="50%"} ![](img/erc.png){width="50%"}
 :::
 :::
-
-# Thank You!
-
-![](img/clapping.png){fig-align="center"}
 
 # Supplementary Slides
 
