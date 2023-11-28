@@ -537,8 +537,7 @@ Two-way mixed-effects model for comparing human raters against ZM or sleep diari
 ## Intraclass Correlation Coefficients 
 
 
-::: {.r-stack .vertical-center}
-::: {.fragment .fade-in-then-out}
+::: {.absolute top=100 left=-100 .fragment .fade-in-then-semi-out}
 ```{r}
 #| tbl-cap: ICCs between the ZM and the three human raters. Values are ICC (95% CI).
 
@@ -547,7 +546,7 @@ tbl_icc_zm_man %>%
 ```
 ::: 
 
-::: {.fragment .fade-in-then-out}
+::: {.absolute top=400 left=-100 .fragment .fade-in-then-semi-out}
 ```{r}
 #| tbl-cap: ICCs between self-report and the ZM. Values are ICC (95% CI).
 
@@ -556,7 +555,7 @@ tbl_icc_self_zm %>%
 ```
 :::
 
-::: {.fragment .fade-in-then-out}
+::: {.absolute top=100 right=-100 .fragment .fade-in-then-semi-out}
 ```{r}
 #| tbl-cap: ICCs between self-report and the ZM. Values are ICC (95% CI).
 
@@ -565,14 +564,13 @@ tbl_icc_man_man %>%
 ```
 :::
 
-::: {.fragment .fade-in-then-out}
+::: {.absolute top=400 right=-100 .fragment .fade-in-then-semi-out}
 ```{r}
-#| tbl-cap: ICCs between the three human raters. Values are ICC (95% CI).
+#| tbl-cap: Test–retest ICCs between the first and second round of manual annotations. Values are ICC (95% CI).
 
 tbl_icc_test_retest %>%
   my_gt_theme()
 ```
-:::
 :::
 
 ## Bland-Altman Analyses
@@ -596,7 +594,8 @@ p2 +
   scale_color_npg() +
   my_theme +
   theme(
-    text = element_text(size = 40)
+    text = element_text(size = 40),
+    axis.title = element_blank()
   )
 ```
 
@@ -606,7 +605,8 @@ p1 +
   scale_color_npg() +
   my_theme +
   theme(
-    text = element_text(size = 40)
+    text = element_text(size = 40),
+    axis.title = element_blank()
   )
 ```
 :::
@@ -618,7 +618,8 @@ p4 +
   scale_color_npg() +
   my_theme +
   theme(
-    text = element_text(size = 40)
+    text = element_text(size = 40),
+    axis.title = element_blank()
   )
 ```
 
@@ -628,11 +629,41 @@ p3 +
   scale_color_npg() +
   my_theme +
   theme(
-    text = element_text(size = 40)
+    text = element_text(size = 40),
+    axis.title = element_blank()
   )
 ```
 :::
 ::::
+
+## Contributions of Paper 1
+
+<br>
+
+- Presented a method for manually annotating in-bed periods using accelerometry data
+- Manually annotating in-bed periods is comparable to sleep diaries and ZM
+- Low inter- and intra-rater bias
+
+::: {.notes}
+Introduction of a Manual Annotation Methodology:
+
+Presented a method for manually annotating in-bed periods using accelerometry data.
+Evaluated the method's accuracy across multiple raters and compared it with ZM and sleep diary data.
+
+High Accuracy and Reliability:
+
+Demonstrated good-to-excellent inter- and intra-rater agreement.
+Excellent agreement between manual annotations and ZM, and between self-reported and ZM sleep times.
+
+Mean Bias and Probability Density Analysis:
+
+Found mean bias between manual annotations, self-reported sleep times, and ZM within ±6 minutes.
+Probability density plots showed comparable symmetry and positioning of outliers.
+:::
+
+## Discussion
+
+
 
 # Acknowledgements
 
