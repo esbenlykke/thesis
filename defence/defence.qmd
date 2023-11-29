@@ -11,6 +11,7 @@ format:
     template-partials:
       - title-slide.html
     fig-cap-location: bottom
+    fig-dpi: 300
 # footer: Research Unit for Exercise Epidemiology, Department of Sports Science and Clinical Biomechanics
 date: last-modified
 date-format: "DD MMMM, YYYY"
@@ -42,24 +43,9 @@ library(showtext)
 library(lubridate)
 library(gt)
 library(gtExtras)
-
-showtext_auto()
-font_add_google("Montserrat", "Montserrat")
-font_add_google("Zilla Slab", "Zilla Slab")
-
-
-theme_color <- "#F0F1EB"
-
-my_theme <-
-  theme_classic(base_size = 25) +
-  theme(
-    text = element_text(family = "Zilla Slab"),
-    plot.background = element_rect(fill = theme_color, color = theme_color),
-    panel.background = element_rect(fill = theme_color, color = theme_color),
-    legend.background = element_rect(fill = theme_color, color = theme_color),
-    axis.line = element_line(linewidth = .2),
-    axis.ticks = element_line(linewidth = .2)
-  )
+library(ggdist)
+library(patchwork)
+library(ggtext)
 
 my_gt_theme <- function(gt_object, ...) {
   gt_object %>%
@@ -78,6 +64,9 @@ my_gt_theme <- function(gt_object, ...) {
 
 # tables
 source("code/tables.R")
+
+# plots
+source("code/all_plots.R")
 ```
 
 # Introduction
@@ -118,35 +107,7 @@ In simple terms, good sleep is both the amount of sleep you get in a night and t
 ::: {.column width="85%"}
 ::: {layout="[[-1], [1], [-1]]"}
 ```{r}
-hyp <-
-  read_csv("data/yasa_example_night_young_hypno.csv")
-
-hyp %>%
-  mutate(
-    time = 1:n(),
-    stage = case_when(
-      Stage == 0 ~ "Wake",
-      Stage == 4 ~ "REM",
-      Stage == 1 ~ "N1",
-      Stage == 2 ~ "N2",
-      Stage == 3 ~ "N3"
-    ),
-    stage = factor(stage, levels = c("N3", "N2", "N1", "REM", "Wake"))
-  ) %>%
-  ggplot(aes(time, stage, group = 1, fill = stage, color = stage)) +
-  geom_tile(show.legend = FALSE) +
-  scale_x_continuous(
-    breaks = seq(1, 1000, 120),
-    labels = c("22:00", "23:00", "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00")
-  ) +
-  labs(
-    x = "Time",
-    y = "Stage",
-    caption = "Sample hypnogram showing the sleep stage cycles of an eight-hour polysomnography recording."
-  ) +
-  scale_fill_npg() +
-  scale_color_npg() +
-  my_theme
+hyp_plot
 ```
 :::
 :::
@@ -452,7 +413,7 @@ Manual Annotation of Time in Bed Using Free-Living Recordings of Accelerometry D
 - Data sourced from the SCREENS pilot trial
 - 14 children and 19 adults were included
 - Two Axivity AX3 in elastic belts for 7 days all 24 hours/day
-- Single-channel EEG recording of sleep as ground truth
+- EEG recording start/stop times as ground truth
 - Sleep diaries with in-bed and out-of-bed times
 - Two batches of data: baseline and followup
 :::
@@ -588,56 +549,28 @@ tbl_7 %>%
 :::: columns
 ::: {.column width=50%}
 ```{r}
-source("code/paper1_plot_ridges.R")
-
-p2 +
-  scale_fill_npg() +
-  scale_color_npg() +
-  my_theme +
-  theme(
-    text = element_text(size = 40),
-    axis.title = element_blank()
-  )
+p2 
 ```
 
 ```{r}
-p1 +
-  scale_fill_npg() +
-  scale_color_npg() +
-  my_theme +
-  theme(
-    text = element_text(size = 40),
-    axis.title = element_blank()
-  )
+p1
 ```
 :::
 
 ::: {.column width=50%}
 ```{r}
-p4 +
-  scale_fill_npg() +
-  scale_color_npg() +
-  my_theme +
-  theme(
-    text = element_text(size = 40),
-    axis.title = element_blank()
-  )
+p4
 ```
 
 ```{r}
-p3 +
-  scale_fill_npg() +
-  scale_color_npg() +
-  my_theme +
-  theme(
-    text = element_text(size = 40),
-    axis.title = element_blank()
-  )
+p3
 ```
 :::
 ::::
 
 ## Contributions of Paper 1
+
+![](img/contribution.png){.absolute top=-5% left=45% width=10%}
 
 <br>
 
@@ -662,7 +595,9 @@ Found mean bias between manual annotations, self-reported sleep times, and ZM wi
 Probability density plots showed comparable symmetry and positioning of outliers.
 :::
 
-## Discussion
+## Discussion 
+
+![](img/discussion.png){.absolute top=-5% left=20% width=10%}
 
 <br> 
 
@@ -741,12 +676,10 @@ CNN: trained on hip data from 583 subjects aged 40-84. It first identifies poten
 ## Data Sources
 
 ```{r}
-source("code/paper2_flowchart.R")
-
 flow1
 ```
 
-## Building Trees {.auto-animate}
+## Building Trees
 
 <br>
 
@@ -755,13 +688,8 @@ tbl_8 %>%
   my_gt_theme()
 ```
 
-## Building Trees {.auto-animate}
-
 ```{r}
-source("code/paper2_plot_vip.R")
-
 vip_plot +
-  my_theme +
   theme(
     axis.text.x = element_blank()
   )
@@ -786,6 +714,72 @@ $F1\ score=\frac{2 \cdot TP}{2 \cdot TP+FP+FN}$
 :::
 
 # Results
+
+## Characteristics of Non-wear Periods
+
+<br>
+
+:::: columns
+::: {.column width=35%}
+```{r}
+tbl_9 %>% 
+  my_gt_theme()
+```
+:::
+
+::: {.column width=65%}
+```{r}
+nw_rain
+```
+:::
+::::
+
+## Prediction Example
+
+```{r}
+preds_plots
+```
+
+## Classefication Performance - All Non-Wear Periods
+
+```{r}
+#| fig-asp: 1
+#| fig-align: center
+plot_all
+```
+
+## Classefication Performance - Short Non-Wear Periods
+
+```{r}
+#| fig-asp: 1
+#| fig-align: center
+plot_short
+```
+
+## Contributions of Paper 2
+ 
+<br>
+ 
+- On short non-wear episodes, simple methods excelled
+- Simple metohds limited in short non-wear episodes
+- temperature is an important feature
+- Complex methods showed weak generalizability
+- On short non-wear episodes, decision tree with six most important features were best
+ 
+::: {.notes}
+Found that simple methods (cz_60 and heu_alg) were highly effective in identifying non-wear episodes over 60 minutes for wrist, hip, and thigh sensors.
+
+Decision tree models incorporating surface skin temperature (tree_full and tree_imp6) showed strong performance, particularly for long non-wear episodes.
+
+Excelled with wrist data but was mediocre with hip and thigh data.
+
+The decision tree model using six key predictors emerged as the most effective for short non-wear episodes across all sensor locations.
+:::
+
+## Discussion Paper 2
+
+<br>
+
 
 
 # Acknowledgements
