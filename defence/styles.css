@@ -1,0 +1,10 @@
+.reveal .slides section .footnotes {
+  position: absolute;
+  bottom: 0;
+  font-size: 80%;
+}
+
+.reveal .slides section .footnotes ol {
+  padding-inline-start: 0;
+  list-style-type: none;
+}

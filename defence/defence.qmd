@@ -1,0 +1,821 @@
+---
+title: "Accelerometry- and Temperature-Based Algorithms to Assess Sleep Habits Among Danish Children and Adolescents"
+subtitle: "PhD Thesis Defence"
+institute: University of Southern Denmark
+author: Esben Høegholm Lykke
+format:
+  metropolis-revealjs: 
+    transition: fade
+    slide-number: true
+    preview-links: auto
+    template-partials:
+      - title-slide.html
+    fig-cap-location: bottom
+    fig-dpi: 300
+# footer: Research Unit for Exercise Epidemiology, Department of Sports Science and Clinical Biomechanics
+date: last-modified
+date-format: "DD MMMM, YYYY"
+logo: ../img/SDU_BLACK_RGB.png
+execute: 
+  eval: true
+  echo: false
+  message: false
+slide-number: true
+embed-resources: true
+bibliography: refs.bib
+citation: true
+css: style.css
+# csl: nature.csl
+callout-icon: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| message: false
+library(tidyverse)
+library(ggthemes)
+library(ggsci)
+library(prismatic)
+library(ggwordcloud)
+library(ggtext)
+library(showtext)
+library(lubridate)
+library(gt)
+library(gtExtras)
+library(ggdist)
+library(patchwork)
+library(ggtext)
+
+my_gt_theme <- function(gt_object, ...) {
+  gt_object %>%
+    gt_theme_538() %>%
+    opt_table_font(
+      font = list(
+        google_font("Zilla Slab"),
+        default_fonts()
+      )
+    ) %>%
+    tab_options(
+      table.background.color = theme_color,
+      column_labels.background.color = theme_color
+    )
+}
+
+# tables
+source("code/tables.R")
+
+# plots
+source("code/all_plots.R")
+```
+
+# Introduction
+
+::: notes
+Before presenting the core of my work, I will shortly introduce you to the field.
+:::
+
+## Why Do We Care About Sleep?
+
+![](img/sleep_health_effects.png)
+
+::: footer
+Feingold et al. 2022
+:::
+
+::: notes
+Sufficient sleep is important in maintaining overall health. <br> Yet insufficient sleep has become a widespread issue, heightening the risk of many serious illnesses. <br> Good sleep not only benefits physical health but also mental well-being and life quality. It's crucial for healthcare providers to educate patients about sleep health and promote lifestyle changes to enhance it. 
+:::
+
+## How Is "Good Sleep" Defined?
+
+<br> Good sleep is both the **amount** of sleep and the **quality** of your sleep
+
+::: {layout-ncol="2"}
+![Questionnaires and Sleep Logs](img/questionnaire.png){width="70%"}
+
+![Polysomnography (PSG)](img/eeg.png){width="70%"}
+:::
+
+::: notes
+In simple terms, good sleep is both the amount of sleep you get in a night and the quality of your sleep. <br> Most commonly determined by self-report questionnaires or sleep logs. <br> Gold standard PSG. <br> But we can also evaluate sleep using accelerometers. Wrist-accelerometry being the most common wear-location.
+:::
+
+## PSG - The Gold Standard
+
+::: columns
+::: {.column width="85%"}
+::: {layout="[[-1], [1], [-1]]"}
+```{r}
+hyp_plot
+```
+:::
+:::
+
+::: {.fragment .column .smaller-font width="15%" layout-ncol="1"}
+![](img/work.png){width="80%"}
+
+![](img/time.png){width="80%"}
+
+![](img/money.png){width="80%"}
+:::
+:::
+
+::: notes
+Polysomnography (PSG):
+
+Gold-standard technique in sleep research.<br> Combines EEG, EOG, EMG, ECG, respiratory and pulse oximetry measurements.<br> Captures comprehensive sleep data in a clinical setting.<br> Useful for diagnosing sleep disorders but costly, requires specialized personnel, and may not reflect free-living sleep conditions. <br> In summary, PSG is not feasible in large-scale studies <br> Note: rater bias -\> objectivity?
+:::
+
+## Alternatives to PSG
+
+::: {layout-ncol="2" layout-valign="top"}
+::: fragment
+![](img/zmachine.png){width="40%"}
+
+**Zmachine® Insight**
+
+-   Validated against PSG
+-   Reasonably user-friendly
+-   Multiple nights in home
+-   Automated scoring
+:::
+
+::: fragment
+![](img/wrist_acc.png){width="40%"}
+
+**Accelerometry**
+
+-   Several weeks of recording
+-   Very small participant burden
+-   Suited for free-living conditions
+-   Lots of raw data
+-   Heuristic algorithms
+:::
+:::
+
+::: footer
+Kaplan et al. 2014, Wang et al. 2015
+:::
+
+::: notes
+Emergence of single-channel EEG-based sleep staging algorithms.
+
+Zmachine® Insight+ (ZM): Gaining recognition in sleep studies. Validated against PSG, offering comparable data quality. Cost-effective and requires less specialized oversight. User-friendly for multi-night, real-world evaluations. Ideal for machine learning analyses due to consistent multi-night data. Despite advantages, still has considerable costs and participant demands.
+
+Another low-burden alternative is accelerometry.
+
+Heuristic algorithms to score sleep.
+
+Increasing data availability makes the use of ML more advantages.
+:::
+
+## Accelerometry for Assessing Sleep
+
+::: {layout-ncol="5" layout-valign="top"}
+![](img/algorithm.png)
+
+![](img/blank.png)
+
+![](img/arrow_right.png)
+
+![](img/blank.png)
+
+![](img/DL.png)
+:::
+
+Shift towards machine learning as more data becomes available
+
+-   Cole-Kripke algorithm (counts) [@cole_automatic_1992]
+
+-   van Hees algorithm (raw) [@hees_novel_2015]
+
+-   Random Forests in GGIR (raw) [@sundararajan_sleep_2021]
+
+::: notes
+Accelerometry as an Alternative to EEG:
+
+Used to overcome limitations of EEG systems and self-reported sleep assessments.
+
+Algorithm Development in Actigraphy:
+
+Evolution from activity count-based to raw acceleration data algorithms. Notable algorithms: ESS (Estimation of Stationary Sleep-segments), algorithm based on accelerometer orientation angle. Shift towards machine learning approaches for enhanced data utilization.
+
+ML have shown superior performance.
+
+Lots of data is necessary to effectively develop robust ML models.
+:::
+
+## Machine Learning Basics
+
+<br>
+
+::: {layout-ncol=9}
+
+![](img/training_data.png)
+
+![](img/arrow_right.png)
+
+![](img/DL.png)
+
+![](img/arrow_right.png)
+
+![](img/model.png)
+
+![](img/arrow_right.png)
+
+![](img/testing_data.png)
+
+![](img/arrow_right.png)
+
+![](img/accuracy.png)
+
+:::
+
+- Sleep detection as a supervised learning task
+- Learn/train a model using the training data
+- Test the model on unseen data
+- Assess model performance
+
+::: {.notes}
+The goal is to construct a model from example inputs in order to make data-driven decisions rather than following strictly static instructions (heuristic algorithms)
+
+Learning (training): learn model using training data
+
+Testing: test model using unseen data to assess model performance
+:::
+
+## Advantages of Manually Labelling Training Data
+
+![](img/label.png){.absolute top=120 left=-70 width=20%} 
+
+<br>
+
+::: {.absolute top=120 left=150}
+
+- Labelled data sourced from PSG or sleep diaries/sleep logs
+- Many studies have exclusively collected accelerometer data
+- Potential of manual annotations to fill gaps in data
+- No participant burden
+- Multiple nights for intra-individual variability
+- Free-living conditions
+
+:::
+
+![](img/exclamation.png){.absolute top=520 left=0 width=5%} 
+
+::: {.absolute top=520 left=60}
+**Precision of manually annotating in-bed time is unexplored**
+:::
+
+::: {.notes}
+
+:::
+
+## How To Handle Non-Wear time
+
+<br> 
+
+![](img/incomplete.png){.absolute top=70 left=0 width=10%} 
+
+::: {.absolute top=100 left=130}
+Non-wear time is to be considered as missing data
+:::
+
+<br>
+<br>
+
+- Handling non-wear time is essential for human behavior analyses
+- Accurate differentiation between non-wear and sleep is crucial
+- Methods include participant log diaries and heuristic algorithms
+- Including skin temperature has potential
+- As with sleep, more recent methods to detect non-wear use ML
+
+![](img/exclamation.png){.absolute top=520 left=0 width=5%} 
+
+::: {.absolute top=520 left=60}
+**Ongoing search for methods to classify non-wear time**
+:::
+
+::: footer
+Zhou et al. 2015, Rasmussen et al. 2020, Duncan et al. 2018
+:::
+
+::: {.notes}
+Besides accurate labels, the training data must not contain missing data
+
+Essential for accurate human motion and behavior analysis.
+
+Accurate differentiation between non-wear periods and sleep is crucial
+
+heuristic algorithms typically rely on consecutive zero counts
+
+Also, some evidence suggest that incorporating surface skin temperature can enhance accuracy
+
+ML methods include random forests and convolutional neural networks
+
+Ongoing search for an optimal method to classify non-wear time in diverse settings
+:::
+
+## Limitations of Current ML Methods to Detect Sleep
+
+<br>
+
+:::: columns
+::: {.column width=80%}
+
+- Limited exploration of thigh-mounted devices
+- Potential advantages in capturing sleep-related behaviors or positions
+
+<br>
+
+- Methods rely on sleep diaries to extract the time in bed
+- Potential advantages of consecutive nights
+
+::: 
+
+:::{.column width=20%}
+![](img/man.png){width=80%}
+![](img/period.png){width=80%}
+:::
+::::
+
+![](img/exclamation.png){.absolute top=520 left=0 width=5%} 
+
+::: {.absolute top=520 left=60}
+**ML on thigh-worn devices is unexplored**
+:::
+
+::: footer
+Conley et al. 2019, Brønd et al. 2020
+:::
+
+::: {.notes}
+Most methods focus on data from wrist- and hip-worn devices.
+
+No ML methods to detect sleep used on thigh data
+
+despite the advantages of this sensor location to classify physical activity behaviors
+
+
+:::
+
+## Thesis Aims and Objectives {.center-text}
+
+<br>
+
+> The overall aim was to develop methods and models for the analysis and interpretation of sleep in accelerometer data
+
+:::: columns
+::: {.column width=33% .center-text .smaller-font}
+**Paper 1**
+
+Introduce a method for manually annotating in-bed time in raw accelerometry data, validate these annotations against the Zmachine and sleep diaries, and evaluate the consistency of these manual annotations
+:::
+::: {.column width=33% .center-text .smaller-font}
+**Paper 2**
+
+Assess decision tree models for detecting non-wear time in data from thigh and hip-worn accelerometers, including skin temperature, and compare machine-learned models with heuristic algorithms for hip, thigh, and wrist-worn devices.
+:::
+::: {.column width=33% .center-text .smaller-font}
+**Paper 3**
+
+Assess the performance of different ML models in estimating in-bed and sleep time and evaluate precision of derived sleep quality metrics, benchmarking all included methods against sleep recordings of the ZM.
+:::
+::::
+
+::: {.notes}
+The overall aim wass bla blabla through these three paper/manuscripts
+
+Paper 1: The objectives of paper I is to present a method for manually annotating individual
+bedtime and wake-up times using raw accelerometry data. Furthermore, to validate
+the accuracy of these annotations by comparing them with in-bed and out-of-bed
+timestamps as determined by the ZM and by a prospective sleep diary, and lastly,
+to assess both inter-rater and intra-rater agreement of the manual annotations.
+
+I like to think of these three papers as enrichment of data, ensure integrity of data, utilization of the data with the combined aim to detect sleep
+:::
+
+# Paper 1
+
+::: {.center-text .bordered}
+Manual Annotation of Time in Bed Using Free-Living Recordings of Accelerometry Data
+
+(published in Sensors 2021)
+:::
+
+## Data Sources
+
+<br>
+
+:::: columns
+::: {.column width=70%}
+- Data sourced from the SCREENS pilot trial
+- 14 children and 19 adults were included
+- Two Axivity AX3 in elastic belts for 7 days all 24 hours/day
+- EEG recording start/stop times as ground truth
+- Sleep diaries with in-bed and out-of-bed times
+- Two batches of data: baseline and followup
+:::
+
+::: {.column width=30%}
+```{r}
+tbl_man_describe %>%
+  my_gt_theme()
+```
+:::
+::::
+
+::: footer
+Rasmussen et al. 2020, Rasmussen et al. 2021
+:::
+
+## Annotation Software and Features
+
+```{r}
+tbl_signal_features %>%
+  my_gt_theme()
+```
+
+![](img/audacity.png){fig-align="center"}
+
+::: {.notes}
+We derived the following signal features from the raw acceleration signal...
+
+Criteria for "lying" based on hip accelerometer inclination (>65 degrees) and thigh accelerometer's "sitting" status.
+
+Most features, except for "time", derived directly from Skotte et al.’s activity type classification algorithm.
+
+Audacity, a open-source audio-editing tool (sorry for the poor-quality screenshot)
+
+Application in Accelerometer Data Analysis:
+
+Useful for detailed inspection of high-resolution raw accelerometer data.
+
+Enables zooming in on specific segments and broad overview of longer data spans.
+
+Annotation process:
+
+Three raters independently reviewed and labeled each wav-file for in-bed and out-of-bed actvities
+
+Annotations saved as individual text files.
+
+Each file labeled twice by each rater for reliability
+
+Raters unaware of prior annotations to avoid biases and maintain objectivity.
+:::
+
+## Statistics 
+
+![](img/statistics.png){.absolute left=50 top=80 width=10%}
+
+::: {.absolute top=250 left=0}
+- Agreement Assessment
+    + Intraclass correlation coefficient 
+    + Bland-Altman analysis
+    + Probability density plots
+:::
+
+::: {.absolute top=250 left=600 .even-smaller-font}
+$$\text{ICC} (< 0.5) \text{ indicates poor agreement}$$
+$$0.5 \leq \text{ICC} < 0.75 \text{ indicates moderate agreement}$$
+$$0.75 \leq \text{ICC} < 0.9 \text{ indicates good agreement}$$
+$$\text{ICC} \geq 0.90 \text{ indicates excellent agreement}$$
+:::
+
+
+::: {.notes}
+Intraclass correlation coefficient (ICC) and Bland-Altman analysis used.
+
+Timestamps converted to seconds past midnight for ICC.
+
+Two-way random-effects model for inter-rater reliability (ICC(2,k)).
+
+Two-way mixed-effects model for comparing human raters against ZM or sleep diaries (ICC(3,k)).
+:::
+
+# Results
+
+## Intraclass Correlation Coefficients 
+
+
+::: {.absolute top=100 left=-100 .fragment .fade-in-then-semi-out}
+```{r}
+#| tbl-cap: ICCs between the ZM and the three human raters. Values are ICC (95% CI).
+
+tbl_icc_zm_man %>%
+  my_gt_theme()
+```
+::: 
+
+::: {.absolute top=400 left=-100 .fragment .fade-in-then-semi-out}
+```{r}
+#| tbl-cap: ICCs between self-report and the ZM. Values are ICC (95% CI).
+
+tbl_icc_self_zm %>%
+  my_gt_theme()
+```
+:::
+
+::: {.absolute top=100 right=-100 .fragment .fade-in-then-semi-out}
+```{r}
+#| tbl-cap: ICCs between self-report and the ZM. Values are ICC (95% CI).
+
+tbl_icc_man_man %>%
+  my_gt_theme()
+```
+:::
+
+::: {.absolute top=400 right=-100 .fragment .fade-in-then-semi-out}
+```{r}
+#| tbl-cap: Test–retest ICCs between the first and second round of manual annotations. Values are ICC (95% CI).
+
+tbl_icc_test_retest %>%
+  my_gt_theme()
+```
+:::
+
+## Bland-Altman Analyses
+
+```{r}
+#| tbl-cap: Bland–Altman analysis comparing manual annotation and self-report to ZM measurements, with all data presented in minutes.
+
+tbl_7 %>%
+  my_gt_theme()
+```
+
+## Density Plots
+
+:::: columns
+::: {.column width=50%}
+```{r}
+p2 
+```
+
+```{r}
+p1
+```
+:::
+
+::: {.column width=50%}
+```{r}
+p4
+```
+
+```{r}
+p3
+```
+:::
+::::
+
+## Contributions of Paper 1
+
+![](img/contribution.png){.absolute top=-5% left=45% width=10%}
+
+<br>
+
+- Presented a method for manually annotating in-bed periods using accelerometry data
+- Manually annotating in-bed periods is comparable to sleep diaries and ZM
+- Low inter- and intra-rater bias
+
+::: {.notes}
+Introduction of a Manual Annotation Methodology:
+
+Presented a method for manually annotating in-bed periods using accelerometry data.
+Evaluated the method's accuracy across multiple raters and compared it with ZM and sleep diary data.
+
+High Accuracy and Reliability:
+
+Demonstrated good-to-excellent inter- and intra-rater agreement.
+Excellent agreement between manual annotations and ZM, and between self-reported and ZM sleep times.
+
+Mean Bias and Probability Density Analysis:
+
+Found mean bias between manual annotations, self-reported sleep times, and ZM within ±6 minutes.
+Probability density plots showed comparable symmetry and positioning of outliers.
+:::
+
+## Discussion 
+
+![](img/discussion.png){.absolute top=-5% left=20% width=10%}
+
+<br> 
+
+::: {.r-fit-text}
+- Challenges in differentiating pre-bedtime and actual bedtime
+
+- Potential for broader research applications
+
+- Better precision compared to heuristic algorithms
+
+- Generalizability of raters
+:::
+
+::: {.notes}
+The difficulty raters faced in distinguishing between inactive behavior before bed and actual bedtime, indicating a potential area for method refinement.
+
+The adaptability of the manual annotation method to various research areas beyond sleep detection, like annotating non-wear time or synchronizing device clocks.
+
+Suggesting that manual annotations, while more labor-intensive, offer superior precision in identifying exact moments compared to automated algorithms
+:::
+
+# Paper 2
+
+::: {.center-text .bordered}
+Generalizability and performance of methods to detect non‑wear with free‑living accelerometer recordings
+
+(published in Scientific Reports 2023)
+:::
+
+::: {.notes}
+The objective was to train decision tree classifiers on data from hip- and thigh-worn devices and compare performance of these models to against basic heuristic algorithms and recently developed random forest and convolutional neural network models. And also to evaluate the importance of including surface skin temperature into a decision tree model.
+:::
+
+## Reference Methods
+
+![](img/algorithm.png){.absolute top=90 left=470 width=7%} 
+
+::: {.absolute top=100 left=0}
+* Consecutive Zeros-Algorithm
+:::
+
+![](img/algorithm.png){.absolute top=190 left=850 width=7%} 
+![](img/temp.png){.absolute top=190 left=920 width=7%} 
+
+::: {.absolute top=200 left=0}
+* Heuristic Algorithm that incorporates skin temperature
+:::
+
+![](img/forest.png){.absolute top=280 left=400 width=7%} 
+
+::: {.absolute top=300 left=0}
+* Random Forests Model
+:::
+
+![](img/DL.png){.absolute top=390 left=500 width=7%} 
+
+::: {.absolute top=400 left=0}
+* Convolutional Neural Network
+:::
+
+::: footer
+Rasmussen et al. 2020, Sundararajan et al. 2021, Syed et al. 2021
+:::
+
+::: {.notes}
+Using Actigraphy counts, we identified periods of no movement that registered
+zero counts for at least 60 continuous minutes. Actigraphy counts operate with a deadband set at 68 mg, which denotes the minimum detectable acceleration threshold.
+
+Uses raw acceleration and surface skin temperature. At least 120 minutes with less than 20 mg is non-wear. Periods between 45-120 minutes are non-wear if the average temperature is below a personalized threshold within the period. Finally, the algorithm can detect non-wear periods as short as 10 minutes, but only if the period ends within the expected wake time (6 AM to 10 PM).
+
+Random forests: trained on wrist data form 134 subjects aged 20-70 years. Ground truth non-wear time was determined as the the PSG system was not worn. Only if the sd of the acceleration exceeeded 13 mg outside the PSG recording, was the the data treated as wear-time. 
+
+CNN: trained on hip data from 583 subjects aged 40-84. It first identifies potential non-wear episodes using a standard deviation threshold. Then, rather than analyzing acceleration within these intervals, it focuses on the signal shape of raw acceleration immediately before and after these episodes. The method detects non-wear periods by identifying when the accelerometer is removed and reattached. 
+:::
+
+## Data Sources
+
+```{r}
+flow1
+```
+
+## Building Trees
+
+<br>
+
+```{r}
+tbl_8 %>%
+  my_gt_theme()
+```
+
+```{r}
+vip_plot +
+  theme(
+    axis.text.x = element_blank()
+  )
+```
+
+::: {.notes}
+First a full model was trained.
+:::
+
+## Model Evaluation
+
+<br>
+
+::: {.center-text}
+$accuracy=\frac{TP+TN}{TP+TN+FP+FN}$
+
+$sensitivity=\frac{TP}{TP+FN}$
+
+$precision=\frac{TP}{TP+FP}$
+
+$F1\ score=\frac{2 \cdot TP}{2 \cdot TP+FP+FN}$
+:::
+
+# Results
+
+## Characteristics of Non-wear Periods
+
+<br>
+
+:::: columns
+::: {.column width=35%}
+```{r}
+tbl_9 %>% 
+  my_gt_theme()
+```
+:::
+
+::: {.column width=65%}
+```{r}
+nw_rain
+```
+:::
+::::
+
+## Prediction Example
+
+```{r}
+preds_plots
+```
+
+## Classefication Performance - All Non-Wear Periods
+
+```{r}
+#| fig-asp: 1
+#| fig-align: center
+plot_all
+```
+
+## Classefication Performance - Short Non-Wear Periods
+
+```{r}
+#| fig-asp: 1
+#| fig-align: center
+plot_short
+```
+
+## Contributions of Paper 2
+ 
+<br>
+ 
+- On short non-wear episodes, simple methods excelled
+- Simple metohds limited in short non-wear episodes
+- temperature is an important feature
+- Complex methods showed weak generalizability
+- On short non-wear episodes, decision tree with six most important features were best
+ 
+::: {.notes}
+Found that simple methods (cz_60 and heu_alg) were highly effective in identifying non-wear episodes over 60 minutes for wrist, hip, and thigh sensors.
+
+Decision tree models incorporating surface skin temperature (tree_full and tree_imp6) showed strong performance, particularly for long non-wear episodes.
+
+Excelled with wrist data but was mediocre with hip and thigh data.
+
+The decision tree model using six key predictors emerged as the most effective for short non-wear episodes across all sensor locations.
+:::
+
+## Discussion Paper 2
+
+<br>
+
+
+
+# Acknowledgements
+
+::: columns
+::: {.column width="50%"}
+In collaboration with...
+
+::: {style="font-size:.8em"}
+-   Jan Christian brønd
+-   Anders Grøntved
+-   Niels Christian Møller
+-   Jesper Schmidt-Persson
+-   Natascha Holbæk Pedersen
+-   Kristian Traberg
+-   Peter Lund Kristensen
+-   Sofie Rath Mortensen
+-   Sara Overgaard Sørensen
+-   Malthe Roswall
+-   All remaining wonderful colleagues...
+:::
+:::
+
+::: {.column width="50%"}
+Funded by...
+
+![](img/sdu.png){width="50%"} ![](img/trygfonden.png){width="50%"} ![](img/erc.png){width="50%"}
+:::
+:::
+
+# Supplementary Slides
+
+## Duration
+
+![](img/u-shape_all-cause_mortality.png){width="80%"}
+
+::: footer
+Yin, J. et al. Relationship of Sleep Duration With All-Cause Mortality and Cardiovascular Events: A Systematic Review and Dose-Response Meta-Analysis of Prospective Cohort Studies. Journal of the American Heart Association 6, e005947 (2017).
+:::
